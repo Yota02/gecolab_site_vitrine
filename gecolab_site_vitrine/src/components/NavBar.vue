@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
+const { t, locale } = useI18n()
 const route = useRoute()
 const scrolled = ref(false)
 const mobileOpen = ref(false)
@@ -14,22 +16,35 @@ function closeMobile() {
   mobileOpen.value = false
 }
 
+function toggleLanguage() {
+  locale.value = locale.value === 'fr' ? 'en' : 'fr'
+  localStorage.setItem('locale', locale.value)
+}
+
+const currentLanguage = computed(() => locale.value.toUpperCase())
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
   handleScroll()
+
+  // Load saved language preference
+  const savedLocale = localStorage.getItem('locale')
+  if (savedLocale && (savedLocale === 'fr' || savedLocale === 'en')) {
+    locale.value = savedLocale
+  }
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 
-const links = [
-  { to: '/', label: 'Accueil' },
-  { to: '/services', label: 'Services' },
-  { to: '/a-propos', label: 'À propos' },
-  { to: '/presse', label: 'Presse' },
-  { to: '/contact', label: 'Contact' },
-]
+const links = computed(() => [
+  { to: '/', label: t('nav.home') },
+  { to: '/services', label: t('nav.services') },
+  { to: '/a-propos', label: t('nav.about') },
+  { to: '/presse', label: t('nav.press') },
+  { to: '/contact', label: t('nav.contact') },
+])
 </script>
 
 <template>
@@ -49,16 +64,37 @@ const links = [
         </span>
       </RouterLink>
 
-      <button
-        class="navbar__hamburger"
-        :class="{ active: mobileOpen }"
-        @click="mobileOpen = !mobileOpen"
-        aria-label="Menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+       <button
+         class="navbar__hamburger"
+         :class="{ active: mobileOpen }"
+         @click="mobileOpen = !mobileOpen"
+         aria-label="Menu"
+       >
+         <span></span>
+         <span></span>
+         <span></span>
+       </button>
+
+       <button
+         class="navbar__lang-toggle"
+         @click="toggleLanguage"
+         :aria-label="t('common.language')"
+       >
+         <svg v-if="currentLanguage === 'FR'" class="flag-icon" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+           <!-- Drapeau français -->
+           <rect width="8" height="18" fill="#002654"/>
+           <rect x="8" width="8" height="18" fill="#FFFFFF"/>
+           <rect x="16" width="8" height="18" fill="#ED2939"/>
+         </svg>
+         <svg v-else class="flag-icon" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+           <!-- Drapeau anglais -->
+           <rect width="24" height="18" fill="#012169"/>
+           <path d="M0 0L24 18M24 0L0 18" stroke="#FFFFFF" stroke-width="1.5"/>
+           <path d="M0 0L24 18M24 0L0 18" stroke="#C8102E" stroke-width="1"/>
+           <path d="M12 0V18M0 9H24" stroke="#FFFFFF" stroke-width="2"/>
+           <path d="M12 0V18M0 9H24" stroke="#C8102E" stroke-width="1"/>
+         </svg>
+       </button>
 
       <ul class="navbar__links" :class="{ open: mobileOpen }">
         <li v-for="link in links" :key="link.to">
@@ -206,13 +242,42 @@ const links = [
   transform: scaleX(0);
 }
 
-.navbar__hamburger.active span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+/* Language Toggle */
+.navbar__lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  z-index: 10;
+  padding: 4px;
+}
+
+.navbar__lang-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.flag-icon {
+  width: 32px;
+  height: 24px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {
   .navbar__hamburger {
     display: flex;
+  }
+
+  .navbar__lang-toggle {
+    display: none;
   }
 
   .navbar__links {

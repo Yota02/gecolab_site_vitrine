@@ -1,17 +1,20 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const visible = ref(false)
 onMounted(() => {
   requestAnimationFrame(() => { visible.value = true })
 })
 
-const stats = [
-  { value: '180+', label: 'Publications scientifiques' },
-  { value: '25+', label: "Années d'expérience" },
-  { value: '7', label: 'Chercheurs' },
-  { value: '10+', label: "Espèces suivies par PCR digitale" },
-]
+const stats = computed(() => [
+  { value: '180+', label: t('home.stats.publications') },
+  { value: '25+', label: t('home.stats.experience') },
+  { value: '7', label: t('home.stats.researchers') },
+  { value: '10+', label: t('home.stats.species') },
+])
 </script>
 
 <template>
@@ -34,24 +37,21 @@ const stats = [
       </div>
 
       <div class="hero__content container">
-        <div class="hero__badge">
-          <span class="hero__badge-dot"></span>
-          Université de Liège — Laboratoire de génétique
-        </div>
+       
         <h1 class="hero__title">
           <span class="hero__title-ge">Ge</span><span class="hero__title-co">Co</span><span class="hero__title-lab">LAB</span>
         </h1>
-        <p class="hero__subtitle">Génétique <em>&</em> Conservation</p>
+        <p class="hero__subtitle">{{ t('home.hero.subtitle') }}</p>
         <p class="hero__lead">
-          De l'ADN environnemental à la conservation des espèces
+          {{ t('home.hero.lead') }}
         </p>
         <div class="hero__actions">
           <RouterLink to="/services" class="btn btn--primary">
-            Découvrir nos services
+            {{ t('home.hero.discoverServices') }}
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </RouterLink>
           <RouterLink to="/contact" class="btn btn--ghost">
-            Nous contacter
+            {{ t('home.hero.contactUs') }}
           </RouterLink>
         </div>
       </div>
@@ -65,31 +65,30 @@ const stats = [
     <!-- ═══ INTRODUCTION ═══ -->
     <section class="intro">
       <div class="container">
-        <div class="intro__grid">
-          <div class="intro__text">
-            <span class="section-label">Qui sommes-nous</span>
-            <h2 class="section-title">Un laboratoire reconnu internationalement, spécialisé dans l'ADN environnemental</h2>
-            <p>
-              Le <strong>GeCoLAB</strong> est un laboratoire de génétique de l'Université de Liège, reconnu internationalement et spécialisé dans l'analyse d'ADN environnemental et les espèces menacées. Fort d'une vingtaine d'années d'expérience, il propose divers services d'analyses de l'ADN environnemental — poils, fèces, eau, sol — pour répondre à des problématiques environnementales variées.
-            </p>
-            <p>
-              GeCoLAB possède un large panel de marqueurs génétiques spécifiques à de nombreux groupes d'organismes animaux et végétaux, et est équipé d'un laboratoire de biologie moléculaire donnant accès aux dernières technologies de séquençage (Next Generation Sequencing), de PCR digitales et quantitatives.
-            </p>
-          </div>
-          <div class="intro__highlight">
-            <div class="intro__highlight-card">
-              <div class="intro__highlight-icon">
-                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M24 4L24 8M24 40L24 44M4 24H8M40 24H44M10 10L13 13M35 35L38 38M38 10L35 13M13 35L10 38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <circle cx="24" cy="24" r="10" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M20 24C20 21.5 22 19 24 19C26 19 28 21.5 28 24C28 26.5 26 29 24 29C22 29 20 26.5 20 24Z" stroke="currentColor" stroke-width="1"/>
-                </svg>
-              </div>
-              <h3>Laboratoire de référence wallon</h3>
-              <p>Depuis 2019, GeCoLAB est le <strong>laboratoire de référence</strong> pour le ministère de l'environnement wallon concernant le <strong>suivi génétique du loup</strong> en Wallonie.</p>
-            </div>
-          </div>
-        </div>
+         <div class="intro__grid">
+           <div class="intro__text">
+             <span class="section-label">{{ t('home.intro.sectionLabel') }}</span>
+             <h2 class="section-title">{{ t('home.intro.title') }}</h2>
+             <p v-html="t('home.intro.paragraph1')"></p>
+             <p v-html="t('home.intro.paragraph2')"></p>
+           </div>
+           <div class="intro__highlight">
+             <div class="intro__photo-mosaic">
+               <img src="/images/about/animal-portrait.jpg" alt="Espèce étudiée par GeCoLab" class="intro__mosaic-img">
+             </div>
+             <div class="intro__highlight-card">
+               <div class="intro__highlight-icon">
+                 <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M24 4L24 8M24 40L24 44M4 24H8M40 24H44M10 10L13 13M35 35L38 38M38 10L35 13M13 35L10 38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                   <circle cx="24" cy="24" r="10" stroke="currentColor" stroke-width="1.5"/>
+                   <path d="M20 24C20 21.5 22 19 24 19C26 19 28 21.5 28 24C28 26.5 26 29 24 29C22 29 20 26.5 20 24Z" stroke="currentColor" stroke-width="1"/>
+                 </svg>
+               </div>
+               <h3>{{ t('home.intro.highlightTitle') }}</h3>
+               <p v-html="t('home.intro.highlightText')"></p>
+             </div>
+           </div>
+         </div>
       </div>
     </section>
 
@@ -97,39 +96,36 @@ const stats = [
     <section class="specialty">
       <div class="specialty__bg"></div>
       <div class="container">
-        <div class="specialty__inner">
-          <span class="section-label section-label--light">Notre spécialité</span>
-          <h2 class="section-title section-title--light">Les analyses non invasives</h2>
-          <p class="specialty__text">
-            L'étude et le suivi d'espèces discrètes et/ou protégées peuvent se faire à partir d'échantillons collectés de façon non invasive — poils, crottes, mucus, eau. GeCoLAB est spécialisé dans cette approche et vous propose de nombreuses solutions pour étudier une large gamme d'espèces animales et végétales, qu'elles soient menacées ou au contraire invasives.
-          </p>
-          <div class="specialty__methods">
-            <div class="specialty__method">
-              <div class="specialty__method-icon">
-                <!-- Water drop -->
-                <svg viewBox="0 0 32 32" fill="none"><path d="M16 4C16 4 6 16 6 22a10 10 0 0020 0C26 16 16 4 16 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-              </div>
-              <h4>Milieux aquatiques</h4>
-              <p>Prélèvements d'eau via capsules filtrantes et pompes péristaltiques</p>
-            </div>
-            <div class="specialty__method">
-              <div class="specialty__method-icon">
-                <!-- Leaf/tree -->
-                <svg viewBox="0 0 32 32" fill="none"><path d="M16 28V16M16 16C16 16 8 18 8 12C8 6 16 4 16 4C16 4 24 6 24 12C24 18 16 16 16 16Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-              </div>
-              <h4>Milieux terrestres</h4>
-              <p>Collecte de sol, poils, frottis, fèces, urine et salive</p>
-            </div>
-            <div class="specialty__method">
-              <div class="specialty__method-icon">
-                <!-- DNA -->
-                <svg viewBox="0 0 32 32" fill="none"><path d="M10 4V28M22 4V28M10 10H22M10 16H22M10 22H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="7" r="2" stroke="currentColor" stroke-width="1"/><circle cx="22" cy="7" r="2" stroke="currentColor" stroke-width="1"/><circle cx="10" cy="25" r="2" stroke="currentColor" stroke-width="1"/><circle cx="22" cy="25" r="2" stroke="currentColor" stroke-width="1"/></svg>
-              </div>
-              <h4>ADN dégradé</h4>
-              <p>Laboratoires dédiés à l'étude de l'ADN rare et dégradé</p>
-            </div>
-          </div>
-        </div>
+         <div class="specialty__inner">
+           <span class="section-label section-label--light">{{ t('home.specialty.sectionLabel') }}</span>
+           <h2 class="section-title section-title--light">{{ t('home.specialty.title') }}</h2>
+           <p class="specialty__text">
+             {{ t('home.specialty.text') }}
+           </p>
+           <div class="specialty__methods">
+             <div class="specialty__method">
+               <div class="specialty__method-img">
+                 <img src="/images/services/riviere.jpg" alt="Rivière - milieu aquatique" loading="lazy">
+               </div>
+               <h4>{{ t('home.specialty.aquaticTitle') }}</h4>
+               <p>{{ t('home.specialty.aquaticText') }}</p>
+             </div>
+             <div class="specialty__method">
+               <div class="specialty__method-img">
+                 <img src="/images/services/terrain-terrestre.jpg" alt="Terrain terrestre" loading="lazy">
+               </div>
+               <h4>{{ t('home.specialty.terrestrialTitle') }}</h4>
+               <p>{{ t('home.specialty.terrestrialText') }}</p>
+             </div>
+             <div class="specialty__method">
+               <div class="specialty__method-img">
+                 <img src="/images/hero/echantillon1.jpg" alt="Échantillon non invasif" loading="lazy">
+               </div>
+               <h4>{{ t('home.specialty.degradedTitle') }}</h4>
+               <p>{{ t('home.specialty.degradedText') }}</p>
+             </div>
+           </div>
+         </div>
       </div>
     </section>
 
@@ -148,16 +144,16 @@ const stats = [
     <!-- ═══ CTA ═══ -->
     <section class="cta">
       <div class="container">
-        <div class="cta__card">
-          <div class="cta__content">
-            <h2>Un projet en tête ?</h2>
-            <p>Contactez-nous pour toute demande de devis personnalisé — thématique, nombre et type d'échantillons.</p>
-          </div>
-          <RouterLink to="/contact" class="btn btn--primary btn--lg">
-            Demander un devis
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </RouterLink>
-        </div>
+         <div class="cta__card">
+           <div class="cta__content">
+             <h2>{{ t('home.cta.title') }}</h2>
+             <p>{{ t('home.cta.text') }}</p>
+           </div>
+           <RouterLink to="/contact" class="btn btn--primary btn--lg">
+             {{ t('home.cta.quoteButton') }}
+             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+           </RouterLink>
+         </div>
       </div>
     </section>
   </div>
@@ -177,7 +173,7 @@ const stats = [
 .hero__bg {
   position: absolute;
   inset: 0;
-  background: var(--obsidian);
+  background: var(--obsidian) url('/images/hero/banner.jpg') no-repeat center center / cover;
 }
 
 .hero__gradient {
@@ -256,10 +252,10 @@ const stats = [
   animation-delay: 0.25s;
 }
 
-.hero__title-ge { color: var(--white); }
+.hero__title-ge { color: #000; }
 .hero__title-co { color: var(--canopy); }
 .hero__title-lab {
-  color: rgba(255, 255, 255, 0.4);
+  color: #333;
   font-size: 0.6em;
   letter-spacing: 0.15em;
 }
@@ -267,7 +263,7 @@ const stats = [
 .hero__subtitle {
   font-family: var(--font-display);
   font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-  color: rgba(255, 255, 255, 0.5);
+  color: #333;
   margin-top: var(--space-md);
   animation: fadeSlideUp 0.8s var(--ease-out) both;
   animation-delay: 0.4s;
@@ -282,7 +278,7 @@ const stats = [
   max-width: 540px;
   margin: var(--space-xl) auto 0;
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: #555;
   line-height: 1.8;
   animation: fadeSlideUp 0.8s var(--ease-out) both;
   animation-delay: 0.55s;
@@ -318,6 +314,63 @@ const stats = [
   50% { transform: scaleY(1); transform-origin: top; }
   50.01% { transform-origin: bottom; }
   100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: var(--space-2xl);
+  left: 50%;
+  transform: translateX(-50%);
+  animation: fadeIn 1s var(--ease-out) both;
+  animation-delay: 1.2s;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--canopy), transparent);
+  animation: scrollPulse 2s ease infinite;
+}
+
+.hero__photo {
+  position: relative;
+  width: 140px;
+  height: 90px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(29, 172, 120, 0.2);
+  transition: all 0.4s var(--ease-out);
+}
+
+.hero__photo:hover {
+  transform: scale(1.08) translateY(-4px);
+  border-color: var(--canopy);
+  box-shadow: 0 12px 30px rgba(29, 172, 120, 0.2);
+}
+
+.hero__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.hero__photo:hover img {
+  transform: scale(1.1);
+}
+
+.hero__photo span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4px 8px;
+  background: linear-gradient(transparent, rgba(10, 15, 13, 0.85));
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-align: center;
 }
 
 /* ═══ BUTTONS ═══ */
@@ -431,6 +484,25 @@ const stats = [
   font-weight: 600;
 }
 
+.intro__photo-mosaic {
+  margin-bottom: var(--space-xl);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.intro__mosaic-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.intro__photo-mosaic:hover .intro__mosaic-img {
+  transform: scale(1.03);
+}
+
 .intro__highlight-card {
   background: var(--white);
   border-radius: 12px;
@@ -536,11 +608,25 @@ const stats = [
   transform: translateY(-4px);
 }
 
-.specialty__method-icon {
-  width: 40px;
-  height: 40px;
-  margin: 0 auto var(--space-md);
-  color: var(--canopy);
+.specialty__method-img {
+  width: 100%;
+  height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: var(--space-md);
+}
+
+.specialty__method-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-out);
+  filter: brightness(0.85);
+}
+
+.specialty__method:hover .specialty__method-img img {
+  transform: scale(1.08);
+  filter: brightness(1);
 }
 
 .specialty__method h4 {
