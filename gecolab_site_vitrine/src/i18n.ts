@@ -1257,7 +1257,9 @@ export const i18n = createI18n({
   legacy: false,
   locale: 'fr', // default locale
   fallbackLocale: 'fr',
-  messages
+  messages,
+  globalInjection: true,
+  escapeParameter: false
 })
 
 export default i18n
