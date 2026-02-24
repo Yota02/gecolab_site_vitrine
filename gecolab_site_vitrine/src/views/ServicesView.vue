@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 const services = [
   {
     id: 'biodiversite',
@@ -114,10 +118,10 @@ const iconPaths: Record<string, string> = {
     <section class="page-hero">
       <div class="page-hero__bg"></div>
       <div class="page-hero__content container">
-        <span class="section-label section-label--light">Nos expertises</span>
-        <h1 class="page-hero__title">Services</h1>
+        <span class="section-label section-label--light">{{ t('services.hero.sectionLabel') }}</span>
+        <h1 class="page-hero__title">{{ t('services.hero.title') }}</h1>
         <p class="page-hero__lead">
-          Des outils génétiques de pointe pour répondre à vos problématiques environnementales
+          {{ t('services.hero.lead') }}
         </p>
       </div>
     </section>
@@ -132,8 +136,8 @@ const iconPaths: Record<string, string> = {
             </svg>
           </div>
           <div class="quality__text">
-            <h3>Notre engagement qualité</h3>
-            <p>Tous nos échantillons sont séquencés sur le <strong>NovaSeq d'Illumina</strong> ou l'<strong>Aviti d'Element Biosciences</strong>, permettant d'obtenir des millions de séquences par échantillon et de détecter l'ADN des espèces rares avec la sensibilité la plus fine.</p>
+            <h3>{{ t('services.quality.title') }}</h3>
+            <p v-html="t('services.quality.text')"></p>
           </div>
         </div>
       </div>
@@ -245,10 +249,10 @@ const iconPaths: Record<string, string> = {
     <section class="services-cta">
       <div class="container">
         <div class="services-cta__inner">
-          <h2>Besoin d'un devis personnalisé ?</h2>
-          <p>Contactez-nous avec votre thématique, le nombre et type d'échantillons.</p>
+          <h2>{{ t('services.cta.title') }}</h2>
+          <p>{{ t('services.cta.text') }}</p>
           <RouterLink to="/contact" class="btn btn--primary btn--lg">
-            Nous contacter
+            {{ t('services.cta.button') }}
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </RouterLink>
         </div>

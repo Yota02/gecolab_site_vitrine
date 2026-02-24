@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { partnersData, getAllPartners, getPartnersByCategory, getPartnersCount } from '@/data/partners'
 import type { Partner } from '@/types/partners'
 
+const { t } = useI18n()
 const activeFilter = ref<string>('all')
 const displayedPartners = ref<Partner[]>(getAllPartners())
 const hoveredPartner = ref<string | null>(null)
@@ -11,12 +13,13 @@ const isAnimated = ref(false)
 const counts = getPartnersCount()
 const failedLogos = ref<Set<string>>(new Set())
 
-const filters = [
-  { id: 'all', label: 'Tous', count: counts.total },
-  { id: 'institutions', label: 'Institutions publiques', count: counts.institutions },
-  { id: 'bureaux', label: 'Bureaux d\'études & Associations', count: counts.bureaux },
-  { id: 'private', label: 'Sociétés privées', count: counts.private }
-]
+// Computed filters to ensure they use the latest translation
+const filters = computed(() => [
+  { id: 'all', label: t('partners.filters.all'), count: counts.total },
+  { id: 'institutions', label: t('partners.filters.institutions'), count: counts.institutions },
+  { id: 'bureaux', label: t('partners.filters.bureaux'), count: counts.bureaux },
+  { id: 'private', label: t('partners.filters.private'), count: counts.private }
+])
 
 const setFilter = (filterId: string) => {
   activeFilter.value = filterId
@@ -82,24 +85,23 @@ onUnmounted(() => {
       <div class="hero__bg"></div>
       <div class="container">
         <div class="hero__content">
-          <span class="section-label section-label--light">Collaborations</span>
-          <h1 class="hero__title">Nos partenaires de confiance</h1>
+          <span class="section-label section-label--light">{{ t('partners.hero.sectionLabel') }}</span>
+          <h1 class="hero__title">{{ t('partners.hero.title') }}</h1>
           <p class="hero__subtitle">
-            Gecolab collabore avec des institutions publiques, associations et entreprises
-            de premier plan pour développer des solutions innovantes en génétique environnementale.
+            {{ t('partners.hero.subtitle') }}
           </p>
           <div class="hero__stats">
             <div class="stat">
               <div class="stat__number">{{ counts.total }}+</div>
-              <div class="stat__label">Partenaires</div>
+              <div class="stat__label">{{ t('partners.hero.partnersLabel') }}</div>
             </div>
             <div class="stat">
               <div class="stat__number">{{ counts.institutions }}</div>
-              <div class="stat__label">Institutions</div>
+              <div class="stat__label">{{ t('partners.hero.institutionsLabel') }}</div>
             </div>
             <div class="stat">
               <div class="stat__number">{{ counts.bureaux }}</div>
-              <div class="stat__label">Associations</div>
+              <div class="stat__label">{{ t('partners.hero.associationsLabel') }}</div>
             </div>
           </div>
         </div>
@@ -177,7 +179,7 @@ onUnmounted(() => {
             <polyline points="15 3 21 3 21 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <line x1="10" y1="14" x2="21" y2="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          Visiter le site web
+          {{ t('partners.tooltip.visitWebsite') }}
         </div>
       </div>
     </Transition>
@@ -187,13 +189,12 @@ onUnmounted(() => {
       <div class="cta-section__bg"></div>
       <div class="container">
         <div class="cta-content">
-          <h2 class="cta-title">Intéressé par une collaboration ?</h2>
+          <h2 class="cta-title">{{ t('partners.cta.title') }}</h2>
           <p class="cta-text">
-            Rejoignez notre réseau de partenaires et participez à l'innovation
-            en génétique environnementale.
+            {{ t('partners.cta.text') }}
           </p>
           <RouterLink to="/contact" class="cta-btn">
-            Nous contacter
+            {{ t('partners.cta.button') }}
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <line x1="5" y1="12" x2="19" y2="12" stroke-width="2" stroke-linecap="round"/>
               <polyline points="12 5 19 12 12 19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

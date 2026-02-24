@@ -1,30 +1,34 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 const articles = [
   {
-    date: '2023',
-    category: 'Découverte',
-    title: 'Découverte du Chat forestier dans la Montagne noire',
-    description: 'Contribution de GeCoLab à la confirmation de la présence du chat sauvage dans la Montagne noire (Tarn), grâce aux analyses génétiques réalisées par notre laboratoire.',
-    source: 'France 3 Occitanie',
-    tag: 'Chat forestier',
+    date: t('press.articles.article1.date'),
+    category: t('press.articles.article1.category'),
+    title: t('press.articles.article1.title'),
+    description: t('press.articles.article1.description'),
+    source: t('press.articles.article1.source'),
+    tag: t('press.articles.article1.tag'),
     image: '/images/services/chat-forestier.jpg',
   },
   {
-    date: '2019',
-    category: 'Référence',
-    title: 'GeCoLab, laboratoire de référence wallon pour le loup',
-    description: 'Depuis l\'été 2018, GeCoLab est le laboratoire de référence wallon pour toute question génétique relative à la présence du loup. Des résultats inédits sur la présence du loup ont été mis en évidence par notre laboratoire, repris par la RTBF et le journal La Libre Belgique.',
-    source: 'RTBF / La Libre Belgique',
-    tag: 'Loup',
+    date: t('press.articles.article2.date'),
+    category: t('press.articles.article2.category'),
+    title: t('press.articles.article2.title'),
+    description: t('press.articles.article2.description'),
+    source: t('press.articles.article2.source'),
+    tag: t('press.articles.article2.tag'),
     image: '/images/press/lalibre.jpg',
   },
   {
-    date: '2018',
-    category: 'Publication',
-    title: 'Renard et maladie de Lyme',
-    description: 'Un article écrit par le GeCoLab traitant de la maladie de Lyme et du surprenant rôle du renard dans la régulation de celle-ci, publié dans le magazine Natagora n°87.',
-    source: 'Natagora Magazine',
-    tag: 'Pathogènes',
+    date: t('press.articles.article3.date'),
+    category: t('press.articles.article3.category'),
+    title: t('press.articles.article3.title'),
+    description: t('press.articles.article3.description'),
+    source: t('press.articles.article3.source'),
+    tag: t('press.articles.article3.tag'),
     image: '/images/press/natagora.jpg',
   },
 ]
@@ -36,10 +40,10 @@ const articles = [
     <section class="page-hero">
       <div class="page-hero__bg"></div>
       <div class="page-hero__content container">
-        <span class="section-label section-label--light">Médias</span>
-        <h1 class="page-hero__title">Revue de presse</h1>
+        <span class="section-label section-label--light">{{ t('press.hero.sectionLabel') }}</span>
+        <h1 class="page-hero__title">{{ t('press.hero.title') }}</h1>
         <p class="page-hero__lead">
-          GeCoLab dans les médias — découvertes, expertises et impact scientifique
+          {{ t('press.hero.lead') }}
         </p>
       </div>
     </section>
@@ -86,9 +90,9 @@ const articles = [
               <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="1.5"/>
             </svg>
           </div>
-          <h3>Vulgarisation scientifique</h3>
+          <h3>{{ t('press.highlight.title') }}</h3>
           <p>
-            Au-delà de ses recherches, le GeCoLab consacre une partie de son activité à la vulgarisation scientifique. Le Dr Johan Michaux intervient notamment pour la télévision nationale belge (RTBF), rendant accessibles les enjeux de la conservation génétique au grand public.
+            {{ t('press.highlight.text') }}
           </p>
         </div>
       </div>

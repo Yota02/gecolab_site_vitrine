@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -27,37 +30,37 @@
               <span class="ge">Ge</span><span class="co">Co</span><span class="lab">LAB</span>
             </span>
           </div>
-          <p class="footer__tagline">Génétique et Conservation</p>
-          <p class="footer__affiliation">Université de Liège</p>
+          <p class="footer__tagline">{{ t('footer.tagline') }}</p>
+          <p class="footer__affiliation">{{ t('footer.affiliation') }}</p>
         </div>
 
         <!-- Navigation col -->
         <div class="footer__col">
-          <h4 class="footer__heading">Navigation</h4>
+          <h4 class="footer__heading">{{ t('footer.navigation') }}</h4>
           <ul>
-            <li><RouterLink to="/">Accueil</RouterLink></li>
-            <li><RouterLink to="/services">Services</RouterLink></li>
-            <li><RouterLink to="/a-propos">À propos</RouterLink></li>
-            <li><RouterLink to="/presse">Presse</RouterLink></li>
-            <li><RouterLink to="/contact">Contact</RouterLink></li>
+            <li><RouterLink to="/">{{ t('nav.home') }}</RouterLink></li>
+            <li><RouterLink to="/services">{{ t('nav.services') }}</RouterLink></li>
+            <li><RouterLink to="/a-propos">{{ t('nav.about') }}</RouterLink></li>
+            <li><RouterLink to="/presse">{{ t('nav.press') }}</RouterLink></li>
+            <li><RouterLink to="/contact">{{ t('nav.contact') }}</RouterLink></li>
           </ul>
         </div>
 
         <!-- Services col -->
         <div class="footer__col">
-          <h4 class="footer__heading">Expertises</h4>
+          <h4 class="footer__heading">{{ t('footer.expertises') }}</h4>
           <ul>
-            <li>ADN environnemental</li>
-            <li>Inventaire de biodiversité</li>
-            <li>PCR digitale</li>
-            <li>Régime alimentaire</li>
-            <li>Génétique des populations</li>
+            <li>{{ t('footer.expertisesList.edna') }}</li>
+            <li>{{ t('footer.expertisesList.inventory') }}</li>
+            <li>{{ t('footer.expertisesList.digitalPCR') }}</li>
+            <li>{{ t('footer.expertisesList.diet') }}</li>
+            <li>{{ t('footer.expertisesList.genetics') }}</li>
           </ul>
         </div>
 
         <!-- Contact col -->
         <div class="footer__col">
-          <h4 class="footer__heading">Contact</h4>
+          <h4 class="footer__heading">{{ t('footer.contact') }}</h4>
           <ul>
             <li>Institut de Botanique (Bât. B22)</li>
             <li>Chemin de la vallée 4</li>
@@ -68,7 +71,7 @@
       </div>
 
       <div class="footer__bottom">
-        <p>&copy; {{ new Date().getFullYear() }} GeCoLAB — Université de Liège. Tous droits réservés.</p>
+        <p>&copy; {{ new Date().getFullYear() }} GeCoLAB — {{ t('footer.affiliation') }}. {{ t('footer.copyright') }}</p>
       </div>
     </div>
 

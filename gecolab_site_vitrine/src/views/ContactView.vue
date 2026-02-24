@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { LMap, LTileLayer, LMarker, LPopup } from '@vue-leaflet/vue-leaflet'
 import 'leaflet/dist/leaflet.css'
 import L, { type LatLngTuple } from 'leaflet'
+
+const { t } = useI18n()
 
 // Fix for default marker icons in Vite
 // @ts-ignore
@@ -46,15 +49,8 @@ function handleSubmit() {
                   <circle cx="12" cy="10" r="3"/>
                 </svg>
               </div>
-              <h3>Adresse</h3>
-              <p>
-                GeCoLAB<br>
-                Laboratoire de génétique de la conservation<br>
-                Institut de Botanique (Bât. B22)<br>
-                Quartier Vallée 1<br>
-                Chemin de la vallée 4<br>
-                <strong>4000 Liège (Sart Tilman)</strong><br>
-                Belgique
+              <h3>{{ t('contact.info.address') }}</h3>
+              <p v-html="t('contact.info.addressText')">
               </p>
             </div>
 
@@ -64,7 +60,7 @@ function handleSubmit() {
                   <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
                 </svg>
               </div>
-              <h3>Téléphone</h3>
+              <h3>{{ t('contact.info.phone') }}</h3>
               <p class="phone-number">+32 (0)4 366 21 30</p>
             </div>
 
@@ -75,7 +71,7 @@ function handleSubmit() {
                   <polyline points="22,6 12,13 2,6"/>
                 </svg>
               </div>
-              <h3>Email</h3>
+              <h3>{{ t('contact.info.email') }}</h3>
               <p>gecolab@uliege.be</p>
             </div>
 
@@ -87,11 +83,7 @@ function handleSubmit() {
                 <!-- @ts-ignore -->
                 <l-marker :lat-lng="center">
                   <l-popup>
-                    <strong>GeCoLAB</strong><br>
-                    Laboratoire de génétique de la conservation<br>
-                    Institut de Botanique (Bât. B22)<br>
-                    Quartier Vallée 1, Chemin de la Vallée 4<br>
-                    4000 Liège (Sart Tilman), Belgique
+                    <div v-html="t('contact.info.mapPopup')"></div>
                   </l-popup>
                 </l-marker>
               </l-map>
@@ -101,45 +93,45 @@ function handleSubmit() {
           <!-- Form column -->
           <div class="contact-form-wrapper">
             <div class="form-card" v-if="!submitted">
-              <h3>Envoyez-nous un message</h3>
-              <p class="form-card__subtitle">Nous reviendrons vers vous dans les meilleurs délais.</p>
+              <h3>{{ t('contact.form.title') }}</h3>
+              <p class="form-card__subtitle">{{ t('contact.form.subtitle') }}</p>
 
               <form @submit.prevent="handleSubmit" class="contact-form">
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="name">Nom complet</label>
-                    <input id="name" v-model="form.name" type="text" required placeholder="Votre nom">
+                    <label for="name">{{ t('contact.form.name') }}</label>
+                    <input id="name" v-model="form.name" type="text" required :placeholder="t('contact.form.namePlaceholder')">
                   </div>
                   <div class="form-group">
-                    <label for="email">Email</label>
-                    <input id="email" v-model="form.email" type="email" required placeholder="votre@email.com">
+                    <label for="email">{{ t('contact.form.email') }}</label>
+                    <input id="email" v-model="form.email" type="email" required :placeholder="t('contact.form.emailPlaceholder')">
                   </div>
                 </div>
 
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="org">Organisation</label>
-                    <input id="org" v-model="form.organization" type="text" placeholder="Votre organisation">
+                    <label for="org">{{ t('contact.form.organization') }}</label>
+                    <input id="org" v-model="form.organization" type="text" :placeholder="t('contact.form.organizationPlaceholder')">
                   </div>
                   <div class="form-group">
-                    <label for="subject">Sujet</label>
+                    <label for="subject">{{ t('contact.form.subject') }}</label>
                     <select id="subject" v-model="form.subject" required>
-                      <option value="" disabled>Choisir un sujet</option>
-                      <option value="devis">Demande de devis</option>
-                      <option value="info">Demande d'informations</option>
-                      <option value="collaboration">Proposition de collaboration</option>
-                      <option value="autre">Autre</option>
+                      <option value="" disabled>{{ t('contact.form.subjectPlaceholder') }}</option>
+                      <option value="devis">{{ t('contact.form.subjectOptions.quote') }}</option>
+                      <option value="info">{{ t('contact.form.subjectOptions.info') }}</option>
+                      <option value="collaboration">{{ t('contact.form.subjectOptions.collaboration') }}</option>
+                      <option value="autre">{{ t('contact.form.subjectOptions.other') }}</option>
                     </select>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="message">Message</label>
-                  <textarea id="message" v-model="form.message" required rows="5" placeholder="Décrivez votre projet ou votre question..."></textarea>
+                  <label for="message">{{ t('contact.form.message') }}</label>
+                  <textarea id="message" v-model="form.message" required rows="5" :placeholder="t('contact.form.messagePlaceholder')"></textarea>
                 </div>
 
                 <button type="submit" class="btn btn--primary btn--lg btn--full">
-                  Envoyer le message
+                  {{ t('contact.form.submit') }}
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
               </form>
@@ -153,9 +145,9 @@ function handleSubmit() {
                   <path d="M15 24l6 6 12-12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-              <h3>Message envoyé !</h3>
-              <p>Merci pour votre message. Notre équipe reviendra vers vous dans les meilleurs délais.</p>
-              <button @click="submitted = false" class="btn btn--ghost-dark">Envoyer un autre message</button>
+              <h3>{{ t('contact.form.successTitle') }}</h3>
+              <p>{{ t('contact.form.successText') }}</p>
+              <button @click="submitted = false" class="btn btn--ghost-dark">{{ t('contact.form.sendAnother') }}</button>
             </div>
           </div>
         </div>

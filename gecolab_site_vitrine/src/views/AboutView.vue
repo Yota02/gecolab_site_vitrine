@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 const team = [
   {
     name: 'Johan Michaux',
@@ -65,10 +69,10 @@ const team = [
     <section class="page-hero">
       <div class="page-hero__bg"></div>
       <div class="page-hero__content container">
-        <span class="section-label section-label--light">Le laboratoire</span>
-        <h1 class="page-hero__title">À propos</h1>
+        <span class="section-label section-label--light">{{ t('about.hero.sectionLabel') }}</span>
+        <h1 class="page-hero__title">{{ t('about.hero.title') }}</h1>
         <p class="page-hero__lead">
-          Un laboratoire de l'Université de Liège au service de la biodiversité depuis plus de 25 ans
+          {{ t('about.hero.lead') }}
         </p>
       </div>
     </section>
@@ -78,30 +82,22 @@ const team = [
       <div class="container">
         <div class="whoweare__grid">
           <div class="whoweare__main">
-            <span class="section-label">Notre histoire</span>
-            <h2 class="section-title">Qui sommes-nous ?</h2>
-            <p>
-              GeCoLAB est un laboratoire de l'Université de Liège créé par le <strong>Dr Johan Michaux</strong> qui développe des recherches sur la biodiversité à partir d'outils génétiques depuis plus de 25 ans.
-            </p>
-            <p>
-              Ses recherches ont eu comme objectif fondamental de mieux comprendre l'histoire évolutive et la taxonomie d'une série d'espèces de vertébrés. Elles ont également des objectifs appliqués tels que mieux comprendre la résistance des espèces face aux changements climatiques, étudier l'impact de la fragmentation des habitats sur la survie à long terme d'espèces menacées, ou mettre en place de nouvelles méthodes pour effectuer des inventaires faunistiques en milieu aquatique et terrestre.
-            </p>
-            <p>
-              Ces recherches ont été développées sur un large spectre d'espèces, reprenant notamment de nombreux mammifères aquatiques ou semi-aquatiques (ours polaire, marsouin commun, vison d'Europe, castor européen, loutre européenne, desman des Pyrénées, musaraigne aquatique…) mais également des amphibiens ou des poissons.
-            </p>
+            <span class="section-label">{{ t('about.whoWeAre.sectionLabel') }}</span>
+            <h2 class="section-title">{{ t('about.whoWeAre.title') }}</h2>
+            <p v-html="t('about.whoWeAre.paragraph1')"></p>
+            <p>{{ t('about.whoWeAre.paragraph2') }}</p>
+            <p>{{ t('about.whoWeAre.paragraph3') }}</p>
           </div>
           <div class="whoweare__side">
             <div class="whoweare__photo">
               <img src="/images/about/animal-portrait.jpg" alt="Espèce étudiée par GeCoLab" loading="lazy">
             </div>
             <div class="difference-card">
-              <h3>Notre différence</h3>
-              <p>
-                Par notre expertise en génétique <em>et</em> en tant que naturalistes et écologues, nous ne proposons pas uniquement un travail de prestataire rendant une liste d'espèces — nous vous aidons dans <strong>l'interprétation des données</strong>, la mise en place des <strong>protocoles de collecte</strong> et le développement de <strong>projets concrets</strong>.
-              </p>
+              <h3>{{ t('about.whoWeAre.differenceTitle') }}</h3>
+              <p v-html="t('about.whoWeAre.differenceText')"></p>
               <div class="difference-card__highlight">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm-1 11l-3-3 1.5-1.5L9 10l3.5-3.5L14 8l-5 5z" fill="currentColor"/></svg>
-                <span>Base de données génétique de références <strong>privée et unique</strong>, développée avec Biotope et Aquascop</span>
+                <span v-html="t('about.whoWeAre.differenceHighlight')"></span>
               </div>
             </div>
           </div>
@@ -113,9 +109,9 @@ const team = [
     <section class="team">
       <div class="container">
         <div class="team__header">
-          <span class="section-label">Les personnes</span>
-          <h2 class="section-title">L'équipe</h2>
-          <p class="team__intro">3 docteurs en biologie, 2 biologistes de niveau master, 1 technicienne de laboratoire et 1 chercheuse postdoctorale</p>
+          <span class="section-label">{{ t('about.team.sectionLabel') }}</span>
+          <h2 class="section-title">{{ t('about.team.title') }}</h2>
+          <p class="team__intro">{{ t('about.team.intro') }}</p>
         </div>
 
         <div class="team__grid">

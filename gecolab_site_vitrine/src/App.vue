@@ -1,6 +1,15 @@
 <script setup lang="ts">
+import { watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import NavBar from '@/components/NavBar.vue'
 import FooterSection from '@/components/FooterSection.vue'
+
+const { locale } = useI18n()
+
+// Update HTML lang attribute when locale changes
+watch(locale, (newLocale) => {
+  document.documentElement.setAttribute('lang', newLocale)
+}, { immediate: true })
 </script>
 
 <template>
