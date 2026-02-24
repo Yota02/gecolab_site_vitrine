@@ -9,6 +9,10 @@ const router = useRouter()
 const scrolled = ref(false)
 const mobileOpen = ref(false)
 const randomLogo = ref<string | undefined>('')
+const langDropdownOpen = ref(false)
+
+const languages = ['fr', 'en', 'de', 'es', 'nl'] as const
+type Language = typeof languages[number]
 
 const animalLogos = [
   '/images/logos/sanglier.png',
@@ -27,9 +31,10 @@ function closeMobile() {
   mobileOpen.value = false
 }
 
-function toggleLanguage() {
-  locale.value = locale.value === 'fr' ? 'en' : 'fr'
-  localStorage.setItem('locale', locale.value)
+function selectLanguage(lang: Language) {
+  locale.value = lang
+  localStorage.setItem('locale', lang)
+  langDropdownOpen.value = false
 }
 
 const currentLanguage = computed(() => locale.value.toUpperCase())
@@ -45,8 +50,8 @@ onMounted(() => {
 
   // Load saved language preference
   const savedLocale = localStorage.getItem('locale')
-  if (savedLocale && (savedLocale === 'fr' || savedLocale === 'en')) {
-    locale.value = savedLocale
+  if (savedLocale && languages.includes(savedLocale as Language)) {
+    locale.value = savedLocale as Language
   }
 
   // Set random logo
@@ -101,26 +106,67 @@ const links = computed(() => [
          <span></span>
        </button>
 
-       <button
-         class="navbar__lang-toggle"
-         @click="toggleLanguage"
-         :aria-label="t('common.language')"
-       >
-         <svg v-if="currentLanguage === 'FR'" class="flag-icon" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-           <!-- Drapeau français -->
-           <rect width="8" height="18" fill="#002654"/>
-           <rect x="8" width="8" height="18" fill="#FFFFFF"/>
-           <rect x="16" width="8" height="18" fill="#ED2939"/>
-         </svg>
-         <svg v-else class="flag-icon" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-           <!-- Drapeau anglais -->
-           <rect width="24" height="18" fill="#012169"/>
-           <path d="M0 0L24 18M24 0L0 18" stroke="#FFFFFF" stroke-width="1.5"/>
-           <path d="M0 0L24 18M24 0L0 18" stroke="#C8102E" stroke-width="1"/>
-           <path d="M12 0V18M0 9H24" stroke="#FFFFFF" stroke-width="2"/>
-           <path d="M12 0V18M0 9H24" stroke="#C8102E" stroke-width="1"/>
-         </svg>
-       </button>
+        <div class="navbar__lang-dropdown">
+          <button
+            class="navbar__lang-toggle"
+            @click="langDropdownOpen = !langDropdownOpen"
+            :aria-expanded="langDropdownOpen"
+            :aria-label="t('common.language')"
+          >
+            <svg v-if="currentLanguage === 'FR'" class="flag-icon" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Drapeau français -->
+              <rect width="8" height="18" fill="#002654"/>
+              <rect x="8" width="8" height="18" fill="#FFFFFF"/>
+              <rect x="16" width="8" height="18" fill="#ED2939"/>
+            </svg>
+            <svg v-else-if="currentLanguage === 'EN'" class="flag-icon" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Drapeau anglais -->
+              <rect width="24" height="18" fill="#012169"/>
+              <path d="M0 0L24 18M24 0L0 18" stroke="#FFFFFF" stroke-width="1.5"/>
+              <path d="M0 0L24 18M24 0L0 18" stroke="#C8102E" stroke-width="1"/>
+              <path d="M12 0V18M0 9H24" stroke="#FFFFFF" stroke-width="2"/>
+              <path d="M12 0V18M0 9H24" stroke="#C8102E" stroke-width="1"/>
+            </svg>
+            <svg v-else-if="currentLanguage === 'DE'" class="flag-icon" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Drapeau allemand -->
+              <rect width="24" height="6" fill="#000000"/>
+              <rect y="6" width="24" height="6" fill="#DD0000"/>
+              <rect y="12" width="24" height="6" fill="#FFCC00"/>
+            </svg>
+            <svg v-else-if="currentLanguage === 'ES'" class="flag-icon" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Drapeau espagnol -->
+              <rect width="24" height="6" fill="#AA151B"/>
+              <rect y="6" width="24" height="6" fill="#F1BF00"/>
+              <rect y="12" width="24" height="6" fill="#AA151B"/>
+            </svg>
+            <svg v-else-if="currentLanguage === 'NL'" class="flag-icon" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Drapeau néerlandais -->
+              <rect width="24" height="6" fill="#AE1C28"/>
+              <rect y="6" width="24" height="6" fill="#FFFFFF"/>
+              <rect y="12" width="24" height="6" fill="#21468B"/>
+            </svg>
+          </button>
+          <ul v-if="langDropdownOpen" class="navbar__lang-options">
+            <li v-for="lang in languages" :key="lang" @click="selectLanguage(lang)" class="navbar__lang-option">
+              <svg v-if="lang === 'fr'" class="flag-icon" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="8" height="18" fill="#002654"/><rect x="8" width="8" height="18" fill="#FFFFFF"/><rect x="16" width="8" height="18" fill="#ED2939"/>
+              </svg>
+              <svg v-else-if="lang === 'en'" class="flag-icon" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="18" fill="#012169"/><path d="M0 0L24 18M24 0L0 18" stroke="#FFFFFF" stroke-width="1.5"/><path d="M0 0L24 18M24 0L0 18" stroke="#C8102E" stroke-width="1"/><path d="M12 0V18M0 9H24" stroke="#FFFFFF" stroke-width="2"/><path d="M12 0V18M0 9H24" stroke="#C8102E" stroke-width="1"/>
+              </svg>
+              <svg v-else-if="lang === 'de'" class="flag-icon" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="6" fill="#000000"/><rect y="6" width="24" height="6" fill="#DD0000"/><rect y="12" width="24" height="6" fill="#FFCC00"/>
+              </svg>
+              <svg v-else-if="lang === 'es'" class="flag-icon" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="6" fill="#AA151B"/><rect y="6" width="24" height="6" fill="#F1BF00"/><rect y="12" width="24" height="6" fill="#AA151B"/>
+              </svg>
+              <svg v-else-if="lang === 'nl'" class="flag-icon" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="6" fill="#AE1C28"/><rect y="6" width="24" height="6" fill="#FFFFFF"/><rect y="12" width="24" height="6" fill="#21468B"/>
+              </svg>
+              <span>{{ lang.toUpperCase() }}</span>
+            </li>
+          </ul>
+        </div>
 
       <ul class="navbar__links" :class="{ open: mobileOpen }">
         <li v-for="link in links" :key="link.to">
@@ -299,6 +345,49 @@ const links = computed(() => [
   height: 24px;
   border-radius: 3px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.navbar__lang-dropdown {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+.navbar__lang-options {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: 8px;
+  background: rgba(10, 15, 13, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px 0;
+  min-width: 120px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  list-style: none;
+}
+
+.navbar__lang-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.navbar__lang-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+}
+
+.navbar__lang-option .flag-icon {
+  width: 24px;
+  height: 18px;
 }
 
 @media (max-width: 768px) {

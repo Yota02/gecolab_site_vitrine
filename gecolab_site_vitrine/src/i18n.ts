@@ -500,6 +500,756 @@ const messages = {
         sendAnother: 'Send another message'
       }
     }
+  },
+  de: {
+    nav: {
+      home: 'Startseite',
+      services: 'Dienstleistungen',
+      about: 'Über uns',
+      partners: 'Partner',
+      press: 'Presse',
+      contact: 'Kontakt'
+    },
+    home: {
+      hero: {
+        subtitle: 'Genetik & Naturschutz',
+        lead: 'Von Umwelt-DNA zur Arterhaltung',
+        discoverServices: 'Unsere Dienstleistungen entdecken',
+        contactUs: 'Kontaktieren Sie uns'
+      },
+      intro: {
+        sectionLabel: 'Wer wir sind',
+        title: 'Ein international anerkanntes Labor, spezialisiert auf Umwelt-DNA',
+        paragraph1: 'Das <strong>GeCoLAB</strong> ist ein Genetik-Labor der Universität Lüttich, international anerkannt und spezialisiert auf Umwelt-DNA-Analyse und bedrohte Arten. Mit über zwanzig Jahren Erfahrung bietet es diverse Umwelt-DNA-Analysedienstleistungen — Haare, Kot, Wasser, Boden — zur Beantwortung verschiedener Umweltfragen.',
+        paragraph2: 'GeCoLAB verfügt über eine breite Palette genetischer Marker, die spezifisch für viele Gruppen von Tier- und Pflanzenorganismen sind, und ist mit einem molekularbiologischen Labor ausgestattet, das Zugang zu den neuesten Sequenzierungstechnologien (Next Generation Sequencing), digitaler PCR und quantitativer PCR bietet.',
+        highlightTitle: 'Referenzlabor in Wallonien',
+        highlightText: 'Seit 2019 ist GeCoLAB das <strong>Referenzlabor</strong> des wallonischen Umweltministeriums bezüglich der <strong>genetischen Überwachung des Wolfs</strong> in Wallonien.'
+      },
+      specialty: {
+        sectionLabel: 'Unsere Spezialität',
+        title: 'Nicht-invasive Analysen',
+        text: 'Die Untersuchung und Überwachung diskreter und/oder geschützter Arten kann mit nicht-invasiv gesammelten Proben durchgeführt werden — Haare, Kot, Schleim, Wasser. GeCoLAB spezialisiert sich in diesem Ansatz und bietet Ihnen viele Lösungen zur Untersuchung einer breiten Palette von Tier- und Pflanzenarten, die bedroht sind oder im Gegenteil invasiv.',
+        aquaticTitle: 'Aquatische Lebensräume',
+        aquaticText: 'Wasserprobenahme über Filterkapseln und peristaltische Pumpen',
+        terrestrialTitle: 'Terrestrische Lebensräume',
+        terrestrialText: 'Sammeln von Boden, Haaren, Abstrichen, Kot, Urin und Speichel',
+        degradedTitle: 'Degradierte DNA',
+        degradedText: 'Labore für die Untersuchung seltener und degradierter DNA'
+      },
+      stats: {
+        publications: 'Wissenschaftliche Veröffentlichungen',
+        experience: 'Jahre Erfahrung',
+        researchers: 'Forscher',
+        species: 'Arten überwacht durch digitale PCR'
+      },
+      cta: {
+        title: 'Ein Projekt im Kopf?',
+        text: 'Kontaktieren Sie uns für jede personalisierte Angebotsanfrage — Thema, Anzahl und Art der Proben.',
+        quoteButton: 'Ein Angebot anfordern'
+      }
+    },
+    common: {
+      language: 'Sprache'
+    },
+    footer: {
+      tagline: 'Genetik und Naturschutz',
+      affiliation: 'Universität Lüttich',
+      navigation: 'Navigation',
+      expertises: 'Expertise',
+      expertisesList: {
+        edna: 'Umwelt-DNA',
+        inventory: 'Biodiversitätsinventar',
+        digitalPCR: 'Digitale PCR',
+        diet: 'Ernährung',
+        genetics: 'Populationsgenetik'
+      },
+      contact: 'Kontakt',
+      copyright: 'Alle Rechte vorbehalten.'
+    },
+    services: {
+      hero: {
+        sectionLabel: 'Unsere Expertise',
+        title: 'Dienstleistungen',
+        lead: 'Hochmoderne genetische Werkzeuge zur Beantwortung Ihrer Umweltfragen'
+      },
+      quality: {
+        title: 'Unser Qualitätsengagement',
+        text: 'Alle unsere Proben werden auf dem <strong>Illumina NovaSeq</strong> oder dem <strong>Element Biosciences Aviti</strong> sequenziert, wodurch Millionen von Sequenzen pro Probe erhalten werden können und DNA seltener Arten mit der feinsten Empfindlichkeit detektiert werden kann.'
+      },
+      service1: {
+        title: 'Biodiversitätsinventar und Artenidentifikation',
+        description: 'Führen Sie präzise faunistische Inventare durch oder identifizieren Sie das Vorhandensein bedrohter oder invasiver Arten an einem bestimmten Standort mit unseren genetischen Werkzeugen.',
+        aquatic: 'Aquatische Lebensräume',
+        aquaticText: 'Suche nach Fischen, Amphibien, aquatischen Säugetieren und Makroinvertebraten aus Wasserproben über Filterkapseln und peristaltische Pumpen.',
+        terrestrial: 'Terrestrische Lebensräume',
+        terrestrialText: 'Sammeln von Bodenproben, Haaren, Abstrichen, Kot, Urin und Speichel mit nicht-invasiven Vorrichtungen, entwickelt in Zusammenarbeit mit GREGE.',
+        markersTitle: 'Genetische Marker nach Gruppe',
+        fish: 'Fische',
+        mammals: 'Säugetiere',
+        amphibians: 'Amphibien',
+        bivalves: 'Muscheln',
+        gastropods: 'Schnecken',
+        decapods: 'Krebstiere',
+        plants: 'Pflanzen',
+        invertebrates: 'Wirbellose',
+        diatoms: 'Kieselalgen',
+        markers: 'Marker',
+        marker: 'Marker',
+        reads: 'Reads'
+      },
+      service2: {
+        title: 'Ultrasensitive Detektion via digitale PCR',
+        description: 'Seit 2024 entwickeln wir ultrasensitive Detektionsmethoden für bestimmte Arten durch die Verwendung digitaler PCR.',
+        note: 'Weitere Arten werden bald hinzugefügt. Zögern Sie nicht, uns bezüglich jeder Art von Interesse zu kontaktieren.'
+      },
+      service3: {
+        title: 'Ernährung',
+        description: 'Präzise Ernährungsanalysen aus nicht-invasiv gesammelten Fäkalien, durch Next-Generation-Sequencing- und Metabarcoding-Techniken.',
+        examplesLabel: 'Untersuchte Arten:',
+        examples: 'Europäischer Fischotter, Europäischer Wolf, Wildschwein, Europäischer Nerz, Amerikanischer Nerz, Javanische Manguste, zahlreiche Fledermausarten (Langoohren, Zwergfledermäuse, Zwergfledermäuse)…'
+      },
+      service4: {
+        title: 'Untersuchung von Hybridisierungsproblemen',
+        description: 'Präzise Untersuchung von Hybridisierungsphänomenen zwischen bedrohten Arten und domestizierten oder invasiven Arten.',
+        case1: 'Europäische Wildkatze × Hauskatze',
+        case2: 'Europäisches Wildschwein × Hausschwein',
+        case3: 'Europäischer Nerz × Europäischer Iltis'
+      },
+      service5: {
+        title: 'Bestimmung von Populationsgrößen und Populationsgenetik',
+        description: 'Bewertung der Populationsgröße, Konnektivitätsanalyse zwischen isolierten Populationen, Schätzung des Inzuchtrisikos und der genetischen Vielfalt.',
+        examplesLabel: 'Untersuchte Arten:',
+        examples: 'Europäischer Fischotter, Europäischer Wolf, Pyrenäen-Desman, Europäischer Nerz, Schachbrettfalter, Uhu, Afrikanischer Löwe, Eisbär…'
+      },
+      service6: {
+        title: 'Identifizierung von Pathogenen und bakteriellen Mikrobiomen',
+        description: 'Präzise Schätzung bakterieller Mikrobiome und Detektion potentieller Anwesenheit von Pathogenen mit höherer Genauigkeit als herkömmliche Technologien.',
+        pathogensLabel: 'Detektierte Pathogene:',
+        pathogens: 'Borrelia (Lyme-Krankheit), Bartonella, Yersinia, Bacillus, Leptospira…',
+        partners: 'Entwickelt mit dem Pasteur-Institut und dem Universitätsklinikum der Universität Lüttich.'
+      },
+      cta: {
+        title: 'Brauchen Sie ein personalisiertes Angebot?',
+        text: 'Kontaktieren Sie uns mit Ihrem Thema, Anzahl und Art der Proben.',
+        button: 'Kontaktieren Sie uns'
+      }
+    },
+    about: {
+      hero: {
+        sectionLabel: 'Das Labor',
+        title: 'Über uns',
+        lead: 'Ein Labor der Universität Lüttich im Dienst der Biodiversität seit über 25 Jahren'
+      },
+      whoWeAre: {
+        sectionLabel: 'Unsere Geschichte',
+        title: 'Wer sind wir?',
+        paragraph1: 'GeCoLAB ist ein Labor der Universität Lüttich, gegründet von <strong>Dr. Johan Michaux</strong>, der seit über 25 Jahren Biodiversitätsforschung mit genetischen Werkzeugen betreibt.',
+        paragraph2: 'Seine Forschungen hatten das grundlegende Ziel, die evolutionäre Geschichte und Taxonomie einer Reihe von Wirbeltierarten besser zu verstehen. Sie haben auch angewandte Ziele, wie ein besseres Verständnis der Widerstandsfähigkeit von Arten gegenüber Klimawandel, die Untersuchung der Auswirkungen von Lebensraumfragmentierung auf das langfristige Überleben bedrohter Arten oder die Implementierung neuer Methoden zur Durchführung faunistischer Inventare in aquatischen und terrestrischen Umgebungen.',
+        paragraph3: 'Diese Forschungen wurden über ein breites Spektrum von Arten entwickelt, einschließlich vieler aquatischer oder semi-aquatischer Säugetiere (Eisbär, Schweinswal, Europäischer Nerz, Europäischer Biber, Europäischer Fischotter, Pyrenäen-Desman, Wasserspitzmaus…) aber auch Amphibien und Fische.',
+        differenceTitle: 'Unser Unterschied',
+        differenceText: 'Durch unsere Expertise in Genetik <em>und</em> als Naturforscher und Ökologen bieten wir nicht nur das Werk eines Dienstleisters, der eine Artenliste zurückgibt — wir helfen Ihnen bei der <strong>Dateninterpretation</strong>, der Implementierung von <strong>Sammlungsprotokollen</strong> und der Entwicklung <strong>konkreter Projekte</strong>.',
+        differenceHighlight: '<strong>Private und einzigartige</strong> genetische Referenzdatenbank, entwickelt mit Biotope und Aquascop'
+      },
+      team: {
+        sectionLabel: 'Die Personen',
+        title: 'Das Team',
+        intro: '3 Doktoren in Biologie, 2 Master-Level-Biologen, 1 Laborassistentin und 1 Postdoktorandin'
+      }
+    },
+    partners: {
+      hero: {
+        sectionLabel: 'Zusammenarbeit',
+        title: 'Unsere vertrauenswürdigen Partner',
+        subtitle: 'Gecolab arbeitet mit führenden öffentlichen Institutionen, Vereinen und Unternehmen zusammen, um innovative Lösungen in der Umweltgenetik zu entwickeln.',
+        partnersLabel: 'Partner',
+        institutionsLabel: 'Institutionen',
+        associationsLabel: 'Vereine'
+      },
+      filters: {
+        all: 'Alle',
+        institutions: 'Öffentliche Institutionen',
+        bureaux: 'Beratungsfirmen & Vereine',
+        private: 'Private Unternehmen'
+      },
+      tooltip: {
+        visitWebsite: 'Website besuchen'
+      },
+      cta: {
+        title: 'Interessiert an einer Zusammenarbeit?',
+        text: 'Treten Sie unserem Partnernetzwerk bei und beteiligen Sie sich an der Innovation in der Umweltgenetik.',
+        button: 'Kontaktieren Sie uns'
+      }
+    },
+    press: {
+      hero: {
+        sectionLabel: 'Medien',
+        title: 'Presseschau',
+        lead: 'GeCoLab in den Medien — Entdeckungen, Expertise und wissenschaftlicher Impact'
+      },
+      articles: {
+        article1: {
+          date: '2023',
+          category: 'Entdeckung',
+          title: 'Entdeckung der Europäischen Wildkatze im Montagne Noire',
+          description: 'GeCoLAB\'s Beitrag zur Bestätigung der Anwesenheit der Wildkatze im Montagne Noire (Tarn), dank der genetischen Analysen, die in unserem Labor durchgeführt wurden.',
+          source: 'France 3 Occitanie',
+          tag: 'Wildkatze'
+        },
+        article2: {
+          date: '2019',
+          category: 'Referenz',
+          title: 'GeCoLAB, wallonisches Referenzlabor für Wölfe',
+          description: 'Seit Sommer 2018 ist GeCoLAB das wallonische Referenzlabor für alle genetischen Fragen bezüglich der Anwesenheit von Wölfen. Einzigartige Ergebnisse zur Anwesenheit von Wölfen wurden von unserem Labor aufgezeigt, übernommen von RTBF und der Zeitung La Libre Belgique.',
+          source: 'RTBF / La Libre Belgique',
+          tag: 'Wolf'
+        },
+        article3: {
+          date: '2018',
+          category: 'Veröffentlichung',
+          title: 'Fuchs und Lyme-Krankheit',
+          description: 'Ein Artikel von GeCoLAB über Lyme-Krankheit und die überraschende Rolle des Fuchses bei deren Regulation, veröffentlicht im Natagora-Magazin Nr. 87.',
+          source: 'Natagora Magazin',
+          tag: 'Pathogene'
+        }
+      },
+      highlight: {
+        title: 'Wissenschaftskommunikation',
+        text: 'Über seine Forschungen hinaus widmet GeCoLAB einen Teil seiner Aktivität der Wissenschaftskommunikation. Dr. Johan Michaux tritt insbesondere im belgischen nationalen Fernsehen (RTBF) auf, um die Herausforderungen der genetischen Erhaltung einem breiten Publikum zugänglich zu machen.'
+      }
+    },
+    contact: {
+      info: {
+        address: 'Adresse',
+        addressText: 'GeCoLAB<br>Labor für Erhaltungsgenetik<br>Botanisches Institut (Gebäude B22)<br>Quartier Vallée 1<br>Chemin de la vallée 4<br><strong>4000 Lüttich (Sart Tilman)</strong><br>Belgien',
+        phone: 'Telefon',
+        email: 'E-Mail',
+        mapPopup: '<strong>GeCoLAB</strong><br>Labor für Erhaltungsgenetik<br>Botanisches Institut (Gebäude B22)<br>Quartier Vallée 1, Chemin de la Vallée 4<br>4000 Lüttich (Sart Tilman), Belgien'
+      },
+      form: {
+        title: 'Senden Sie uns eine Nachricht',
+        subtitle: 'Wir werden uns so schnell wie möglich bei Ihnen melden.',
+        name: 'Vollständiger Name',
+        namePlaceholder: 'Ihr Name',
+        email: 'E-Mail',
+        emailPlaceholder: 'ihre@email.com',
+        organization: 'Organisation',
+        organizationPlaceholder: 'Ihre Organisation',
+        subject: 'Betreff',
+        subjectPlaceholder: 'Betreff wählen',
+        subjectOptions: {
+          quote: 'Angebotsanfrage',
+          info: 'Informationsanfrage',
+          collaboration: 'Zusammenarbeitsvorschlag',
+          other: 'Sonstiges'
+        },
+        message: 'Nachricht',
+        messagePlaceholder: 'Beschreiben Sie Ihr Projekt oder Ihre Frage...',
+        submit: 'Nachricht senden',
+        successTitle: 'Nachricht gesendet!',
+        successText: 'Vielen Dank für Ihre Nachricht. Unser Team wird sich so schnell wie möglich bei Ihnen melden.',
+        sendAnother: 'Eine weitere Nachricht senden'
+      }
+    }
+  },
+  es: {
+    nav: {
+      home: 'Inicio',
+      services: 'Servicios',
+      about: 'Sobre nosotros',
+      partners: 'Socios',
+      press: 'Prensa',
+      contact: 'Contacto'
+    },
+    home: {
+      hero: {
+        subtitle: 'Genética & Conservación',
+        lead: 'Del ADN ambiental a la conservación de especies',
+        discoverServices: 'Descubra nuestros servicios',
+        contactUs: 'Contáctenos'
+      },
+      intro: {
+        sectionLabel: 'Quiénes somos',
+        title: 'Un laboratorio reconocido internacionalmente, especializado en ADN ambiental',
+        paragraph1: 'El <strong>GeCoLAB</strong> es un laboratorio de genética de la Universidad de Lieja, reconocido internacionalmente y especializado en análisis de ADN ambiental y especies amenazadas. Con más de veinte años de experiencia, ofrece diversos servicios de análisis de ADN ambiental — pelos, heces, agua, suelo — para responder a diversas problemáticas ambientales.',
+        paragraph2: 'GeCoLAB dispone de una amplia gama de marcadores genéticos específicos para muchos grupos de organismos animales y vegetales, y está equipado con un laboratorio de biología molecular que proporciona acceso a las últimas tecnologías de secuenciación (Next Generation Sequencing), PCR digital y cuantitativa.',
+        highlightTitle: 'Laboratorio de referencia en Valonia',
+        highlightText: 'Desde 2019, GeCoLAB es el <strong>laboratorio de referencia</strong> del Ministerio de Medio Ambiente valón respecto al <strong>seguimiento genético del lobo</strong> en Valonia.'
+      },
+      specialty: {
+        sectionLabel: 'Nuestra especialidad',
+        title: 'Análisis no invasivos',
+        text: 'El estudio y seguimiento de especies discretas y/o protegidas pueden realizarse a partir de muestras recolectadas de manera no invasiva — pelos, excrementos, mucosidad, agua. GeCoLAB se especializa en este enfoque y le ofrece muchas soluciones para estudiar una amplia gama de especies animales y vegetales, que estén amenazadas o por el contrario invasoras.',
+        aquaticTitle: 'Medios acuáticos',
+        aquaticText: 'Muestreo de agua a través de cápsulas filtrantes y bombas peristálticas',
+        terrestrialTitle: 'Medios terrestres',
+        terrestrialText: 'Recolección de suelo, pelos, frotis, heces, orina y saliva',
+        degradedTitle: 'ADN degradado',
+        degradedText: 'Laboratorios dedicados al estudio del ADN raro y degradado'
+      },
+      stats: {
+        publications: 'Publicaciones científicas',
+        experience: 'Años de experiencia',
+        researchers: 'Investigadores',
+        species: 'Especies monitoreadas por PCR digital'
+      },
+      cta: {
+        title: '¿Un proyecto en mente?',
+        text: 'Contáctenos para cualquier solicitud de presupuesto personalizado — tema, número y tipo de muestras.',
+        quoteButton: 'Solicitar presupuesto'
+      }
+    },
+    common: {
+      language: 'Idioma'
+    },
+    footer: {
+      tagline: 'Genética y Conservación',
+      affiliation: 'Universidad de Lieja',
+      navigation: 'Navegación',
+      expertises: 'Expertise',
+      expertisesList: {
+        edna: 'ADN ambiental',
+        inventory: 'Inventario de biodiversidad',
+        digitalPCR: 'PCR digital',
+        diet: 'Dieta',
+        genetics: 'Genética de poblaciones'
+      },
+      contact: 'Contacto',
+      copyright: 'Todos los derechos reservados.'
+    },
+    services: {
+      hero: {
+        sectionLabel: 'Nuestras competencias',
+        title: 'Servicios',
+        lead: 'Herramientas genéticas de vanguardia para responder a sus problemáticas ambientales'
+      },
+      quality: {
+        title: 'Nuestro compromiso de calidad',
+        text: 'Todas nuestras muestras son secuenciadas en el <strong>NovaSeq de Illumina</strong> o el <strong>Aviti de Element Biosciences</strong>, permitiendo obtener millones de secuencias por muestra y detectar el ADN de especies raras con la sensibilidad más fina.'
+      },
+      service1: {
+        title: 'Inventario de biodiversidad e identificación de especies',
+        description: 'Realice inventarios faunísticos precisos o identifique la presencia de especies amenazadas o invasoras en un sitio determinado gracias a nuestras herramientas genéticas.',
+        aquatic: 'Medios acuáticos',
+        aquaticText: 'Búsqueda de peces, anfibios, mamíferos acuáticos e invertebrados macro a partir de muestreos de agua a través de cápsulas filtrantes y bombas peristálticas.',
+        terrestrial: 'Medios terrestres',
+        terrestrialText: 'Recolección de muestras de suelo, pelos, frotis, heces, orina y saliva gracias a dispositivos no invasivos desarrollados en colaboración con GREGE.',
+        markersTitle: 'Marcadores genéticos por grupo',
+        fish: 'Peces',
+        mammals: 'Mamíferos',
+        amphibians: 'Anfibios',
+        bivalves: 'Moluscos bivalvos',
+        gastropods: 'Gasterópodos',
+        decapods: 'Decápodos',
+        plants: 'Plantas',
+        invertebrates: 'Invertebrados',
+        diatoms: 'Diatomeas',
+        markers: 'marcadores',
+        marker: 'marcador',
+        reads: 'lecturas'
+      },
+      service2: {
+        title: 'Detección ultrasensible vía PCR Digital',
+        description: 'Desde 2024, desarrollamos métodos de detección ultrasensibles de ciertas especies mediante el uso de PCR digital.',
+        note: 'Otras especies serán añadidas próximamente. No dude en contactarnos respecto a cualquier especie de interés.'
+      },
+      service3: {
+        title: 'Dieta',
+        description: 'Análisis de dieta precisos a partir de heces recolectadas de manera no invasiva, mediante técnicas de secuenciación de nueva generación y metabarcoding.',
+        examplesLabel: 'Especies estudiadas:',
+        examples: 'Nutria europea, lobo europeo, jabalí, visón europeo, visón americano, mangosta de Java, numerosas especies de murciélagos (orejudos, murinos, pipistrellos)…'
+      },
+      service4: {
+        title: 'Estudio de problemas de hibridación',
+        description: 'Estudio preciso de los fenómenos de hibridación existentes entre especies amenazadas y especies domésticas o invasoras.',
+        case1: 'Gato montés europeo × Gato doméstico',
+        case2: 'Jabalí europeo × Cerdo doméstico',
+        case3: 'Visón europeo × Turón europeo'
+      },
+      service5: {
+        title: 'Determinación de efectivos y genética de poblaciones',
+        description: 'Evaluación del tamaño de efectivos de poblaciones, análisis de conectividad entre poblaciones aisladas, estimación del riesgo de consanguinidad y de la diversidad genética.',
+        examplesLabel: 'Especies estudiadas:',
+        examples: 'Nutria europea, lobo europeo, desmán de los Pirineos, visón europeo, macaón, búho real, león africano, oso polar…'
+      },
+      service6: {
+        title: 'Identificación de patógenos y microbiomas bacterianos',
+        description: 'Estimación precisa de microbiomas bacterianos y detección de la presencia potencial de agentes patógenos con una precisión superior a las tecnologías convencionales.',
+        pathogensLabel: 'Patógenos detectados:',
+        pathogens: 'Borrelia (enfermedad de Lyme), Bartonella, Yersinia, Bacillus, Leptospira…',
+        partners: 'Desarrollado con el Instituto Pasteur y el Hospital Universitario de la Universidad de Lieja.'
+      },
+      cta: {
+        title: '¿Necesita un presupuesto personalizado?',
+        text: 'Contáctenos con su tema, número y tipo de muestras.',
+        button: 'Contáctenos'
+      }
+    },
+    about: {
+      hero: {
+        sectionLabel: 'El laboratorio',
+        title: 'Sobre nosotros',
+        lead: 'Un laboratorio de la Universidad de Lieja al servicio de la biodiversidad desde hace más de 25 años'
+      },
+      whoWeAre: {
+        sectionLabel: 'Nuestra historia',
+        title: '¿Quiénes somos?',
+        paragraph1: 'GeCoLAB es un laboratorio de la Universidad de Lieja creado por el <strong>Dr. Johan Michaux</strong> que desarrolla investigaciones sobre biodiversidad a partir de herramientas genéticas desde hace más de 25 años.',
+        paragraph2: 'Sus investigaciones han tenido como objetivo fundamental comprender mejor la historia evolutiva y taxonomía de una serie de especies de vertebrados. También tienen objetivos aplicados tales como comprender mejor la resistencia de las especies frente a los cambios climáticos, estudiar el impacto de la fragmentación de hábitats en la supervivencia a largo plazo de especies amenazadas, o implementar nuevos métodos para realizar inventarios faunísticos en medio acuático y terrestre.',
+        paragraph3: 'Estas investigaciones se han desarrollado sobre un amplio espectro de especies, incluyendo numerosos mamíferos acuáticos o semi-acuáticos (oso polar, marsopa común, visón europeo, castor europeo, nutria europea, desmán de los Pirineos, musaraña acuática…) pero también anfibios o peces.',
+        differenceTitle: 'Nuestra diferencia',
+        differenceText: 'Por nuestra experiencia en genética <em>y</em> en tanto que naturalistas y ecólogos, no proponemos únicamente el trabajo de un prestador de servicios devolviendo una lista de especies — le ayudamos en la <strong>interpretación de los datos</strong>, la implementación de <strong>protocolos de recolección</strong> y el desarrollo de <strong>proyectos concretos</strong>.',
+        differenceHighlight: 'Base de datos genética de referencias <strong>privada y única</strong>, desarrollada con Biotope y Aquascop'
+      },
+      team: {
+        sectionLabel: 'Las personas',
+        title: 'El equipo',
+        intro: '3 doctores en biología, 2 biólogos de nivel máster, 1 técnica de laboratorio y 1 investigadora postdoctoral'
+      }
+    },
+    partners: {
+      hero: {
+        sectionLabel: 'Colaboraciones',
+        title: 'Nuestros socios de confianza',
+        subtitle: 'Gecolab colabora con instituciones públicas, asociaciones y empresas de primer nivel para desarrollar soluciones innovadoras en genética ambiental.',
+        partnersLabel: 'Socios',
+        institutionsLabel: 'Instituciones',
+        associationsLabel: 'Asociaciones'
+      },
+      filters: {
+        all: 'Todos',
+        institutions: 'Instituciones públicas',
+        bureaux: 'Empresas de consultoría & Asociaciones',
+        private: 'Empresas privadas'
+      },
+      tooltip: {
+        visitWebsite: 'Visitar sitio web'
+      },
+      cta: {
+        title: '¿Interesado en una colaboración?',
+        text: 'Únase a nuestra red de socios y participe en la innovación en genética ambiental.',
+        button: 'Contáctenos'
+      }
+    },
+    press: {
+      hero: {
+        sectionLabel: 'Medios',
+        title: 'Revista de prensa',
+        lead: 'GeCoLab en los medios — descubrimientos, experiencia e impacto científico'
+      },
+      articles: {
+        article1: {
+          date: '2023',
+          category: 'Descubrimiento',
+          title: 'Descubrimiento del gato montés en la Montagne Noire',
+          description: 'Contribución de GeCoLab a la confirmación de la presencia del gato salvaje en la Montagne Noire (Tarn), gracias a los análisis genéticos realizados por nuestro laboratorio.',
+          source: 'France 3 Occitanie',
+          tag: 'Gato montés'
+        },
+        article2: {
+          date: '2019',
+          category: 'Referencia',
+          title: 'GeCoLab, laboratorio de referencia valón para el lobo',
+          description: 'Desde el verano de 2018, GeCoLab es el laboratorio de referencia valón para toda cuestión genética relativa a la presencia del lobo. Resultados inéditos sobre la presencia del lobo han sido puestos en evidencia por nuestro laboratorio, retomados por RTBF y el periódico La Libre Belgique.',
+          source: 'RTBF / La Libre Belgique',
+          tag: 'Lobo'
+        },
+        article3: {
+          date: '2018',
+          category: 'Publicación',
+          title: 'Zorro y enfermedad de Lyme',
+          description: 'Un artículo escrito por GeCoLAB tratando de la enfermedad de Lyme y del sorprendente rol del zorro en su regulación, publicado en la revista Natagora n°87.',
+          source: 'Natagora Magazine',
+          tag: 'Patógenos'
+        }
+      },
+      highlight: {
+        title: 'Divulgación científica',
+        text: 'Más allá de sus investigaciones, GeCoLAB consagra una parte de su actividad a la divulgación científica. El Dr. Johan Michaux interviene particularmente en la televisión nacional belga (RTBF), haciendo accesibles los desafíos de la conservación genética al gran público.'
+      }
+    },
+    contact: {
+      info: {
+        address: 'Dirección',
+        addressText: 'GeCoLAB<br>Laboratorio de genética de la conservación<br>Instituto de Botánica (Edificio B22)<br>Quartier Vallée 1<br>Chemin de la vallée 4<br><strong>4000 Lieja (Sart Tilman)</strong><br>Bélgica',
+        phone: 'Teléfono',
+        email: 'Correo electrónico',
+        mapPopup: '<strong>GeCoLAB</strong><br>Laboratorio de genética de la conservación<br>Instituto de Botánica (Edificio B22)<br>Quartier Vallée 1, Chemin de la Vallée 4<br>4000 Lieja (Sart Tilman), Bélgica'
+      },
+      form: {
+        title: 'Envíenos un mensaje',
+        subtitle: 'Le responderemos lo antes posible.',
+        name: 'Nombre completo',
+        namePlaceholder: 'Su nombre',
+        email: 'Correo electrónico',
+        emailPlaceholder: 'su@email.com',
+        organization: 'Organización',
+        organizationPlaceholder: 'Su organización',
+        subject: 'Asunto',
+        subjectPlaceholder: 'Elegir asunto',
+        subjectOptions: {
+          quote: 'Solicitud de presupuesto',
+          info: 'Solicitud de información',
+          collaboration: 'Propuesta de colaboración',
+          other: 'Otro'
+        },
+        message: 'Mensaje',
+        messagePlaceholder: 'Describa su proyecto o pregunta...',
+        submit: 'Enviar mensaje',
+        successTitle: '¡Mensaje enviado!',
+        successText: 'Gracias por su mensaje. Nuestro equipo le responderá lo antes posible.',
+        sendAnother: 'Enviar otro mensaje'
+      }
+    }
+  },
+  nl: {
+    nav: {
+      home: 'Home',
+      services: 'Diensten',
+      about: 'Over ons',
+      partners: 'Partners',
+      press: 'Pers',
+      contact: 'Contact'
+    },
+    home: {
+      hero: {
+        subtitle: 'Genetica & Natuurbehoud',
+        lead: 'Van milieudna naar soortenbehoud',
+        discoverServices: 'Ontdek onze diensten',
+        contactUs: 'Neem contact op'
+      },
+      intro: {
+        sectionLabel: 'Wie we zijn',
+        title: 'Een internationaal erkend laboratorium, gespecialiseerd in milieudna',
+        paragraph1: 'Het <strong>GeCoLAB</strong> is een genetisch laboratorium van de Universiteit van Luik, internationaal erkend en gespecialiseerd in milieudna-analyse en bedreigde soorten. Met meer dan twintig jaar ervaring biedt het diverse milieudna-analysediensten — haren, uitwerpselen, water, bodem — om verschillende milieuvraagstukken te beantwoorden.',
+        paragraph2: 'GeCoLAB beschikt over een breed scala aan genetische markers die specifiek zijn voor veel groepen dier- en plantenorganismen, en is uitgerust met een moleculair biologisch laboratorium dat toegang biedt tot de nieuwste sequencingtechnologieën (Next Generation Sequencing), digitale PCR en kwantitatieve PCR.',
+        highlightTitle: 'Referentielaboratorium in Wallonië',
+        highlightText: 'Sinds 2019 is GeCoLAB het <strong>referentielaboratorium</strong> van het Waals ministerie van Milieu betreffende de <strong>genetische monitoring van de wolf</strong> in Wallonië.'
+      },
+      specialty: {
+        sectionLabel: 'Onze specialiteit',
+        title: 'Niet-invasieve analyses',
+        text: 'De studie en monitoring van discrete en/of beschermde soorten kan worden uitgevoerd met monsters die op niet-invasieve wijze worden verzameld — haren, uitwerpselen, slijm, water. GeCoLAB specialiseert zich in deze aanpak en biedt u veel oplossingen om een breed scala aan dier- en plantensoorten te bestuderen, die bedreigd zijn of integendeel invasief.',
+        aquaticTitle: 'Aquatische milieus',
+        aquaticText: 'Watermonsters via filtercapsules en peristaltische pompen',
+        terrestrialTitle: 'Terrestrische milieus',
+        terrestrialText: 'Verzameling van bodem, haren, uitstrijkjes, uitwerpselen, urine en speeksel',
+        degradedTitle: 'Gedegradeerde DNA',
+        degradedText: 'Laboratoria gewijd aan de studie van zeldzame en gedegradeerde DNA'
+      },
+      stats: {
+        publications: 'Wetenschappelijke publicaties',
+        experience: 'Jaren ervaring',
+        researchers: 'Onderzoekers',
+        species: 'Soorten gecontroleerd door digitale PCR'
+      },
+      cta: {
+        title: 'Een project in gedachten?',
+        text: 'Neem contact met ons op voor elke gepersonaliseerde offerteaanvraag — thema, aantal en type monsters.',
+        quoteButton: 'Offerte aanvragen'
+      }
+    },
+    common: {
+      language: 'Taal'
+    },
+    footer: {
+      tagline: 'Genetica en Natuurbehoud',
+      affiliation: 'Universiteit van Luik',
+      navigation: 'Navigatie',
+      expertises: 'Expertise',
+      expertisesList: {
+        edna: 'Milieudna',
+        inventory: 'Biodiversiteitsinventaris',
+        digitalPCR: 'Digitale PCR',
+        diet: 'Dieet',
+        genetics: 'Populatiegenetica'
+      },
+      contact: 'Contact',
+      copyright: 'Alle rechten voorbehouden.'
+    },
+    services: {
+      hero: {
+        sectionLabel: 'Onze expertise',
+        title: 'Diensten',
+        lead: 'Geavanceerde genetische tools om uw milieuvraagstukken te beantwoorden'
+      },
+      quality: {
+        title: 'Onze kwaliteitsverbintenis',
+        text: 'Al onze monsters worden gesequenced op de <strong>Illumina NovaSeq</strong> of de <strong>Element Biosciences Aviti</strong>, waardoor miljoenen sequenties per monster kunnen worden verkregen en DNA van zeldzame soorten met de fijnste gevoeligheid kan worden gedetecteerd.'
+      },
+      service1: {
+        title: 'Biodiversiteitsinventaris en soortenidentificatie',
+        description: 'Voer nauwkeurige faunistische inventarissen uit of identificeer de aanwezigheid van bedreigde of invasieve soorten op een bepaalde locatie dankzij onze genetische tools.',
+        aquatic: 'Aquatische milieus',
+        aquaticText: 'Zoeken naar vissen, amfibieën, aquatische zoogdieren en macro-invertebraten uit watermonsters via filtercapsules en peristaltische pompen.',
+        terrestrial: 'Terrestrische milieus',
+        terrestrialText: 'Verzameling van bodemmonsters, haren, uitstrijkjes, uitwerpselen, urine en speeksel dankzij niet-invasieve apparaten ontwikkeld in samenwerking met GREGE.',
+        markersTitle: 'Genetische markers per groep',
+        fish: 'Vissen',
+        mammals: 'Zoogdieren',
+        amphibians: 'Amfibieën',
+        bivalves: 'Tweekleppige weekdieren',
+        gastropods: 'Buikpotigen',
+        decapods: 'Tienpotigen',
+        plants: 'Planten',
+        invertebrates: 'Ongewervelden',
+        diatoms: 'Kieselalgen',
+        markers: 'markers',
+        marker: 'marker',
+        reads: 'reads'
+      },
+      service2: {
+        title: 'Ultrasensitive detectie via digitale PCR',
+        description: 'Sinds 2024 ontwikkelen we ultrasensitive detectiemethoden voor bepaalde soorten door het gebruik van digitale PCR.',
+        note: 'Andere soorten zullen binnenkort worden toegevoegd. Aarzel niet om contact met ons op te nemen betreffende elke soort van belang.'
+      },
+      service3: {
+        title: 'Dieet',
+        description: 'Nauwkeurige dieetanalyses uit niet-invasief verzamelde feces, via next-generation-sequencing- en metabarcodingtechnieken.',
+        examplesLabel: 'Bestudeerde soorten:',
+        examples: 'Europese otter, Europese wolf, wild zwijn, Europese nerts, Amerikaanse nerts, Javanese mangoeste, talrijke vleermuissoorten (langoorvleermuizen, dwergvleermuizen, dwergvleermuizen)…'
+      },
+      service4: {
+        title: 'Studie van hybridisatieproblemen',
+        description: 'Nauwkeurige studie van hybridisatieverschijnselen tussen bedreigde soorten en gedomesticeerde of invasieve soorten.',
+        case1: 'Europese wilde kat × Huiskat',
+        case2: 'Europees wild zwijn × Huiskat',
+        case3: 'Europese nerts × Europese bunzing'
+      },
+      service5: {
+        title: 'Bepaling van populatiegrootte en populatiegenetica',
+        description: 'Evaluatie van populatiegrootte, connectiviteitsanalyse tussen geïsoleerde populaties, schatting van inteelt risico en genetische diversiteit.',
+        examplesLabel: 'Bestudeerde soorten:',
+        examples: 'Europese otter, Europese wolf, Pyreneese desman, Europese nerts, grote vuurvlinder, oehoe, Afrikaanse leeuw, ijsbeer…'
+      },
+      service6: {
+        title: 'Identificatie van pathogenen en bacteriële microbiomen',
+        description: 'Nauwkeurige schatting van bacteriële microbiomen en detectie van potentiële aanwezigheid van pathogenen met hogere nauwkeurigheid dan conventionele technologieën.',
+        pathogensLabel: 'Gedetecteerde pathogenen:',
+        pathogens: 'Borrelia (ziekte van Lyme), Bartonella, Yersinia, Bacillus, Leptospira…',
+        partners: 'Ontwikkeld met het Pasteur Instituut en het Universitair Ziekenhuis van de Universiteit van Luik.'
+      },
+      cta: {
+        title: 'Heeft u een gepersonaliseerde offerte nodig?',
+        text: 'Neem contact met ons op met uw onderwerp, aantal en type monsters.',
+        button: 'Neem contact op'
+      }
+    },
+    about: {
+      hero: {
+        sectionLabel: 'Het laboratorium',
+        title: 'Over ons',
+        lead: 'Een laboratorium van de Universiteit van Luik in dienst van biodiversiteit sinds meer dan 25 jaar'
+      },
+      whoWeAre: {
+        sectionLabel: 'Onze geschiedenis',
+        title: 'Wie zijn we?',
+        paragraph1: 'GeCoLAB is een laboratorium van de Universiteit van Luik opgericht door <strong>Dr. Johan Michaux</strong> die onderzoek naar biodiversiteit ontwikkelt met behulp van genetische tools sinds meer dan 25 jaar.',
+        paragraph2: 'Zijn onderzoeken hadden als fundamenteel doel om de evolutionaire geschiedenis en taxonomie van een reeks gewervelde soorten beter te begrijpen. Ze hebben ook toegepaste doelstellingen zoals het beter begrijpen van de weerstand van soorten tegenover klimaatverandering, het bestuderen van de impact van habitatfragmentatie op het langetermijn overleven van bedreigde soorten, of het implementeren van nieuwe methoden om faunistische inventarissen uit te voeren in aquatische en terrestrische omgevingen.',
+        paragraph3: 'Deze onderzoeken werden ontwikkeld over een breed spectrum van soorten, waaronder vele aquatische of semi-aquatische zoogdieren (ijsbeer, bruinvis, Europese nerts, Europese bever, Europese otter, Pyreneese desman, waterspitsmuis…) maar ook amfibieën of vissen.',
+        differenceTitle: 'Ons verschil',
+        differenceText: 'Door onze expertise in genetica <em>en</em> als naturalisten en ecologen, bieden we niet enkel het werk van een dienstverlener die een soortenlijst teruggeeft — we helpen u bij de <strong>gegevensinterpretatie</strong>, de implementatie van <strong>verzamelingsprotocollen</strong> en de ontwikkeling van <strong>concrete projecten</strong>.',
+        differenceHighlight: '<strong>Private en unieke</strong> genetische referentiedatabase, ontwikkeld met Biotope en Aquascop'
+      },
+      team: {
+        sectionLabel: 'De personen',
+        title: 'Het team',
+        intro: '3 doctoren in biologie, 2 biologen op masterniveau, 1 laboratoriumtechnicus en 1 postdoctoraal onderzoekster'
+      }
+    },
+    partners: {
+      hero: {
+        sectionLabel: 'Samenwerkingen',
+        title: 'Onze vertrouwde partners',
+        subtitle: 'Gecolab werkt samen met toonaangevende publieke instellingen, verenigingen en bedrijven om innovatieve oplossingen in milieugenetica te ontwikkelen.',
+        partnersLabel: 'Partners',
+        institutionsLabel: 'Instellingen',
+        associationsLabel: 'Verenigingen'
+      },
+      filters: {
+        all: 'Alle',
+        institutions: 'Publieke instellingen',
+        bureaux: 'Adviesbureaus & Verenigingen',
+        private: 'Private bedrijven'
+      },
+      tooltip: {
+        visitWebsite: 'Website bezoeken'
+      },
+      cta: {
+        title: 'Geïnteresseerd in een samenwerking?',
+        text: 'Sluit u aan bij ons partnernetwerk en neem deel aan innovatie in milieugenetica.',
+        button: 'Neem contact op'
+      }
+    },
+    press: {
+      hero: {
+        sectionLabel: 'Media',
+        title: 'Persoverzicht',
+        lead: 'GeCoLab in de media — ontdekkingen, expertise en wetenschappelijke impact'
+      },
+      articles: {
+        article1: {
+          date: '2023',
+          category: 'Ontdekking',
+          title: 'Ontdekking van de Europese wilde kat in de Montagne Noire',
+          description: 'Bijdrage van GeCoLAB aan de bevestiging van de aanwezigheid van de wilde kat in de Montagne Noire (Tarn), dankzij de genetische analyses uitgevoerd door ons laboratorium.',
+          source: 'France 3 Occitanie',
+          tag: 'Wilde kat'
+        },
+        article2: {
+          date: '2019',
+          category: 'Referentie',
+          title: 'GeCoLAB, Waals referentielaboratorium voor de wolf',
+          description: 'Sinds de zomer van 2018 is GeCoLAB het Waals referentielaboratorium voor alle genetische vragen betreffende de aanwezigheid van de wolf. Unieke resultaten over de aanwezigheid van de wolf werden aangetoond door ons laboratorium, overgenomen door RTBF en de krant La Libre Belgique.',
+          source: 'RTBF / La Libre Belgique',
+          tag: 'Wolf'
+        },
+        article3: {
+          date: '2018',
+          category: 'Publicatie',
+          title: 'Vos en ziekte van Lyme',
+          description: 'Een artikel geschreven door GeCoLAB over de ziekte van Lyme en de verrassende rol van de vos in de regulering ervan, gepubliceerd in het tijdschrift Natagora nr. 87.',
+          source: 'Natagora Magazine',
+          tag: 'Pathogenen'
+        }
+      },
+      highlight: {
+        title: 'Wetenschappelijke vulgarisering',
+        text: 'Bovenop zijn onderzoeken wijdt GeCoLAB een deel van zijn activiteit aan wetenschappelijke vulgarisering. Dr. Johan Michaux treedt in het bijzonder op in de Belgische nationale televisie (RTBF), waardoor de uitdagingen van genetische conservatie toegankelijk worden gemaakt voor het grote publiek.'
+      }
+    },
+    contact: {
+      info: {
+        address: 'Adres',
+        addressText: 'GeCoLAB<br>Laboratorium voor conservatiegenetica<br>Instituut voor Plantkunde (Gebouw B22)<br>Quartier Vallée 1<br>Chemin de la vallée 4<br><strong>4000 Luik (Sart Tilman)</strong><br>België',
+        phone: 'Telefoon',
+        email: 'E-mail',
+        mapPopup: '<strong>GeCoLAB</strong><br>Laboratorium voor conservatiegenetica<br>Instituut voor Plantkunde (Gebouw B22)<br>Quartier Vallée 1, Chemin de la Vallée 4<br>4000 Luik (Sart Tilman), België'
+      },
+      form: {
+        title: 'Stuur ons een bericht',
+        subtitle: 'We nemen zo snel mogelijk contact met u op.',
+        name: 'Volledige naam',
+        namePlaceholder: 'Uw naam',
+        email: 'E-mail',
+        emailPlaceholder: 'uw@email.com',
+        organization: 'Organisatie',
+        organizationPlaceholder: 'Uw organisatie',
+        subject: 'Onderwerp',
+        subjectPlaceholder: 'Onderwerp kiezen',
+        subjectOptions: {
+          quote: 'Offerteaanvraag',
+          info: 'Informatieaanvraag',
+          collaboration: 'Samenwerkingsvoorstel',
+          other: 'Andere'
+        },
+        message: 'Bericht',
+        messagePlaceholder: 'Beschrijf uw project of vraag...',
+        submit: 'Bericht verzenden',
+        successTitle: 'Bericht verzonden!',
+        successText: 'Bedankt voor uw bericht. Ons team neemt zo snel mogelijk contact met u op.',
+        sendAnother: 'Een ander bericht verzenden'
+      }
+    }
   }
 }
 
