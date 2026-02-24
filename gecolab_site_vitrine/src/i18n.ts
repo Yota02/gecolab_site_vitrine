@@ -1259,7 +1259,9 @@ export const i18n = createI18n({
   fallbackLocale: 'fr',
   messages,
   globalInjection: true,
-  escapeParameter: false
+  escapeParameter: false,
+  missingWarn: false,
+  fallbackWarn: false
 })
 
 export default i18n
