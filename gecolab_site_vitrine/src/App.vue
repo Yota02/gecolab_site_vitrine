@@ -92,6 +92,7 @@ body {
   color: var(--ink);
   background: var(--parchment);
   overflow-x: hidden;
+  text-align: justify;
 }
 
 img {

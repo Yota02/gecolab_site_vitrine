@@ -44,6 +44,11 @@ const router = createRouter({
       component: () => import('@/views/services/PathogenesView.vue'),
     },
     {
+      path: '/contact',
+      name: 'contact',
+      component: () => import('@/views/ContactView.vue'),
+    },
+    {
       path: '/a-propos',
       name: 'about',
       component: () => import('@/views/AboutView.vue'),
@@ -58,11 +63,11 @@ const router = createRouter({
       name: 'press',
       component: () => import('@/views/PressView.vue'),
     },
-    {
-      path: '/contact',
-      name: 'contact',
-      component: () => import('@/views/ContactView.vue'),
-    },
+     {
+       path: '/publications',
+       name: 'publications',
+       component: () => import('@/views/PublicationsView.vue'),
+     },
   ],
   scrollBehavior(_to, _from, savedPosition) {
     if (savedPosition) return savedPosition

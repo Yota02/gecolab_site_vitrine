@@ -6,6 +6,7 @@ const messages = {
       home: 'Accueil',
       services: 'Services',
       about: 'À propos',
+      publications: 'Publications',
       partners: 'Partenaires',
       press: 'Presse',
       contact: 'Contact'
@@ -250,6 +251,30 @@ const messages = {
         successText: 'Merci pour votre message. Notre équipe reviendra vers vous dans les meilleurs délais.',
         sendAnother: 'Envoyer un autre message'
       }
+    },
+    publications: {
+      hero: {
+        title: 'Publications Scientifiques',
+        lead: 'Découvrez nos travaux de recherche et publications dans le domaine de la génétique de la conservation'
+      },
+      stats: {
+        totalPublications: 'publications',
+        yearsRange: '2011 - 2023'
+      },
+      search: {
+        placeholder: 'Rechercher par titre, auteur ou journal...',
+        noResults: 'Aucune publication trouvée'
+      },
+      filters: {
+        sortOptions: {
+          yearDesc: 'Année (récent → ancien)',
+          yearAsc: 'Année (ancien → récent)',
+          titleAsc: 'Titre (A → Z)',
+          titleDesc: 'Titre (Z → A)'
+        },
+        allYears: 'Toutes les années',
+        clearFilters: 'Effacer les filtres'
+      }
     }
   },
   en: {
@@ -257,6 +282,7 @@ const messages = {
       home: 'Home',
       services: 'Services',
       about: 'About',
+      publications: 'Publications',
       partners: 'Partners',
       press: 'Press',
       contact: 'Contact'
@@ -501,6 +527,30 @@ const messages = {
         successText: 'Thank you for your message. Our team will get back to you as soon as possible.',
         sendAnother: 'Send another message'
       }
+    },
+    publications: {
+      hero: {
+        title: 'Scientific Publications',
+        lead: 'Discover our research work and publications in the field of conservation genetics'
+      },
+      stats: {
+        totalPublications: 'publications',
+        yearsRange: '2011 - 2023'
+      },
+      search: {
+        placeholder: 'Search by title, author or journal...',
+        noResults: 'No publications found'
+      },
+      filters: {
+        sortOptions: {
+          yearDesc: 'Year (recent → old)',
+          yearAsc: 'Year (old → recent)',
+          titleAsc: 'Title (A → Z)',
+          titleDesc: 'Title (Z → A)'
+        },
+        allYears: 'All years',
+        clearFilters: 'Clear filters'
+      }
     }
   },
   de: {
@@ -508,6 +558,7 @@ const messages = {
       home: 'Startseite',
       services: 'Dienstleistungen',
       about: 'Über uns',
+      publications: 'Veröffentlichungen',
       partners: 'Partner',
       press: 'Presse',
       contact: 'Kontakt'
@@ -752,6 +803,30 @@ const messages = {
         successText: 'Vielen Dank für Ihre Nachricht. Unser Team wird sich so schnell wie möglich bei Ihnen melden.',
         sendAnother: 'Eine weitere Nachricht senden'
       }
+    },
+    publications: {
+      hero: {
+        title: 'Wissenschaftliche Veröffentlichungen',
+        lead: 'Entdecken Sie unsere Forschungsarbeiten und Veröffentlichungen im Bereich der Erhaltungsgenetik'
+      },
+      stats: {
+        totalPublications: 'Veröffentlichungen',
+        yearsRange: '2011 - 2023'
+      },
+      search: {
+        placeholder: 'Nach Titel, Autor oder Zeitschrift suchen...',
+        noResults: 'Keine Veröffentlichungen gefunden'
+      },
+      filters: {
+        sortOptions: {
+          yearDesc: 'Jahr (neuest → ältest)',
+          yearAsc: 'Jahr (ältest → neuest)',
+          titleAsc: 'Titel (A → Z)',
+          titleDesc: 'Titel (Z → A)'
+        },
+        allYears: 'Alle Jahre',
+        clearFilters: 'Filter löschen'
+      }
     }
   },
   es: {
@@ -759,6 +834,7 @@ const messages = {
       home: 'Inicio',
       services: 'Servicios',
       about: 'Sobre nosotros',
+      publications: 'Publicaciones',
       partners: 'Socios',
       press: 'Prensa',
       contact: 'Contacto'
@@ -1003,6 +1079,30 @@ const messages = {
         successText: 'Gracias por su mensaje. Nuestro equipo le responderá lo antes posible.',
         sendAnother: 'Enviar otro mensaje'
       }
+    },
+    publications: {
+      hero: {
+        title: 'Publicaciones Científicas',
+        lead: 'Descubra nuestros trabajos de investigación y publicaciones en el campo de la genética de la conservación'
+      },
+      stats: {
+        totalPublications: 'publicaciones',
+        yearsRange: '2011 - 2023'
+      },
+      search: {
+        placeholder: 'Buscar por título, autor o revista...',
+        noResults: 'No se encontraron publicaciones'
+      },
+      filters: {
+        sortOptions: {
+          yearDesc: 'Año (reciente → antiguo)',
+          yearAsc: 'Año (antiguo → reciente)',
+          titleAsc: 'Título (A → Z)',
+          titleDesc: 'Título (Z → A)'
+        },
+        allYears: 'Todos los años',
+        clearFilters: 'Borrar filtros'
+      }
     }
   },
   nl: {
@@ -1010,6 +1110,7 @@ const messages = {
       home: 'Home',
       services: 'Diensten',
       about: 'Over ons',
+      publications: 'Publicaties',
       partners: 'Partners',
       press: 'Pers',
       contact: 'Contact'
@@ -1017,6 +1118,7 @@ const messages = {
     home: {
       hero: {
         subtitle: 'Genetica & Natuurbehoud',
+        affiliation: 'Universitair Laboratorium Luik',
         lead: 'Van milieudna naar soortenbehoud',
         discoverServices: 'Ontdek onze diensten',
         contactUs: 'Neem contact op'
@@ -1252,6 +1354,30 @@ const messages = {
         successTitle: 'Bericht verzonden!',
         successText: 'Bedankt voor uw bericht. Ons team neemt zo snel mogelijk contact met u op.',
         sendAnother: 'Een ander bericht verzenden'
+      }
+    },
+    publications: {
+      hero: {
+        title: 'Wetenschappelijke Publicaties',
+        lead: 'Ontdek ons onderzoekswerk en publicaties op het gebied van conservatiegenetica'
+      },
+      stats: {
+        totalPublications: 'publicaties',
+        yearsRange: '2011 - 2023'
+      },
+      search: {
+        placeholder: 'Zoeken op titel, auteur of tijdschrift...',
+        noResults: 'Geen publicaties gevonden'
+      },
+      filters: {
+        sortOptions: {
+          yearDesc: 'Jaar (recent → oud)',
+          yearAsc: 'Jaar (oud → recent)',
+          titleAsc: 'Titel (A → Z)',
+          titleDesc: 'Titel (Z → A)'
+        },
+        allYears: 'Alle jaren',
+        clearFilters: 'Filters wissen'
       }
     }
   }

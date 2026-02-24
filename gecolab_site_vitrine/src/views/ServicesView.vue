@@ -5,47 +5,38 @@ import { useRouter } from 'vue-router'
 const { t } = useI18n()
 const router = useRouter()
 
-const services = [
+const services: { id: string; route: string; image: string }[] = [
   {
     id: 'biodiversite',
-    icon: 'search',
-    route: '/services/biodiversite'
+    route: '/services/biodiversite',
+    image: import.meta.env.BASE_URL + 'images/services/loutre.jpg'
   },
   {
     id: 'pcr-digitale',
-    icon: 'target',
-    route: '/services/pcr-digitale'
+    route: '/services/pcr-digitale',
+    image: import.meta.env.BASE_URL + 'images/services/pompe.jpg'
   },
   {
     id: 'regime',
-    icon: 'diet',
-    route: '/services/regime'
+    route: '/services/regime',
+    image: import.meta.env.BASE_URL + 'images/services/crotte-mammifere.png'
   },
   {
     id: 'hybridation',
-    icon: 'hybrid',
-    route: '/services/hybridation'
+    route: '/services/hybridation',
+    image: import.meta.env.BASE_URL + 'images/services/lion.jpg'
   },
   {
     id: 'effectifs',
-    icon: 'population',
-    route: '/services/effectifs'
+    route: '/services/effectifs',
+    image: import.meta.env.BASE_URL + 'images/services/terrain-aquatique.jpg'
   },
   {
     id: 'pathogenes',
-    icon: 'bacteria',
-    route: '/services/pathogenes'
+    route: '/services/pathogenes',
+    image: import.meta.env.BASE_URL + 'images/services/tique.jpg'
   },
 ]
-
-const iconPaths: Record<string, string> = {
-  search: 'M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16zM11 8v6M8 11h6',
-  target: 'M12 2a10 10 0 1010 10A10 10 0 0012 2zm0 4a6 6 0 106 6 6 6 0 00-6-6zm0 4a2 2 0 102 2 2 2 0 00-2-2z',
-  diet: 'M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9zm0 3c1 0 2.5 1 3 3H9c.5-2 2-3 3-3zm-5 5h10M9 16h6',
-  hybrid: 'M8 4a4 4 0 100 8 4 4 0 000-8zM16 4a4 4 0 100 8 4 4 0 000-8zM12 14v6M9 17l3 3 3-3',
-  population: 'M12 2a3 3 0 100 6 3 3 0 000-6zM5 9a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM19 9a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM12 10c-4 0-6 2-6 4v2h12v-2c0-2-2-4-6-4zM2 16c-1 0-2 1-2 2v1h5v-1.5C5 16.5 3.5 16 2 16zM22 16c1 0 2 1 2 2v1h-5v-1.5c0-1 1.5-1.5 3-1.5z',
-  bacteria: 'M12 2a5 5 0 100 10 5 5 0 000-10zM12 14v4M8 7H4M20 7h-4M7 12l-3 3M17 12l3 3M12 18a2 2 0 100 4 2 2 0 000-4z',
-}
 
 const navigateToService = (route: string) => {
   router.push(route)
@@ -76,12 +67,7 @@ const navigateToService = (route: string) => {
             class="service-card"
             @click="navigateToService(service.route)"
           >
-            <div class="service-card__number">{{ String(index + 1).padStart(2, '0') }}</div>
-            <div class="service-card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path :d="iconPaths[service.icon]"/>
-              </svg>
-            </div>
+            <img :src="service.image" alt="service image" class="service-card__image">
             <h2 class="service-card__title">{{ t(`services.service${index + 1}.title`) }}</h2>
             <p class="service-card__description">{{ t(`services.service${index + 1}.description`) }}</p>
             <div class="service-card__arrow">
@@ -208,21 +194,17 @@ const navigateToService = (route: string) => {
   margin-bottom: var(--space-sm);
 }
 
-.service-card__icon {
-  width: 48px;
-  height: 48px;
-  color: var(--canopy);
-  padding: 10px;
-  background: var(--canopy-glow);
-  border-radius: 10px;
+.service-card__image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
   margin-bottom: var(--space-md);
   transition: all 0.3s var(--ease-out);
 }
 
-.service-card:hover .service-card__icon {
-  background: var(--canopy);
-  color: var(--white);
-  transform: scale(1.05);
+.service-card:hover .service-card__image {
+  transform: scale(1.02);
 }
 
 .service-card__title {

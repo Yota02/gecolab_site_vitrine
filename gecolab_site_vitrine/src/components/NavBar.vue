@@ -71,6 +71,7 @@ const links = computed(() => [
   { to: '/', label: t('nav.home') },
   { to: '/services', label: t('nav.services') },
   { to: '/a-propos', label: t('nav.about') },
+  { to: '/publications', label: t('nav.publications') },
   { to: '/partenaires', label: t('nav.partners') },
   { to: '/presse', label: t('nav.press') },
   { to: '/contact', label: t('nav.contact') },
@@ -78,7 +79,7 @@ const links = computed(() => [
 </script>
 
 <template>
-  <header class="navbar" :class="{ scrolled, 'mobile-open': mobileOpen, 'contact-page': route.path === '/contact' }">
+  <header class="navbar" :class="{ scrolled, 'mobile-open': mobileOpen, 'contact-page': route.path === '/contact', 'publications-page': route.path === '/publications' }">
     <nav class="navbar__inner container">
       <RouterLink to="/" class="navbar__brand" @click="closeMobile">
         <img v-if="randomLogo" :src="randomLogo" alt="Logo" class="navbar__logo" />
@@ -205,6 +206,10 @@ const links = computed(() => [
 }
 
 .navbar.contact-page {
+  background: black;
+}
+
+.navbar.publications-page {
   background: black;
 }
 
