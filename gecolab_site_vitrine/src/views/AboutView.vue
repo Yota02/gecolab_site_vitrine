@@ -168,19 +168,22 @@ const partners = {
       <div class="container">
         <div class="partners__inner">
           <span class="section-label section-label--light">Collaborations</span>
-          <h2 class="section-title section-title--light">Nos partenaires</h2>
+          <h2 class="section-title section-title--light">Nos partenaires de confiance</h2>
+          <p class="partners__intro">
+            Gecolab collabore avec plus de 20 institutions, associations et entreprises de premier plan.
+          </p>
 
           <div class="partners__grid">
             <div class="partners__col">
               <h4>Institutions publiques</h4>
               <ul>
-                <li v-for="p in partners.institutions" :key="p">{{ p }}</li>
+                <li v-for="p in partners.institutions.slice(0, 4)" :key="p">{{ p }}</li>
               </ul>
             </div>
             <div class="partners__col">
               <h4>Bureaux d'études & Associations</h4>
               <ul>
-                <li v-for="p in partners.bureaux" :key="p">{{ p }}</li>
+                <li v-for="p in partners.bureaux.slice(0, 4)" :key="p">{{ p }}</li>
               </ul>
             </div>
             <div class="partners__col">
@@ -189,6 +192,16 @@ const partners = {
                 <li v-for="p in partners.private" :key="p">{{ p }}</li>
               </ul>
             </div>
+          </div>
+
+          <div class="partners__cta">
+            <RouterLink to="/partenaires" class="partners__link">
+              Voir tous nos partenaires
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <line x1="5" y1="12" x2="19" y2="12" stroke-width="2" stroke-linecap="round"/>
+                <polyline points="12 5 19 12 12 19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </RouterLink>
           </div>
         </div>
       </div>
@@ -495,6 +508,16 @@ const partners = {
 .partners__inner {
   position: relative;
   z-index: 1;
+  text-align: center;
+}
+
+.partners__intro {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: var(--space-md);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .partners__grid {
@@ -502,6 +525,7 @@ const partners = {
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-2xl);
   margin-top: var(--space-2xl);
+  text-align: left;
 }
 
 .partners__col h4 {
@@ -537,6 +561,39 @@ const partners = {
   border-radius: 50%;
   background: var(--canopy);
   opacity: 0.5;
+}
+
+.partners__cta {
+  margin-top: var(--space-2xl);
+  text-align: center;
+}
+
+.partners__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  background: var(--canopy);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.partners__link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(29, 172, 120, 0.3);
+  background: var(--forest);
+}
+
+.partners__link svg {
+  transition: transform 0.3s ease;
+}
+
+.partners__link:hover svg {
+  transform: translateX(4px);
 }
 
 /* ═══ RESPONSIVE ═══ */

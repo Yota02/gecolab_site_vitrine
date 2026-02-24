@@ -6,6 +6,7 @@ const messages = {
       home: 'Accueil',
       services: 'Services',
       about: 'À propos',
+      partners: 'Partenaires',
       press: 'Presse',
       contact: 'Contact'
     },
@@ -56,6 +57,7 @@ const messages = {
       home: 'Home',
       services: 'Services',
       about: 'About',
+      partners: 'Partners',
       press: 'Press',
       contact: 'Contact'
     },

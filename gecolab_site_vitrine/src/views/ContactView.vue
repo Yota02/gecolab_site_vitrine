@@ -1,5 +1,17 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { LMap, LTileLayer, LMarker, LPopup } from '@vue-leaflet/vue-leaflet'
+import 'leaflet/dist/leaflet.css'
+import L, { type LatLngTuple } from 'leaflet'
+
+// Fix for default marker icons in Vite
+// @ts-ignore
+delete L.Icon.Default.prototype._getIconUrl
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: new URL('leaflet/dist/images/marker-icon-2x.png', import.meta.url).href,
+  iconUrl: new URL('leaflet/dist/images/marker-icon.png', import.meta.url).href,
+  shadowUrl: new URL('leaflet/dist/images/marker-shadow.png', import.meta.url).href,
+})
 
 const form = ref({
   name: '',
@@ -10,6 +22,8 @@ const form = ref({
 })
 
 const submitted = ref(false)
+const zoom = ref(15)
+const center: any = [50.5842, 5.5595]
 
 function handleSubmit() {
   submitted.value = true
@@ -76,15 +90,22 @@ function handleSubmit() {
               <p>gecolab@uliege.be</p>
             </div>
 
-            <!-- Map placeholder -->
-            <div class="map-placeholder">
-              <div class="map-placeholder__inner">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-                <span>Université de Liège — Sart Tilman</span>
-              </div>
+            <!-- Leaflet Map -->
+            <div class="map-container">
+              <!-- @ts-ignore -->
+              <l-map v-model:zoom="zoom" :center="center" style="height: 300px; width: 100%; border-radius: 12px;">
+                <l-tile-layer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"></l-tile-layer>
+                <!-- @ts-ignore -->
+                <l-marker :lat-lng="center">
+                  <l-popup>
+                    <strong>GeCoLAB</strong><br>
+                    Laboratoire de génétique de la conservation<br>
+                    Institut de Botanique (Bât. B22)<br>
+                    Quartier Vallée 1, Chemin de la Vallée 4<br>
+                    4000 Liège (Sart Tilman), Belgique
+                  </l-popup>
+                </l-marker>
+              </l-map>
             </div>
           </div>
 
@@ -279,33 +300,12 @@ function handleSubmit() {
   font-family: var(--font-display);
 }
 
-/* Map placeholder */
-.map-placeholder {
-  margin-top: var(--space-md);
+/* Map */
+.map-container {
   border-radius: 12px;
   overflow: hidden;
   background: var(--mist);
   border: 1px solid var(--bone);
-}
-
-.map-placeholder__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-md);
-  padding: var(--space-3xl) var(--space-lg);
-  color: var(--slate);
-}
-
-.map-placeholder__inner svg {
-  width: 32px;
-  height: 32px;
-  opacity: 0.4;
-}
-
-.map-placeholder__inner span {
-  font-size: 0.85rem;
 }
 
 /* Form */
