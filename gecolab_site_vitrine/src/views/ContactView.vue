@@ -32,18 +32,7 @@ function handleSubmit() {
 
 <template>
   <div class="contact-page">
-    <!-- Hero -->
-    <section class="page-hero">
-      <div class="page-hero__bg"></div>
-      <div class="page-hero__content container">
-        <span class="section-label section-label--light">Parlons-en</span>
-        <h1 class="page-hero__title">Contact</h1>
-        <p class="page-hero__lead">
-          Une question, un projet, une demande de devis ? N'hésitez pas à nous contacter.
-        </p>
-      </div>
-    </section>
-
+    
     <!-- Contact content -->
     <section class="contact-content">
       <div class="container">
@@ -181,6 +170,10 @@ function handleSubmit() {
   position: relative;
   padding: calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-3xl);
   overflow: hidden;
+}
+
+.contact-page {
+  margin-top: var(--nav-height);
 }
 
 .page-hero__bg {

@@ -100,7 +100,7 @@ const articles = [
 /* Hero */
 .page-hero {
   position: relative;
-  padding: calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-3xl);
+  padding: calc(var(--nav-height) + var(--space-2xl)) 0 var(--space-2xl);
   overflow: hidden;
 }
 

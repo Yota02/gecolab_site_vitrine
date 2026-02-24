@@ -50,7 +50,7 @@ import FooterSection from '@/components/FooterSection.vue'
 
   /* Layout */
   --max-width: 1200px;
-  --nav-height: 72px;
+  --nav-height: 90px;
 
   /* Transitions */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);

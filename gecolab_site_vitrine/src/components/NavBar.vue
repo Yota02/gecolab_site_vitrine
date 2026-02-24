@@ -1,12 +1,23 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
 const { t, locale } = useI18n()
 const route = useRoute()
+const router = useRouter()
 const scrolled = ref(false)
 const mobileOpen = ref(false)
+const randomLogo = ref<string | undefined>('')
+
+const animalLogos = [
+  '/images/logos/sanglier.png',
+  '/images/logos/loutre.png',
+  '/images/logos/loup.png',
+  '/images/logos/linx.png',
+  '/images/logos/gecko.png',
+  '/images/logos/dragon_komodo.png'
+]
 
 function handleScroll() {
   scrolled.value = window.scrollY > 40
@@ -23,6 +34,11 @@ function toggleLanguage() {
 
 const currentLanguage = computed(() => locale.value.toUpperCase())
 
+function setRandomLogo() {
+  const randomIndex = Math.floor(Math.random() * animalLogos.length)
+  randomLogo.value = animalLogos[randomIndex]
+}
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
   handleScroll()
@@ -32,6 +48,14 @@ onMounted(() => {
   if (savedLocale && (savedLocale === 'fr' || savedLocale === 'en')) {
     locale.value = savedLocale
   }
+
+  // Set random logo
+  setRandomLogo()
+
+  // Change logo on every route change
+  router.afterEach(() => {
+    setRandomLogo()
+  })
 })
 
 onUnmounted(() => {
@@ -49,10 +73,11 @@ const links = computed(() => [
 </script>
 
 <template>
-  <header class="navbar" :class="{ scrolled, 'mobile-open': mobileOpen }">
+  <header class="navbar" :class="{ scrolled, 'mobile-open': mobileOpen, 'contact-page': route.path === '/contact' }">
     <nav class="navbar__inner container">
       <RouterLink to="/" class="navbar__brand" @click="closeMobile">
-        <svg class="navbar__logo" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <img v-if="randomLogo" :src="randomLogo" alt="Logo" class="navbar__logo" />
+        <svg v-else class="navbar__logo" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
           <path d="M20 6C20 6 14 13 14 20C14 27 20 34 20 34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
           <path d="M20 6C20 6 26 13 26 20C26 27 20 34 20 34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -133,6 +158,10 @@ const links = computed(() => [
   box-shadow: 0 1px 0 rgba(29, 172, 120, 0.1);
 }
 
+.navbar.contact-page {
+  background: black;
+}
+
 .navbar__inner {
   display: flex;
   align-items: center;
@@ -149,8 +178,8 @@ const links = computed(() => [
 }
 
 .navbar__logo {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   color: var(--canopy);
   transition: transform 0.5s var(--ease-out);
 }
@@ -161,7 +190,7 @@ const links = computed(() => [
 
 .navbar__name {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.6rem;
   letter-spacing: -0.01em;
 }
 
@@ -185,7 +214,7 @@ const links = computed(() => [
   display: block;
   padding: var(--space-sm) var(--space-md);
   color: rgba(255, 255, 255, 0.7);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.02em;
   transition: color 0.3s var(--ease-out);
@@ -301,7 +330,7 @@ const links = computed(() => [
   }
 
   .navbar__link {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     padding: var(--space-md) var(--space-xl);
   }
 
