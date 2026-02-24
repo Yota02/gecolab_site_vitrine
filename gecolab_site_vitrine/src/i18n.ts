@@ -220,10 +220,10 @@ const messages = {
     contact: {
       info: {
         address: 'Adresse',
-        addressText: 'GeCoLAB<br>Laboratoire de génétique de la conservation<br>Institut de Botanique (Bât. B22)<br>Quartier Vallée 1<br>Chemin de la vallée 4<br><strong>4000 Liège (Sart Tilman)</strong><br>Belgique',
+        addressText: 'GeCoLAB\nLaboratoire de génétique de la conservation\nInstitut de Botanique (Bât. B22)\nQuartier Vallée 1\nChemin de la vallée 4\n4000 Liège (Sart Tilman)\nBelgique',
         phone: 'Téléphone',
         email: 'Email',
-        mapPopup: '<strong>GeCoLAB</strong><br>Laboratoire de génétique de la conservation<br>Institut de Botanique (Bât. B22)<br>Quartier Vallée 1, Chemin de la Vallée 4<br>4000 Liège (Sart Tilman), Belgique'
+        mapPopup: 'GeCoLAB\nLaboratoire de génétique de la conservation\nInstitut de Botanique (Bât. B22)\nQuartier Vallée 1, Chemin de la Vallée 4\n4000 Liège (Sart Tilman), Belgique'
       },
       form: {
         title: 'Envoyez-nous un message',
@@ -470,10 +470,10 @@ const messages = {
     contact: {
       info: {
         address: 'Address',
-        addressText: 'GeCoLAB<br>Conservation Genetics Laboratory<br>Institute of Botany (Building B22)<br>Quartier Vallée 1<br>Chemin de la vallée 4<br><strong>4000 Liège (Sart Tilman)</strong><br>Belgium',
+        addressText: 'GeCoLAB\nConservation Genetics Laboratory\nInstitute of Botany (Building B22)\nQuartier Vallée 1\nChemin de la vallée 4\n4000 Liège (Sart Tilman)\nBelgium',
         phone: 'Phone',
         email: 'Email',
-        mapPopup: '<strong>GeCoLAB</strong><br>Conservation Genetics Laboratory<br>Institute of Botany (Building B22)<br>Quartier Vallée 1, Chemin de la Vallée 4<br>4000 Liège (Sart Tilman), Belgium'
+        mapPopup: 'GeCoLAB\nConservation Genetics Laboratory\nInstitute of Botany (Building B22)\nQuartier Vallée 1, Chemin de la Vallée 4\n4000 Liège (Sart Tilman), Belgium'
       },
       form: {
         title: 'Send us a message',
@@ -720,10 +720,10 @@ const messages = {
     contact: {
       info: {
         address: 'Adresse',
-        addressText: 'GeCoLAB<br>Labor für Erhaltungsgenetik<br>Botanisches Institut (Gebäude B22)<br>Quartier Vallée 1<br>Chemin de la vallée 4<br><strong>4000 Lüttich (Sart Tilman)</strong><br>Belgien',
+        addressText: 'GeCoLAB\nLabor für Erhaltungsgenetik\nBotanisches Institut (Gebäude B22)\nQuartier Vallée 1\nChemin de la vallée 4\n4000 Lüttich (Sart Tilman)\nBelgien',
         phone: 'Telefon',
         email: 'E-Mail',
-        mapPopup: '<strong>GeCoLAB</strong><br>Labor für Erhaltungsgenetik<br>Botanisches Institut (Gebäude B22)<br>Quartier Vallée 1, Chemin de la Vallée 4<br>4000 Lüttich (Sart Tilman), Belgien'
+        mapPopup: 'GeCoLAB\nLabor für Erhaltungsgenetik\nBotanisches Institut (Gebäude B22)\nQuartier Vallée 1, Chemin de la Vallée 4\n4000 Lüttich (Sart Tilman), Belgien'
       },
       form: {
         title: 'Senden Sie uns eine Nachricht',
@@ -970,10 +970,10 @@ const messages = {
     contact: {
       info: {
         address: 'Dirección',
-        addressText: 'GeCoLAB<br>Laboratorio de genética de la conservación<br>Instituto de Botánica (Edificio B22)<br>Quartier Vallée 1<br>Chemin de la vallée 4<br><strong>4000 Lieja (Sart Tilman)</strong><br>Bélgica',
+        addressText: 'GeCoLAB\nLaboratorio de genética de la conservación\nInstituto de Botánica (Edificio B22)\nQuartier Vallée 1\nChemin de la vallée 4\n4000 Lieja (Sart Tilman)\nBélgica',
         phone: 'Teléfono',
         email: 'Correo electrónico',
-        mapPopup: '<strong>GeCoLAB</strong><br>Laboratorio de genética de la conservación<br>Instituto de Botánica (Edificio B22)<br>Quartier Vallée 1, Chemin de la Vallée 4<br>4000 Lieja (Sart Tilman), Bélgica'
+        mapPopup: 'GeCoLAB\nLaboratorio de genética de la conservación\nInstituto de Botánica (Edificio B22)\nQuartier Vallée 1, Chemin de la Vallée 4\n4000 Lieja (Sart Tilman), Bélgica'
       },
       form: {
         title: 'Envíenos un mensaje',
@@ -1220,10 +1220,10 @@ const messages = {
     contact: {
       info: {
         address: 'Adres',
-        addressText: 'GeCoLAB<br>Laboratorium voor conservatiegenetica<br>Instituut voor Plantkunde (Gebouw B22)<br>Quartier Vallée 1<br>Chemin de la vallée 4<br><strong>4000 Luik (Sart Tilman)</strong><br>België',
+        addressText: 'GeCoLAB\nLaboratorium voor conservatiegenetica\nInstituut voor Plantkunde (Gebouw B22)\nQuartier Vallée 1\nChemin de la vallée 4\n4000 Luik (Sart Tilman)\nBelgië',
         phone: 'Telefoon',
         email: 'E-mail',
-        mapPopup: '<strong>GeCoLAB</strong><br>Laboratorium voor conservatiegenetica<br>Instituut voor Plantkunde (Gebouw B22)<br>Quartier Vallée 1, Chemin de la Vallée 4<br>4000 Luik (Sart Tilman), België'
+        mapPopup: 'GeCoLAB\nLaboratorium voor conservatiegenetica\nInstituut voor Plantkunde (Gebouw B22)\nQuartier Vallée 1, Chemin de la Vallée 4\n4000 Luik (Sart Tilman), België'
       },
       form: {
         title: 'Stuur ons een bericht',

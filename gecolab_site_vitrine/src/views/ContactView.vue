@@ -50,8 +50,7 @@ function handleSubmit() {
                 </svg>
               </div>
               <h3>{{ t('contact.info.address') }}</h3>
-              <p v-html="t('contact.info.addressText')">
-              </p>
+              <p style="white-space: pre-line;">{{ t('contact.info.addressText') }}</p>
             </div>
 
             <div class="info-card">
@@ -83,7 +82,7 @@ function handleSubmit() {
                 <!-- @ts-ignore -->
                 <l-marker :lat-lng="center">
                   <l-popup>
-                    <div v-html="t('contact.info.mapPopup')"></div>
+                    <div style="white-space: pre-line;">{{ t('contact.info.mapPopup') }}</div>
                   </l-popup>
                 </l-marker>
               </l-map>
