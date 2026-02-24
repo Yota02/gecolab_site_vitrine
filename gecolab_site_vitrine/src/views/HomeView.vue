@@ -173,7 +173,7 @@ const stats = computed(() => [
 .hero__bg {
   position: absolute;
   inset: 0;
-  background: var(--obsidian) url('/images/hero/banner.jpg') no-repeat center center / cover;
+  background: var(--obsidian) url('/images/services/loutre.jpg') no-repeat center center / cover;
 }
 
 .hero__gradient {
