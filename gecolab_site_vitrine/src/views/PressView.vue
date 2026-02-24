@@ -11,7 +11,7 @@ const articles = [
     description: t('press.articles.article1.description'),
     source: t('press.articles.article1.source'),
     tag: t('press.articles.article1.tag'),
-    image: '/images/services/chat-forestier.jpg',
+    image: `${import.meta.env.BASE_URL}images/services/chat-forestier.jpg`,
   },
   {
     date: t('press.articles.article2.date'),
@@ -20,7 +20,7 @@ const articles = [
     description: t('press.articles.article2.description'),
     source: t('press.articles.article2.source'),
     tag: t('press.articles.article2.tag'),
-    image: '/images/press/lalibre.jpg',
+    image: `${import.meta.env.BASE_URL}images/press/lalibre.jpg`,
   },
   {
     date: t('press.articles.article3.date'),
@@ -29,7 +29,7 @@ const articles = [
     description: t('press.articles.article3.description'),
     source: t('press.articles.article3.source'),
     tag: t('press.articles.article3.tag'),
-    image: '/images/press/natagora.jpg',
+    image: `${import.meta.env.BASE_URL}images/press/natagora.jpg`,
   },
 ]
 </script>

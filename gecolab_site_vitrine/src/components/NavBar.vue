@@ -15,12 +15,12 @@ const languages = ['fr', 'en', 'de', 'es', 'nl'] as const
 type Language = typeof languages[number]
 
 const animalLogos = [
-  '/images/logos/sanglier.png',
-  '/images/logos/loutre.png',
-  '/images/logos/loup.png',
-  '/images/logos/linx.png',
-  '/images/logos/gecko.png',
-  '/images/logos/dragon_komodo.png'
+  `${import.meta.env.BASE_URL}images/logos/sanglier.png`,
+  `${import.meta.env.BASE_URL}images/logos/loutre.png`,
+  `${import.meta.env.BASE_URL}images/logos/loup.png`,
+  `${import.meta.env.BASE_URL}images/logos/linx.png`,
+  `${import.meta.env.BASE_URL}images/logos/gecko.png`,
+  `${import.meta.env.BASE_URL}images/logos/dragon_komodo.png`
 ]
 
 function handleScroll() {

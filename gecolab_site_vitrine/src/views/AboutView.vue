@@ -3,12 +3,15 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
+// Helper pour obtenir les chemins d'images avec la base URL
+const getImagePath = (path: string) => `${import.meta.env.BASE_URL}${path}`
+
 const team = [
   {
     name: 'Johan Michaux',
     role: 'Directeur',
     bio: 'Docteur en Sciences de l\'Université de Liège, directeur de recherches au FNRS. Spécialiste de l\'utilisation des outils génétiques pour l\'étude de la biodiversité depuis plus de 30 ans. Auteur de plus de 180 articles scientifiques internationaux. Membre des conseils scientifiques des plans nationaux d\'action pour le vison d\'Europe, le desman des Pyrénées et la loutre européenne.',
-    photo: '/images/team/johan-michaux.png',
+    photo: `${import.meta.env.BASE_URL}images/team/johan-michaux.png`,
     initials: 'JM',
     color: '#0A4A2E',
   },
@@ -16,7 +19,7 @@ const team = [
     name: 'Adrien André',
     role: 'PhD — Coordinateur & Bio-informaticien',
     bio: 'Doctorat sur l\'expansion géographique de Peromyscus leucopus au Canada (McGill). Expert en séquençage nouvelle génération et détection de pathogènes (Borrelia). Responsable des pipelines bio-informatiques du laboratoire. Développe de nouveaux projets utilisant la technologie de PCR digitale.',
-    photo: '/images/team/adrien-andre.jpg',
+    photo: `${import.meta.env.BASE_URL}images/team/adrien-andre.jpg`,
     initials: 'AA',
     color: '#22C55E',
   },
@@ -24,7 +27,7 @@ const team = [
     name: 'Anaïs Beaumariage',
     role: 'Biologiste — Coordinatrice de projets',
     bio: 'A rejoint le GeCoLab en 2024. Coordonne des projets allant de l\'identification d\'espèces cryptiques au suivi de la dynamique des populations. Travaille sur le chat forestier, lynx, chauves-souris, castor, loutre, loup, desman des Pyrénées, triton crêté et gastéropodes. Engagée dans la vulgarisation scientifique.',
-    photo: '/images/team/anais-beaumariage.jpg',
+    photo: `${import.meta.env.BASE_URL}images/team/anais-beaumariage.jpg`,
     initials: 'AB',
     color: '#34D399',
   },
@@ -32,7 +35,7 @@ const team = [
     name: 'Jonathan Drugmand',
     role: 'Biologiste — Microsatellites & Loup',
     bio: 'Master en biologie environnementale (UCLouvain). Poste hybride combinant manipulations en laboratoire et analyses bioinformatiques sur les microsatellites. Référent pour le suivi génétique du loup en Wallonie. A voyagé plus d\'un an à vélo en Nouvelle-Zélande avant de rejoindre l\'équipe.',
-    photo: '/images/team/jonathan-drugmand.jpg',
+    photo: `${import.meta.env.BASE_URL}images/team/jonathan-drugmand.jpg`,
     initials: 'JD',
     color: '#0C2460',
   },
@@ -40,7 +43,7 @@ const team = [
     name: 'Edeline Beine',
     role: 'Technicienne en biotechnologie',
     bio: 'Diplômée de la Haute École de Liège. Après une première carrière en cancérologie, elle a rejoint le GeCoLab début 2025. Spécialisée dans la préparation d\'échantillons pour le NGS et les microsatellites. Joue un rôle central dans les manipulations expérimentales du laboratoire.',
-    photo: '/images/team/edeline-beine.jpg',
+    photo: `${import.meta.env.BASE_URL}images/team/edeline-beine.jpg`,
     initials: 'EB',
     color: '#3a3a52',
   },
@@ -48,7 +51,7 @@ const team = [
     name: 'Jérôme Vandromme',
     role: 'Doctorant — Pathogènes zoonotiques',
     bio: 'Après un mémoire sur le sanglier en Wallonie, il réalise sa thèse au sein du laboratoire. Spécialiste du sanglier et du raton-laveur. Utilise des approches métagénomiques pour étudier les prévalences des pathogènes zoonotiques bactériens dans les populations.',
-    photo: '/images/team/jerome-vandromme.jpg',
+    photo: `${import.meta.env.BASE_URL}images/team/jerome-vandromme.jpg`,
     initials: 'JV',
     color: '#0e7a4a',
   },
@@ -56,7 +59,7 @@ const team = [
     name: 'Pauline Van Leeuwen',
     role: 'Postdoctorale — Microbiome & One Health',
     bio: 'Chercheuse postdoctorale en écologie et sciences du microbiome, à l\'interface entre conservation de la biodiversité, interactions hôte-microbiome et approche One Health. Impliquée au GeCoLab depuis 2017. Ses travaux actuels combinent eDNA, métagénomique et écologie de terrain.',
-    photo: '/images/team/pauline-van-leeuwen.jpg',
+    photo: `${import.meta.env.BASE_URL}images/team/pauline-van-leeuwen.jpg`,
     initials: 'PVL',
     color: '#1a8b5a',
   },
@@ -90,7 +93,7 @@ const team = [
           </div>
           <div class="whoweare__side">
             <div class="whoweare__photo">
-              <img src="/images/about/animal-portrait.jpg" alt="Espèce étudiée par GeCoLab" loading="lazy">
+              <img :src="getImagePath('images/about/animal-portrait.jpg')" alt="Espèce étudiée par GeCoLab" loading="lazy">
             </div>
             <div class="difference-card">
               <h3>{{ t('about.whoWeAre.differenceTitle') }}</h3>

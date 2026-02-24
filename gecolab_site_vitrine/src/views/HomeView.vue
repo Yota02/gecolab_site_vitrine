@@ -8,6 +8,9 @@ const visible = ref(false)
 const parallaxOffset = ref(0)
 const heroBgRef = ref<HTMLElement>()
 
+// Helper pour obtenir les chemins d'images avec la base URL
+const getImagePath = (path: string) => `${import.meta.env.BASE_URL}${path}`
+
 onMounted(() => {
   requestAnimationFrame(() => { visible.value = true })
   
@@ -35,13 +38,19 @@ const stats = computed(() => [
   { value: '7', label: t('home.stats.researchers') },
   { value: '10+', label: t('home.stats.species') },
 ])
+
+const heroBgStyle = computed(() => ({
+  '--parallax-y': `${parallaxOffset.value}px`,
+  '--hero-bg-image': `url('${getImagePath('images/services/loutre2.jpg')}')`
+}))
+
 </script>
 
 <template>
   <div class="home" :class="{ visible }">
     <!-- ═══ HERO ═══ -->
     <section class="hero">
-      <div class="hero__bg" ref="heroBgRef" :style="{ '--parallax-y': `${parallaxOffset}px` }">
+      <div class="hero__bg" ref="heroBgRef" :style="heroBgStyle">
         <div class="hero__gradient"></div>
         <div class="hero__noise"></div>
         <!-- DNA decorative helix -->
@@ -94,7 +103,7 @@ const stats = computed(() => [
            </div>
            <div class="intro__highlight">
              <div class="intro__photo-mosaic">
-               <img src="/images/about/animal-portrait.jpg" alt="Espèce étudiée par GeCoLab" class="intro__mosaic-img">
+               <img :src="getImagePath('images/about/animal-portrait.jpg')" alt="Espèce étudiée par GeCoLab" class="intro__mosaic-img">
              </div>
              <div class="intro__highlight-card">
                <div class="intro__highlight-icon">
@@ -123,24 +132,24 @@ const stats = computed(() => [
              {{ t('home.specialty.text') }}
            </p>
            <div class="specialty__methods">
-             <div class="specialty__method">
-               <div class="specialty__method-img">
-                 <img src="/images/services/riviere.jpg" alt="Rivière - milieu aquatique" loading="lazy">
-               </div>
-               <h4>{{ t('home.specialty.aquaticTitle') }}</h4>
-               <p>{{ t('home.specialty.aquaticText') }}</p>
-             </div>
-             <div class="specialty__method">
-               <div class="specialty__method-img">
-                 <img src="/images/services/terrain-terrestre.jpg" alt="Terrain terrestre" loading="lazy">
-               </div>
-               <h4>{{ t('home.specialty.terrestrialTitle') }}</h4>
-               <p>{{ t('home.specialty.terrestrialText') }}</p>
-             </div>
-             <div class="specialty__method">
-               <div class="specialty__method-img">
-                 <img src="/images/hero/echantillon1.jpg" alt="Échantillon non invasif" loading="lazy">
-               </div>
+               <div class="specialty__method">
+                <div class="specialty__method-img">
+                  <img :src="getImagePath('images/services/riviere.jpg')" alt="Rivière - milieu aquatique" loading="lazy">
+                </div>
+                <h4>{{ t('home.specialty.aquaticTitle') }}</h4>
+                <p>{{ t('home.specialty.aquaticText') }}</p>
+              </div>
+              <div class="specialty__method">
+                <div class="specialty__method-img">
+                  <img :src="getImagePath('images/services/terrain-terrestre.jpg')" alt="Terrain terrestre" loading="lazy">
+                </div>
+                <h4>{{ t('home.specialty.terrestrialTitle') }}</h4>
+                <p>{{ t('home.specialty.terrestrialText') }}</p>
+              </div>
+              <div class="specialty__method">
+                <div class="specialty__method-img">
+                  <img :src="getImagePath('images/hero/echantillon1.jpg')" alt="Échantillon non invasif" loading="lazy">
+                </div>
                <h4>{{ t('home.specialty.degradedTitle') }}</h4>
                <p>{{ t('home.specialty.degradedText') }}</p>
              </div>
@@ -200,7 +209,7 @@ const stats = computed(() => [
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--obsidian) url('/images/services/loutre2.jpg') no-repeat center center / cover;
+  background: var(--obsidian) var(--hero-bg-image, none) no-repeat center center / cover;
   will-change: transform;
   transform: translateY(var(--parallax-y, 0));
 }

@@ -10,14 +10,14 @@ const services = [
     title: 'Inventaire de biodiversité et identification d\'espèces',
     description: 'Effectuez des inventaires faunistiques précis ou identifiez la présence d\'espèces menacées ou invasives sur un site donné grâce à nos outils génétiques.',
     images: [
-      { src: '/images/services/riviere.jpg', alt: 'Rivière - milieu aquatique' },
-      { src: '/images/services/pompe.jpg', alt: 'Pompe péristaltique' },
-      { src: '/images/services/terrain-aquatique.jpg', alt: 'Terrain aquatique' },
+      { src: `${import.meta.env.BASE_URL}images/services/riviere.jpg`, alt: 'Rivière - milieu aquatique' },
+      { src: `${import.meta.env.BASE_URL}images/services/pompe.jpg`, alt: 'Pompe péristaltique' },
+      { src: `${import.meta.env.BASE_URL}images/services/terrain-aquatique.jpg`, alt: 'Terrain aquatique' },
     ],
     images2: [
-      { src: '/images/services/tube-poils.png', alt: 'Tube à poils' },
-      { src: '/images/services/poils-piege.png', alt: 'Poils de piège' },
-      { src: '/images/services/terrain-terrestre.jpg', alt: 'Terrain terrestre' },
+      { src: `${import.meta.env.BASE_URL}images/services/tube-poils.png`, alt: 'Tube à poils' },
+      { src: `${import.meta.env.BASE_URL}images/services/poils-piege.png`, alt: 'Poils de piège' },
+      { src: `${import.meta.env.BASE_URL}images/services/terrain-terrestre.jpg`, alt: 'Terrain terrestre' },
     ],
     details: [
       {
@@ -63,7 +63,7 @@ const services = [
     id: 'regime',
     icon: 'diet',
     title: 'Régime alimentaire',
-    image: '/images/services/crotte-mammifere.png',
+    image: `${import.meta.env.BASE_URL}images/services/crotte-mammifere.png`,
     description: 'Analyses de régime alimentaire précises à partir de fèces collectées de manière non invasive, via les techniques de séquençage nouvelle génération et de métabarcoding.',
     examples: 'Loutre européenne, loup européen, sanglier, vison d\'Europe, vison d\'Amérique, mangouste de Java, nombreuses espèces de chauves-souris (oreillards, murins, pipistrelles)…'
   },
@@ -71,7 +71,7 @@ const services = [
     id: 'hybridation',
     icon: 'hybrid',
     title: 'Étude des problèmes d\'hybridation',
-    image: '/images/services/chat-forestier.jpg',
+    image: `${import.meta.env.BASE_URL}images/services/chat-forestier.jpg`,
     description: 'Étude précise des phénomènes d\'hybridation existant entre espèces menacées et espèces domestiques ou invasives.',
     cases: [
       'Chat forestier européen × Chat domestique',
@@ -85,9 +85,9 @@ const services = [
     title: 'Détermination d\'effectifs et génétique des populations',
     description: 'Évaluation de la taille des effectifs de populations, analyse de connectivité entre populations isolées, estimation du risque de consanguinité et de la diversité génétique.',
     galleryImages: [
-      { src: '/images/services/lion.jpg', alt: 'Lion d\'Afrique' },
-      { src: '/images/services/loutre.jpg', alt: 'Loutre européenne' },
-      { src: '/images/services/hibou-grand-duc.jpg', alt: 'Hibou Grand Duc' },
+      { src: `${import.meta.env.BASE_URL}images/services/lion.jpg`, alt: 'Lion d\'Afrique' },
+      { src: `${import.meta.env.BASE_URL}images/services/loutre.jpg`, alt: 'Loutre européenne' },
+      { src: `${import.meta.env.BASE_URL}images/services/hibou-grand-duc.jpg`, alt: 'Hibou Grand Duc' },
     ],
     examples: 'Loutre européenne, loup européen, desman des Pyrénées, vison d\'Europe, cuivré de la bistorte, hibou Grand Duc, lion d\'Afrique, ours polaire…'
   },
@@ -95,7 +95,7 @@ const services = [
     id: 'pathogenes',
     icon: 'bacteria',
     title: 'Identification de pathogènes et microbiomes bactériens',
-    image: '/images/services/tique.jpg',
+    image: `${import.meta.env.BASE_URL}images/services/tique.jpg`,
     description: 'Estimation précise des microbiomes bactériens et détection de la présence potentielle d\'agents pathogènes avec une précision supérieure aux technologies classiques.',
     pathogens: 'Borrelia (maladie de Lyme), Bartonella, Yersinia, Bacillus, Leptospira…',
     partners: 'Développé avec l\'Institut Pasteur et l\'Hôpital Universitaire de l\'Université de Liège.'
