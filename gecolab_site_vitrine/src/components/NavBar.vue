@@ -350,15 +350,15 @@ const links = computed(() => [
 .navbar__lang-dropdown {
   position: absolute;
   top: 10px;
-  left: 10px;
+  right: 10px;
   z-index: 10;
 }
 
 .navbar__lang-options {
   position: absolute;
   top: 0;
-  left: 100%;
-  margin-left: 8px;
+  right: 100%;
+  margin-right: 8px;
   background: rgba(10, 15, 13, 0.95);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);

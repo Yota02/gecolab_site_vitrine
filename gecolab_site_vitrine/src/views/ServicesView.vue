@@ -1,104 +1,40 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 
 const { t } = useI18n()
+const router = useRouter()
 
 const services = [
   {
     id: 'biodiversite',
     icon: 'search',
-    title: 'Inventaire de biodiversité et identification d\'espèces',
-    description: 'Effectuez des inventaires faunistiques précis ou identifiez la présence d\'espèces menacées ou invasives sur un site donné grâce à nos outils génétiques.',
-    images: [
-      { src: `${import.meta.env.BASE_URL}images/services/riviere.jpg`, alt: 'Rivière - milieu aquatique' },
-      { src: `${import.meta.env.BASE_URL}images/services/pompe.jpg`, alt: 'Pompe péristaltique' },
-      { src: `${import.meta.env.BASE_URL}images/services/terrain-aquatique.jpg`, alt: 'Terrain aquatique' },
-    ],
-    images2: [
-      { src: `${import.meta.env.BASE_URL}images/services/tube-poils.png`, alt: 'Tube à poils' },
-      { src: `${import.meta.env.BASE_URL}images/services/poils-piege.png`, alt: 'Poils de piège' },
-      { src: `${import.meta.env.BASE_URL}images/services/terrain-terrestre.jpg`, alt: 'Terrain terrestre' },
-    ],
-    details: [
-      {
-        subtitle: 'Milieux aquatiques',
-        text: 'Recherche de poissons, amphibiens, mammifères aquatiques et macro invertébrés à partir de prélèvements d\'eau via capsules filtrantes et pompes péristaltiques.'
-      },
-      {
-        subtitle: 'Milieux terrestres',
-        text: 'Collecte d\'échantillons de sol, poils, frottis, fèces, urine et salive grâce à des dispositifs non invasifs développés en collaboration avec le GREGE.'
-      },
-    ],
-    markers: [
-      { group: 'Poissons', markers: '3 marqueurs', reads: '1–2M reads/marqueur' },
-      { group: 'Mammifères', markers: '2 marqueurs', reads: '1–2M reads/marqueur' },
-      { group: 'Batraciens', markers: '2 marqueurs', reads: '1–2M reads/marqueur' },
-      { group: 'Mollusques bivalves', markers: '2 marqueurs', reads: '1–2M reads/marqueur' },
-      { group: 'Gastéropodes', markers: '2 marqueurs', reads: '1–2M reads/marqueur' },
-      { group: 'Décapodes', markers: '2 marqueurs', reads: '1–2M reads/marqueur' },
-      { group: 'Plantes', markers: '1 marqueur', reads: '2M reads' },
-      { group: 'Invertébrés', markers: '1 marqueur', reads: '2M reads' },
-      { group: 'Diatomées', markers: '1–3 marqueurs', reads: '1–2M reads/marqueur' },
-    ]
+    route: '/services/biodiversite'
   },
   {
     id: 'pcr-digitale',
     icon: 'target',
-    title: 'Détection ultra sensible via PCR Digitale',
-    description: 'Depuis 2024, nous développons des méthodes de détection ultra sensibles de certaines espèces via l\'utilisation de la PCR digitale.',
-    species: [
-      'Austropotamobius pallipes',
-      'Galemys pyrenaicus',
-      'Lutra lutra',
-      'Xenopus laevis',
-      'Margaritifera margaritifera',
-      'Neomys fodiens',
-      'Mustela lutreola',
-      'Borrelia sp.',
-      'Batrachochytrium salamanderivorans',
-      'Arvicola sapidus',
-    ]
+    route: '/services/pcr-digitale'
   },
   {
     id: 'regime',
     icon: 'diet',
-    title: 'Régime alimentaire',
-    image: `${import.meta.env.BASE_URL}images/services/crotte-mammifere.png`,
-    description: 'Analyses de régime alimentaire précises à partir de fèces collectées de manière non invasive, via les techniques de séquençage nouvelle génération et de métabarcoding.',
-    examples: 'Loutre européenne, loup européen, sanglier, vison d\'Europe, vison d\'Amérique, mangouste de Java, nombreuses espèces de chauves-souris (oreillards, murins, pipistrelles)…'
+    route: '/services/regime'
   },
   {
     id: 'hybridation',
     icon: 'hybrid',
-    title: 'Étude des problèmes d\'hybridation',
-    image: `${import.meta.env.BASE_URL}images/services/chat-forestier.jpg`,
-    description: 'Étude précise des phénomènes d\'hybridation existant entre espèces menacées et espèces domestiques ou invasives.',
-    cases: [
-      'Chat forestier européen × Chat domestique',
-      'Sanglier européen × Cochon domestique',
-      'Vison d\'Europe × Putois européen',
-    ]
+    route: '/services/hybridation'
   },
   {
     id: 'effectifs',
     icon: 'population',
-    title: 'Détermination d\'effectifs et génétique des populations',
-    description: 'Évaluation de la taille des effectifs de populations, analyse de connectivité entre populations isolées, estimation du risque de consanguinité et de la diversité génétique.',
-    galleryImages: [
-      { src: `${import.meta.env.BASE_URL}images/services/lion.jpg`, alt: 'Lion d\'Afrique' },
-      { src: `${import.meta.env.BASE_URL}images/services/loutre.jpg`, alt: 'Loutre européenne' },
-      { src: `${import.meta.env.BASE_URL}images/services/hibou-grand-duc.jpg`, alt: 'Hibou Grand Duc' },
-    ],
-    examples: 'Loutre européenne, loup européen, desman des Pyrénées, vison d\'Europe, cuivré de la bistorte, hibou Grand Duc, lion d\'Afrique, ours polaire…'
+    route: '/services/effectifs'
   },
   {
     id: 'pathogenes',
     icon: 'bacteria',
-    title: 'Identification de pathogènes et microbiomes bactériens',
-    image: `${import.meta.env.BASE_URL}images/services/tique.jpg`,
-    description: 'Estimation précise des microbiomes bactériens et détection de la présence potentielle d\'agents pathogènes avec une précision supérieure aux technologies classiques.',
-    pathogens: 'Borrelia (maladie de Lyme), Bartonella, Yersinia, Bacillus, Leptospira…',
-    partners: 'Développé avec l\'Institut Pasteur et l\'Hôpital Universitaire de l\'Université de Liège.'
+    route: '/services/pathogenes'
   },
 ]
 
@@ -109,6 +45,10 @@ const iconPaths: Record<string, string> = {
   hybrid: 'M8 4a4 4 0 100 8 4 4 0 000-8zM16 4a4 4 0 100 8 4 4 0 000-8zM12 14v6M9 17l3 3 3-3',
   population: 'M12 2a3 3 0 100 6 3 3 0 000-6zM5 9a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM19 9a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM12 10c-4 0-6 2-6 4v2h12v-2c0-2-2-4-6-4zM2 16c-1 0-2 1-2 2v1h5v-1.5C5 16.5 3.5 16 2 16zM22 16c1 0 2 1 2 2v1h-5v-1.5c0-1 1.5-1.5 3-1.5z',
   bacteria: 'M12 2a5 5 0 100 10 5 5 0 000-10zM12 14v4M8 7H4M20 7h-4M7 12l-3 3M17 12l3 3M12 18a2 2 0 100 4 2 2 0 000-4z',
+}
+
+const navigateToService = (route: string) => {
+  router.push(route)
 }
 </script>
 
@@ -126,121 +66,43 @@ const iconPaths: Record<string, string> = {
       </div>
     </section>
 
-    <!-- Quality commitment banner -->
-    <section class="quality">
+    <!-- Services grid -->
+    <section class="services-grid">
       <div class="container">
-        <div class="quality__card">
-          <div class="quality__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-          </div>
-          <div class="quality__text">
-            <h3>{{ t('services.quality.title') }}</h3>
-            <p v-html="t('services.quality.text')"></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services list -->
-    <section class="services-list">
-      <div class="container">
-        <div
-          v-for="(service, index) in services"
-          :key="service.id"
-          :id="service.id"
-          class="service-block"
-          :class="{ 'service-block--alt': index % 2 === 1 }"
-        >
-          <div class="service-block__header">
-            <div class="service-block__number">{{ String(index + 1).padStart(2, '0') }}</div>
-            <div class="service-block__icon">
+        <div class="services-grid__items">
+          <article
+            v-for="(service, index) in services"
+            :key="service.id"
+            class="service-card"
+            @click="navigateToService(service.route)"
+          >
+            <div class="service-card__number">{{ String(index + 1).padStart(2, '0') }}</div>
+            <div class="service-card__icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path :d="iconPaths[service.icon]"/>
               </svg>
             </div>
-            <h2 class="service-block__title">{{ service.title }}</h2>
-          </div>
-
-          <p class="service-block__desc">{{ service.description }}</p>
-
-          <!-- Single image -->
-          <div v-if="service.image && !service.images" class="service-block__image">
-            <img :src="service.image" :alt="service.title" loading="lazy">
-          </div>
-
-          <!-- Photo strip (biodiversity aquatic) -->
-          <div v-if="service.images" class="service-block__photo-strip">
-            <div v-for="img in service.images" :key="img.src" class="service-block__photo">
-              <img :src="img.src" :alt="img.alt" loading="lazy">
+            <h2 class="service-card__title">{{ t(`services.service${index + 1}.title`) }}</h2>
+            <p class="service-card__description">{{ t(`services.service${index + 1}.description`) }}</p>
+            <div class="service-card__arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
             </div>
-          </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-          <!-- Biodiversity details -->
-          <div v-if="service.details" class="service-block__details">
-            <div v-for="detail in service.details" :key="detail.subtitle" class="detail-card">
-              <h4>{{ detail.subtitle }}</h4>
-              <p>{{ detail.text }}</p>
-            </div>
-          </div>
-
-          <!-- Terrestrial photo strip -->
-          <div v-if="service.images2" class="service-block__photo-strip service-block__photo-strip--sub">
-            <div v-for="img in service.images2" :key="img.src" class="service-block__photo">
-              <img :src="img.src" :alt="img.alt" loading="lazy">
-            </div>
-          </div>
-
-          <!-- Gallery images (population) -->
-          <div v-if="service.galleryImages" class="service-block__gallery">
-            <div v-for="img in service.galleryImages" :key="img.src" class="service-block__gallery-item">
-              <img :src="img.src" :alt="img.alt" loading="lazy">
-              <span>{{ img.alt }}</span>
-            </div>
-          </div>
-
-          <!-- Genetic markers table -->
-          <div v-if="service.markers" class="service-block__markers">
-            <h4 class="markers-title">Marqueurs génétiques par groupe</h4>
-            <div class="markers-grid">
-              <div v-for="m in service.markers" :key="m.group" class="marker-row">
-                <span class="marker-group">{{ m.group }}</span>
-                <span class="marker-value">{{ m.markers }}</span>
-                <span class="marker-reads">{{ m.reads }}</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- PCR species list -->
-          <div v-if="service.species" class="service-block__species">
-            <div class="species-grid">
-              <span v-for="sp in service.species" :key="sp" class="species-tag">
-                <em>{{ sp }}</em>
-              </span>
-            </div>
-            <p class="species-note">D'autres espèces seront ajoutées prochainement. N'hésitez pas à nous contacter pour toute espèce d'intérêt.</p>
-          </div>
-
-          <!-- Hybridation cases -->
-          <div v-if="service.cases" class="service-block__cases">
-            <div v-for="c in service.cases" :key="c" class="case-item">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              {{ c }}
-            </div>
-          </div>
-
-          <!-- Examples -->
-          <div v-if="service.examples" class="service-block__examples">
-            <p class="examples-label">Espèces étudiées :</p>
-            <p class="examples-text">{{ service.examples }}</p>
-          </div>
-
-          <!-- Pathogens -->
-          <div v-if="service.pathogens" class="service-block__pathogens">
-            <p><strong>Pathogènes détectés :</strong> {{ service.pathogens }}</p>
-            <p class="partner-note">{{ service.partners }}</p>
-          </div>
+    <!-- CTA Section -->
+    <section class="services-cta">
+      <div class="container">
+        <div class="services-cta__inner">
+          <h2>{{ t('services.cta.title') }}</h2>
+          <p>{{ t('services.cta.text') }}</p>
+          <router-link to="/contact" class="btn btn--primary btn--lg">
+            {{ t('services.cta.button') }}
+          </router-link>
         </div>
       </div>
     </section>
@@ -293,378 +155,111 @@ const iconPaths: Record<string, string> = {
   animation-delay: 0.15s;
 }
 
-/* ═══ QUALITY ═══ */
-.quality {
-  padding: var(--space-2xl) 0;
-  background: var(--mist);
+/* ═══ SERVICES GRID ═══ */
+.services-grid {
+  padding: var(--space-4xl) 0;
 }
 
-.quality__card {
-  display: flex;
+.services-grid__items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: var(--space-xl);
-  align-items: flex-start;
-  padding: var(--space-xl) var(--space-2xl);
+}
+
+.service-card {
+  position: relative;
+  padding: var(--space-2xl);
   background: var(--white);
+  border: 2px solid var(--bone);
   border-radius: 12px;
-  border: 1px solid var(--bone);
-  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all 0.4s var(--ease-out);
+  overflow: hidden;
 }
 
-.quality__icon {
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  color: var(--canopy);
-}
-
-.quality__text h3 {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  color: var(--ink);
-}
-
-.quality__text p {
-  margin-top: var(--space-sm);
-  color: var(--ink-light);
-  font-size: 1.05rem;
-}
-
-.quality__text strong {
-  color: var(--forest);
-  font-weight: 600;
-}
-
-/* ═══ SERVICES LIST ═══ */
-.services-list {
-  padding: var(--space-3xl) 0;
-}
-
-.service-block {
-  padding: var(--space-2xl) 0;
-  border-bottom: 1px solid var(--bone);
-}
-
-.service-block:last-child {
-  border-bottom: none;
-}
-
-.service-block__header {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-lg);
-  margin-bottom: var(--space-lg);
-}
-
-.service-block__number {
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  color: var(--canopy);
-  opacity: 0.6;
-  flex-shrink: 0;
-  padding-top: 4px;
-}
-
-.service-block__icon {
-  flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  color: var(--canopy);
-  padding: 6px;
-  background: var(--canopy-glow);
-  border-radius: 8px;
-}
-
-.service-block__title {
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 3vw, 1.6rem);
-  color: var(--ink);
-  line-height: 1.3;
-}
-
-.service-block__desc {
-  color: var(--ink-light);
-  font-size: 1.1rem;
-  max-width: 750px;
-  padding-left: 3.75rem;
-  margin-left: 1.6rem;
-}
-
-/* Service images */
-.service-block__image {
-  margin-top: var(--space-lg);
-  padding-left: 5.35rem;
-  max-width: 320px;
-}
-
-.service-block__image img {
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: var(--shadow-md);
+  height: 4px;
+  background: linear-gradient(90deg, var(--canopy), var(--forest));
+  transform: scaleX(0);
+  transform-origin: left;
   transition: transform 0.4s var(--ease-out);
 }
 
-.service-block__image:hover img {
-  transform: scale(1.02);
+.service-card:hover::before {
+  transform: scaleX(1);
 }
 
-.service-block__photo-strip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
-  margin-top: var(--space-lg);
-  padding-left: 5.35rem;
-}
-
-.service-block__photo-strip--sub {
-  margin-top: var(--space-xl);
-}
-
-.service-block__photo {
-  border-radius: 10px;
-  overflow: hidden;
-  height: 140px;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s var(--ease-out);
-}
-
-.service-block__photo:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
-}
-
-.service-block__photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s var(--ease-out);
-}
-
-.service-block__photo:hover img {
-  transform: scale(1.08);
-}
-
-.service-block__gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
-  margin-top: var(--space-xl);
-  padding-left: 5.35rem;
-}
-
-.service-block__gallery-item {
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  height: 180px;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s var(--ease-out);
-}
-
-.service-block__gallery-item:hover {
+.service-card:hover {
+  border-color: var(--canopy);
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
 }
 
-.service-block__gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s var(--ease-out);
-}
-
-.service-block__gallery-item:hover img {
-  transform: scale(1.06);
-}
-
-.service-block__gallery-item span {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 8px 12px;
-  background: linear-gradient(transparent, rgba(10, 15, 13, 0.8));
-  color: var(--white);
+.service-card__number {
+  font-family: var(--font-display);
   font-size: 0.75rem;
-  font-weight: 500;
-}
-
-/* Detail cards */
-.service-block__details {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-lg);
-  margin-top: var(--space-xl);
-  padding-left: 5.35rem;
-}
-
-.detail-card {
-  padding: var(--space-lg);
-  background: var(--mist);
-  border-radius: 8px;
-  border-left: 3px solid var(--canopy);
-}
-
-.detail-card h4 {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--forest);
+  color: var(--canopy);
+  opacity: 0.5;
   margin-bottom: var(--space-sm);
 }
 
-.detail-card p {
-  font-size: 1rem;
-  color: var(--ink-light);
-}
-
-/* Markers table */
-.service-block__markers {
-  margin-top: var(--space-xl);
-  padding-left: 5.35rem;
-}
-
-.markers-title {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--slate);
-  margin-bottom: var(--space-md);
-}
-
-.markers-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.marker-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: var(--space-sm) var(--space-md);
-  font-size: 1rem;
-  background: var(--mist);
-  border-radius: 4px;
-}
-
-.marker-row:nth-child(even) {
-  background: var(--white);
-}
-
-.marker-group {
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.marker-value {
-  color: var(--forest);
-}
-
-.marker-reads {
-  color: var(--slate);
-  text-align: right;
-}
-
-/* Species tags */
-.service-block__species {
-  margin-top: var(--space-xl);
-  padding-left: 5.35rem;
-}
-
-.species-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-}
-
-.species-tag {
-  display: inline-block;
-  padding: var(--space-xs) var(--space-md);
+.service-card__icon {
+  width: 48px;
+  height: 48px;
+  color: var(--canopy);
+  padding: 10px;
   background: var(--canopy-glow);
-  border: 1px solid rgba(29, 172, 120, 0.15);
-  border-radius: 100px;
-  font-size: 0.95rem;
+  border-radius: 10px;
+  margin-bottom: var(--space-md);
+  transition: all 0.3s var(--ease-out);
+}
+
+.service-card:hover .service-card__icon {
+  background: var(--canopy);
+  color: var(--white);
+  transform: scale(1.05);
+}
+
+.service-card__title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: var(--space-md);
+  transition: color 0.3s var(--ease-out);
+}
+
+.service-card:hover .service-card__title {
   color: var(--forest);
 }
 
-.species-tag em {
-  font-style: italic;
-}
-
-.species-note {
-  margin-top: var(--space-md);
+.service-card__description {
+  color: var(--ink-light);
   font-size: 1rem;
-  color: var(--slate);
-  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
 }
 
-/* Cases */
-.service-block__cases {
-  margin-top: var(--space-xl);
-  padding-left: 5.35rem;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-.case-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  color: var(--ink-light);
-  font-size: 1.05rem;
-}
-
-.case-item svg {
+.service-card__arrow {
+  width: 24px;
+  height: 24px;
   color: var(--canopy);
-  flex-shrink: 0;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s var(--ease-out);
 }
 
-/* Examples */
-.service-block__examples {
-  margin-top: var(--space-lg);
-  padding-left: 5.35rem;
+.service-card:hover .service-card__arrow {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.examples-label {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--slate);
-}
-
-.examples-text {
-  margin-top: var(--space-xs);
-  font-size: 1.05rem;
-  color: var(--ink-light);
-  font-style: italic;
-}
-
-/* Pathogens */
-.service-block__pathogens {
-  margin-top: var(--space-lg);
-  padding-left: 5.35rem;
-}
-
-.service-block__pathogens p {
-  font-size: 1.05rem;
-  color: var(--ink-light);
-}
-
-.service-block__pathogens strong {
-  color: var(--ink);
-}
-
-.partner-note {
-  margin-top: var(--space-sm);
-  font-size: 1rem;
-  color: var(--canopy);
-  font-weight: 500;
-}
-
-/* CTA */
+/* ═══ CTA ═══ */
 .services-cta {
   padding: var(--space-3xl) 0 var(--space-4xl);
 }
@@ -703,7 +298,7 @@ const iconPaths: Record<string, string> = {
   position: relative;
 }
 
-/* ═══ BUTTONS (scoped repeat) ═══ */
+/* ═══ BUTTONS ═══ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -716,6 +311,7 @@ const iconPaths: Record<string, string> = {
   border-radius: 6px;
   cursor: pointer;
   border: none;
+  text-decoration: none;
   transition: all 0.3s var(--ease-out);
 }
 
@@ -757,50 +353,22 @@ const iconPaths: Record<string, string> = {
   background: var(--canopy);
 }
 
-.section-label--light { color: var(--canopy-light); }
-.section-label--light::before { background: var(--canopy-light); }
+.section-label--light { 
+  color: var(--canopy-light); 
+}
+
+.section-label--light::before { 
+  background: var(--canopy-light); 
+}
 
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 768px) {
-  .service-block__desc,
-  .service-block__details,
-  .service-block__markers,
-  .service-block__species,
-  .service-block__cases,
-  .service-block__examples,
-  .service-block__pathogens,
-  .service-block__image,
-  .service-block__photo-strip,
-  .service-block__gallery {
-    padding-left: 0;
-    margin-left: 0;
-  }
-
-  .service-block__photo-strip,
-  .service-block__gallery {
+  .services-grid__items {
     grid-template-columns: 1fr;
   }
 
-  .service-block__details {
-    grid-template-columns: 1fr;
-  }
-
-  .service-block__header {
-    flex-wrap: wrap;
-  }
-
-  .marker-row {
-    grid-template-columns: 1fr;
-    gap: 2px;
-  }
-
-  .marker-reads {
-    text-align: left;
-  }
-
-  .quality__card {
-    flex-direction: column;
-    padding: var(--space-lg);
+  .services-cta__inner {
+    padding: var(--space-2xl) var(--space-lg);
   }
 }
 </style>

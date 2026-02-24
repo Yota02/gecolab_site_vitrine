@@ -10,13 +10,14 @@ const messages = {
       press: 'Presse',
       contact: 'Contact'
     },
-    home: {
-      hero: {
-        subtitle: 'Génétique & Conservation',
-        lead: "De l'ADN environnemental à la conservation des espèces",
-        discoverServices: 'Découvrir nos services',
-        contactUs: 'Nous contacter'
-      },
+     home: {
+       hero: {
+         subtitle: 'Génétique & Conservation',
+         affiliation: 'Laboratoire Universitaire de Liège',
+         lead: "De l'ADN environnemental à la conservation des espèces",
+         discoverServices: 'Découvrir nos services',
+         contactUs: 'Nous contacter'
+       },
       intro: {
         sectionLabel: 'Qui sommes-nous',
         title: 'Un laboratoire reconnu internationalement, spécialisé dans l\'ADN environnemental',
@@ -260,13 +261,14 @@ const messages = {
       press: 'Press',
       contact: 'Contact'
     },
-    home: {
-      hero: {
-        subtitle: 'Genetics & Conservation',
-        lead: 'From environmental DNA to species conservation',
-        discoverServices: 'Discover our services',
-        contactUs: 'Contact us'
-      },
+     home: {
+       hero: {
+         subtitle: 'Genetics & Conservation',
+         affiliation: 'University Laboratory of Liège',
+         lead: 'From environmental DNA to species conservation',
+         discoverServices: 'Discover our services',
+         contactUs: 'Contact us'
+       },
       intro: {
         sectionLabel: 'Who we are',
         title: 'An internationally recognized laboratory, specialized in environmental DNA',
@@ -510,13 +512,14 @@ const messages = {
       press: 'Presse',
       contact: 'Kontakt'
     },
-    home: {
-      hero: {
-        subtitle: 'Genetik & Naturschutz',
-        lead: 'Von Umwelt-DNA zur Arterhaltung',
-        discoverServices: 'Unsere Dienstleistungen entdecken',
-        contactUs: 'Kontaktieren Sie uns'
-      },
+     home: {
+       hero: {
+         subtitle: 'Genetik & Naturschutz',
+         affiliation: 'Universitätslabor Lüttich',
+         lead: 'Von Umwelt-DNA zur Arterhaltung',
+         discoverServices: 'Unsere Dienstleistungen entdecken',
+         contactUs: 'Kontaktieren Sie uns'
+       },
       intro: {
         sectionLabel: 'Wer wir sind',
         title: 'Ein international anerkanntes Labor, spezialisiert auf Umwelt-DNA',
@@ -760,13 +763,14 @@ const messages = {
       press: 'Prensa',
       contact: 'Contacto'
     },
-    home: {
-      hero: {
-        subtitle: 'Genética & Conservación',
-        lead: 'Del ADN ambiental a la conservación de especies',
-        discoverServices: 'Descubra nuestros servicios',
-        contactUs: 'Contáctenos'
-      },
+     home: {
+       hero: {
+         subtitle: 'Genética & Conservación',
+         affiliation: 'Laboratorio Universitario de Lieja',
+         lead: 'Del ADN ambiental a la conservación de especies',
+         discoverServices: 'Descubra nuestros servicios',
+         contactUs: 'Contáctenos'
+       },
       intro: {
         sectionLabel: 'Quiénes somos',
         title: 'Un laboratorio reconocido internacionalmente, especializado en ADN ambiental',

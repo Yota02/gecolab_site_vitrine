@@ -14,6 +14,36 @@ const router = createRouter({
       component: () => import('@/views/ServicesView.vue'),
     },
     {
+      path: '/services/biodiversite',
+      name: 'service-biodiversite',
+      component: () => import('@/views/services/BiodiversiteView.vue'),
+    },
+    {
+      path: '/services/pcr-digitale',
+      name: 'service-pcr-digitale',
+      component: () => import('@/views/services/PcrDigitaleView.vue'),
+    },
+    {
+      path: '/services/regime',
+      name: 'service-regime',
+      component: () => import('@/views/services/RegimeView.vue'),
+    },
+    {
+      path: '/services/hybridation',
+      name: 'service-hybridation',
+      component: () => import('@/views/services/HybridationView.vue'),
+    },
+    {
+      path: '/services/effectifs',
+      name: 'service-effectifs',
+      component: () => import('@/views/services/EffectifsView.vue'),
+    },
+    {
+      path: '/services/pathogenes',
+      name: 'service-pathogenes',
+      component: () => import('@/views/services/PathogenesView.vue'),
+    },
+    {
       path: '/a-propos',
       name: 'about',
       component: () => import('@/views/AboutView.vue'),

@@ -90,20 +90,6 @@ onUnmounted(() => {
           <p class="hero__subtitle">
             {{ t('partners.hero.subtitle') }}
           </p>
-          <div class="hero__stats">
-            <div class="stat">
-              <div class="stat__number">{{ counts.total }}+</div>
-              <div class="stat__label">{{ t('partners.hero.partnersLabel') }}</div>
-            </div>
-            <div class="stat">
-              <div class="stat__number">{{ counts.institutions }}</div>
-              <div class="stat__label">{{ t('partners.hero.institutionsLabel') }}</div>
-            </div>
-            <div class="stat">
-              <div class="stat__number">{{ counts.bureaux }}</div>
-              <div class="stat__label">{{ t('partners.hero.associationsLabel') }}</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

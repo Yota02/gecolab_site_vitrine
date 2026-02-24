@@ -153,10 +153,10 @@ export const partnersData: PartnerData = {
     },
     {
       id: 'lutreola',
-      name: 'Lutreola',
+      name: 'Life Vison',
       category: 'bureaux',
       logo: getImagePath('images/partners/bureaux/lutreola.png'),
-      website: 'https://www.lutreola.fr',
+      website: 'https://lifevison.fr/',
       description: 'Association spécialisée dans la conservation du vison d\'Europe',
       logoUrl: 'https://www.lutreola.fr/wp-content/uploads/logo.png'
     }

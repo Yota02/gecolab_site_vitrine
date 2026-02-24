@@ -35,7 +35,6 @@ onMounted(() => {
 const stats = computed(() => [
   { value: '180+', label: t('home.stats.publications') },
   { value: '25+', label: t('home.stats.experience') },
-  { value: '7', label: t('home.stats.researchers') },
   { value: '10+', label: t('home.stats.species') },
 ])
 
@@ -71,6 +70,10 @@ const heroBgStyle = computed(() => ({
           <span class="hero__title-ge">Ge</span><span class="hero__title-co">Co</span><span class="hero__title-lab">LAB</span>
         </h1>
         <p class="hero__subtitle">{{ t('home.hero.subtitle') }}</p>
+        <div class="hero__affiliation">
+          <img :src="getImagePath('images/logos/liege.png')" alt="Logo Université de Liège" class="hero__logo">
+          <span>{{ t('home.hero.affiliation') }}</span>
+        </div>
         <p class="hero__lead">
           {{ t('home.hero.lead') }}
         </p>
@@ -328,6 +331,29 @@ const heroBgStyle = computed(() => ({
   font-style: italic;
   font-weight: 600;
   filter: brightness(1.4);
+}
+
+.hero__affiliation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  animation: fadeSlideUp 0.8s var(--ease-out) both;
+  animation-delay: 0.45s;
+}
+
+.hero__logo {
+  height: 24px;
+  width: auto;
+  opacity: 0.9;
+}
+
+.hero__affiliation span {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .hero__lead {
