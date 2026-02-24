@@ -181,28 +181,9 @@ onUnmounted(() => {
           </svg>
           {{ t('partners.tooltip.visitWebsite') }}
         </div>
-      </div>
-    </Transition>
+  </div>
+</Transition>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-      <div class="cta-section__bg"></div>
-      <div class="container">
-        <div class="cta-content">
-          <h2 class="cta-title">{{ t('partners.cta.title') }}</h2>
-          <p class="cta-text">
-            {{ t('partners.cta.text') }}
-          </p>
-          <RouterLink to="/contact" class="cta-btn">
-            {{ t('partners.cta.button') }}
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <line x1="5" y1="12" x2="19" y2="12" stroke-width="2" stroke-linecap="round"/>
-              <polyline points="12 5 19 12 12 19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </RouterLink>
-        </div>
-      </div>
-    </section>
   </div>
 </template>
 
@@ -229,7 +210,7 @@ onUnmounted(() => {
 }
 
 .hero__title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   color: white;
   margin: var(--space-md) 0 var(--space-lg);
@@ -237,7 +218,7 @@ onUnmounted(() => {
 }
 
 .hero__subtitle {
-  font-size: 1.125rem;
+  font-size: 1.35rem;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.7;
   margin-bottom: var(--space-2xl);
@@ -255,14 +236,14 @@ onUnmounted(() => {
 }
 
 .stat__number {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   color: var(--canopy);
   line-height: 1;
 }
 
 .stat__label {
-  font-size: 0.875rem;
+  font-size: 1.05rem;
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -290,7 +271,7 @@ onUnmounted(() => {
   border: 2px solid var(--forest);
   background: white;
   color: var(--forest);
-  font-size: 0.9375rem;
+  font-size: 1.125rem;
   font-weight: 600;
   border-radius: 50px;
   cursor: pointer;
@@ -319,7 +300,7 @@ onUnmounted(() => {
   padding: 0 var(--space-xs);
   background: rgba(255, 255, 255, 0.2);
   border-radius: 12px;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
@@ -448,14 +429,14 @@ onUnmounted(() => {
 }
 
 .tooltip__name {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--canopy);
   margin: 0 0 var(--space-xs);
 }
 
 .tooltip__description {
-  font-size: 0.875rem;
+  font-size: 1.05rem;
   color: rgba(255, 255, 255, 0.85);
   line-height: 1.5;
   margin: 0 0 var(--space-sm);
@@ -465,7 +446,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   gap: var(--space-xs);
-  font-size: 0.8125rem;
+  font-size: 0.98rem;
   color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
 }
@@ -485,69 +466,6 @@ onUnmounted(() => {
   transform: translateY(-5px);
 }
 
-/* ═══ CTA SECTION ═══ */
-.cta-section {
-  position: relative;
-  padding: var(--space-4xl) 0;
-  overflow: hidden;
-}
-
-.cta-section__bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--forest), var(--canopy));
-}
-
-.cta-content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.cta-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: white;
-  margin: 0 0 var(--space-md);
-}
-
-.cta-text {
-  font-size: 1.125rem;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.7;
-  margin: 0 0 var(--space-xl);
-}
-
-.cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-md) var(--space-xl);
-  background: white;
-  color: var(--forest);
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-}
-
-.cta-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-}
-
-.cta-btn svg {
-  stroke: var(--forest);
-  transition: transform 0.3s ease;
-}
-
-.cta-btn:hover svg {
-  transform: translateX(4px);
-}
-
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 1200px) {
   .partners-grid {
@@ -557,11 +475,11 @@ onUnmounted(() => {
 
 @media (max-width: 768px) {
   .hero__title {
-    font-size: 2rem;
+    font-size: 2.4rem;
   }
 
   .hero__subtitle {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .hero__stats {
@@ -569,7 +487,7 @@ onUnmounted(() => {
   }
 
   .stat__number {
-    font-size: 2rem;
+    font-size: 2.4rem;
   }
 
   .filters {
@@ -578,20 +496,12 @@ onUnmounted(() => {
 
   .filter-btn {
     padding: var(--space-xs) var(--space-md);
-    font-size: 0.875rem;
+    font-size: 1.05rem;
   }
 
   .partners-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-md);
-  }
-
-  .cta-title {
-    font-size: 1.5rem;
-  }
-
-  .cta-text {
-    font-size: 1rem;
   }
 }
 
@@ -611,7 +521,7 @@ onUnmounted(() => {
 
   .tooltip {
     max-width: 280px;
-    font-size: 0.875rem;
+    font-size: 1.05rem;
   }
 }
 </style>

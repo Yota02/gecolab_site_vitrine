@@ -13,8 +13,8 @@ const { t } = useI18n()
         <defs>
           <linearGradient id="footerGrad" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stop-color="transparent"/>
-            <stop offset="30%" stop-color="#1DAC78"/>
-            <stop offset="70%" stop-color="#1DAC78"/>
+            <stop offset="30%" stop-color="#22C55E"/>
+            <stop offset="70%" stop-color="#22C55E"/>
             <stop offset="100%" stop-color="transparent"/>
           </linearGradient>
         </defs>

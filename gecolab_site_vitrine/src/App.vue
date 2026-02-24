@@ -29,10 +29,10 @@ watch(locale, (newLocale) => {
 :root {
   /* Core palette */
   --obsidian: #0a0f0d;
-  --forest: #0B3D2E;
-  --forest-mid: #0d5a3a;
-  --canopy: #1DAC78;
-  --canopy-light: #2ee89e;
+  --forest: #0A4A2E;
+  --forest-mid: #0e7a4a;
+  --canopy: #22C55E;
+  --canopy-light: #34D399;
   --canopy-glow: rgba(29, 172, 120, 0.15);
   --canopy-glow-strong: rgba(29, 172, 120, 0.3);
   --parchment: #F7F5F0;
@@ -44,7 +44,7 @@ watch(locale, (newLocale) => {
   --white: #ffffff;
 
   /* Typography */
-  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-display: 'Source Serif Pro', Georgia, serif;
   --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
 
   /* Spacing scale */
@@ -87,7 +87,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.7;
   color: var(--ink);
   background: var(--parchment);

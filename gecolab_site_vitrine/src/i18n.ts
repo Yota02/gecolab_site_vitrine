@@ -130,7 +130,7 @@ const messages = {
       },
       cta: {
         title: 'Besoin d\'un devis personnalisé ?',
-        text: 'Contactez-nous avec votre thématique, le nombre et type d\'échantillons.',
+        text: '',
         button: 'Nous contacter'
       }
     },
@@ -380,7 +380,7 @@ const messages = {
       },
       cta: {
         title: 'Need a personalized quote?',
-        text: 'Contact us with your theme, number and type of samples.',
+        text: '',
         button: 'Contact us'
       }
     },
@@ -630,7 +630,7 @@ const messages = {
       },
       cta: {
         title: 'Brauchen Sie ein personalisiertes Angebot?',
-        text: 'Kontaktieren Sie uns mit Ihrem Thema, Anzahl und Art der Proben.',
+        text: '',
         button: 'Kontaktieren Sie uns'
       }
     },
@@ -880,7 +880,7 @@ const messages = {
       },
       cta: {
         title: '¿Necesita un presupuesto personalizado?',
-        text: 'Contáctenos con su tema, número y tipo de muestras.',
+        text: '',
         button: 'Contáctenos'
       }
     },

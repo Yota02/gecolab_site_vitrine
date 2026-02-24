@@ -1,12 +1,32 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
 const visible = ref(false)
+const parallaxOffset = ref(0)
+const heroBgRef = ref<HTMLElement>()
+
 onMounted(() => {
   requestAnimationFrame(() => { visible.value = true })
+  
+  // Parallax scroll handler
+  const handleScroll = () => {
+    if (heroBgRef.value) {
+      const scrolled = window.pageYOffset
+      // Parallax factor: move at 30% of scroll speed for subtle effect
+      parallaxOffset.value = scrolled * 0.3
+    }
+  }
+  
+  // Add scroll listener
+  window.addEventListener('scroll', handleScroll, { passive: true })
+  
+  // Store cleanup function
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+  })
 })
 
 const stats = computed(() => [
@@ -21,7 +41,7 @@ const stats = computed(() => [
   <div class="home" :class="{ visible }">
     <!-- ═══ HERO ═══ -->
     <section class="hero">
-      <div class="hero__bg">
+      <div class="hero__bg" ref="heroBgRef" :style="{ '--parallax-y': `${parallaxOffset}px` }">
         <div class="hero__gradient"></div>
         <div class="hero__noise"></div>
         <!-- DNA decorative helix -->
@@ -173,16 +193,27 @@ const stats = computed(() => [
 .hero__bg {
   position: absolute;
   inset: 0;
-  background: var(--obsidian) url('/images/services/loutre.jpg') no-repeat center center / cover;
+  overflow: hidden;
+}
+
+.hero__bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--obsidian) url('/images/services/loutre2.jpg') no-repeat center center / cover;
+  will-change: transform;
+  transform: translateY(var(--parallax-y, 0));
 }
 
 .hero__gradient {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(11, 61, 46, 0.6) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 50% at 80% 60%, rgba(29, 172, 120, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(12, 36, 96, 0.15) 0%, transparent 60%);
+    /* Overlay plus sombre pour améliorer la lisibilité */
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(11, 61, 46, 0.7) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 80% 60%, rgba(29, 172, 120, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(12, 36, 96, 0.2) 0%, transparent 60%);
 }
 
 .hero__noise {
@@ -250,38 +281,56 @@ const stats = computed(() => [
   margin-top: var(--space-xl);
   animation: fadeSlideUp 0.8s var(--ease-out) both;
   animation-delay: 0.25s;
+  /* Amélioration de la visibilité du titre */
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-.hero__title-ge { color: #000; }
-.hero__title-co { color: var(--canopy); }
+.hero__title-ge { 
+  color: #fff; 
+  font-weight: 700;
+}
+.hero__title-co { 
+  color: var(--canopy); 
+  filter: brightness(1.3);
+}
 .hero__title-lab {
-  color: #333;
+  color: #fff;
   font-size: 0.6em;
   letter-spacing: 0.15em;
+  font-weight: 600;
 }
 
 .hero__subtitle {
   font-family: var(--font-display);
   font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-  color: #333;
+  color: #fff;
   margin-top: var(--space-md);
   animation: fadeSlideUp 0.8s var(--ease-out) both;
   animation-delay: 0.4s;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  font-weight: 500;
 }
 
 .hero__subtitle em {
-  color: var(--canopy);
+  color: var(--canopy-light);
   font-style: italic;
+  font-weight: 600;
+  filter: brightness(1.4);
 }
 
 .hero__lead {
   max-width: 540px;
   margin: var(--space-xl) auto 0;
   font-size: 1.05rem;
-  color: #555;
+  color: rgba(255, 255, 255, 0.95);
   line-height: 1.8;
   animation: fadeSlideUp 0.8s var(--ease-out) both;
   animation-delay: 0.55s;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-weight: 400;
 }
 
 .hero__actions {
@@ -401,15 +450,17 @@ const stats = computed(() => [
 }
 
 .btn--ghost {
-  background: transparent;
-  color: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 600;
 }
 
 .btn--ghost:hover {
   color: var(--white);
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
 }
 
 .btn--lg {
@@ -420,7 +471,7 @@ const stats = computed(() => [
 /* ═══ SECTION PRIMITIVES ═══ */
 .section-label {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -476,7 +527,7 @@ const stats = computed(() => [
 .intro__text p {
   margin-top: var(--space-lg);
   color: var(--ink-light);
-  font-size: 0.95rem;
+  font-size: 1.1rem;
 }
 
 .intro__text strong {
@@ -532,14 +583,14 @@ const stats = computed(() => [
 
 .intro__highlight-card h3 {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: var(--ink);
   margin-bottom: var(--space-md);
 }
 
 .intro__highlight-card p {
   color: var(--ink-light);
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1.7;
 }
 
@@ -554,24 +605,28 @@ const stats = computed(() => [
   overflow: hidden;
 }
 
+.specialty .section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
 .specialty__bg {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(135deg, var(--obsidian) 0%, var(--forest) 50%, #0a2a1e 100%);
+    linear-gradient(135deg, var(--obsidian) 0%, var(--forest) 50%, #0A4A2E 100%);
 }
 
 .specialty__bg::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231DAC78' fill-opacity='0.03'%3E%3Cpath d='M0 0h20v20H0z'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2322C55E' fill-opacity='0.03'%3E%3Cpath d='M0 0h20v20H0z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .specialty__inner {
   position: relative;
   z-index: 1;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   text-align: center;
 }
@@ -579,7 +634,7 @@ const stats = computed(() => [
 .specialty__text {
   margin-top: var(--space-xl);
   color: rgba(255, 255, 255, 0.65);
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   line-height: 1.8;
   max-width: 700px;
   margin-left: auto;
@@ -595,7 +650,7 @@ const stats = computed(() => [
 
 .specialty__method {
   text-align: center;
-  padding: var(--space-xl) var(--space-lg);
+  padding: var(--space-2xl) var(--space-lg);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(29, 172, 120, 0.1);
@@ -610,7 +665,7 @@ const stats = computed(() => [
 
 .specialty__method-img {
   width: 100%;
-  height: 120px;
+  height: 360px;
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: var(--space-md);
@@ -632,12 +687,12 @@ const stats = computed(() => [
 .specialty__method h4 {
   font-family: var(--font-display);
   color: var(--white);
-  font-size: 1.05rem;
+  font-size: 1.5rem;
   margin-bottom: var(--space-sm);
 }
 
 .specialty__method p {
-  font-size: 0.85rem;
+  font-size: 1.15rem;
   color: rgba(255, 255, 255, 0.5);
   line-height: 1.6;
 }

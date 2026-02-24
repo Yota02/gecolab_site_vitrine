@@ -10,7 +10,7 @@ const team = [
     bio: 'Docteur en Sciences de l\'Université de Liège, directeur de recherches au FNRS. Spécialiste de l\'utilisation des outils génétiques pour l\'étude de la biodiversité depuis plus de 30 ans. Auteur de plus de 180 articles scientifiques internationaux. Membre des conseils scientifiques des plans nationaux d\'action pour le vison d\'Europe, le desman des Pyrénées et la loutre européenne.',
     photo: '/images/team/johan-michaux.png',
     initials: 'JM',
-    color: '#0B3D2E',
+    color: '#0A4A2E',
   },
   {
     name: 'Adrien André',
@@ -18,7 +18,7 @@ const team = [
     bio: 'Doctorat sur l\'expansion géographique de Peromyscus leucopus au Canada (McGill). Expert en séquençage nouvelle génération et détection de pathogènes (Borrelia). Responsable des pipelines bio-informatiques du laboratoire. Développe de nouveaux projets utilisant la technologie de PCR digitale.',
     photo: '/images/team/adrien-andre.jpg',
     initials: 'AA',
-    color: '#1DAC78',
+    color: '#22C55E',
   },
   {
     name: 'Anaïs Beaumariage',
@@ -26,7 +26,7 @@ const team = [
     bio: 'A rejoint le GeCoLab en 2024. Coordonne des projets allant de l\'identification d\'espèces cryptiques au suivi de la dynamique des populations. Travaille sur le chat forestier, lynx, chauves-souris, castor, loutre, loup, desman des Pyrénées, triton crêté et gastéropodes. Engagée dans la vulgarisation scientifique.',
     photo: '/images/team/anais-beaumariage.jpg',
     initials: 'AB',
-    color: '#2ee89e',
+    color: '#34D399',
   },
   {
     name: 'Jonathan Drugmand',
@@ -50,7 +50,7 @@ const team = [
     bio: 'Après un mémoire sur le sanglier en Wallonie, il réalise sa thèse au sein du laboratoire. Spécialiste du sanglier et du raton-laveur. Utilise des approches métagénomiques pour étudier les prévalences des pathogènes zoonotiques bactériens dans les populations.',
     photo: '/images/team/jerome-vandromme.jpg',
     initials: 'JV',
-    color: '#0d5a3a',
+    color: '#0e7a4a',
   },
   {
     name: 'Pauline Van Leeuwen',
@@ -58,7 +58,7 @@ const team = [
     bio: 'Chercheuse postdoctorale en écologie et sciences du microbiome, à l\'interface entre conservation de la biodiversité, interactions hôte-microbiome et approche One Health. Impliquée au GeCoLab depuis 2017. Ses travaux actuels combinent eDNA, métagénomique et écologie de terrain.',
     photo: '/images/team/pauline-van-leeuwen.jpg',
     initials: 'PVL',
-    color: '#1a6b50',
+    color: '#1a8b5a',
   },
 ]
 </script>
@@ -171,7 +171,7 @@ const team = [
   max-width: 550px;
   margin-top: var(--space-lg);
   color: rgba(255, 255, 255, 0.55);
-  font-size: 1.05rem;
+  font-size: 1.26rem;
   line-height: 1.7;
   animation: fadeSlideUp 0.7s var(--ease-out) both;
   animation-delay: 0.15s;
@@ -179,7 +179,7 @@ const team = [
 
 .section-label {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 0.84rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -204,7 +204,7 @@ const team = [
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: clamp(2.1rem, 4.8vw, 3rem);
   line-height: 1.2;
   color: var(--ink);
   max-width: 600px;
@@ -227,7 +227,7 @@ const team = [
 .whoweare__main p {
   margin-top: var(--space-lg);
   color: var(--ink-light);
-  font-size: 0.95rem;
+  font-size: 1.14rem;
 }
 
 .whoweare__main strong {
@@ -276,14 +276,14 @@ const team = [
 
 .difference-card h3 {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: var(--ink);
   margin-bottom: var(--space-md);
 }
 
 .difference-card p {
   color: var(--ink-light);
-  font-size: 0.9rem;
+  font-size: 1.08rem;
   line-height: 1.7;
 }
 
@@ -304,7 +304,7 @@ const team = [
   padding: var(--space-md);
   background: var(--canopy-glow);
   border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: 1.02rem;
   color: var(--forest);
   line-height: 1.6;
 }
@@ -332,7 +332,7 @@ const team = [
 .team__intro {
   margin-top: var(--space-md);
   color: var(--slate);
-  font-size: 0.95rem;
+  font-size: 1.14rem;
 }
 
 .team__grid {
@@ -394,13 +394,13 @@ const team = [
 
 .member-card__info h3 {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.32rem;
   color: var(--ink);
 }
 
 .member-card__role {
   display: block;
-  font-size: 0.78rem;
+  font-size: 0.936rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -410,7 +410,7 @@ const team = [
 }
 
 .member-card__info p {
-  font-size: 0.83rem;
+  font-size: 1rem;
   color: var(--ink-light);
   line-height: 1.65;
 }

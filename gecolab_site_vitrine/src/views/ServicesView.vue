@@ -244,20 +244,6 @@ const iconPaths: Record<string, string> = {
         </div>
       </div>
     </section>
-
-    <!-- CTA -->
-    <section class="services-cta">
-      <div class="container">
-        <div class="services-cta__inner">
-          <h2>{{ t('services.cta.title') }}</h2>
-          <p>{{ t('services.cta.text') }}</p>
-          <RouterLink to="/contact" class="btn btn--primary btn--lg">
-            {{ t('services.cta.button') }}
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </RouterLink>
-        </div>
-      </div>
-    </section>
   </div>
 </template>
 
@@ -301,7 +287,7 @@ const iconPaths: Record<string, string> = {
   max-width: 550px;
   margin-top: var(--space-lg);
   color: rgba(255, 255, 255, 0.55);
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   line-height: 1.7;
   animation: fadeSlideUp 0.7s var(--ease-out) both;
   animation-delay: 0.15s;
@@ -340,7 +326,7 @@ const iconPaths: Record<string, string> = {
 .quality__text p {
   margin-top: var(--space-sm);
   color: var(--ink-light);
-  font-size: 0.9rem;
+  font-size: 1.05rem;
 }
 
 .quality__text strong {
@@ -397,7 +383,7 @@ const iconPaths: Record<string, string> = {
 
 .service-block__desc {
   color: var(--ink-light);
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   max-width: 750px;
   padding-left: 3.75rem;
   margin-left: 1.6rem;
@@ -528,7 +514,7 @@ const iconPaths: Record<string, string> = {
 }
 
 .detail-card p {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--ink-light);
 }
 
@@ -557,7 +543,7 @@ const iconPaths: Record<string, string> = {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: var(--space-sm) var(--space-md);
-  font-size: 0.85rem;
+  font-size: 1rem;
   background: var(--mist);
   border-radius: 4px;
 }
@@ -598,7 +584,7 @@ const iconPaths: Record<string, string> = {
   background: var(--canopy-glow);
   border: 1px solid rgba(29, 172, 120, 0.15);
   border-radius: 100px;
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   color: var(--forest);
 }
 
@@ -608,7 +594,7 @@ const iconPaths: Record<string, string> = {
 
 .species-note {
   margin-top: var(--space-md);
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--slate);
   font-style: italic;
 }
@@ -627,7 +613,7 @@ const iconPaths: Record<string, string> = {
   align-items: center;
   gap: var(--space-sm);
   color: var(--ink-light);
-  font-size: 0.9rem;
+  font-size: 1.05rem;
 }
 
 .case-item svg {
@@ -651,7 +637,7 @@ const iconPaths: Record<string, string> = {
 
 .examples-text {
   margin-top: var(--space-xs);
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   color: var(--ink-light);
   font-style: italic;
 }
@@ -663,7 +649,7 @@ const iconPaths: Record<string, string> = {
 }
 
 .service-block__pathogens p {
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   color: var(--ink-light);
 }
 
@@ -673,7 +659,7 @@ const iconPaths: Record<string, string> = {
 
 .partner-note {
   margin-top: var(--space-sm);
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--canopy);
   font-weight: 500;
 }
