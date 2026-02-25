@@ -1,15 +1,19 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 const visible = ref(false)
 
-// Liste des vidéos Facebook
-const videos = [
+// Gestion de la pagination
+const itemsPerPage = 9
+const currentPage = ref(1)
+
+// Liste des vidéos (votre liste originale)
+const allVideos = [
   { id: 1, url: 'https://www.facebook.com/share/v/1CQMbCsrtF/?mibextid=wwXIfr', title: 'Vidéo 1', loaded: false },
   { id: 2, url: 'https://www.facebook.com/share/v/1D6Sy18bnr/?mibextid=wwXIfr', title: 'Vidéo 2', loaded: false },
-  { id: 3, url: 'https://www.facebook.com/share/v/1CD3bkVnEw/?mibextid=wwXIfr', title: 'Comment observe-t-on la biodiversité 🔎 ? Les techniques ont-elles évolué ?', loaded: false },
+  { id: 3, url: 'https://www.facebook.com/share/v/1CD3bkVnEw/?mibextid=wwXIfr', title: 'Comment observe-t-on la biodiversité 🔎 ?', loaded: false },
   { id: 4, url: 'https://www.facebook.com/share/v/1CRFUTDgej/?mibextid=wwXIfr', title: 'Le triton crêté', loaded: false },
   { id: 5, url: 'https://www.facebook.com/share/v/1CjqsqDtrt/?mibextid=wwXIfr', title: 'Le castor européen 🦫', loaded: false },
   { id: 6, url: 'https://www.facebook.com/share/v/18AuTgFCs7/?mibextid=wwXIfr', title: 'Le hibou grand-duc 🦉', loaded: false },
@@ -40,53 +44,63 @@ const videos = [
   { id: 31, url: 'https://www.facebook.com/share/v/1ApbBg7qSt/?mibextid=wwXIfr', title: 'Vidéo 31', loaded: false },
 ]
 
+// Vidéos actuellement affichées (pagination)
+const displayedVideos = computed(() => {
+  return allVideos.slice(0, currentPage.value * itemsPerPage)
+})
+
+const hasMoreVideos = computed(() => {
+  return displayedVideos.value.length < allVideos.length
+})
+
+const loadMore = () => {
+  currentPage.value++
+}
+
 const loadVideo = (video: any) => {
   video.loaded = true
 }
 
 onMounted(() => {
   requestAnimationFrame(() => { visible.value = true })
-  
-  // Ne charger aucun iframe par défaut pour éviter les problèmes de thumbnail
 })
 </script>
 
 <template>
   <div class="vulgarisation" :class="{ visible }">
-    <!-- HERO -->
     <section class="hero">
-      <div class="hero__bg">
-        <div class="hero__gradient"></div>
-      </div>
+      <div class="hero__bg"></div>
       
       <div class="hero__content container">
-        <span class="section-label section-label--light">Vulgarisation Scientifique</span>
-        <h1 class="hero__title">Vidéos de Vulgarisation</h1>
+        <span class="section-label section-label--light">Médiation Scientifique</span>
+        <h1 class="hero__title">Comprendre le vivant</h1>
         <p class="hero__lead">
-          Découvrez nos vidéos de vulgarisation scientifique sur la génétique de la conservation et l'écologie moléculaire.
+          Plongez au cœur de la génétique de la conservation et de l'écologie moléculaire à travers nos capsules vidéos et articles.
         </p>
       </div>
     </section>
 
-    <!-- ARTICLE FEATURE -->
     <section class="featured-article">
       <div class="container">
         <div class="article-card">
-          <div class="article-card__image">
-            <img src="https://static-content.rtbf.be/article/image/770x433/6/4/a/f0d7f242d660afe4d2cbb48f04ed9139.jpg?webp=1" alt="Raton laveur" loading="lazy">
+          <div class="article-card__image-wrapper">
+            <img src="https://static-content.rtbf.be/article/image/770x433/6/4/a/f0d7f242d660afe4d2cbb48f04ed9139.jpg?webp=1" alt="Raton laveur" loading="lazy" class="article-card__img">
           </div>
           <div class="article-card__content">
             <div class="article-card__header">
-              <span class="article-card__badge">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M2 3h12M2 8h12M2 13h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <span class="badge badge--rtbf">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2z"></path>
+                  <line x1="16" y1="11.37" x2="16" y2="17.37"></line>
+                  <line x1="12" y1="6.37" x2="12" y2="17.37"></line>
+                  <line x1="8" y1="11.37" x2="8" y2="17.37"></line>
                 </svg>
                 Article RTBF
               </span>
-              <span class="article-card__author">Johan Michaux</span>
+              <span class="article-card__meta">Par Johan Michaux</span>
             </div>
-            <h2>Le raton laveur : une espèce encombrante pour la biodiversité européenne</h2>
-            <p>
+            <h2 class="article-card__title">Le raton laveur : une espèce encombrante pour la biodiversité européenne</h2>
+            <p class="article-card__excerpt">
               Johan Michaux évoque au travers du cas du raton laveur, les problématiques liées à l'introduction 
               d'espèces exotiques dans la préservation de la biodiversité locale.
             </p>
@@ -97,8 +111,8 @@ onMounted(() => {
               class="btn btn--primary"
             >
               Lire l'article complet
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </a>
           </div>
@@ -106,75 +120,73 @@ onMounted(() => {
       </div>
     </section>
 
-    <!-- VIDEO GRID -->
     <section class="videos">
       <div class="container">
-        <div class="videos__intro">
-          <h2 class="section-title">Explorez notre bibliothèque vidéo</h2>
-          <p>Cliquez sur une vidéo pour la visionner sur Facebook</p>
+        <div class="videos__header">
+          <h2 class="section-title">Vidéothèque</h2>
+          <p class="section-subtitle">Découvrez nos dernières observations et analyses.</p>
         </div>
         
         <div class="videos__grid">
           <div 
-            v-for="video in videos" 
+            v-for="video in displayedVideos" 
             :key="video.id"
             class="video-card"
+            :class="{ 'is-loaded': video.loaded }"
           >
-            <div class="video-card__thumbnail">
-              <iframe 
-                :src="`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.url)}&show_text=false&width=300&height=200&autoplay=false&mute=false`"
-                width="100%" 
-                height="200" 
-                style="border:none;overflow:hidden" 
-                scrolling="no" 
-                frameborder="0" 
-                allowfullscreen="true" 
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                allowFullScreen="true"
-              ></iframe>
-              <div class="video-card__overlay" v-if="!video.loaded">
-                <div class="video-card__play" @click="loadVideo(video)">
-                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                    <circle cx="24" cy="24" r="24" fill="rgba(255, 255, 255, 0.9)"/>
-                    <path d="M19 14v20l15-10z" fill="currentColor"/>
+            <div class="video-card__aspect-ratio">
+              <div class="video-card__placeholder" v-if="!video.loaded" @click="loadVideo(video)">
+                <div class="video-card__placeholder-bg"></div>
+                <div class="video-card__play-btn">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
                   </svg>
                 </div>
+                <span class="video-card__hint">Cliquez pour charger la vidéo</span>
               </div>
+
+              <transition name="fade">
+                <iframe 
+                  v-if="video.loaded"
+                  :src="`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.url)}&show_text=false&width=500&autoplay=true`"
+                  style="border:none;overflow:hidden" 
+                  scrolling="no" 
+                  frameborder="0" 
+                  allowfullscreen="true" 
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  class="video-card__iframe"
+                ></iframe>
+              </transition>
             </div>
-            <div class="video-card__content">
-              <h3>{{ video.title }}</h3>
-              <div class="video-card__actions">
-                <a 
-                  :href="video.url"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="video-card__link"
-                >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-                  </svg>
-                  Voir sur Facebook
-                </a>
-              </div>
+
+            <div class="video-card__body">
+              <h3 class="video-card__title">{{ video.title }}</h3>
+              <a :href="video.url" target="_blank" rel="noopener noreferrer" class="video-card__link">
+                Voir sur Facebook 
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
           </div>
+        </div>
+
+        <div class="videos__pagination" v-if="hasMoreVideos">
+          <button @click="loadMore" class="btn btn--outline">
+            Voir plus de vidéos
+            <span class="btn-count">({{ allVideos.length - displayedVideos.length }} restantes)</span>
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta">
+    <section class="cta-section">
       <div class="container">
-        <div class="cta__card">
-          <div class="cta__content">
-            <h2>Vous avez des questions sur nos recherches ?</h2>
-            <p>N'hésitez pas à nous contacter pour en savoir plus sur nos projets et nos services.</p>
+        <div class="cta-box">
+          <div class="cta-box__content">
+            <h2>Une question scientifique ?</h2>
+            <p>Notre équipe est disponible pour échanger sur nos travaux de recherche.</p>
           </div>
-          <RouterLink to="/contact" class="btn btn--primary btn--lg">
+          <RouterLink to="/contact" class="btn btn--white">
             Contactez-nous
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
           </RouterLink>
         </div>
       </div>
@@ -183,536 +195,437 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* HERO */
-.hero {
-  position: relative;
-  padding: calc(var(--nav-height) + var(--space-4xl)) 0 var(--space-4xl);
-  overflow: hidden;
-  min-height: 50vh;
-  display: flex;
-  align-items: center;
+/* VARIABLES (À adapter selon votre Design System) */
+.vulgarisation {
+  --color-primary: #106f4c; /* Vert forêt */
+  --color-primary-dark: #0a4a33;
+  --color-secondary: #e8f5e9;
+  --color-text: #1f2937;
+  --color-text-light: #6b7280;
+  --color-bg-light: #f9fafb;
+  --color-white: #ffffff;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
 }
 
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--obsidian) 0%, var(--forest) 50%, #0A4A2E 100%);
-}
-
-.hero__gradient {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(11, 61, 46, 0.6) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 50% at 80% 60%, rgba(29, 172, 120, 0.15) 0%, transparent 60%);
-}
-
-.hero__content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-}
-
-.section-label {
-  display: inline-block;
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--canopy);
-  margin-bottom: var(--space-md);
-  position: relative;
-  padding-left: 24px;
-}
-
-.section-label::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 1px;
-  background: var(--canopy);
-}
-
-.section-label--light {
-  color: var(--canopy-light);
-}
-
-.section-label--light::before {
-  background: var(--canopy-light);
-}
-
-.hero__title {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  line-height: 1.1;
-  color: var(--white);
-  margin-bottom: var(--space-lg);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.hero__lead {
-  max-width: 640px;
+/* BASE */
+.container {
+  max-width: 1200px;
   margin: 0 auto;
-  font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.7;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 0 1.5rem;
 }
 
-/* FEATURED ARTICLE */
-.featured-article {
-  padding: var(--space-4xl) 0;
-  background: var(--white);
-}
-
-.article-card {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: var(--space-3xl);
-  align-items: center;
-  background: var(--mist);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--bone);
-}
-
-.article-card__image {
-  width: 100%;
-  height: 100%;
-  min-height: 400px;
-  overflow: hidden;
-}
-
-.article-card__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s var(--ease-out);
-}
-
-.article-card:hover .article-card__image img {
-  transform: scale(1.05);
-}
-
-.article-card__content {
-  padding: var(--space-3xl);
-}
-
-.article-card__header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  margin-bottom: var(--space-lg);
-}
-
-.article-card__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  background: rgba(29, 172, 120, 0.1);
-  color: var(--forest);
-  border-radius: 100px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  border: 1px solid rgba(29, 172, 120, 0.2);
-}
-
-.article-card__author {
-  color: var(--slate);
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.article-card__content h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  line-height: 1.3;
-  color: var(--ink);
-  margin-bottom: var(--space-lg);
-}
-
-.article-card__content p {
-  color: var(--slate);
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: var(--space-xl);
-}
-
-/* VIDEOS SECTION */
-.videos {
-  padding: var(--space-4xl) 0;
-  background: var(--mist);
-}
-
-.videos__intro {
-  text-align: center;
-  margin-bottom: var(--space-3xl);
-}
-
-.section-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  line-height: 1.2;
-  color: var(--ink);
-  margin-bottom: var(--space-md);
-}
-
-.videos__intro p {
-  color: var(--slate);
-  font-size: 1.1rem;
-}
-
-.videos__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--space-xl);
-}
-
-/* EMPTY STATE */
-.videos__empty {
-  display: flex;
-  justify-content: center;
-  padding: var(--space-4xl) 0;
-}
-
-.empty-state {
-  text-align: center;
-  max-width: 500px;
-}
-
-.empty-state svg {
-  color: var(--canopy);
-  margin-bottom: var(--space-xl);
-  opacity: 0.7;
-}
-
-.empty-state h3 {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--ink);
-  margin-bottom: var(--space-md);
-}
-
-.empty-state p {
-  color: var(--slate);
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-/* VIDEO CARD */
-.video-card {
-  display: block;
-  background: var(--white);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--bone);
-  transition: all 0.3s var(--ease-out);
-}
-
-.video-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--canopy);
-}
-
-.video-card__thumbnail {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; /* 16:9 ratio */
-  background: linear-gradient(135deg, var(--forest) 0%, var(--canopy) 100%);
-  overflow: hidden;
-}
-
-.video-card iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 8px 8px 0 0;
-}
-
-.video-card__overlay {
-  position: absolute;
-  inset: 0;
-  background: 
-    radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.3) 100%),
-    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M0 0h30v30H0z'/%3E%3C/g%3E%3C/svg%3E");
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.3s var(--ease-out);
-  cursor: pointer;
-  z-index: 2;
-}
-
-.video-card:hover .video-card__overlay {
-  opacity: 0;
-}
-
-.video-card__play {
-  color: var(--forest);
-  transition: all 0.3s var(--ease-out);
-  cursor: pointer;
-}
-
-.video-card__play:hover {
-  transform: scale(1.1);
-}
-
-.video-card__content {
-  padding: var(--space-lg);
-}
-
-.video-card__content h3 {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  color: var(--ink);
-  margin-bottom: var(--space-sm);
-  transition: color 0.3s var(--ease-out);
-}
-
-.video-card:hover .video-card__content h3 {
-  color: var(--forest);
-}
-
-.video-card__actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.video-card__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 16px;
-  background: rgba(24, 119, 242, 0.1);
-  color: #1877F2;
-  border-radius: 100px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s var(--ease-out);
-}
-
-.video-card__link:hover {
-  background: rgba(24, 119, 242, 0.15);
-  transform: translateY(-1px);
-}
-
-.video-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--canopy);
-}
-
-.video-card__thumbnail {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; /* 16:9 ratio */
-  background: linear-gradient(135deg, var(--forest) 0%, var(--canopy) 100%);
-  overflow: hidden;
-}
-
-.video-card__overlay {
-  position: absolute;
-  inset: 0;
-  background: 
-    radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.3) 100%),
-    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M0 0h30v30H0z'/%3E%3C/g%3E%3C/svg%3E");
-  transition: opacity 0.3s var(--ease-out);
-}
-
-.video-card:hover .video-card__overlay {
-  opacity: 0.7;
-}
-
-.video-card__play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--forest);
-  transition: all 0.3s var(--ease-out);
-  z-index: 2;
-}
-
-.video-card:hover .video-card__play {
-  transform: translate(-50%, -50%) scale(1.1);
-}
-
-.video-card__content {
-  padding: var(--space-lg);
-}
-
-.video-card__content h3 {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  color: var(--ink);
-  margin-bottom: var(--space-sm);
-  transition: color 0.3s var(--ease-out);
-}
-
-.video-card:hover .video-card__content h3 {
-  color: var(--forest);
-}
-
-.video-card__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  background: rgba(24, 119, 242, 0.1);
-  color: #1877F2;
-  border-radius: 100px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-/* CTA */
-.cta {
-  padding: var(--space-3xl) 0 var(--space-4xl);
-}
-
-.cta__card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-2xl);
-  padding: var(--space-2xl) var(--space-3xl);
-  background: var(--white);
-  border-radius: 16px;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--bone);
-  position: relative;
-  overflow: hidden;
-}
-
-.cta__card::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: linear-gradient(to bottom, var(--canopy), var(--forest));
-}
-
-.cta__content h2 {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  color: var(--ink);
-  margin-bottom: var(--space-sm);
-}
-
-.cta__content p {
-  color: var(--slate);
-  max-width: 480px;
-}
-
-/* BUTTON */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: 0.85rem 1.75rem;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  border-radius: 6px;
-  cursor: pointer;
-  border: none;
-  transition: all 0.3s var(--ease-out);
-  text-decoration: none;
-}
-
-.btn--primary {
-  background: var(--canopy);
-  color: var(--white);
-}
-
-.btn--primary:hover {
-  background: var(--canopy-light);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 30px rgba(29, 172, 120, 0.3);
-}
-
-.btn--lg {
-  padding: 1rem 2.25rem;
-  font-size: 0.95rem;
-}
-
-/* ANIMATIONS */
 .vulgarisation {
   opacity: 0;
-  transition: opacity 0.6s var(--ease-out);
+  transition: opacity 0.5s ease-out;
+  background-color: var(--color-bg-light);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--color-text);
 }
 
 .vulgarisation.visible {
   opacity: 1;
 }
 
-/* RESPONSIVE */
-@media (max-width: 968px) {
+/* HERO */
+.hero {
+  position: relative;
+  background-color: var(--color-primary-dark);
+  padding: 6rem 0 4rem;
+  text-align: center;
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 0%, #1d8f66 0%, var(--color-primary-dark) 70%);
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+.section-label {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.hero__title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.hero__lead {
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* FEATURED ARTICLE */
+.featured-article {
+  margin-top: -3rem; /* Chevauchement sur le hero */
+  position: relative;
+  z-index: 2;
+  margin-bottom: 4rem;
+}
+
+.article-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
   .article-card {
-    grid-template-columns: 1fr;
-  }
-  
-  .article-card__image {
-    min-height: 300px;
-  }
-  
-  .article-card__content {
-    padding: var(--space-2xl);
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (max-width: 768px) {
-  .videos__grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .cta__card {
-    flex-direction: column;
-    text-align: center;
-    padding: var(--space-2xl);
-  }
-  
-  .cta__card::before {
-    left: 0;
-    right: 0;
-    bottom: auto;
-    width: auto;
-    height: 4px;
-  }
-  
-  .cta__content p {
-    max-width: none;
-  }
-  
-  .article-card__header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-sm);
+.article-card__image-wrapper {
+  height: 250px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .article-card__image-wrapper {
+    height: 100%;
+    min-height: 350px;
   }
 }
 
-@media (max-width: 480px) {
-  .videos__grid {
-    gap: var(--space-lg);
+.article-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.article-card:hover .article-card__img {
+  transform: scale(1.05);
+}
+
+.article-card__content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.article-card__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.badge--rtbf {
+  background-color: #e6f0fa;
+  color: #005bb6;
+}
+
+.article-card__meta {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+}
+
+.article-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  color: #111827;
+}
+
+.article-card__excerpt {
+  color: var(--color-text-light);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* VIDEOS SECTION */
+.videos {
+  padding: 2rem 0 5rem;
+}
+
+.videos__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  color: var(--color-text-light);
+}
+
+.videos__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* VIDEO CARD */
+.video-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.video-card__aspect-ratio {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  background: #000;
+}
+
+.video-card__placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Génération d'un fond abstrait pour les vidéos sans thumbnail */
+.video-card__placeholder-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  opacity: 1;
+}
+
+/* On peut varier légèrement la couleur pour casser la monotonie via nth-child si on le voulait */
+.video-card:nth-child(3n+1) .video-card__placeholder-bg { background: linear-gradient(135deg, #276749 0%, #22543d 100%); }
+.video-card:nth-child(3n+2) .video-card__placeholder-bg { background: linear-gradient(135deg, #2c5282 0%, #2a4365 100%); }
+
+.video-card__play-btn {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 2;
+  border: 2px solid rgba(255,255,255,0.4);
+}
+
+.video-card__placeholder:hover .video-card__play-btn {
+  transform: scale(1.1);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.video-card__hint {
+  margin-top: 1rem;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.8rem;
+  z-index: 2;
+  font-weight: 500;
+}
+
+.video-card__iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+.video-card__body {
+  padding: 1.25rem;
+}
+
+.video-card__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+  color: #111827;
+  /* Truncate text after 2 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.video-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #3b5998; /* Facebook blue */
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.video-card__link:hover {
+  text-decoration: underline;
+}
+
+/* PAGINATION */
+.videos__pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+}
+
+.btn--primary:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.btn--outline {
+  background: transparent;
+  border: 2px solid #d1d5db;
+  color: var(--color-text);
+}
+
+.btn--outline:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn--white {
+  background: white;
+  color: var(--color-primary);
+  border: none;
+}
+
+.btn--white:hover {
+  background: #f0f0f0;
+}
+
+.btn-count {
+  font-weight: 400;
+  opacity: 0.7;
+  margin-left: 0.25rem;
+  font-size: 0.85em;
+}
+
+/* CTA BOX */
+.cta-box {
+  background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .cta-box {
+    flex-direction: row;
+    text-align: left;
+    padding: 4rem;
   }
-  
-  .article-card__content h2 {
-    font-size: 1.5rem;
-  }
+}
+
+.cta-box__content h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.cta-box__content p {
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+/* Animations Vue */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

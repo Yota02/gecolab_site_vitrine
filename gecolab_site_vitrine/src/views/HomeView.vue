@@ -86,8 +86,13 @@ const heroBgStyle = computed(() => ({
         </div>
         <p class="hero__subtitle">{{ t('home.hero.subtitle') }}</p>
         <div class="hero__affiliation">
-          <img :src="getImagePath('images/logos/liege.png')" alt="Logo Université de Liège" class="hero__logo">
-          <span>{{ t('home.hero.affiliation') }}</span>
+          <div class="hero__affiliation-badge">
+            <img :src="getImagePath('images/logos/liege.png')" alt="Logo Université de Liège" class="hero__logo">
+            <div class="hero__affiliation-text">
+              <span class="hero__affiliation-label">{{ t('home.hero.affiliation') }}</span>
+              <span class="hero__affiliation-sub">Université de Liège</span>
+            </div>
+          </div>
         </div>
         <p class="hero__lead">
           {{ t('home.hero.lead') }}
@@ -336,19 +341,43 @@ const heroBgStyle = computed(() => ({
 
 .hero__affiliation {
   display: flex;
-  align-items: center;
-  gap: var(--space-md);
   margin-top: var(--space-lg);
 }
 
+.hero__affiliation-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .hero__logo {
-  height: 32px;
+  height: 40px;
   width: auto;
 }
 
-.hero__affiliation span {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.8);
+.hero__affiliation-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.hero__affiliation-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.hero__affiliation-sub {
+  font-size: 0.75rem;
+  color: var(--canopy);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .hero__lead {
