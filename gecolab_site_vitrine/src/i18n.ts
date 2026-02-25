@@ -7,6 +7,7 @@ const messages = {
       services: 'Services',
       about: 'À propos',
       publications: 'Publications',
+      vulgarisation: 'Vulgarisation',
       partners: 'Partenaires',
       press: 'Presse',
       contact: 'Contact'
@@ -283,6 +284,7 @@ const messages = {
       services: 'Services',
       about: 'About',
       publications: 'Publications',
+      vulgarisation: 'Outreach',
       partners: 'Partners',
       press: 'Press',
       contact: 'Contact'
@@ -559,6 +561,7 @@ const messages = {
       services: 'Dienstleistungen',
       about: 'Über uns',
       publications: 'Veröffentlichungen',
+      vulgarisation: 'Vermittlung',
       partners: 'Partner',
       press: 'Presse',
       contact: 'Kontakt'
@@ -835,6 +838,7 @@ const messages = {
       services: 'Servicios',
       about: 'Sobre nosotros',
       publications: 'Publicaciones',
+      vulgarisation: 'Divulgación',
       partners: 'Socios',
       press: 'Prensa',
       contact: 'Contacto'
@@ -1107,10 +1111,11 @@ const messages = {
   },
   nl: {
     nav: {
-      home: 'Home',
+      home: 'Startpagina',
       services: 'Diensten',
       about: 'Over ons',
       publications: 'Publicaties',
+      vulgarisation: 'Voorlichting',
       partners: 'Partners',
       press: 'Pers',
       contact: 'Contact'

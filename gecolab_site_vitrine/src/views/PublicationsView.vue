@@ -811,8 +811,8 @@ const sortOptions = [
 
 .publications-hero {
   padding: var(--space-5xl) 0;
-  background: linear-gradient(135deg, var(--canopy) 0%, var(--forest) 100%);
-  color: var(--white);
+  background: var(--parchment);
+  color: var(--ink);
 }
 
 .publications-hero__content {
@@ -837,7 +837,7 @@ const sortOptions = [
 }
 
 .publications-stats__item {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(10, 15, 13, 0.1);
   padding: var(--space-sm) var(--space-lg);
   border-radius: 20px;
   font-weight: 600;
@@ -893,7 +893,7 @@ const sortOptions = [
 
 .clear-filters-btn {
   padding: var(--space-md) var(--space-lg);
-  background: var(--canopy);
+  background: var(--canopy-light);
   color: var(--white);
   border: none;
   border-radius: 8px;
@@ -903,7 +903,7 @@ const sortOptions = [
 }
 
 .clear-filters-btn:hover {
-  background: var(--forest);
+  background: var(--canopy);
 }
 
 /* Results Info */
@@ -956,8 +956,8 @@ const sortOptions = [
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--canopy);
-  color: var(--white);
+  background: var(--bone);
+  color: var(--ink);
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: bold;
@@ -977,7 +977,7 @@ const sortOptions = [
 }
 
 .publication-card__authors {
-  color: var(--canopy);
+  color: var(--ink-light);
   font-weight: 600;
   margin-bottom: var(--space-xs);
 }
@@ -989,7 +989,7 @@ const sortOptions = [
 }
 
 .publication-card__doi a {
-  color: var(--forest);
+  color: var(--slate);
   font-size: 0.9rem;
   font-style: italic;
   text-decoration: none;
@@ -997,7 +997,7 @@ const sortOptions = [
 }
 
 .publication-card__doi a:hover {
-  color: var(--canopy);
+  color: var(--ink);
   text-decoration: underline;
 }
 

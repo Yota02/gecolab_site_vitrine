@@ -68,6 +68,11 @@ const router = createRouter({
        name: 'publications',
        component: () => import('@/views/PublicationsView.vue'),
      },
+     {
+       path: '/vulgarisation',
+       name: 'vulgarisation',
+       component: () => import('@/views/VulgarisationView.vue'),
+     },
   ],
   scrollBehavior(_to, _from, savedPosition) {
     if (savedPosition) return savedPosition

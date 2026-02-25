@@ -2,26 +2,19 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { useRandomLogo } from '@/composables/useRandomLogo'
 
 const { t, locale } = useI18n()
 const route = useRoute()
 const router = useRouter()
 const scrolled = ref(false)
 const mobileOpen = ref(false)
-const randomLogo = ref<string | undefined>('')
 const langDropdownOpen = ref(false)
+
+const { currentLogo, changeLogo } = useRandomLogo()
 
 const languages = ['fr', 'en', 'de', 'es', 'nl'] as const
 type Language = typeof languages[number]
-
-const animalLogos = [
-  `${import.meta.env.BASE_URL}images/logos/sanglier.png`,
-  `${import.meta.env.BASE_URL}images/logos/loutre.png`,
-  `${import.meta.env.BASE_URL}images/logos/loup.png`,
-  `${import.meta.env.BASE_URL}images/logos/linx.png`,
-  `${import.meta.env.BASE_URL}images/logos/gecko.png`,
-  `${import.meta.env.BASE_URL}images/logos/dragon_komodo.png`
-]
 
 function handleScroll() {
   scrolled.value = window.scrollY > 40
@@ -39,11 +32,6 @@ function selectLanguage(lang: Language) {
 
 const currentLanguage = computed(() => locale.value.toUpperCase())
 
-function setRandomLogo() {
-  const randomIndex = Math.floor(Math.random() * animalLogos.length)
-  randomLogo.value = animalLogos[randomIndex]
-}
-
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
   handleScroll()
@@ -54,12 +42,9 @@ onMounted(() => {
     locale.value = savedLocale as Language
   }
 
-  // Set random logo
-  setRandomLogo()
-
   // Change logo on every route change
   router.afterEach(() => {
-    setRandomLogo()
+    changeLogo()
   })
 })
 
@@ -72,6 +57,7 @@ const links = computed(() => [
   { to: '/services', label: t('nav.services') },
   { to: '/a-propos', label: t('nav.about') },
   { to: '/publications', label: t('nav.publications') },
+  { to: '/vulgarisation', label: t('nav.vulgarisation') },
   { to: '/partenaires', label: t('nav.partners') },
   { to: '/presse', label: t('nav.press') },
   { to: '/contact', label: t('nav.contact') },
@@ -82,7 +68,7 @@ const links = computed(() => [
   <header class="navbar" :class="{ scrolled, 'mobile-open': mobileOpen, 'contact-page': route.path === '/contact', 'publications-page': route.path === '/publications' }">
     <nav class="navbar__inner container">
       <RouterLink to="/" class="navbar__brand" @click="closeMobile">
-        <img v-if="randomLogo" :src="randomLogo" alt="Logo" class="navbar__logo" />
+        <img v-if="currentLogo" :src="currentLogo" alt="Logo" class="navbar__logo" />
         <svg v-else class="navbar__logo" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
           <path d="M20 6C20 6 14 13 14 20C14 27 20 34 20 34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>

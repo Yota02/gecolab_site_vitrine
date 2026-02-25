@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
+import { useRandomLogo } from '@/composables/useRandomLogo'
 
 const { t } = useI18n()
+const router = useRouter()
 
 const visible = ref(false)
 const parallaxOffset = ref(0)
 const heroBgRef = ref<HTMLElement>()
+
+const { currentLogo, changeLogo } = useRandomLogo()
 
 // Helper pour obtenir les chemins d'images avec la base URL
 const getImagePath = (path: string) => `${import.meta.env.BASE_URL}${path}`
@@ -29,6 +34,11 @@ onMounted(() => {
   // Store cleanup function
   onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll)
+  })
+
+  // Change logo on every route change
+  router.afterEach(() => {
+    changeLogo()
   })
 })
 
@@ -65,10 +75,13 @@ const heroBgStyle = computed(() => ({
       </div>
 
       <div class="hero__content container">
-       
-        <h1 class="hero__title">
-          <span class="hero__title-ge">Ge</span><span class="hero__title-co">Co</span><span class="hero__title-lab">LAB</span>
-        </h1>
+        
+        <div class="hero__title-container">
+          <img v-if="currentLogo" :src="currentLogo" alt="Logo animal" class="hero__animal-logo" />
+          <h1 class="hero__title">
+            <span class="hero__title-ge">Ge</span><span class="hero__title-co">Co</span><span class="hero__title-lab">Lab</span>
+          </h1>
+        </div>
         <p class="hero__subtitle">{{ t('home.hero.subtitle') }}</p>
         <div class="hero__affiliation">
           <img :src="getImagePath('images/logos/liege.png')" alt="Logo Université de Liège" class="hero__logo">
@@ -197,8 +210,8 @@ const heroBgStyle = computed(() => ({
   position: relative;
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   overflow: hidden;
 }
 
@@ -253,8 +266,9 @@ const heroBgStyle = computed(() => ({
 .hero__content {
   position: relative;
   z-index: 2;
-  text-align: center;
+  text-align: left;
   padding-top: var(--nav-height);
+  margin-left: -var(--space-3xl);
 }
 
 .hero__badge {
@@ -290,7 +304,7 @@ const heroBgStyle = computed(() => ({
   font-family: var(--font-display);
   font-size: clamp(4rem, 12vw, 9rem);
   line-height: 0.95;
-  margin-top: var(--space-xl);
+  margin-top: var(--space-md);
   animation: fadeSlideUp 0.8s var(--ease-out) both;
   animation-delay: 0.25s;
   /* Amélioration de la visibilité du titre */
@@ -298,6 +312,23 @@ const heroBgStyle = computed(() => ({
     0 2px 4px rgba(0, 0, 0, 0.3),
     0 4px 8px rgba(0, 0, 0, 0.2),
     0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.hero__title-container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  animation: fadeSlideUp 0.8s var(--ease-out) both;
+  animation-delay: 0.25s;
+  margin-top: var(--space-2xl);
+}
+
+.hero__animal-logo {
+  width: 9rem;
+  height: 9rem;
+  color: var(--canopy);
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
 }
 
 .hero__title-ge { 
@@ -310,14 +341,14 @@ const heroBgStyle = computed(() => ({
 }
 .hero__title-lab {
   color: #fff;
-  font-size: 0.6em;
+  font-size: 1em;
   letter-spacing: 0.15em;
   font-weight: 600;
 }
 
 .hero__subtitle {
   font-family: var(--font-display);
-  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   color: #fff;
   margin-top: var(--space-md);
   animation: fadeSlideUp 0.8s var(--ease-out) both;
@@ -336,7 +367,7 @@ const heroBgStyle = computed(() => ({
 .hero__affiliation {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--space-sm);
   margin-top: var(--space-md);
   animation: fadeSlideUp 0.8s var(--ease-out) both;
@@ -344,13 +375,13 @@ const heroBgStyle = computed(() => ({
 }
 
 .hero__logo {
-  height: 24px;
+  height: 36px;
   width: auto;
   opacity: 0.9;
 }
 
 .hero__affiliation span {
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   color: rgba(255, 255, 255, 0.9);
   font-weight: 500;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
@@ -358,8 +389,8 @@ const heroBgStyle = computed(() => ({
 
 .hero__lead {
   max-width: 540px;
-  margin: var(--space-xl) auto 0;
-  font-size: 1.05rem;
+  margin: var(--space-xl) 0 0;
+  font-size: 1.4rem;
   color: rgba(255, 255, 255, 0.95);
   line-height: 1.8;
   animation: fadeSlideUp 0.8s var(--ease-out) both;
@@ -371,7 +402,7 @@ const heroBgStyle = computed(() => ({
 .hero__actions {
   display: flex;
   gap: var(--space-md);
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: var(--space-2xl);
   animation: fadeSlideUp 0.8s var(--ease-out) both;
   animation-delay: 0.7s;
