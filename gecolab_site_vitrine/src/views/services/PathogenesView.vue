@@ -1,9 +1,15 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
 const image = `${import.meta.env.BASE_URL}images/services/tique.jpg`
+
+const descriptionParagraphs = computed(() => {
+  const raw = t('services.service6.description') as string
+  return raw.split('\n\n').map(p => p.trim()).filter(Boolean)
+})
 </script>
 
 <template>
@@ -20,7 +26,7 @@ const image = `${import.meta.env.BASE_URL}images/services/tique.jpg`
         </router-link>
         <span class="section-label section-label--light">Service 06</span>
         <h1 class="service-hero__title">{{ t('services.service6.title') }}</h1>
-        <p class="service-hero__lead">{{ t('services.service6.description') }}</p>
+        <p class="service-hero__lead">{{ t('services.service6.lead') }}</p>
       </div>
     </section>
 
@@ -33,11 +39,17 @@ const image = `${import.meta.env.BASE_URL}images/services/tique.jpg`
           </div>
           
           <div class="info-section">
+            <div class="description-card">
+              <template v-for="(p, i) in descriptionParagraphs" :key="i">
+                <p class="description-paragraph">{{ p }}</p>
+              </template>
+            </div>
+
             <div class="info-card">
               <h3>{{ t('services.service6.pathogensLabel') }}</h3>
               <p>{{ t('services.service6.pathogens') }}</p>
             </div>
-            
+
             <div class="info-card info-card--highlight">
               <p>{{ t('services.service6.partners') }}</p>
             </div>
@@ -146,6 +158,25 @@ const image = `${import.meta.env.BASE_URL}images/services/tique.jpg`
 .info-section {
   display: grid;
   gap: var(--space-lg);
+}
+
+.description-card {
+  background: linear-gradient(180deg, #ffffff, #fbfdfc);
+  padding: calc(var(--space-xl) + 4px);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(11,25,16,0.04);
+  border: 1px solid rgba(29, 172, 120, 0.06);
+}
+
+.description-paragraph {
+  margin: 0 0 var(--space-md) 0;
+  color: var(--ink);
+  line-height: 1.75;
+  font-size: 1.02rem;
+}
+
+.description-paragraph:last-child {
+  margin-bottom: 0;
 }
 
 .info-card {

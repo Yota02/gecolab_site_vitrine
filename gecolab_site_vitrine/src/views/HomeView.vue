@@ -129,38 +129,61 @@ const heroBgStyle = computed(() => ({
 
     <!-- ═══ SPECIALTY ═══ -->
     <section class="specialty">
-      <div class="specialty__bg"></div>
       <div class="container">
-         <div class="specialty__inner">
-           <span class="section-label section-label--light">{{ t('home.specialty.sectionLabel') }}</span>
-           <h2 class="section-title section-title--light">{{ t('home.specialty.title') }}</h2>
-           <p class="specialty__text">
-             {{ t('home.specialty.text') }}
-           </p>
-           <div class="specialty__methods">
-               <div class="specialty__method">
-                <div class="specialty__method-img">
-                  <img :src="getImagePath('images/services/riviere.jpg')" alt="Rivière - milieu aquatique" loading="lazy">
-                </div>
-                <h4>{{ t('home.specialty.aquaticTitle') }}</h4>
-                <p>{{ t('home.specialty.aquaticText') }}</p>
-              </div>
-              <div class="specialty__method">
-                <div class="specialty__method-img">
-                  <img :src="getImagePath('images/services/terrain-terrestre.jpg')" alt="Terrain terrestre" loading="lazy">
-                </div>
-                <h4>{{ t('home.specialty.terrestrialTitle') }}</h4>
-                <p>{{ t('home.specialty.terrestrialText') }}</p>
-              </div>
-              <div class="specialty__method">
-                <div class="specialty__method-img">
-                  <img :src="getImagePath('images/hero/echantillon1.jpg')" alt="Échantillon non invasif" loading="lazy">
-                </div>
-               <h4>{{ t('home.specialty.degradedTitle') }}</h4>
-               <p>{{ t('home.specialty.degradedText') }}</p>
-             </div>
-           </div>
-         </div>
+        <div class="specialty__header">
+          <span class="specialty__label">{{ t('home.specialty.sectionLabel') }}</span>
+          <h2 class="specialty__title">
+            <span class="specialty__title-main">Les analyses</span>
+            <span class="specialty__highlight">non invasives</span>
+          </h2>
+          <p class="specialty__text">
+            {{ t('home.specialty.text') }}
+          </p>
+        </div>
+
+        <div class="specialty__cards">
+          <!-- Service 1 -->
+          <article class="specialty__card">
+            <div class="specialty__card-number">01</div>
+            <div class="specialty__card-visual">
+              <img :src="getImagePath('images/services/riviere.jpg')"
+                   alt="Milieux aquatiques"
+                   class="specialty__card-image">
+            </div>
+            <div class="specialty__card-body">
+              <h3 class="specialty__card-title">{{ t('home.specialty.aquaticTitle') }}</h3>
+              <p class="specialty__card-description">{{ t('home.specialty.aquaticText') }}</p>
+            </div>
+          </article>
+
+          <!-- Service 2 -->
+          <article class="specialty__card">
+            <div class="specialty__card-number">02</div>
+            <div class="specialty__card-visual">
+              <img :src="getImagePath('images/services/terrain-terrestre.jpg')"
+                   alt="Milieux terrestres"
+                   class="specialty__card-image">
+            </div>
+            <div class="specialty__card-body">
+              <h3 class="specialty__card-title">{{ t('home.specialty.terrestrialTitle') }}</h3>
+              <p class="specialty__card-description">{{ t('home.specialty.terrestrialText') }}</p>
+            </div>
+          </article>
+
+          <!-- Service 3 -->
+          <article class="specialty__card">
+            <div class="specialty__card-number">03</div>
+            <div class="specialty__card-visual">
+              <img :src="getImagePath('images/hero/echantillon1.jpg')"
+                   alt="ADN dégradé"
+                   class="specialty__card-image">
+            </div>
+            <div class="specialty__card-body">
+              <h3 class="specialty__card-title">{{ t('home.specialty.degradedTitle') }}</h3>
+              <p class="specialty__card-description">{{ t('home.specialty.degradedText') }}</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -648,125 +671,133 @@ const heroBgStyle = computed(() => ({
 
 /* ═══ SPECIALTY ═══ */
 .specialty {
-  position: relative;
   padding: var(--space-4xl) 0;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--obsidian) 0%, var(--forest) 100%);
+  background: var(--mist);
 }
 
-.specialty .section-title {
-  font-size: clamp(2rem, 5vw, 3rem);
-}
-
-.specialty__bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(29, 172, 120, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(12, 36, 96, 0.08) 0%, transparent 50%);
-}
-
-.specialty__inner {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
+.specialty__header {
+  max-width: 720px;
+  margin: 0 auto var(--space-3xl);
   text-align: center;
+}
+
+.specialty__label {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--canopy);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-xs);
+  border-bottom: 2px solid var(--canopy);
+}
+
+.specialty__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.2;
+  margin-bottom: var(--space-lg);
+  color: var(--ink);
+}
+
+.specialty__title-main {
+  display: block;
+  font-weight: 600;
+}
+
+.specialty__highlight {
+  color: var(--canopy);
+  font-style: normal;
+  font-weight: 700;
 }
 
 .specialty__text {
-  margin-top: var(--space-xl);
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1.25rem;
-  line-height: 1.8;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: var(--space-3xl);
+  color: var(--slate);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: justify;
 }
 
-.specialty__methods {
+.specialty__cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: var(--space-2xl);
-  margin-top: var(--space-3xl);
+  gap: var(--space-xl);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.specialty__method {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  padding: var(--space-2xl);
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(29, 172, 120, 0.1);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+.specialty__card {
   position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-}
-
-.specialty__method::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--canopy), var(--forest));
-  border-radius: 20px 20px 0 0;
-}
-
-.specialty__method:hover {
-  transform: translateY(-8px);
-  box-shadow: 
-    0 20px 40px rgba(29, 172, 120, 0.15),
-    0 0 0 1px rgba(29, 172, 120, 0.2);
-}
-
-.specialty__method-img {
-  width: 100%;
-  height: 280px;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
   border-radius: 12px;
   overflow: hidden;
-  margin-bottom: var(--space-lg);
-  position: relative;
+  border: 1px solid var(--bone);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s var(--ease-out);
 }
 
-.specialty__method-img::after {
-  content: '';
+.specialty__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(29, 172, 120, 0.3);
+}
+
+.specialty__card-number {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(29, 172, 120, 0.1) 0%, transparent 60%);
-  pointer-events: none;
+  top: var(--space-md);
+  left: var(--space-md);
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgba(29, 172, 120, 0.1);
+  line-height: 1;
+  z-index: 1;
 }
 
-.specialty__method-img img {
+.specialty__card-visual {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: var(--mist);
+}
+
+.specialty__card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  filter: brightness(1.05) contrast(1.1);
+  transition: transform 0.4s var(--ease-out);
 }
 
-.specialty__method:hover .specialty__method-img img {
+.specialty__card:hover .specialty__card-image {
   transform: scale(1.05);
 }
 
-.specialty__method h4 {
-  font-family: var(--font-display);
-  color: var(--ink);
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: var(--space-sm);
-  text-align: center;
+.specialty__card-body {
+  padding: var(--space-xl);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.specialty__method p {
-  font-size: 1rem;
+.specialty__card-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: var(--space-md);
+  line-height: 1.3;
+}
+
+.specialty__card-description {
   color: var(--slate);
+  font-size: 1rem;
   line-height: 1.6;
-  text-align: center;
-  margin: 0;
+  text-align: justify;
 }
 
 /* ═══ STATS ═══ */
@@ -855,17 +886,8 @@ const heroBgStyle = computed(() => ({
     gap: var(--space-2xl);
   }
 
-  .specialty__methods {
+  .specialty__cards {
     grid-template-columns: 1fr;
-    gap: var(--space-xl);
-  }
-
-  .specialty__method {
-    padding: var(--space-xl);
-  }
-
-  .specialty__method-img {
-    height: 240px;
   }
 
   .stats__grid {
@@ -895,6 +917,10 @@ const heroBgStyle = computed(() => ({
 
   .cta__content p {
     max-width: none;
+  }
+
+  .specialty__cards {
+    gap: var(--space-lg);
   }
 }
 </style>

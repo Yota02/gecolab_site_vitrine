@@ -2,7 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
-const { t } = useI18n()
+const { t, te } = useI18n()
 const router = useRouter()
 
 const services: { id: string; route: string; image: string }[] = [
@@ -69,7 +69,9 @@ const navigateToService = (route: string) => {
           >
             <img :src="service.image" alt="service image" class="service-card__image">
             <h2 class="service-card__title">{{ t(`services.service${index + 1}.title`) }}</h2>
-            <p class="service-card__description">{{ t(`services.service${index + 1}.description`) }}</p>
+            <p class="service-card__description">
+              {{ te(`services.service${index + 1}.lead`) ? t(`services.service${index + 1}.lead`) : t(`services.service${index + 1}.description`) }}
+            </p>
             <div class="service-card__arrow">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 12h14M12 5l7 7-7 7"/>

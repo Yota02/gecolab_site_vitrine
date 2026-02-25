@@ -12,7 +12,7 @@ const species = [
   'Neomys fodiens',
   'Mustela lutreola',
   'Borrelia sp.',
-  'Batrachochytrium salamanderivorans',
+  'Batrachochytrium salamandrivorans',
   'Arvicola sapidus',
 ]
 </script>
@@ -40,12 +40,16 @@ const species = [
       <div class="container">
         <!-- Species list -->
         <div class="species-section">
+          <p class="species-intro">{{ t('services.service2.intro') }}</p>
+          <div class="species-counter">{{ species.length }} espèces disponibles</div>
           <div class="species-grid">
             <span v-for="sp in species" :key="sp" class="species-tag">
               <em>{{ sp }}</em>
             </span>
           </div>
-          <p class="species-note">{{ t('services.service2.note') }}</p>
+          <div class="species-note-wrapper">
+            <p class="species-note">{{ t('services.service2.note') }}</p>
+          </div>
         </div>
       </div>
     </section>
@@ -137,40 +141,103 @@ const species = [
   margin: 0 auto;
 }
 
+.species-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) var(--space-md);
+  background: var(--canopy);
+  color: var(--white);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-lg);
+}
+
 .species-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--space-md);
   margin-bottom: var(--space-xl);
 }
 
 .species-tag {
-  display: inline-block;
-  padding: var(--space-sm) var(--space-lg);
-  background: var(--canopy-glow);
-  border: 1px solid rgba(29, 172, 120, 0.15);
-  border-radius: 100px;
-  font-size: 1rem;
-  color: var(--forest);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--white);
+  border: 1px solid var(--mist);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--obsidian);
   transition: all 0.3s var(--ease-out);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.species-tag::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--canopy);
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .species-tag:hover {
   background: var(--canopy);
   color: var(--white);
+  border-color: var(--canopy);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 8px 24px rgba(29, 172, 120, 0.25);
+}
+
+.species-tag:hover::before {
+  background: var(--white);
 }
 
 .species-tag em {
   font-style: italic;
+  font-weight: 500;
+}
+
+.species-intro {
+  font-size: 1.25rem;
+  color: var(--obsidian);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: var(--space-xs);
+}
+
+.species-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) var(--space-md);
+  background: var(--canopy);
+  color: var(--white);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-lg);
+}
+
+.species-note-wrapper {
+  margin-top: var(--space-2xl);
+  padding: var(--space-xl);
+  background: var(--mist);
+  border-radius: 12px;
+  border-left: 4px solid var(--canopy);
 }
 
 .species-note {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--slate);
-  font-style: italic;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 /* CTA */
@@ -274,7 +341,16 @@ const species = [
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 768px) {
   .species-grid {
-    gap: var(--space-sm);
+    grid-template-columns: 1fr;
+  }
+  
+  .species-tag {
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .species-note-wrapper {
+    padding: var(--space-lg);
   }
 }
 </style>

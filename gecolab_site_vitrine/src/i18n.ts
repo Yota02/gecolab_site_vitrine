@@ -103,7 +103,8 @@ const messages = {
       service2: {
         title: 'Détection ultra sensible via PCR Digitale',
         description: 'Depuis 2024, nous développons des méthodes de détection ultra sensibles de certaines espèces via l\'utilisation de la PCR digitale.',
-        note: 'D\'autres espèces seront ajoutées prochainement. N\'hésitez pas à nous contacter pour toute espèce d\'intérêt.'
+        intro: 'à l\'heure actuelle voici les espèces pour lesquelles ces analyses sont disponibles :',
+        note: 'Nous travaillons activement au développement de ces méthodes, si bien que d\'autres espèces viendront s\'ajouter à cette liste dans les prochains mois. Une espèce vous intéresse mais n\'est pas listée ici ? n\'hésitez pas à nous contacter, peut-être l\'avons-nous déjà ajoutée à la liste entre temps.'
       },
       service3: {
         title: 'Régime alimentaire',
@@ -125,8 +126,13 @@ const messages = {
         examples: 'Loutre européenne, loup européen, desman des Pyrénées, vison d\'Europe, cuivré de la bistorte, hibou Grand Duc, lion d\'Afrique, ours polaire…'
       },
       service6: {
-        title: 'Identification de pathogènes et microbiomes bactériens',
-        description: 'Estimation précise des microbiomes bactériens et détection de la présence potentielle d\'agents pathogènes avec une précision supérieure aux technologies classiques.',
+        title: 'Identification de pathogènes et étude de microbiomes bactériens',
+        lead: 'Estimation précise des microbiomes et détection ciblée d\'agents pathogènes grâce à des marqueurs génétiques et du séquençage de dernière génération.',
+        description: `L'expertise de notre équipe permet d'estimer de manière précise les microbiomes bactériens présents dans un environnement particulier ou encore au sein d'animaux appartenant à des espèces d'intérêt (ex. tiques, moustiques, rongeurs, chauves-souris…). Ces approches permettent de mettre en place de véritables screening des communautés bactériennes au sein des organismes ou environnements analysés.
+
+Ces analyses permettent également de détecter la présence potentielle d'agents pathogènes, avec une précision supérieure aux technologies classiques, grâce au développement de nouveaux marqueurs génétiques et l'utilisation systématique de technologies de séquençage de dernière génération.
+
+Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpital Universitaire de l'Université de Liège (Belgique) permettent l'identification de pathogènes tels que les bactéries Borrelia, responsables de la maladie de Lyme ou encore d'autres groupes de bactéries particulièrement dangereux pour l'homme (ex. genres Bartonella, Yercinia, Bacillus, Leptospira…).`,
         pathogensLabel: 'Pathogènes détectés :',
         pathogens: 'Borrelia (maladie de Lyme), Bartonella, Yersinia, Bacillus, Leptospira…',
         partners: 'Développé avec l\'Institut Pasteur et l\'Hôpital Universitaire de l\'Université de Liège.'
@@ -380,7 +386,8 @@ const messages = {
       service2: {
         title: 'Ultra-sensitive detection via Digital PCR',
         description: 'Since 2024, we have been developing ultra-sensitive detection methods for certain species using digital PCR.',
-        note: 'More species will be added soon. Please contact us for any species of interest.'
+        intro: 'Currently, here are the species for which these analyses are available:',
+        note: 'We are actively working on developing these methods, so other species will be added to this list in the coming months. Is there a species you are interested in but it is not listed here? Do not hesitate to contact us, perhaps we have already added it to the list in the meantime.'
       },
       service3: {
         title: 'Diet analysis',
@@ -657,7 +664,8 @@ const messages = {
       service2: {
         title: 'Ultrasensitive Detektion via digitale PCR',
         description: 'Seit 2024 entwickeln wir ultrasensitive Detektionsmethoden für bestimmte Arten durch die Verwendung digitaler PCR.',
-        note: 'Weitere Arten werden bald hinzugefügt. Zögern Sie nicht, uns bezüglich jeder Art von Interesse zu kontaktieren.'
+        intro: 'Derzeit sind hier die Arten aufgeführt, für die diese Analysen verfügbar sind:',
+        note: 'Wir arbeiten aktiv an der Entwicklung dieser Methoden, sodass in den kommenden Monaten weitere Arten zu dieser Liste hinzukommen werden. Interessiert Sie eine Art, die hier nicht aufgeführt ist? Zögern Sie nicht, uns zu kontaktieren – vielleicht haben wir sie bereits zwischenzeitlich zur Liste hinzugefügt.'
       },
       service3: {
         title: 'Ernährung',
@@ -934,7 +942,8 @@ const messages = {
       service2: {
         title: 'Detección ultrasensible vía PCR Digital',
         description: 'Desde 2024, desarrollamos métodos de detección ultrasensibles de ciertas especies mediante el uso de PCR digital.',
-        note: 'Otras especies serán añadidas próximamente. No dude en contactarnos respecto a cualquier especie de interés.'
+        intro: 'Actualmente, aquí están las especies para las cuales estos análisis están disponibles:',
+        note: 'Trabajamos activamente en el desarrollo de estos métodos, por lo que otras especies se añadirán a esta lista en los próximos meses. ¿Le interesa una especie pero no está listada aquí? No dude en contactarnos, tal vez ya la hayamos añadido a la lista entretanto.'
       },
       service3: {
         title: 'Dieta',
@@ -1211,7 +1220,8 @@ const messages = {
       service2: {
         title: 'Ultrasensitive detectie via digitale PCR',
         description: 'Sinds 2024 ontwikkelen we ultrasensitive detectiemethoden voor bepaalde soorten door het gebruik van digitale PCR.',
-        note: 'Andere soorten zullen binnenkort worden toegevoegd. Aarzel niet om contact met ons op te nemen betreffende elke soort van belang.'
+        intro: 'Momenteel zijn dit de soorten waarvoor deze analyses beschikbaar zijn:',
+        note: 'Wij werken actief aan de ontwikkeling van deze methoden, zodat de komende maanden andere soorten aan deze lijst zullen worden toegevoegd. Interesse in een soort die niet in deze lijst staat? Aarzel niet om contact met ons op te nemen, misschien hebben wij deze inmiddels al aan de lijst toegevoegd.'
       },
       service3: {
         title: 'Dieet',
