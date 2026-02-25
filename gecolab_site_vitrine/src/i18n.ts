@@ -52,7 +52,8 @@ const messages = {
       }
     },
     common: {
-      language: 'Langue'
+      language: 'Langue',
+      readMore: 'Découvrir'
     },
     footer: {
       tagline: 'Génétique et Conservation',
