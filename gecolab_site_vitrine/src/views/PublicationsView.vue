@@ -12,6 +12,10 @@ const getDoiUrl = (doi: string) => {
   if (doi.startsWith('http')) {
     return doi
   }
+  // Nettoyage des préfixes courants et espaces
+  doi = doi.replace(/^(doi:|DOI:|DOI\s|doi\s)/i, '').trim()
+  // Nettoyage des caractères spéciaux de début/fin (ex: ⟨...⟩)
+  doi = doi.replace(/^[⟨<]/, '').replace(/[⟩>]$/, '')
   return `https://doi.org/${doi}`
 }
 
@@ -774,22 +778,27 @@ const sortOptions = [
 
         <!-- Results Info -->
         <div v-if="searchQuery || selectedYear !== 'all'" class="results-info">
-          <p>{{ filteredPublications.length }} publication{{ filteredPublications.length !== 1 ? 's' : '' }} trouvée{{ filteredPublications.length !== 1 ? 's' : '' }}</p>
+          <p><span class="results-count">{{ filteredPublications.length }}</span> {{ t('publications.stats.resultsFound', filteredPublications.length) }}</p>
         </div>
 
         <!-- Publications List -->
         <div v-if="filteredPublications.length > 0" class="publications__list">
           <div v-for="pub in filteredPublications" :key="pub.title" class="publication-card">
-            <div class="publication-card__year">{{ pub.year }}</div>
             <div class="publication-card__content">
+              <div class="publication-card__meta">
+                <span class="publication-card__year-badge">{{ pub.year }}</span>
+                <span class="publication-card__journal-name">{{ pub.journal }}</span>
+              </div>
               <h3 class="publication-card__title">{{ pub.title }}</h3>
-              <p class="publication-card__authors">{{ pub.authors }}</p>
-              <p class="publication-card__journal">{{ pub.journal }} {{ pub.volume }}</p>
-              <p v-if="pub.doi" class="publication-card__doi">
-                <a :href="getDoiUrl(pub.doi)" target="_blank" rel="noopener noreferrer">
-                  DOI: {{ pub.doi }}
-                </a>
-              </p>
+              <p class="publication-card__authors" v-html="pub.authors.replace('Michaux J.R.', '<strong>Michaux J.R.</strong>').replace('Michaux J.', '<strong>Michaux J.</strong>')"></p>
+              <div class="publication-card__footer">
+                <p class="publication-card__volume">{{ pub.volume }}</p>
+                <p v-if="pub.doi" class="publication-card__doi">
+                  <a :href="getDoiUrl(pub.doi)" target="_blank" rel="noopener noreferrer" class="doi-link">
+                    <span class="doi-label">DOI</span> {{ t('publications.links.viewArticle') }}
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -914,6 +923,11 @@ const sortOptions = [
   font-weight: 600;
 }
 
+.results-count {
+  color: var(--canopy);
+  font-size: 1.2rem;
+}
+
 /* No Results */
 .no-results {
   text-align: center;
@@ -934,34 +948,38 @@ const sortOptions = [
 
 /* Publication Card */
 .publication-card {
-  display: flex;
-  gap: var(--space-lg);
-  padding: var(--space-xl);
+  padding: var(--space-2xl);
   background: var(--white);
-  border-radius: 12px;
-  border: 1px solid var(--bone);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s var(--ease-out);
+  border-radius: 4px;
+  border-left: 4px solid var(--bone);
+  transition: all 0.3s ease;
 }
 
 .publication-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  border-left-color: var(--canopy);
+  background: #fafafa;
+  transform: translateX(8px);
 }
 
-.publication-card__year {
-  flex-shrink: 0;
-  width: 80px;
-  height: 80px;
+.publication-card__meta {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: var(--bone);
-  color: var(--ink);
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: bold;
-  border-radius: 12px;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.publication-card__year-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--canopy);
+  letter-spacing: 0.05em;
+}
+
+.publication-card__journal-name {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--slate);
+  letter-spacing: 0.02em;
 }
 
 .publication-card__content {
@@ -969,32 +987,51 @@ const sortOptions = [
 }
 
 .publication-card__title {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 600;
   color: var(--ink);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
   line-height: 1.4;
 }
 
 .publication-card__authors {
-  color: var(--ink-light);
-  font-weight: 600;
-  margin-bottom: var(--space-xs);
-}
-
-.publication-card__journal {
-  color: var(--slate);
-  font-size: 0.95rem;
-  margin-bottom: var(--space-xs);
-}
-
-.publication-card__doi a {
-  color: var(--slate);
+  color: #666;
   font-size: 0.9rem;
-  font-style: italic;
-  text-decoration: none;
-  transition: color 0.3s var(--ease-out);
+  margin-bottom: var(--space-md);
+  line-height: 1.5;
 }
+
+.publication-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.publication-card__volume {
+  color: var(--slate);
+  font-style: italic;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.doi-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--canopy);
+  font-size: 0.8rem;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid var(--bone);
+  padding: 4px 12px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.doi-label { font-weight: bold; font-size: 0.75rem; }
 
 .publication-card__doi a:hover {
   color: var(--ink);
@@ -1029,14 +1066,9 @@ const sortOptions = [
   }
 
   .publication-card {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .publication-card__year {
-    width: 60px;
-    height: 60px;
-    font-size: 1.2rem;
+    padding: var(--space-lg);
+    border-left-width: 3px;
+    text-align: left;
   }
 
   .publication-card__title {
