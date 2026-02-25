@@ -101,10 +101,7 @@ const heroBgStyle = computed(() => ({
         </div>
       </div>
 
-      <!-- Scroll indicator -->
-      <div class="hero__scroll">
-        <div class="hero__scroll-line"></div>
-      </div>
+
     </section>
 
     <!-- ═══ INTRODUCTION ═══ -->
@@ -122,13 +119,6 @@ const heroBgStyle = computed(() => ({
                <img :src="getImagePath('images/about/animal-portrait.jpg')" alt="Espèce étudiée par GeCoLab" class="intro__mosaic-img">
              </div>
              <div class="intro__highlight-card">
-               <div class="intro__highlight-icon">
-                 <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                   <path d="M24 4L24 8M24 40L24 44M4 24H8M40 24H44M10 10L13 13M35 35L38 38M38 10L35 13M13 35L10 38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                   <circle cx="24" cy="24" r="10" stroke="currentColor" stroke-width="1.5"/>
-                   <path d="M20 24C20 21.5 22 19 24 19C26 19 28 21.5 28 24C28 26.5 26 29 24 29C22 29 20 26.5 20 24Z" stroke="currentColor" stroke-width="1"/>
-                 </svg>
-               </div>
                <h3>{{ t('home.intro.highlightTitle') }}</h3>
                <p v-html="t('home.intro.highlightText')"></p>
              </div>
@@ -171,18 +161,6 @@ const heroBgStyle = computed(() => ({
              </div>
            </div>
          </div>
-      </div>
-    </section>
-
-    <!-- ═══ STATS ═══ -->
-    <section class="stats">
-      <div class="container">
-        <div class="stats__grid">
-          <div v-for="(stat, i) in stats" :key="i" class="stats__item" :style="{ animationDelay: `${i * 0.1 + 0.2}s` }">
-            <span class="stats__value">{{ stat.value }}</span>
-            <span class="stats__label">{{ stat.label }}</span>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -545,14 +523,16 @@ const heroBgStyle = computed(() => ({
   margin-bottom: var(--space-md);
   position: relative;
   padding-left: 24px;
+  text-align: center;
 }
 
 .section-label::before {
   content: '';
   position: absolute;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   width: 16px;
   height: 1px;
   background: var(--canopy);
@@ -572,6 +552,8 @@ const heroBgStyle = computed(() => ({
   line-height: 1.2;
   color: var(--ink);
   max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .section-title--light {
@@ -669,6 +651,7 @@ const heroBgStyle = computed(() => ({
   position: relative;
   padding: var(--space-4xl) 0;
   overflow: hidden;
+  background: linear-gradient(135deg, var(--obsidian) 0%, var(--forest) 100%);
 }
 
 .specialty .section-title {
@@ -679,14 +662,8 @@ const heroBgStyle = computed(() => ({
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(135deg, var(--obsidian) 0%, var(--forest) 50%, #0A4A2E 100%);
-}
-
-.specialty__bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2322C55E' fill-opacity='0.03'%3E%3Cpath d='M0 0h20v20H0z'/%3E%3C/g%3E%3C/svg%3E");
+    radial-gradient(circle at 20% 30%, rgba(29, 172, 120, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(12, 36, 96, 0.08) 0%, transparent 50%);
 }
 
 .specialty__inner {
@@ -699,68 +676,97 @@ const heroBgStyle = computed(() => ({
 
 .specialty__text {
   margin-top: var(--space-xl);
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1.25rem;
   line-height: 1.8;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: var(--space-3xl);
 }
 
 .specialty__methods {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-xl);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-2xl);
   margin-top: var(--space-3xl);
 }
 
 .specialty__method {
-  text-align: center;
-  padding: var(--space-2xl) var(--space-lg);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(29, 172, 120, 0.1);
-  transition: all 0.3s var(--ease-out);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: var(--space-2xl);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(29, 172, 120, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.specialty__method::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--canopy), var(--forest));
+  border-radius: 20px 20px 0 0;
 }
 
 .specialty__method:hover {
-  background: rgba(29, 172, 120, 0.06);
-  border-color: rgba(29, 172, 120, 0.2);
-  transform: translateY(-4px);
+  transform: translateY(-8px);
+  box-shadow: 
+    0 20px 40px rgba(29, 172, 120, 0.15),
+    0 0 0 1px rgba(29, 172, 120, 0.2);
 }
 
 .specialty__method-img {
   width: 100%;
-  height: 360px;
-  border-radius: 8px;
+  height: 280px;
+  border-radius: 12px;
   overflow: hidden;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
+  position: relative;
+}
+
+.specialty__method-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(29, 172, 120, 0.1) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .specialty__method-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s var(--ease-out);
-  filter: brightness(0.85);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(1.05) contrast(1.1);
 }
 
 .specialty__method:hover .specialty__method-img img {
-  transform: scale(1.08);
-  filter: brightness(1);
+  transform: scale(1.05);
 }
 
 .specialty__method h4 {
   font-family: var(--font-display);
-  color: var(--white);
-  font-size: 1.5rem;
+  color: var(--ink);
+  font-size: 1.4rem;
+  font-weight: 600;
   margin-bottom: var(--space-sm);
+  text-align: center;
 }
 
 .specialty__method p {
-  font-size: 1.15rem;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+  color: var(--slate);
   line-height: 1.6;
+  text-align: center;
+  margin: 0;
 }
 
 /* ═══ STATS ═══ */
@@ -851,9 +857,15 @@ const heroBgStyle = computed(() => ({
 
   .specialty__methods {
     grid-template-columns: 1fr;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+    gap: var(--space-xl);
+  }
+
+  .specialty__method {
+    padding: var(--space-xl);
+  }
+
+  .specialty__method-img {
+    height: 240px;
   }
 
   .stats__grid {

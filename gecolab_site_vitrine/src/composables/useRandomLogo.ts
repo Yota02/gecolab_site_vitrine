@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue'
 
-const animalLogos = [
+const animalLogos: string[] = [
   `${import.meta.env.BASE_URL}images/logos/sanglier.png`,
   `${import.meta.env.BASE_URL}images/logos/loutre.png`,
   `${import.meta.env.BASE_URL}images/logos/loup.png`,
@@ -14,7 +14,7 @@ const currentLogoRef = ref<string>('')
 
 function setRandomLogo() {
   const randomIndex = Math.floor(Math.random() * animalLogos.length)
-  const selectedLogo = animalLogos[randomIndex]
+  const selectedLogo = animalLogos[randomIndex]!
   currentLogoRef.value = selectedLogo
   localStorage.setItem('currentAnimalLogo', selectedLogo)
   return selectedLogo
