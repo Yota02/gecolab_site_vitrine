@@ -76,12 +76,10 @@ function handleSubmit() {
               <p>gecolab@uliege.be</p>
             </div>
 
-            <!-- Leaflet Map -->
+            <!-- Leaflet Map - TEMPORARILY DISABLED
             <div class="map-container">
-              <!-- @ts-ignore -->
               <l-map v-model:zoom="zoom" :center="center" style="height: 300px; width: 100%; border-radius: 12px;">
                 <l-tile-layer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"></l-tile-layer>
-                <!-- @ts-ignore -->
                 <l-marker :lat-lng="center">
                   <l-popup>
                     <div style="white-space: pre-line;">{{ t('contact.info.mapPopup') }}</div>
@@ -89,6 +87,7 @@ function handleSubmit() {
                 </l-marker>
               </l-map>
             </div>
+            -->
           </div>
 
           <!-- Form column -->
