@@ -12,14 +12,14 @@ const messages = {
       press: 'Presse',
       contact: 'Contact'
     },
-     home: {
-       hero: {
-         subtitle: 'Génétique & Conservation',
-         affiliation: 'Laboratoire Universitaire de Liège',
-         lead: "De l'ADN environnemental à la conservation des espèces",
-         discoverServices: 'Découvrir nos services',
-         contactUs: 'Nous contacter'
-       },
+    home: {
+      hero: {
+        subtitle: 'Génétique & Conservation',
+        affiliation: 'Laboratoire Universitaire de Liège',
+        lead: "De l'ADN environnemental à la conservation des espèces",
+        discoverServices: 'Découvrir nos services',
+        contactUs: 'Nous contacter'
+      },
       intro: {
         sectionLabel: 'Qui sommes-nous',
         title: 'Un laboratoire reconnu internationalement, spécialisé dans l\'ADN environnemental',
@@ -224,13 +224,13 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       },
       highlight: {
         title: 'Vulgarisation scientifique',
-        text: 'Au-delà de ses recherches, le GeCoLab consacre une partie de son activité à la vulgarisation scientifique. Le Dr Johan Michaux intervient notamment pour la télévision nationale belge (RTBF), rendant accessibles les enjeux de la conservation génétique au grand public.'
+        text: 'Au-delà de ses recherches, le GeCoLab consacre une partie de son activity à la vulgarisation scientifique. Le Dr Johan Michaux intervient notamment pour la télévision nationale belge (RTBF), rendant accessibles les enjeux de la conservation génétique au grand public.'
       }
     },
     contact: {
       info: {
         address: 'Adresse',
-        addressText: 'GeCoLAB\nLaboratoire de génétique de la conservation\nInstitut de Botanique (Bât. B22)\nQuartier Vallée 1\nChemin de la vallée 4\n4000 Liège (Sart Tilman)\nBelgique',
+        addressText: 'GeCoLAB\nLaboratoire de génétique de la conservation\nInstitut de Botanique (Bât. B22)\nQuartier Vallée 1\nChemin de la vallée 4\n4000 Liège (Sart Tilman)\nBelgie',
         phone: 'Téléphone',
         email: 'Email',
         mapPopup: 'GeCoLAB\nLaboratoire de génétique de la conservation\nInstitut de Botanique (Bât. B22)\nQuartier Vallée 1, Chemin de la Vallée 4\n4000 Liège (Sart Tilman), Belgique'
@@ -267,7 +267,8 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       },
       stats: {
         totalPublications: 'publications',
-        yearsRange: '2011 - 2023'
+        yearsRange: '2011 - 2023',
+        resultsFound: '{n} résultats trouvés'
       },
       search: {
         placeholder: 'Rechercher par titre, auteur ou journal...',
@@ -296,14 +297,14 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       press: 'Press',
       contact: 'Contact'
     },
-     home: {
-       hero: {
-         subtitle: 'Genetics & Conservation',
-         affiliation: 'University Laboratory of Liège',
-         lead: 'From environmental DNA to species conservation',
-         discoverServices: 'Discover our services',
-         contactUs: 'Contact us'
-       },
+    home: {
+      hero: {
+        subtitle: 'Genetics & Conservation',
+        affiliation: 'University Laboratory of Liège',
+        lead: 'From environmental DNA to species conservation',
+        discoverServices: 'Discover our services',
+        contactUs: 'Contact us'
+      },
       intro: {
         sectionLabel: 'Who we are',
         title: 'An internationally recognized laboratory, specialized in environmental DNA',
@@ -545,7 +546,8 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       },
       stats: {
         totalPublications: 'publications',
-        yearsRange: '2011 - 2023'
+        yearsRange: '2011 - 2023',
+        resultsFound: '{n} results found'
       },
       search: {
         placeholder: 'Search by title, author or journal...',
@@ -574,14 +576,14 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       press: 'Presse',
       contact: 'Kontakt'
     },
-     home: {
-       hero: {
-         subtitle: 'Genetik & Naturschutz',
-         affiliation: 'Universitätslabor Lüttich',
-         lead: 'Von Umwelt-DNA zur Arterhaltung',
-         discoverServices: 'Unsere Dienstleistungen entdecken',
-         contactUs: 'Kontaktieren Sie uns'
-       },
+    home: {
+      hero: {
+        subtitle: 'Genetik & Naturschutz',
+        affiliation: 'Universitätslabor Lüttich',
+        lead: 'Von Umwelt-DNA zur Arterhaltung',
+        discoverServices: 'Unsere Dienstleistungen entdecken',
+        contactUs: 'Kontaktieren Sie uns'
+      },
       intro: {
         sectionLabel: 'Wer wir sind',
         title: 'Ein international anerkanntes Labor, spezialisiert auf Umwelt-DNA',
@@ -823,7 +825,8 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       },
       stats: {
         totalPublications: 'Veröffentlichungen',
-        yearsRange: '2011 - 2023'
+        yearsRange: '2011 - 2023',
+        resultsFound: '{n} Ergebnisse gefunden'
       },
       search: {
         placeholder: 'Nach Titel, Autor oder Zeitschrift suchen...',
@@ -852,14 +855,14 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       press: 'Prensa',
       contact: 'Contacto'
     },
-     home: {
-       hero: {
-         subtitle: 'Genética & Conservación',
-         affiliation: 'Laboratorio Universitario de Lieja',
-         lead: 'Del ADN ambiental a la conservación de especies',
-         discoverServices: 'Descubra nuestros servicios',
-         contactUs: 'Contáctenos'
-       },
+    home: {
+      hero: {
+        subtitle: 'Genética & Conservación',
+        affiliation: 'Laboratorio Universitario de Lieja',
+        lead: 'Del ADN ambiental a la conservación de especies',
+        discoverServices: 'Descubra nuestros servicios',
+        contactUs: 'Contáctenos'
+      },
       intro: {
         sectionLabel: 'Quiénes somos',
         title: 'Un laboratorio reconocido internacionalmente, especializado en ADN ambiental',
@@ -920,7 +923,7 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         text: 'Todas nuestras muestras son secuenciadas en el <strong>NovaSeq de Illumina</strong> o el <strong>Aviti de Element Biosciences</strong>, permitiendo obtener millones de secuencias por muestra y detectar el ADN de especies raras con la sensibilidad más fina.'
       },
       service1: {
-        title: 'Inventario de biodiversidad e identificación de especies',
+        title: 'Inventario de biodiversité e identificación de especies',
         description: 'Realice inventarios faunísticos precisos o identifique la presencia de especies amenazadas o invasoras en un sitio determinado gracias a nuestras herramientas genéticas.',
         aquatic: 'Medios acuáticos',
         aquaticText: 'Búsqueda de peces, anfibios, mamíferos acuáticos e invertebrados macro a partir de muestreos de agua a través de cápsulas filtrantes y bombas peristálticas.',
@@ -990,7 +993,7 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         paragraph1: 'GeCoLAB es un laboratorio de la Universidad de Lieja creado por el <strong>Dr. Johan Michaux</strong> que desarrolla investigaciones sobre biodiversidad a partir de herramientas genéticas desde hace más de 25 años.',
         paragraph2: 'Sus investigaciones han tenido como objetivo fundamental comprender mejor la historia evolutiva y taxonomía de una serie de especies de vertebrados. También tienen objetivos aplicados tales como comprender mejor la resistencia de las especies frente a los cambios climáticos, estudiar el impacto de la fragmentación de hábitats en la supervivencia a largo plazo de especies amenazadas, o implementar nuevos métodos para realizar inventarios faunísticos en medio acuático y terrestre.',
         paragraph3: 'Estas investigaciones se han desarrollado sobre un amplio espectro de especies, incluyendo numerosos mamíferos acuáticos o semi-acuáticos (oso polar, marsopa común, visón europeo, castor europeo, nutria europea, desmán de los Pirineos, musaraña acuática…) pero también anfibios o peces.',
-        differenceTitle: 'Nuestra diferencia',
+        differenceTitle: 'Our diferencia',
         differenceText: 'Por nuestra experiencia en genética <em>y</em> en tanto que naturalistas y ecólogos, no proponemos únicamente el trabajo de un prestador de servicios devolviendo una lista de especies — le ayudamos en la <strong>interpretación de los datos</strong>, la implementación de <strong>protocolos de recolección</strong> y el desarrollo de <strong>proyectos concretos</strong>.',
         differenceHighlight: 'Base de datos genética de referencias <strong>privada y única</strong>, desarrollada con Biotope y Aquascop'
       },
@@ -1101,7 +1104,8 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       },
       stats: {
         totalPublications: 'publicaciones',
-        yearsRange: '2011 - 2023'
+        yearsRange: '2011 - 2023',
+        resultsFound: '{n} resultados encontrados'
       },
       search: {
         placeholder: 'Buscar por título, autor o revista...',
@@ -1379,7 +1383,8 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       },
       stats: {
         totalPublications: 'publicaties',
-        yearsRange: '2011 - 2023'
+        yearsRange: '2011 - 2023',
+        resultsFound: '{n} resultaten gevonden'
       },
       search: {
         placeholder: 'Zoeken op titel, auteur of tijdschrift...',

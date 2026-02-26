@@ -210,21 +210,6 @@ const heroBgStyle = computed(() => ({
       </div>
     </section>
 
-    <!-- ═══ PARTNERS ═══ -->
-    <section class="partners-strip">
-      <div class="container">
-        <h2 class="section-title">{{ t('partners.hero.partnersLabel') }}</h2>
-        <div class="partners-strip__track">
-          <div class="partners-strip__list">
-            <div v-for="partner in partners" :key="partner.id" class="partner-logo">
-              <img :src="partner.logo" :alt="partner.name">
-            </div>
-            <!-- Duplicate for infinite effect if needed, but here simple grid is better -->
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ═══ CTA ═══ -->
     <section class="cta">
       <div class="container">
