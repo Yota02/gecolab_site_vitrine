@@ -58,11 +58,6 @@ const router = createRouter({
       name: 'partners',
       component: () => import('@/views/PartnersView.vue'),
     },
-    {
-      path: '/presse',
-      name: 'press',
-      component: () => import('@/views/PressView.vue'),
-    },
      {
        path: '/publications',
        name: 'publications',
@@ -73,7 +68,7 @@ const router = createRouter({
        name: 'vulgarisation',
        component: () => import('@/views/VulgarisationView.vue'),
      },
-  ],
+   ],
   scrollBehavior(_to, _from, savedPosition) {
     if (savedPosition) return savedPosition
     return { top: 0, behavior: 'smooth' }

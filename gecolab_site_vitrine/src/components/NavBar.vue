@@ -59,7 +59,6 @@ const links = computed(() => [
   { to: '/publications', label: t('nav.publications') },
   { to: '/vulgarisation', label: t('nav.vulgarisation') },
   { to: '/partenaires', label: t('nav.partners') },
-  { to: '/presse', label: t('nav.press') },
   { to: '/contact', label: t('nav.contact') },
 ])
 </script>

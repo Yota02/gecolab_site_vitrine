@@ -53,7 +53,7 @@ const { t } = useI18n()
             <li><RouterLink to="/">{{ t('nav.home') }}</RouterLink></li>
             <li><RouterLink to="/services">{{ t('nav.services') }}</RouterLink></li>
             <li><RouterLink to="/a-propos">{{ t('nav.about') }}</RouterLink></li>
-            <li><RouterLink to="/presse">{{ t('nav.press') }}</RouterLink></li>
+            <li><RouterLink to="/vulgarisation">{{ t('nav.vulgarisation') }}</RouterLink></li>
             <li><RouterLink to="/contact">{{ t('nav.contact') }}</RouterLink></li>
           </ul>
         </div>

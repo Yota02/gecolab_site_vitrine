@@ -61,6 +61,36 @@ const loadVideo = (video: any) => {
   video.loaded = true
 }
 
+const pressArticles = [
+  {
+    date: t('press.articles.article1.date'),
+    category: t('press.articles.article1.category'),
+    title: t('press.articles.article1.title'),
+    description: t('press.articles.article1.description'),
+    source: t('press.articles.article1.source'),
+    tag: t('press.articles.article1.tag'),
+    image: `${import.meta.env.BASE_URL}images/services/chat-forestier.jpg`,
+  },
+  {
+    date: t('press.articles.article2.date'),
+    category: t('press.articles.article2.category'),
+    title: t('press.articles.article2.title'),
+    description: t('press.articles.article2.description'),
+    source: t('press.articles.article2.source'),
+    tag: t('press.articles.article2.tag'),
+    image: `${import.meta.env.BASE_URL}images/press/lalibre.jpg`,
+  },
+  {
+    date: t('press.articles.article3.date'),
+    category: t('press.articles.article3.category'),
+    title: t('press.articles.article3.title'),
+    description: t('press.articles.article3.description'),
+    source: t('press.articles.article3.source'),
+    tag: t('press.articles.article3.tag'),
+    image: `${import.meta.env.BASE_URL}images/press/natagora.jpg`,
+  },
+]
+
 onMounted(() => {
   requestAnimationFrame(() => { visible.value = true })
 })
@@ -175,6 +205,44 @@ onMounted(() => {
             <span class="btn-count">({{ allVideos.length - displayedVideos.length }} restantes)</span>
           </button>
         </div>
+      </div>
+    </section>
+
+    <section class="press-section">
+      <div class="container">
+        <div class="press-section__header">
+          <h2 class="section-title">{{ t('press.hero.title') }}</h2>
+          <p class="section-subtitle">{{ t('press.hero.lead') }}</p>
+        </div>
+        
+        <div class="press-section__list">
+          <article
+            v-for="(article, i) in pressArticles"
+            :key="i"
+            class="press-card"
+          >
+            <div class="press-card__visual">
+              <div class="press-card__image" v-if="article.image">
+                <img :src="article.image" :alt="article.title" loading="lazy">
+              </div>
+              <div class="press-card__meta">
+                <span class="press-card__date">{{ article.date }}</span>
+                <span class="press-card__tag">{{ article.tag }}</span>
+              </div>
+            </div>
+            <div class="press-card__content">
+              <span class="press-card__category">{{ article.category }}</span>
+              <h2>{{ article.title }}</h2>
+              <p>{{ article.description }}</p>
+              <span class="press-card__source">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5.5 2.5h-3a1 1 0 00-1 1v7a1 1 0 001 1h7a1 1 0 001-1v-3" stroke="currentColor" stroke-width="1" stroke-linecap="round"/><path d="M8 1.5h4.5V6M5.5 8.5L12.5 1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                {{ article.source }}
+              </span>
+            </div>
+          </article>
+        </div>
+
+        
       </div>
     </section>
 
@@ -627,5 +695,171 @@ onMounted(() => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+/* PRESS SECTION */
+.press-section {
+  padding: 4rem 0 5rem;
+  background: var(--color-bg-light);
+}
+
+.press-section__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.press-section__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.press-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  background: var(--color-white);
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.press-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.press-card__visual {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.press-card__image {
+  border-radius: 8px;
+  overflow: hidden;
+  height: 160px;
+}
+
+.press-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.press-card:hover .press-card__image img {
+  transform: scale(1.05);
+}
+
+.press-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.press-card__date {
+  font-size: 2rem;
+  color: var(--color-primary);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.press-card__tag {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  background: rgba(16, 111, 76, 0.1);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  width: fit-content;
+}
+
+.press-card__category {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-light);
+  margin-bottom: 0.5rem;
+}
+
+.press-card__content h2 {
+  font-size: 1.3rem;
+  color: var(--color-text);
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.press-card__content p {
+  margin-top: 1rem;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.press-card__source {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  font-weight: 500;
+}
+
+.highlight-box {
+  text-align: center;
+  padding: 3rem;
+  background: var(--color-white);
+  border-radius: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.highlight-box__icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1.5rem;
+  color: var(--color-text-light);
+}
+
+.highlight-box h3 {
+  font-size: 1.5rem;
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.highlight-box p {
+  margin-top: 1rem;
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .press-card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .press-card__meta {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .press-card__date {
+    font-size: 1.5rem;
+  }
+
+  .press-card__image {
+    height: 200px;
+  }
 }
 </style>

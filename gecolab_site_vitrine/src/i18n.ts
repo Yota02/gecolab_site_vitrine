@@ -267,7 +267,8 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       },
       stats: {
         totalPublications: 'publications',
-        yearsRange: '2011 - 2023',
+        citations: 'citations',
+        years: 'années',
         resultsFound: '{n} résultats trouvés'
       },
       search: {
@@ -283,6 +284,13 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         },
         allYears: 'Toutes les années',
         clearFilters: 'Effacer les filtres'
+      },
+      card: {
+        readMore: 'Lire le résumé',
+        readLess: 'Voir moins',
+        copyCitation: 'Copier la citation',
+        copied: 'Copié !',
+        citation: 'Citation'
       }
     }
   },
@@ -337,7 +345,8 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       }
     },
     common: {
-      language: 'Language'
+      language: 'Language',
+      readMore: 'Discover'
     },
     footer: {
       tagline: 'Genetics & Conservation',
@@ -546,7 +555,8 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       },
       stats: {
         totalPublications: 'publications',
-        yearsRange: '2011 - 2023',
+        citations: 'citations',
+        years: 'years',
         resultsFound: '{n} results found'
       },
       search: {
@@ -562,6 +572,13 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         },
         allYears: 'All years',
         clearFilters: 'Clear filters'
+      },
+      card: {
+        readMore: 'Read abstract',
+        readLess: 'Read less',
+        copyCitation: 'Copy citation',
+        copied: 'Copied!',
+        citation: 'Citation'
       }
     }
   },
@@ -616,7 +633,8 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       }
     },
     common: {
-      language: 'Sprache'
+      language: 'Sprache',
+      readMore: 'Entdecken'
     },
     footer: {
       tagline: 'Genetik und Naturschutz',
@@ -641,7 +659,7 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       },
       quality: {
         title: 'Unser Qualitätsengagement',
-        text: 'Alle unsere Proben werden auf dem <strong>Illumina NovaSeq</strong> oder dem <strong>Element Biosciences Aviti</strong> sequenziert, wodurch Millionen von Sequenzen pro Probe erhalten werden können und DNA seltener Arten mit der feinsten Empfindlichkeit detektiert werden kann.'
+        text: 'Alle unsere proben werden auf dem <strong>Illumina NovaSeq</strong> oder dem <strong>Element Biosciences Aviti</strong> sequenziert, wodurch Millionen von Sequenzen pro Probe erhalten werden können und DNA seltener Arten mit der feinsten Empfindlichkeit detektiert werden kann.'
       },
       service1: {
         title: 'Biodiversitätsinventar und Artenidentifikation',
@@ -825,7 +843,8 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       },
       stats: {
         totalPublications: 'Veröffentlichungen',
-        yearsRange: '2011 - 2023',
+        citations: 'Zitate',
+        years: 'Jahre',
         resultsFound: '{n} Ergebnisse gefunden'
       },
       search: {
@@ -841,6 +860,13 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         },
         allYears: 'Alle Jahre',
         clearFilters: 'Filter löschen'
+      },
+      card: {
+        readMore: 'Zusammenfassung lesen',
+        readLess: 'Weniger anzeigen',
+        copyCitation: 'Zitat kopieren',
+        copied: 'Kopiert!',
+        citation: 'Zitat'
       }
     }
   },
@@ -895,7 +921,8 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       }
     },
     common: {
-      language: 'Idioma'
+      language: 'Idioma',
+      readMore: 'Descubrir'
     },
     footer: {
       tagline: 'Genética y Conservación',
@@ -1061,7 +1088,7 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       },
       highlight: {
         title: 'Divulgación científica',
-        text: 'Más allá de sus investigaciones, GeCoLAB consagra una parte de su actividad a la divulgación científica. El Dr. Johan Michaux interviene particularmente en la televisión nacional belga (RTBF), haciendo accesibles los desafíos de la conservación genética al gran público.'
+        text: 'Más allá de sus investigaciones, GeCoLAB consagra una parte de su actividad a la divulgación científica. El Dr. Johan Michaux interviene particularmente en la televisión nacional delga (RTBF), haciendo accesibles los desafíos de la conservación genética al gran público.'
       }
     },
     contact: {
@@ -1104,7 +1131,8 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       },
       stats: {
         totalPublications: 'publicaciones',
-        yearsRange: '2011 - 2023',
+        citations: 'citaciones',
+        years: 'años',
         resultsFound: '{n} resultados encontrados'
       },
       search: {
@@ -1120,6 +1148,13 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         },
         allYears: 'Todos los años',
         clearFilters: 'Borrar filtros'
+      },
+      card: {
+        readMore: 'Leer el resumen',
+        readLess: 'Ver menos',
+        copyCitation: 'Copiar cita',
+        copied: '¡Copiado!',
+        citation: 'Cita'
       }
     }
   },
@@ -1145,7 +1180,7 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       intro: {
         sectionLabel: 'Wie we zijn',
         title: 'Een internationaal erkend laboratorium, gespecialiseerd in milieudna',
-        paragraph1: 'Het <strong>GeCoLAB</strong> is een genetisch laboratorium van de Universiteit van Luik, internationaal erkend en gespecialiseerd in milieudna-analyse en bedreigde soorten. Met meer dan twintig jaar ervaring biedt het diverse milieudna-analysediensten — haren, uitwerpselen, water, bodem — om verschillende milieuvraagstukken te beantwoorden.',
+        paragraph1: 'Het <strong>GeCoLAB</strong> is een genetisch laboratorium van de Universiteit van Luik, internationaal erkend en gespecialiseerd in milieudna-analyse en bedreigde soorten. Met meer dan twintig year ervaring biedt het diverse milieudna-analysediensten — haren, uitwerpselen, water, bodem — om verschillende milieuvraagstukken te beantwoorden.',
         paragraph2: 'GeCoLAB beschikt over een breed scala aan genetische markers die specifiek zijn voor veel groepen dier- en plantenorganismen, en is uitgerust met een moleculair biologisch laboratorium dat toegang biedt tot de nieuwste sequencingtechnologieën (Next Generation Sequencing), digitale PCR en kwantitatieve PCR.',
         highlightTitle: 'Referentielaboratorium in Wallonië',
         highlightText: 'Sinds 2019 is GeCoLAB het <strong>referentielaboratorium</strong> van het Waals ministerie van Milieu betreffende de <strong>genetische monitoring van de wolf</strong> in Wallonië.'
@@ -1174,7 +1209,8 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       }
     },
     common: {
-      language: 'Taal'
+      language: 'Taal',
+      readMore: 'Ontdek'
     },
     footer: {
       tagline: 'Genetica en Natuurbehoud',
@@ -1249,14 +1285,14 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       },
       service6: {
         title: 'Identificatie van pathogenen en bacteriële microbiomen',
-        description: 'Nauwkeurige schatting van bacteriële microbiomen en detectie van potentiële aanwezigheid van pathogenen met hogere nauwkeurigheid dan conventionele technologieën.',
+        description: 'Nauwkeurige schatting van bacteriële microbiomen en detectie van potentiële aanwezigheid van pathogenen mit hogere nauwkeurigheid dan conventionele technologieën.',
         pathogensLabel: 'Gedetecteerde pathogenen:',
         pathogens: 'Borrelia (ziekte van Lyme), Bartonella, Yersinia, Bacillus, Leptospira…',
         partners: 'Ontwikkeld met het Pasteur Instituut en het Universitair Ziekenhuis van de Universiteit van Luik.'
       },
       cta: {
         title: 'Heeft u een gepersonaliseerde offerte nodig?',
-        text: 'Neem contact met ons op met uw onderwerp, aantal en type monsters.',
+        text: '',
         button: 'Neem contact op'
       }
     },
@@ -1273,7 +1309,7 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         paragraph2: 'Zijn onderzoeken hadden als fundamenteel doel om de evolutionaire geschiedenis en taxonomie van een reeks gewervelde soorten beter te begrijpen. Ze hebben ook toegepaste doelstellingen zoals het beter begrijpen van de weerstand van soorten tegenover klimaatverandering, het bestuderen van de impact van habitatfragmentatie op het langetermijn overleven van bedreigde soorten, of het implementeren van nieuwe methoden om faunistische inventarissen uit te voeren in aquatische en terrestrische omgevingen.',
         paragraph3: 'Deze onderzoeken werden ontwikkeld over een breed spectrum van soorten, waaronder vele aquatische of semi-aquatische zoogdieren (ijsbeer, bruinvis, Europese nerts, Europese bever, Europese otter, Pyreneese desman, waterspitsmuis…) maar ook amfibieën of vissen.',
         differenceTitle: 'Ons verschil',
-        differenceText: 'Door onze expertise in genetica <em>en</em> als naturalisten en ecologen, bieden we niet enkel het werk van een dienstverlener die een soortenlijst teruggeeft — we helpen u bij de <strong>gegevensinterpretatie</strong>, de implementatie van <strong>verzamelingsprotocollen</strong> en de ontwikkeling van <strong>concrete projecten</strong>.',
+        differenceText: 'Door onze expertise in genetica <em>en</em> als naturalisten en ecologen, bieden we niet enkel het werk van een dienstverlener die een soortenlijst teruggeeft — we helpen u bij de <strong>gegevensinterpretatie</strong>, de implementatie van <strong>verzamelingsprotocollen</strong> en de ontwikkeling von <strong>concrete projecten</strong>.',
         differenceHighlight: '<strong>Private en unieke</strong> genetische referentiedatabase, ontwikkeld met Biotope en Aquascop'
       },
       team: {
@@ -1340,13 +1376,13 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       },
       highlight: {
         title: 'Wetenschappelijke vulgarisering',
-        text: 'Bovenop zijn onderzoeken wijdt GeCoLAB een deel van zijn activiteit aan wetenschappelijke vulgarisering. Dr. Johan Michaux treedt in het bijzonder op in de Belgische nationale televisie (RTBF), waardoor de uitdagingen van genetische conservatie toegankelijk worden gemaakt voor het grote publiek.'
+        text: 'Bovenop zijn onderzoeken wijdt GeCoLAB een deel van zijn activiteit aan wetenschappelijke vulgarisering. Dr. Johan Michaux treedt in het bijzonder op in de Belgische nationale televisie (RTBF), waardoor de uitdagingen von genetische conservatie toegankelijk worden gemaakt voor het grote publiek.'
       }
     },
     contact: {
       info: {
         address: 'Adres',
-        addressText: 'GeCoLAB\nLaboratorium voor conservatiegenetica\nInstituut voor Plantkunde (Gebouw B22)\nQuartier Vallée 1\nChemin de la vallée 4\n4000 Luik (Sart Tilman)\nBelgië',
+        addressText: 'GeCoLAB\nLaboratorium voor conservatiegenetica\nInstituut voor Plantkunde (Gebouw B22)\nQuartier Vallée 1\nChemin de la valley 4\n4000 Luik (Sart Tilman)\nBelgië',
         phone: 'Telefoon',
         email: 'E-mail',
         mapPopup: 'GeCoLAB\nLaboratorium voor conservatiegenetica\nInstituut voor Plantkunde (Gebouw B22)\nQuartier Vallée 1, Chemin de la Vallée 4\n4000 Luik (Sart Tilman), België'
@@ -1356,7 +1392,7 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         subtitle: 'We nemen zo snel mogelijk contact met u op.',
         name: 'Volledige naam',
         namePlaceholder: 'Uw naam',
-        email: 'E-mail',
+        email: 'E-Mail',
         emailPlaceholder: 'uw@email.com',
         organization: 'Organisatie',
         organizationPlaceholder: 'Uw organisatie',
@@ -1383,7 +1419,8 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       },
       stats: {
         totalPublications: 'publicaties',
-        yearsRange: '2011 - 2023',
+        citations: 'citaties',
+        years: 'jaren',
         resultsFound: '{n} resultaten gevonden'
       },
       search: {
@@ -1399,6 +1436,13 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         },
         allYears: 'Alle jaren',
         clearFilters: 'Filters wissen'
+      },
+      card: {
+        readMore: 'Samenvatting lezen',
+        readLess: 'Minder weergeven',
+        copyCitation: 'Citaat kopiëren',
+        copied: 'Gekopieerd!',
+        citation: 'Citaat'
       }
     }
   }
