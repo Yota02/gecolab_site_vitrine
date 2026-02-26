@@ -30,11 +30,42 @@ const form = ref({
 })
 
 const submitted = ref(false)
+const isLoading = ref(false)
+const error = ref('')
 const zoom = ref(15)
 const center: any = [50.5842, 5.5595]
 
-function handleSubmit() {
-  submitted.value = true
+async function handleSubmit() {
+  isLoading.value = true
+  error.value = ''
+  
+  try {
+    const response = await fetch('https://formspree.io/f/xeelnpep', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: form.value.name,
+        email: form.value.email,
+        organization: form.value.organization,
+        subject: form.value.subject,
+        message: form.value.message
+      })
+    })
+    
+    if (response.ok) {
+      submitted.value = true
+    } else {
+      const data = await response.json()
+      error.value = data.error || 'Une erreur est survenue. Veuillez réessayer.'
+    }
+  } catch (e) {
+    error.value = 'Une erreur de connexion est survenue. Veuillez réessayer.'
+  } finally {
+    isLoading.value = false
+  }
 }
 </script>
 
@@ -76,7 +107,7 @@ function handleSubmit() {
                 </svg>
               </div>
               <h3>{{ t('contact.info.email') }}</h3>
-              <p>gecolab@uliege.be</p>
+              <p>contact.gecolab@gmail.com</p>
             </div>
 
             <div class="map-container">
@@ -133,9 +164,14 @@ function handleSubmit() {
                   <textarea id="message" v-model="form.message" required rows="5" :placeholder="t('contact.form.messagePlaceholder')"></textarea>
                 </div>
 
-                <button type="submit" class="btn btn--primary btn--lg btn--full">
-                  {{ t('contact.form.submit') }}
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <p v-if="error" class="form-error">{{ error }}</p>
+
+                <button type="submit" class="btn btn--primary btn--lg btn--full" :disabled="isLoading">
+                  <span v-if="isLoading">{{ t('contact.form.sending') || 'Envoi...' }}</span>
+                  <span v-else>
+                    {{ t('contact.form.submit') }}
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
                 </button>
               </form>
             </div>
@@ -383,6 +419,15 @@ function handleSubmit() {
   background-repeat: no-repeat;
   background-position: right 12px center;
   padding-right: 36px;
+}
+
+.form-error {
+  color: #dc2626;
+  font-size: 0.85rem;
+  padding: 0.75rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
 }
 
 /* Buttons */
