@@ -3,20 +3,23 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { LMap, LTileLayer, LMarker, LPopup } from '@vue-leaflet/vue-leaflet'
 import 'leaflet/dist/leaflet.css'
-import L, { type LatLngTuple } from 'leaflet'
+import * as L from 'leaflet'
 
 const { t } = useI18n()
 
 // Fix for default marker icons in Vite
 // @ts-ignore
-delete L.Icon.Default.prototype._getIconUrl
+if (typeof L !== 'undefined' && L.Icon && L.Icon.Default) {
+  // @ts-ignore
+  delete L.Icon.Default.prototype._getIconUrl
 
-// Use CDN URLs to avoid base path issues with GitHub Pages
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-})
+  // Use CDN URLs to avoid base path issues with GitHub Pages
+  L.Icon.Default.mergeOptions({
+    iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+    iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+    shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+  })
+}
 
 const form = ref({
   name: '',
@@ -76,7 +79,6 @@ function handleSubmit() {
               <p>gecolab@uliege.be</p>
             </div>
 
-            <!-- Leaflet Map - TEMPORARILY DISABLED
             <div class="map-container">
               <l-map v-model:zoom="zoom" :center="center" style="height: 300px; width: 100%; border-radius: 12px;">
                 <l-tile-layer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"></l-tile-layer>
@@ -86,9 +88,10 @@ function handleSubmit() {
                   </l-popup>
                 </l-marker>
               </l-map>
-            </div>
-            -->
           </div>
+          </div>
+
+          
 
           <!-- Form column -->
           <div class="contact-form-wrapper">

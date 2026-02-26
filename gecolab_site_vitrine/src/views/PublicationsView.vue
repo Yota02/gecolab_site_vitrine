@@ -282,7 +282,7 @@ const clearFilters = () => {
         <div v-if="!loading && searchQuery" class="results-info">
           <p>
             <span class="count-highlight">{{ filteredPublications.length }}</span> 
-            {{ t('publications.stats.resultsFound', filteredPublications.length) }}
+            {{ t('publications.stats.resultsFound', { n: filteredPublications.length }) }}
           </p>
         </div>
 
