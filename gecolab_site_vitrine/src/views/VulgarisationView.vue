@@ -1,15 +1,11 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 const visible = ref(false)
 
-// Gestion de la pagination
-const itemsPerPage = 9
-const currentPage = ref(1)
-
-// Liste des vidéos (votre liste originale)
+// Liste de toutes les vidéos
 const allVideos = [
   { id: 1, url: 'https://www.facebook.com/share/v/1CQMbCsrtF/?mibextid=wwXIfr', title: 'Vidéo 1', loaded: false },
   { id: 2, url: 'https://www.facebook.com/share/v/1D6Sy18bnr/?mibextid=wwXIfr', title: 'Vidéo 2', loaded: false },
@@ -26,36 +22,14 @@ const allVideos = [
   { id: 13, url: 'https://www.facebook.com/share/v/1CcfFCRksn/?mibextid=wwXIfr', title: 'La Bernache du Canada', loaded: false },
   { id: 14, url: 'https://www.facebook.com/share/v/1E7GPzMcZV/?mibextid=wwXIfr', title: 'Le sonneur à ventre jaune', loaded: false },
   { id: 15, url: 'https://www.facebook.com/share/v/1CVrzX5efY/?mibextid=wwXIfr', title: 'Les xénopus ?', loaded: false },
-  { id: 16, url: 'https://www.facebook.com/share/v/1HbLD8kNme/?mibextid=wwXIfr', title: 'Vidéo 16', loaded: false },
-  { id: 17, url: 'https://www.facebook.com/share/v/1Qg8MronkA/?mibextid=wwXIfr', title: 'Vidéo 17', loaded: false },
-  { id: 18, url: 'https://www.facebook.com/share/v/1G84yqvFoZ/?mibextid=wwXIfr', title: 'Vidéo 18', loaded: false },
-  { id: 19, url: 'https://www.facebook.com/share/v/1J1tNG22NU/?mibextid=wwXIfr', title: 'Vidéo 19', loaded: false },
-  { id: 20, url: 'https://www.facebook.com/share/v/1DiW3jJQaQ/?mibextid=wwXIfr', title: 'Vidéo 20', loaded: false },
-  { id: 21, url: 'https://www.facebook.com/share/v/1bMaSp5cqM/?mibextid=wwXIfr', title: 'Vidéo 21', loaded: false },
-  { id: 22, url: 'https://www.facebook.com/share/v/1SvrratmzH/?mibextid=wwXIfr', title: 'Vidéo 22', loaded: false },
-  { id: 23, url: 'https://www.facebook.com/share/v/1DLYeR3pFm/?mibextid=wwXIfr', title: 'Vidéo 23', loaded: false },
-  { id: 24, url: 'https://www.facebook.com/share/v/18By9XtbyU/?mibextid=wwXIfr', title: 'Vidéo 24', loaded: false },
-  { id: 25, url: 'https://www.facebook.com/share/v/1Uj7fwnLev/?mibextid=wwXIfr', title: 'Vidéo 25', loaded: false },
-  { id: 26, url: 'https://www.facebook.com/share/v/1BvCqVrs86/?mibextid=wwXIfr', title: 'Vidéo 26', loaded: false },
-  { id: 27, url: 'https://www.facebook.com/share/v/1BXGNCaiHt/?mibextid=wwXIfr', title: 'Vidéo 27', loaded: false },
-  { id: 28, url: 'https://www.facebook.com/share/v/1KtACRmvGY/?mibextid=wwXIfr', title: 'Vidéo 28', loaded: false },
-  { id: 29, url: 'https://www.facebook.com/share/v/1AwyVimer2/?mibextid=wwXIfr', title: 'Vidéo 29', loaded: false },
-  { id: 30, url: 'https://www.facebook.com/share/v/189pKAeWvx/?mibextid=wwXIfr', title: 'Vidéo 30', loaded: false },
-  { id: 31, url: 'https://www.facebook.com/share/v/1ApbBg7qSt/?mibextid=wwXIfr', title: 'Vidéo 31', loaded: false },
 ]
 
-// Vidéos actuellement affichées (pagination)
-const displayedVideos = computed(() => {
-  return allVideos.slice(0, currentPage.value * itemsPerPage)
-})
+// Sélection des 5 vidéos phares
+const featuredIds = [3, 4, 5, 6, 11]
+const featuredVideos = ref(allVideos.filter(v => featuredIds.includes(v.id)))
 
-const hasMoreVideos = computed(() => {
-  return displayedVideos.value.length < allVideos.length
-})
-
-const loadMore = () => {
-  currentPage.value++
-}
+// Lien Facebook
+const facebookUrl = 'https://www.facebook.com/profile.php?id=100083162784534'
 
 const loadVideo = (video: any) => {
   video.loaded = true
@@ -102,7 +76,7 @@ onMounted(() => {
       <div class="hero__bg"></div>
       
       <div class="hero__content container">
-        <span class="section-label section-label--light">Médiation Scientifique</span>
+        <span class="section-label">Médiation Scientifique</span>
         <h1 class="hero__title">Comprendre le vivant</h1>
         <p class="hero__lead">
           Plongez au cœur de la génétique de la conservation et de l'écologie moléculaire à travers nos capsules vidéos et articles.
@@ -154,12 +128,13 @@ onMounted(() => {
       <div class="container">
         <div class="videos__header">
           <h2 class="section-title">Vidéothèque</h2>
-          <p class="section-subtitle">Découvrez nos dernières observations et analyses.</p>
+          <p class="section-subtitle">Découvrez nos dernières observations et capsules éducatives.</p>
         </div>
         
         <div class="videos__grid">
+          <!-- Les 5 vidéos phares -->
           <div 
-            v-for="video in displayedVideos" 
+            v-for="video in featuredVideos" 
             :key="video.id"
             class="video-card"
             :class="{ 'is-loaded': video.loaded }"
@@ -197,13 +172,27 @@ onMounted(() => {
               </a>
             </div>
           </div>
-        </div>
 
-        <div class="videos__pagination" v-if="hasMoreVideos">
-          <button @click="loadMore" class="btn btn--outline">
-            Voir plus de vidéos
-            <span class="btn-count">({{ allVideos.length - displayedVideos.length }} restantes)</span>
-          </button>
+          <!-- La 6ème carte spéciale Facebook -->
+          <div class="facebook-card">
+            <div class="facebook-card__inner">
+              <div class="facebook-card__icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </div>
+              <h3 class="facebook-card__title">Plus de contenus ?</h3>
+              <p class="facebook-card__text">
+                Retrouvez l'intégralité de nos capsules vidéos et suivez notre actualité en direct sur notre page Facebook.
+              </p>
+              <a :href="facebookUrl" target="_blank" rel="noopener noreferrer" class="btn btn--outline-light">
+                Rejoignez-nous
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -225,24 +214,22 @@ onMounted(() => {
               <div class="press-card__image" v-if="article.image">
                 <img :src="article.image" :alt="article.title" loading="lazy">
               </div>
-              <div class="press-card__meta">
-                <span class="press-card__date">{{ article.date }}</span>
-                <span class="press-card__tag">{{ article.tag }}</span>
-              </div>
             </div>
             <div class="press-card__content">
+              <div class="press-card__header">
+                <span class="press-card__tag">{{ article.tag }}</span>
+                <span class="press-card__date">{{ article.date }}</span>
+              </div>
               <span class="press-card__category">{{ article.category }}</span>
-              <h2>{{ article.title }}</h2>
-              <p>{{ article.description }}</p>
+              <h2 class="press-card__title">{{ article.title }}</h2>
+              <p class="press-card__description">{{ article.description }}</p>
               <span class="press-card__source">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5.5 2.5h-3a1 1 0 00-1 1v7a1 1 0 001 1h7a1 1 0 001-1v-3" stroke="currentColor" stroke-width="1" stroke-linecap="round"/><path d="M8 1.5h4.5V6M5.5 8.5L12.5 1.5" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5.5 2.5h-3a1 1 0 00-1 1v7a1 1 0 001 1h7a1 1 0 001-1v-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8 1.5h4.5V6M5.5 8.5L12.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 {{ article.source }}
               </span>
             </div>
           </article>
         </div>
-
-        
       </div>
     </section>
 
@@ -263,35 +250,11 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* VARIABLES (À adapter selon votre Design System) */
-.vulgarisation {
-  --color-primary: #106f4c; /* Vert forêt */
-  --color-primary-dark: #0a4a33;
-  --color-secondary: #e8f5e9;
-  --color-text: #1f2937;
-  --color-text-light: #6b7280;
-  --color-bg-light: #f9fafb;
-  --color-white: #ffffff;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-}
-
-/* BASE */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
 .vulgarisation {
   opacity: 0;
-  transition: opacity 0.5s ease-out;
-  background-color: var(--color-bg-light);
-  font-family: 'Inter', system-ui, sans-serif;
-  color: var(--color-text);
+  transition: opacity 0.8s var(--ease-out);
+  background-color: var(--parchment);
+  color: var(--ink);
 }
 
 .vulgarisation.visible {
@@ -301,22 +264,18 @@ onMounted(() => {
 /* HERO */
 .hero {
   position: relative;
-  background-color: var(--color-primary-dark);
-  padding: 6rem 0 4rem;
+  background-color: var(--obsidian);
+  padding: var(--space-4xl) 0 var(--space-3xl);
   text-align: center;
-  color: var(--color-white);
+  color: var(--white);
   overflow: hidden;
 }
 
 .hero__bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 50% 0%, #1d8f66 0%, var(--color-primary-dark) 70%);
-  opacity: 0.8;
-  z-index: 0;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, var(--forest-mid) 0%, var(--obsidian) 70%);
+  opacity: 0.6;
 }
 
 .hero__content {
@@ -325,62 +284,64 @@ onMounted(() => {
 }
 
 .section-label {
+  display: inline-block;
   text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  font-weight: 600;
-  opacity: 0.8;
-  margin-bottom: 1rem;
-  display: block;
+  font-size: 0.875rem;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: var(--canopy);
+  margin-bottom: var(--space-md);
 }
 
 .hero__title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
   font-weight: 800;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-lg);
   line-height: 1.1;
+  color: var(--white);
 }
 
 .hero__lead {
-  font-size: 1.125rem;
-  max-width: 600px;
+  font-size: 1.25rem;
+  max-width: 700px;
   margin: 0 auto;
-  opacity: 0.9;
+  opacity: 0.8;
   line-height: 1.6;
 }
 
 /* FEATURED ARTICLE */
 .featured-article {
-  margin-top: -3rem; /* Chevauchement sur le hero */
+  margin-top: -4rem;
   position: relative;
   z-index: 2;
-  margin-bottom: 4rem;
+  margin-bottom: var(--space-4xl);
 }
 
 .article-card {
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
+  background: var(--white);
+  border-radius: 20px;
   box-shadow: var(--shadow-lg);
   display: grid;
   grid-template-columns: 1fr;
   overflow: hidden;
+  border: 1px solid rgba(10, 15, 13, 0.05);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .article-card {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 .article-card__image-wrapper {
-  height: 250px;
-  overflow: hidden;
+  height: 300px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .article-card__image-wrapper {
     height: 100%;
-    min-height: 350px;
+    min-height: 400px;
   }
 }
 
@@ -388,7 +349,7 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 0.8s var(--ease-out);
 }
 
 .article-card:hover .article-card__img {
@@ -396,7 +357,7 @@ onMounted(() => {
 }
 
 .article-card__content {
-  padding: 2rem;
+  padding: var(--space-2xl);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -405,175 +366,177 @@ onMounted(() => {
 .article-card__header {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .badge--rtbf {
-  background-color: #e6f0fa;
-  color: #005bb6;
+  background-color: #005bb6;
+  color: white;
 }
 
 .article-card__meta {
   font-size: 0.875rem;
-  color: var(--color-text-light);
+  color: var(--slate);
+  font-weight: 500;
 }
 
 .article-card__title {
-  font-size: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.3;
-  color: #111827;
+  margin-bottom: var(--space-md);
+  line-height: 1.2;
+  color: var(--obsidian);
 }
 
 .article-card__excerpt {
-  color: var(--color-text-light);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
+  color: var(--ink-light);
+  margin-bottom: var(--space-xl);
+  line-height: 1.7;
 }
 
 /* VIDEOS SECTION */
 .videos {
-  padding: 2rem 0 5rem;
+  padding: var(--space-2xl) 0 var(--space-4xl);
 }
 
 .videos__header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: var(--space-3xl);
 }
 
 .section-title {
-  font-size: 2rem;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
   font-weight: 700;
-  color: #111827;
-  margin-bottom: 0.5rem;
+  color: var(--obsidian);
+  margin-bottom: var(--space-sm);
 }
 
 .section-subtitle {
-  color: var(--color-text-light);
+  color: var(--slate);
+  font-size: 1.1rem;
 }
 
 .videos__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--space-xl);
 }
 
 /* VIDEO CARD */
 .video-card {
-  background: var(--color-white);
-  border-radius: var(--radius-md);
+  background: var(--white);
+  border-radius: 16px;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.4s var(--ease-out);
+  border: 1px solid rgba(10, 15, 13, 0.05);
+  display: flex;
+  flex-direction: column;
 }
 
 .video-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
 }
 
 .video-card__aspect-ratio {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* 16:9 */
-  background: #000;
+  padding-bottom: 56.25%;
+  background: var(--obsidian);
 }
 
 .video-card__placeholder {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 2;
-  overflow: hidden;
 }
 
-/* Génération d'un fond abstrait pour les vidéos sans thumbnail */
 .video-card__placeholder-bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
-  opacity: 1;
+  inset: 0;
+  background: linear-gradient(135deg, var(--forest) 0%, var(--obsidian) 100%);
+  opacity: 0.9;
 }
 
-/* On peut varier légèrement la couleur pour casser la monotonie via nth-child si on le voulait */
-.video-card:nth-child(3n+1) .video-card__placeholder-bg { background: linear-gradient(135deg, #276749 0%, #22543d 100%); }
-.video-card:nth-child(3n+2) .video-card__placeholder-bg { background: linear-gradient(135deg, #2c5282 0%, #2a4365 100%); }
+.video-card:nth-child(even) .video-card__placeholder-bg {
+  background: linear-gradient(135deg, var(--forest-mid) 0%, var(--obsidian) 100%);
+}
 
 .video-card__play-btn {
-  width: 56px;
-  height: 56px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(4px);
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: all 0.3s var(--ease-bounce);
   z-index: 2;
-  border: 2px solid rgba(255,255,255,0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .video-card__placeholder:hover .video-card__play-btn {
   transform: scale(1.1);
-  background: var(--color-primary);
-  border-color: var(--color-primary);
+  background: var(--canopy);
+  border-color: var(--canopy);
+  color: var(--obsidian);
 }
 
 .video-card__hint {
-  margin-top: 1rem;
-  color: rgba(255,255,255,0.7);
-  font-size: 0.8rem;
+  margin-top: 1.5rem;
+  color: white;
+  font-size: 0.9rem;
   z-index: 2;
-  font-weight: 500;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
 }
 
 .video-card__iframe {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   z-index: 3;
 }
 
 .video-card__body {
-  padding: 1.25rem;
+  padding: var(--space-lg);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .video-card__title {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
   line-height: 1.4;
-  margin-bottom: 0.75rem;
-  color: #111827;
-  /* Truncate text after 2 lines */
+  margin-bottom: var(--space-md);
+  color: var(--obsidian);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -581,115 +544,294 @@ onMounted(() => {
 }
 
 .video-card__link {
+  margin-top: auto;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.875rem;
-  color: #3b5998; /* Facebook blue */
-  font-weight: 600;
-  text-decoration: none;
+  font-size: 0.9rem;
+  color: #1877F2; /* FB Blue */
+  font-weight: 700;
+  transition: opacity 0.2s;
 }
 
 .video-card__link:hover {
+  opacity: 0.8;
   text-decoration: underline;
 }
 
-/* PAGINATION */
-.videos__pagination {
+/* FACEBOOK CARD */
+.facebook-card {
+  background: linear-gradient(135deg, #1877F2 0%, #0C4D9F 100%);
+  border-radius: 16px;
+  color: white;
+  padding: var(--space-2xl);
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin-top: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: all 0.4s var(--ease-out);
+}
+
+.facebook-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.facebook-card__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.facebook-card__icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.facebook-card__icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.facebook-card__title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.facebook-card__text {
+  font-size: 1rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* PRESS SECTION */
+.press-section {
+  padding: var(--space-4xl) 0;
+  background-color: var(--bone);
+}
+
+.press-section__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.press-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s var(--ease-out);
+  border: 1px solid rgba(10, 15, 13, 0.05);
+}
+
+@media (min-width: 768px) {
+  .press-card {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+.press-card:hover {
+  transform: translateX(10px);
+  box-shadow: var(--shadow-md);
+}
+
+.press-card__visual {
+  height: 240px;
+}
+
+@media (min-width: 768px) {
+  .press-card__visual {
+    height: 100%;
+  }
+}
+
+.press-card__image {
+  height: 100%;
+}
+
+.press-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.press-card__content {
+  padding: var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+}
+
+.press-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.press-card__tag {
+  background: var(--canopy-glow);
+  color: var(--forest);
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.press-card__date {
+  font-size: 0.875rem;
+  color: var(--slate);
+  font-weight: 600;
+}
+
+.press-card__category {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--canopy);
+  margin-bottom: var(--space-xs);
+}
+
+.press-card__title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--obsidian);
+  margin-bottom: var(--space-md);
+  line-height: 1.3;
+}
+
+.press-card__description {
+  color: var(--ink-light);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+}
+
+.press-card__source {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--slate);
 }
 
 /* BUTTONS */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  font-weight: 600;
-  border-radius: 0.5rem;
-  transition: all 0.2s;
+  gap: 0.75rem;
+  padding: 0.8rem 1.8rem;
+  font-weight: 700;
+  border-radius: 100px;
+  transition: all 0.3s var(--ease-out);
   cursor: pointer;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .btn--primary {
-  background-color: var(--color-primary);
-  color: white;
+  background-color: var(--forest);
+  color: var(--white);
   border: none;
 }
 
 .btn--primary:hover {
-  background-color: var(--color-primary-dark);
+  background-color: var(--forest-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(10, 74, 46, 0.3);
 }
 
-.btn--outline {
+.btn--outline-light {
   background: transparent;
-  border: 2px solid #d1d5db;
-  color: var(--color-text);
+  border: 2px solid white;
+  color: white;
 }
 
-.btn--outline:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
+.btn--outline-light:hover {
+  background: white;
+  color: #1877F2;
 }
 
 .btn--white {
-  background: white;
-  color: var(--color-primary);
+  background: var(--white);
+  color: var(--forest);
   border: none;
 }
 
 .btn--white:hover {
-  background: #f0f0f0;
-}
-
-.btn-count {
-  font-weight: 400;
-  opacity: 0.7;
-  margin-left: 0.25rem;
-  font-size: 0.85em;
+  background: var(--parchment);
+  transform: translateY(-2px);
 }
 
 /* CTA BOX */
 .cta-box {
-  background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
-  border-radius: var(--radius-lg);
-  padding: 3rem 2rem;
+  background: var(--obsidian);
+  border-radius: 24px;
+  padding: var(--space-3xl) var(--space-2xl);
   text-align: center;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: var(--space-xl);
+  position: relative;
+  overflow: hidden;
 }
 
-@media (min-width: 768px) {
+.cta-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at bottom right, var(--forest) 0%, transparent 60%);
+  opacity: 0.4;
+}
+
+@media (min-width: 992px) {
   .cta-box {
     flex-direction: row;
     text-align: left;
-    padding: 4rem;
+    padding: var(--space-3xl) var(--space-4xl);
   }
 }
 
+.cta-box__content {
+  position: relative;
+  z-index: 1;
+}
+
 .cta-box__content h2 {
-  font-size: 1.75rem;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-sm);
 }
 
 .cta-box__content p {
-  opacity: 0.9;
+  opacity: 0.8;
   font-size: 1.1rem;
 }
 
 /* Animations Vue */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s var(--ease-out);
 }
 
 .fade-enter-from,
@@ -697,169 +839,13 @@ onMounted(() => {
   opacity: 0;
 }
 
-/* PRESS SECTION */
-.press-section {
-  padding: 4rem 0 5rem;
-  background: var(--color-bg-light);
-}
-
-.press-section__header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.press-section__list {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-.press-card {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 2rem;
-  padding: 2rem;
-  background: var(--color-white);
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.05);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
-}
-
-.press-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-}
-
-.press-card__visual {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.press-card__image {
-  border-radius: 8px;
-  overflow: hidden;
-  height: 160px;
-}
-
-.press-card__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.press-card:hover .press-card__image img {
-  transform: scale(1.05);
-}
-
-.press-card__meta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.press-card__date {
-  font-size: 2rem;
-  color: var(--color-primary);
-  line-height: 1;
-  font-weight: 700;
-}
-
-.press-card__tag {
-  display: inline-block;
-  padding: 0.25rem 1rem;
-  background: rgba(16, 111, 76, 0.1);
-  border-radius: 100px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-primary);
-  width: fit-content;
-}
-
-.press-card__category {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-text-light);
-  margin-bottom: 0.5rem;
-}
-
-.press-card__content h2 {
-  font-size: 1.3rem;
-  color: var(--color-text);
-  line-height: 1.3;
-  font-weight: 700;
-}
-
-.press-card__content p {
-  margin-top: 1rem;
-  color: var(--color-text-light);
-  font-size: 0.9rem;
-  line-height: 1.7;
-}
-
-.press-card__source {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  font-size: 0.8rem;
-  color: var(--color-text-light);
-  font-weight: 500;
-}
-
-.highlight-box {
-  text-align: center;
-  padding: 3rem;
-  background: var(--color-white);
-  border-radius: 16px;
-  max-width: 700px;
-  margin: 0 auto;
-  border: 1px solid rgba(0,0,0,0.05);
-}
-
-.highlight-box__icon {
-  width: 48px;
-  height: 48px;
-  margin: 0 auto 1.5rem;
-  color: var(--color-text-light);
-}
-
-.highlight-box h3 {
-  font-size: 1.5rem;
-  color: var(--color-text);
-  font-weight: 700;
-}
-
-.highlight-box p {
-  margin-top: 1rem;
-  color: var(--color-text-light);
-  font-size: 0.95rem;
-  line-height: 1.8;
-}
-
 @media (max-width: 768px) {
-  .press-card {
+  .videos__grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
   }
-
-  .press-card__meta {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .press-card__date {
-    font-size: 1.5rem;
-  }
-
-  .press-card__image {
-    height: 200px;
+  
+  .hero__title {
+    font-size: 2.5rem;
   }
 }
 </style>

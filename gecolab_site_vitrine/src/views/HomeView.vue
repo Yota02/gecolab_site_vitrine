@@ -100,7 +100,6 @@ const heroBgStyle = computed(() => ({
         <div class="hero__actions">
           <RouterLink to="/services" class="btn btn--primary">
             {{ t('home.hero.discoverServices') }}
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </RouterLink>
           <RouterLink to="/contact" class="btn btn--ghost">
             {{ t('home.hero.contactUs') }}
@@ -377,6 +376,24 @@ const heroBgStyle = computed(() => ({
   display: flex;
   gap: var(--space-md);
   margin-top: var(--space-2xl);
+}
+
+.hero__actions .btn--primary,
+.hero__actions .btn--ghost {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  background: var(--forest);
+  color: var(--white);
+  box-shadow: 0 4px 20px rgba(10, 74, 46, 0.4);
+}
+
+.hero__actions .btn--primary:hover,
+.hero__actions .btn--ghost:hover {
+  box-shadow: 0 8px 30px rgba(10, 74, 46, 0.5);
+  transform: translateY(-2px);
+  background: var(--forest-mid);
 }
 
 .hero__scroll {

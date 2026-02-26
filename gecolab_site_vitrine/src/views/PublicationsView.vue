@@ -203,7 +203,11 @@ const filteredPublications = computed(() => {
       pub.journal.toLowerCase().includes(searchQuery.value.toLowerCase())
   })
 
-  filtered.sort((a, b) => parseInt(b.year) - parseInt(a.year))
+  filtered.sort((a, b) => {
+    const yearA = a.year === 'N/A' || !a.year ? 0 : parseInt(a.year)
+    const yearB = b.year === 'N/A' || !b.year ? 0 : parseInt(b.year)
+    return yearB - yearA
+  })
 
   return filtered
 })
