@@ -76,7 +76,7 @@ async function handleSubmit() {
     <section class="contact-content">
       <div class="container">
         <div class="contact-grid">
-          <!-- Info column -->
+<!-- Info column -->
           <div class="contact-info">
             <div class="info-card">
               <div class="info-card__icon">
@@ -119,12 +119,90 @@ async function handleSubmit() {
                   </l-popup>
                 </l-marker>
               </l-map>
-          </div>
+            </div>
           </div>
 
-          
+          <!-- Form column -->
+          <div class="form-card">
+            <h3>{{ t('contact.form.title') }}</h3>
+            <p class="form-card__subtitle">{{ t('contact.form.subtitle') }}</p>
+            
+            <div v-if="submitted" class="form-success">
+              <svg class="form-success__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <h3>{{ t('contact.form.success.title') }}</h3>
+              <p>{{ t('contact.form.success.message') }}</p>
+              <button class="btn btn--ghost-dark" @click="submitted = false; form = { name: '', email: '', organization: '', subject: '', message: '' }">
+                {{ t('contact.form.success.reset') }}
+              </button>
+            </div>
 
-          
+            <form v-else class="contact-form" @submit.prevent="handleSubmit">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">{{ t('contact.form.name') }}</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    v-model="form.name" 
+                    :placeholder="t('contact.form.namePlaceholder')" 
+                    required
+                  >
+                </div>
+                <div class="form-group">
+                  <label for="email">{{ t('contact.form.email') }}</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    v-model="form.email" 
+                    :placeholder="t('contact.form.emailPlaceholder')" 
+                    required
+                  >
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="organization">{{ t('contact.form.organization') }}</label>
+                  <input 
+                    type="text" 
+                    id="organization" 
+                    v-model="form.organization" 
+                    :placeholder="t('contact.form.organizationPlaceholder')"
+                  >
+                </div>
+                <div class="form-group">
+                  <label for="subject">{{ t('contact.form.subject') }}</label>
+                  <select id="subject" v-model="form.subject" required>
+                    <option value="" disabled>{{ t('contact.form.subjectPlaceholder') }}</option>
+                    <option value="Informations générales">{{ t('contact.form.subjects.general') }}</option>
+                    <option value="Demande de devis">{{ t('contact.form.subjects.quote') }}</option>
+                    <option value="Collaboration scientifique">{{ t('contact.form.subjects.collaboration') }}</option>
+                    <option value="Autre">{{ t('contact.form.subjects.other') }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">{{ t('contact.form.message') }}</label>
+                <textarea 
+                  id="message" 
+                  v-model="form.message" 
+                  :placeholder="t('contact.form.messagePlaceholder')" 
+                  required
+                ></textarea>
+              </div>
+
+              <div v-if="error" class="form-error">{{ error }}</div>
+
+              <button type="submit" class="btn btn--primary btn--lg btn--full" :disabled="isLoading">
+                <span v-if="isLoading">{{ t('contact.form.sending') }}</span>
+                <span v-else>{{ t('contact.form.submit') }}</span>
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>

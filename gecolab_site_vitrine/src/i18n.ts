@@ -246,18 +246,21 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         organizationPlaceholder: 'Votre organisation',
         subject: 'Sujet',
         subjectPlaceholder: 'Choisir un sujet',
-        subjectOptions: {
+        subjects: {
+          general: 'Informations générales',
           quote: 'Demande de devis',
-          info: 'Demande d\'informations',
-          collaboration: 'Proposition de collaboration',
+          collaboration: 'Collaboration scientifique',
           other: 'Autre'
         },
         message: 'Message',
         messagePlaceholder: 'Décrivez votre projet ou votre question...',
         submit: 'Envoyer le message',
-        successTitle: 'Message envoyé !',
-        successText: 'Merci pour votre message. Notre équipe reviendra vers vous dans les meilleurs délais.',
-        sendAnother: 'Envoyer un autre message'
+        sending: 'Envoi en cours...',
+        success: {
+          title: 'Message envoyé !',
+          message: 'Merci pour votre message. Notre équipe reviendra vers vous dans les meilleurs délais.',
+          reset: 'Envoyer un autre message'
+        },
       }
     },
     publications: {
@@ -534,18 +537,21 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         organizationPlaceholder: 'Your organization',
         subject: 'Subject',
         subjectPlaceholder: 'Choose a subject',
-        subjectOptions: {
+        subjects: {
+          general: 'General information',
           quote: 'Quote request',
-          info: 'Information request',
-          collaboration: 'Collaboration proposal',
+          collaboration: 'Scientific collaboration',
           other: 'Other'
         },
         message: 'Message',
         messagePlaceholder: 'Describe your project or question...',
         submit: 'Send message',
-        successTitle: 'Message sent!',
-        successText: 'Thank you for your message. Our team will get back to you as soon as possible.',
-        sendAnother: 'Send another message'
+        sending: 'Sending...',
+        success: {
+          title: 'Message sent!',
+          message: 'Thank you for your message. Our team will get back to you as soon as possible.',
+          reset: 'Send another message'
+        }
       }
     },
     publications: {
@@ -822,18 +828,21 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         organizationPlaceholder: 'Ihre Organisation',
         subject: 'Betreff',
         subjectPlaceholder: 'Betreff wählen',
-        subjectOptions: {
+        subjects: {
+          general: 'Allgemeine Informationen',
           quote: 'Angebotsanfrage',
-          info: 'Informationsanfrage',
-          collaboration: 'Zusammenarbeitsvorschlag',
+          collaboration: 'Wissenschaftliche Zusammenarbeit',
           other: 'Sonstiges'
         },
         message: 'Nachricht',
         messagePlaceholder: 'Beschreiben Sie Ihr Projekt oder Ihre Frage...',
         submit: 'Nachricht senden',
-        successTitle: 'Nachricht gesendet!',
-        successText: 'Vielen Dank für Ihre Nachricht. Unser Team wird sich so schnell wie möglich bei Ihnen melden.',
-        sendAnother: 'Eine weitere Nachricht senden'
+        sending: 'Wird gesendet...',
+        success: {
+          title: 'Nachricht gesendet!',
+          message: 'Vielen Dank für Ihre Nachricht. Unser Team wird sich so schnell wie möglich bei Ihnen melden.',
+          reset: 'Eine weitere Nachricht senden'
+        }
       }
     },
     publications: {
@@ -1110,18 +1119,21 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         organizationPlaceholder: 'Su organización',
         subject: 'Asunto',
         subjectPlaceholder: 'Elegir asunto',
-        subjectOptions: {
+        subjects: {
+          general: 'Información general',
           quote: 'Solicitud de presupuesto',
-          info: 'Solicitud de información',
-          collaboration: 'Propuesta de colaboración',
+          collaboration: 'Colaboración científica',
           other: 'Otro'
         },
         message: 'Mensaje',
         messagePlaceholder: 'Describa su proyecto o pregunta...',
         submit: 'Enviar mensaje',
-        successTitle: '¡Mensaje enviado!',
-        successText: 'Gracias por su mensaje. Nuestro equipo le responderá lo antes posible.',
-        sendAnother: 'Enviar otro mensaje'
+        sending: 'Enviando...',
+        success: {
+          title: '¡Mensaje enviado!',
+          message: 'Gracias por su mensaje. Nuestro equipo le responderá lo antes posible.',
+          reset: 'Enviar otro mensaje'
+        }
       }
     },
     publications: {
@@ -1398,18 +1410,21 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         organizationPlaceholder: 'Uw organisatie',
         subject: 'Onderwerp',
         subjectPlaceholder: 'Onderwerp kiezen',
-        subjectOptions: {
+        subjects: {
+          general: 'Algemene informatie',
           quote: 'Offerteaanvraag',
-          info: 'Informatieaanvraag',
-          collaboration: 'Samenwerkingsvoorstel',
+          collaboration: 'Wetenschappelijke samenwerking',
           other: 'Andere'
         },
         message: 'Bericht',
         messagePlaceholder: 'Beschrijf uw project of vraag...',
         submit: 'Bericht verzenden',
-        successTitle: 'Bericht verzonden!',
-        successText: 'Bedankt voor uw bericht. Ons team neemt zo snel mogelijk contact met u op.',
-        sendAnother: 'Een ander bericht verzenden'
+        sending: 'Verzenden...',
+        success: {
+          title: 'Bericht verzonden!',
+          message: 'Bedankt voor uw bericht. Ons team neemt zo snel mogelijk contact met u op.',
+          reset: 'Een ander bericht verzenden'
+        }
       }
     },
     publications: {
