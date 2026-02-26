@@ -71,9 +71,82 @@ async function handleSubmit() {
 
 <template>
   <div class="contact-page">
+    
+    <!-- Contact content -->
+    <section class="contact-content">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Info column -->
+          
 
-    <h1>TEST</h1>
+          <!-- Form column -->
+          <div class="contact-form-wrapper">
+            <div class="form-card" v-if="!submitted">
+              <h3>{{ t('contact.form.title') }}</h3>
+              <p class="form-card__subtitle">{{ t('contact.form.subtitle') }}</p>
 
+              <form @submit.prevent="handleSubmit" class="contact-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="name">{{ t('contact.form.name') }}</label>
+                    <input id="name" v-model="form.name" type="text" required :placeholder="t('contact.form.namePlaceholder')">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">{{ t('contact.form.email') }}</label>
+                    <input id="email" v-model="form.email" type="email" required :placeholder="t('contact.form.emailPlaceholder')">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="org">{{ t('contact.form.organization') }}</label>
+                    <input id="org" v-model="form.organization" type="text" :placeholder="t('contact.form.organizationPlaceholder')">
+                  </div>
+                  <div class="form-group">
+                    <label for="subject">{{ t('contact.form.subject') }}</label>
+                    <select id="subject" v-model="form.subject" required>
+                      <option value="" disabled>{{ t('contact.form.subjectPlaceholder') }}</option>
+                      <option value="devis">{{ t('contact.form.subjectOptions.quote') }}</option>
+                      <option value="info">{{ t('contact.form.subjectOptions.info') }}</option>
+                      <option value="collaboration">{{ t('contact.form.subjectOptions.collaboration') }}</option>
+                      <option value="autre">{{ t('contact.form.subjectOptions.other') }}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="message">{{ t('contact.form.message') }}</label>
+                  <textarea id="message" v-model="form.message" required rows="5" :placeholder="t('contact.form.messagePlaceholder')"></textarea>
+                </div>
+
+                <p v-if="error" class="form-error">{{ error }}</p>
+
+                <button type="submit" class="btn btn--primary btn--lg btn--full" :disabled="isLoading">
+                  <span v-if="isLoading">{{ t('contact.form.sending') || 'Envoi...' }}</span>
+                  <span v-else>
+                    {{ t('contact.form.submit') }}
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </button>
+              </form>
+            </div>
+
+            <!-- Success state -->
+            <div class="form-success" v-else>
+              <div class="form-success__icon">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M15 24l6 6 12-12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3>{{ t('contact.form.successTitle') }}</h3>
+              <p>{{ t('contact.form.successText') }}</p>
+              <button @click="submitted = false" class="btn btn--ghost-dark">{{ t('contact.form.sendAnother') }}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
