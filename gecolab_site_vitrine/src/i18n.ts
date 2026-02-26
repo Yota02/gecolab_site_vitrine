@@ -28,6 +28,19 @@ const messages = {
         highlightTitle: 'Laboratoire de référence wallon',
         highlightText: 'Depuis 2019, GeCoLAB est le <strong>laboratoire de référence</strong> pour le ministère de l\'environnement wallon concernant le <strong>suivi génétique du loup</strong> en Wallonie.'
       },
+      reference: {
+        sectionLabel: 'Laboratoire de référence',
+        title: 'GeCoLAB est le laboratoire de référence :',
+        items: [
+          { text: 'Pour le ministère de l\'environnement wallon concernant le suivi génétique du loup en Wallonie (depuis 2019).' },
+          { text: 'Pour le ministère de l\'environnement luxembourgeois concernant le suivi génétique des populations de chats forestiers (depuis 2012).' },
+          { text: 'Pour le ministère de l\'environnement wallon concernant le suivi génétique du castor en Wallonie (depuis 2010).' },
+          { text: 'Pour l\'Office français de la biodiversité concernant le suivi génétique du castor en France (depuis 2020).' },
+          { text: 'Pour le Plan National d\'Action français pour la conservation de la loutre, concernant le suivi génétique de la loutre en France (depuis 2010).' },
+          { text: 'Pour le Plan National d\'Action français pour la conservation du vison d\'Europe, concernant le suivi génétique du vison d\'Europe en France (depuis 2010).' },
+          { text: 'Pour le Plan National d\'Action français pour la conservation du desman des Pyrénées, concernant le suivi génétique du desman des Pyrénées en France (depuis 2011).' }
+        ]
+      },
       specialty: {
         sectionLabel: 'Notre spécialité',
         title: 'Les analyses non invasives',
@@ -324,6 +337,19 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         highlightTitle: 'Reference laboratory in Wallonia',
         highlightText: 'Since 2019, GeCoLAB has been the <strong>reference laboratory</strong> for the Walloon Ministry of the Environment concerning the <strong>genetic monitoring of wolves</strong> in Wallonia.'
       },
+      reference: {
+        sectionLabel: 'Reference laboratory',
+        title: 'GeCoLAB is the reference laboratory:',
+        items: [
+          { text: 'For the Walloon Ministry of the Environment concerning genetic monitoring of wolves in Wallonia (since 2019).' },
+          { text: 'For the Luxembourg Ministry of the Environment concerning genetic monitoring of wildcat populations (since 2012).' },
+          { text: 'For the Walloon Ministry of the Environment concerning genetic monitoring of beavers in Wallonia (since 2010).' },
+          { text: 'For the French Office for Biodiversity concerning genetic monitoring of beavers in France (since 2020).' },
+          { text: 'For the French National Action Plan for the conservation of the otter, concerning genetic monitoring of otters in France (since 2010).' },
+          { text: 'For the French National Action Plan for the conservation of the European mink, concerning genetic monitoring of the European mink in France (since 2010).' },
+          { text: 'For the French National Action Plan for the conservation of the Pyrenean desman, concerning genetic monitoring of the Pyrenean desman in France (since 2011).' }
+        ]
+      },
       specialty: {
         sectionLabel: 'Our specialty',
         title: 'Non-invasive analyses',
@@ -615,6 +641,19 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         highlightTitle: 'Referenzlabor in Wallonien',
         highlightText: 'Seit 2019 ist GeCoLAB das <strong>Referenzlabor</strong> des wallonischen Umweltministeriums bezüglich der <strong>genetischen Überwachung des Wolfs</strong> in Wallonien.'
       },
+      reference: {
+        sectionLabel: 'Referenzlabor',
+        title: 'GeCoLAB ist das Referenzlabor:',
+        items: [
+          { text: 'Für das wallonische Umweltministerium bezüglich der genetischen Überwachung des Wolfs in Wallonien (seit 2019).' },
+          { text: 'Für das luxemburgische Umweltministerium bezüglich der genetischen Überwachung der Wildkatzenpopulationen (seit 2012).' },
+          { text: 'Für das wallonische Umweltministerium bezüglich der genetischen Überwachung des Bibers in Wallonien (seit 2010).' },
+          { text: 'Für das französische Amt für Biodiversität bezüglich der genetischen Überwachung des Bibers in Frankreich (seit 2020).' },
+          { text: 'Für den französischen Nationalen Aktionsplan zum Schutz des Fischotters, bezüglich der genetischen Überwachung des Fischotters in Frankreich (seit 2010).' },
+          { text: 'Für den französischen Nationalen Aktionsplan zum Schutz des Europäischen Nerzes, bezüglich der genetischen Überwachung des Europäischen Nerzes in Frankreich (seit 2010).' },
+          { text: 'Für den französischen Nationalen Aktionsplan zum Schutz des Pyrenäen-Desmans, bezüglich der genetischen Überwachung des Pyrenäen-Desmans in Frankreich (seit 2011).' }
+        ]
+      },
       specialty: {
         sectionLabel: 'Unsere Spezialität',
         title: 'Nicht-invasive Analysen',
@@ -905,6 +944,19 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
         paragraph2: 'GeCoLAB dispone de una amplia gama de marcadores genéticos específicos para muchos grupos de organismos animales y vegetales, y está equipado con un laboratorio de biología molecular que proporciona acceso a las últimas tecnologías de secuenciación (Next Generation Sequencing), PCR digital y cuantitativa.',
         highlightTitle: 'Laboratorio de referencia en Valonia',
         highlightText: 'Desde 2019, GeCoLAB es el <strong>laboratorio de referencia</strong> del Ministerio de Medio Ambiente valón respecto al <strong>seguimiento genético del lobo</strong> en Valonia.'
+      },
+      reference: {
+        sectionLabel: 'Laboratorio de referencia',
+        title: 'GeCoLAB es el laboratorio de referencia:',
+        items: [
+          { text: 'Para el Ministerio de Medio Ambiente valón respecto al seguimiento genético del lobo en Valonia (desde 2019).' },
+          { text: 'Para el Ministerio de Medio Ambiente luxemburgués respecto al seguimiento genético de las poblaciones de gatos salvajes (desde 2012).' },
+          { text: 'Para el Ministerio de Medio Ambiente valón respecto al seguimiento genético del castor en Valonia (desde 2010).' },
+          { text: 'Para la Oficina Francesa de Biodiversidad respecto al seguimiento genético del castor en Francia (desde 2020).' },
+          { text: 'Para el Plan Nacional de Acción francés para la conservación de la nutria, respecto al seguimiento genético de la nutria en Francia (desde 2010).' },
+          { text: 'Para el Plan Nacional de Acción francés para la conservación del visón europeo, respecto al seguimiento genético del visón europeo en Francia (desde 2010).' },
+          { text: 'Para el Plan Nacional de Acción francés para la conservación del desmán de los Pirineos, respecto al seguimiento genético del desmán de los Pirineos en Francia (desde 2011).' }
+        ]
       },
       specialty: {
         sectionLabel: 'Nuestra especialidad',

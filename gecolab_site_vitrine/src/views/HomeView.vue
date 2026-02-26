@@ -50,6 +50,10 @@ const stats = computed(() => [
   { value: '10+', label: t('home.stats.species') },
 ])
 
+const referenceItems = computed((): { text: string }[] => {
+  return (t('home.reference.items', { returnObjects: true }) as unknown) as { text: string }[]
+})
+
 const heroBgStyle = computed(() => ({
   '--parallax-y': `${parallaxOffset.value}px`,
   '--hero-bg-image': `url('${getImagePath('images/services/loutre2.jpg')}')`
@@ -146,6 +150,21 @@ const heroBgStyle = computed(() => ({
              </div>
            </div>
          </div>
+      </div>
+    </section>
+
+    <!-- ═══ REFERENCE LABORATORY ═══ -->
+    <section class="reference">
+      <div class="container">
+        <div class="reference__header">
+          <span class="section-label">{{ t('home.reference.sectionLabel') }}</span>
+          <h2 class="reference__title">{{ t('home.reference.title') }}</h2>
+        </div>
+        <ul class="reference__list">
+          <li v-for="(item, index) in referenceItems" :key="index" class="reference__item">
+            {{ item.text }}
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -554,6 +573,59 @@ const heroBgStyle = computed(() => ({
   z-index: 5;
 }
 
+/* ═══ REFERENCE LABORATORY ═══ */
+.reference {
+  padding: var(--space-4xl) 0;
+  background: var(--mist);
+}
+
+.reference__header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.reference__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--ink);
+  margin-top: var(--space-md);
+}
+
+.reference__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.reference__item {
+  position: relative;
+  padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-2xl);
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--bone);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--slate);
+}
+
+.reference__item::before {
+  content: '';
+  position: absolute;
+  left: var(--space-md);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--canopy);
+  border-radius: 50%;
+}
+
 /* ═══ SPECIALTY ═══ */
 .specialty {
   padding: var(--space-4xl) 0;
@@ -831,6 +903,10 @@ const heroBgStyle = computed(() => ({
     bottom: -var(--space-xl);
   }
 
+  .reference__list {
+    grid-template-columns: 1fr;
+  }
+
   .specialty__cards {
     grid-template-columns: 1fr;
   }
@@ -893,18 +969,23 @@ const heroBgStyle = computed(() => ({
 }
 
 /* ═══ ANIMATIONS ═══ */
-.intro, .specialty, .partners-strip, .cta {
+.intro, .reference, .specialty, .partners-strip, .cta {
   opacity: 0;
   transform: translateY(40px);
   transition: all 1s var(--ease-out);
 }
 
 .home.visible .intro,
+.home.visible .reference,
 .home.visible .specialty,
 .home.visible .partners-strip,
 .home.visible .cta {
   opacity: 1;
   transform: translateY(0);
+}
+
+.home.visible .reference {
+  transition-delay: 0.15s;
 }
 
 .home.visible .specialty {
