@@ -146,9 +146,11 @@ const messages = {
 
 Ces analyses permettent également de détecter la présence potentielle d'agents pathogènes, avec une précision supérieure aux technologies classiques, grâce au développement de nouveaux marqueurs génétiques et l'utilisation systématique de technologies de séquençage de dernière génération.
 
-Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpital Universitaire de l'Université de Liège (Belgique) permettent l'identification de pathogènes tels que les bactéries Borrelia, responsables de la maladie de Lyme ou encore d'autres groupes de bactéries particulièrement dangereux pour l'homme (ex. genres Bartonella, Yercinia, Bacillus, Leptospira…).`,
+Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpital Universitaire de l'Université de Liège (Belgique) permettent l'identification de pathogènes tels que les bactéries Borrelia, responsables de la maladie de Lyme ou encore d'autres groupes de bactéries particulièrement dangereux pour l'homme (ex. genres Bartonella, Yersinia, Bacillus, Leptospira…).
+
+Notre laboratoire identifie également les champignons pathogènes pour les amphibiens : Batrachochytrium dendrobatidis (Bd) et B. salamandrivorans (Bsal) ainsi que les macro et micro parasites sanguins et intestinaux, grâce à des marqueurs génétiques spécifiques et les technologies de séquençage de dernière génération ou de PCR digitales.`,
         pathogensLabel: 'Pathogènes détectés :',
-        pathogens: 'Borrelia (maladie de Lyme), Bartonella, Yersinia, Bacillus, Leptospira…',
+        pathogens: 'Bactéries (Borrelia, Bartonella, Yersinia, Bacillus, Leptospira...), Champignons (Bd, Bsal), parasites sanguins et intestinaux.',
         partners: 'Développé avec l\'Institut Pasteur et l\'Hôpital Universitaire de l\'Université de Liège.'
       },
       cta: {

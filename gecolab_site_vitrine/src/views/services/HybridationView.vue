@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import ServiceLayout from '@/components/ServiceLayout.vue'
 
 const { t } = useI18n()
 
-const image = `${import.meta.env.BASE_URL}images/services/chat-forestier.jpg`
+const image = `${import.meta.env.BASE_URL}images/services/chat-forestier_2.jpg`
 
 const cases = [
   t('services.service4.case1'),
@@ -13,273 +14,205 @@ const cases = [
 </script>
 
 <template>
-  <div class="service-detail">
-    <!-- Hero -->
-    <section class="service-hero">
-      <div class="service-hero__bg"></div>
-      <div class="service-hero__content container">
-        <router-link to="/services" class="back-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-          </svg>
-          Retour aux services
-        </router-link>
-        <span class="section-label section-label--light">Service 04</span>
-        <h1 class="service-hero__title">{{ t('services.service4.title') }}</h1>
-        <p class="service-hero__lead">{{ t('services.service4.description') }}</p>
-      </div>
-    </section>
-
-    <!-- Content -->
-    <section class="service-content">
-      <div class="container">
-        <div class="content-wrapper">
-          <div class="image-section">
+  <ServiceLayout
+    serviceNumber="04"
+    :title="t('services.service4.title')"
+    :lead="t('services.service4.description')"
+  >
+    <div class="container">
+      <div class="content-grid">
+        <!-- Image Section -->
+        <div class="image-column animate-scale-in">
+          <div class="main-image">
             <img :src="image" alt="Chat forestier" loading="lazy">
+            <div class="image-badge">Espèce parapluie</div>
           </div>
-          
-          <div class="cases-section">
-            <h3>Cas d'étude</h3>
-            <div class="case-list">
-              <div v-for="c in cases" :key="c" class="case-item">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </div>
+
+        <!-- Cases Section -->
+        <div class="cases-column">
+          <div class="cases-card glass-card animate-fade-in-delayed">
+            <div class="card-header">
+              <div class="header-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="16" x2="12" y2="12"/>
+                  <line x1="12" y1="8" x2="12.01" y2="8"/>
                 </svg>
-                {{ c }}
+              </div>
+              <h2 class="h3">Cas d'étude</h2>
+            </div>
+
+            <div class="case-list">
+              <div v-for="(c, i) in cases" :key="i" class="case-item">
+                <div class="case-num">0{{ i + 1 }}</div>
+                <div class="case-content">
+                  <p>{{ c }}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- CTA -->
-    <section class="service-cta">
-      <div class="container">
-        <div class="service-cta__inner">
-          <h2>{{ t('services.cta.title') }}</h2>
-          <router-link to="/contact" class="btn btn--primary btn--lg">
-            {{ t('services.cta.button') }}
-          </router-link>
+          <div class="info-note animate-fade-in-delayed-2">
+            <p>Le Deep Ecology Lab utilise des marqueurs génétiques de haute résolution pour distinguer les individus purs des hybrides avec une précision inégalée.</p>
+          </div>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </ServiceLayout>
 </template>
 
 <style scoped>
-/* ═══ SERVICE HERO ═══ */
-.service-hero {
-  position: relative;
-  padding: calc(var(--nav-height) + var(--space-2xl)) 0 var(--space-3xl);
-  overflow: hidden;
-}
-
-.service-hero__bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--obsidian) 0%, var(--forest) 100%);
-}
-
-.service-hero__bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(29, 172, 120, 0.08) 0%, transparent 60%);
-}
-
-.service-hero__content {
-  position: relative;
-  z-index: 1;
-}
-
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
-  text-decoration: none;
-  margin-bottom: var(--space-md);
-  transition: color 0.3s var(--ease-out);
-}
-
-.back-link svg {
-  width: 20px;
-  height: 20px;
-}
-
-.back-link:hover {
-  color: var(--white);
-}
-
-.service-hero__title {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  color: var(--white);
-  line-height: 1.2;
-  margin-top: var(--space-sm);
-  max-width: 800px;
-  white-space: nowrap;
-}
-
-.service-hero__lead {
-  max-width: 650px;
-  margin-top: var(--space-lg);
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 1.15rem;
-  line-height: 1.7;
-}
-
-/* ═══ CONTENT ═══ */
-.service-content {
-  padding: var(--space-4xl) 0;
-}
-
-.content-wrapper {
-  max-width: 900px;
-  margin: 0 auto;
+.content-grid {
   display: grid;
-  gap: var(--space-2xl);
+  margin-top: var(--space-2xl);
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
 }
 
-.image-section img {
+/* Image Section */
+.main-image {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+  aspect-ratio: 1;
+}
+
+.main-image img {
   width: 100%;
-  height: 350px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 12px;
-  box-shadow: var(--shadow-lg);
 }
 
-.cases-section {
-  background: var(--mist);
-  padding: var(--space-xl);
-  border-radius: 10px;
-  border-left: 4px solid var(--canopy);
-}
-
-.cases-section h3 {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
+.image-badge {
+  position: absolute;
+  top: var(--space-xl);
+  right: var(--space-xl);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 0.6rem 1.2rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: var(--forest);
-  margin-bottom: var(--space-lg);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Cases Card */
+.glass-card {
+  background: var(--white);
+  padding: var(--space-2xl);
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+}
+
+.header-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--mist);
+  color: var(--canopy);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-icon svg {
+  width: 24px;
+  height: 24px;
 }
 
 .case-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space-xl);
 }
 
 .case-item {
   display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  color: var(--ink-light);
-  font-size: 1.1rem;
-  padding: var(--space-sm) 0;
+  gap: var(--space-lg);
 }
 
-.case-item svg {
-  color: var(--canopy);
-  flex-shrink: 0;
-}
-
-/* CTA */
-.service-cta {
-  padding: var(--space-3xl) 0;
-  background: var(--mist);
-}
-
-.service-cta__inner {
-  text-align: center;
-  padding: var(--space-3xl);
-  background: linear-gradient(135deg, var(--obsidian), var(--forest));
-  border-radius: 16px;
-  color: var(--white);
-  position: relative;
-  overflow: hidden;
-}
-
-.service-cta__inner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 70% 30%, rgba(29, 172, 120, 0.15) 0%, transparent 50%);
-}
-
-.service-cta__inner h2 {
+.case-num {
   font-family: var(--font-display);
-  font-size: 1.75rem;
-  position: relative;
-  margin-bottom: var(--space-lg);
-}
-
-.service-cta__inner .btn {
-  position: relative;
-}
-
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: 0.85rem 1.75rem;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  border-radius: 6px;
-  cursor: pointer;
-  border: none;
-  text-decoration: none;
-  transition: all 0.3s var(--ease-out);
-}
-
-.btn--primary {
-  background: var(--canopy);
-  color: var(--white);
-}
-
-.btn--primary:hover {
-  background: var(--canopy-light);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 30px rgba(29, 172, 120, 0.3);
-}
-
-.btn--lg {
-  padding: 1rem 2.25rem;
-  font-size: 0.95rem;
-}
-
-.section-label {
-  display: inline-block;
-  font-size: 0.7rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
   color: var(--canopy);
-  position: relative;
-  padding-left: 24px;
-  margin-bottom: var(--space-sm);
+  opacity: 0.3;
+  line-height: 1;
 }
 
-.section-label::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 1px;
-  background: var(--canopy);
+.case-content p {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: var(--ink-light);
+  margin: 0;
 }
 
-.section-label--light {
-  color: var(--canopy-light);
+.info-note {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  background: var(--mist);
+  border-radius: 16px;
+  font-size: 1.25rem;
+  color: var(--forest);
+  line-height: 1.5;
+  border-left: 3px solid var(--canopy);
+  font-weight: 500;
 }
 
-.section-label--light::before {
-  background: var(--canopy-light);
+/* Animations */
+.animate-scale-in {
+  opacity: 0;
+  animation: scaleIn 1.2s var(--ease-out) 0.3s forwards;
+}
+
+.animate-fade-in-delayed {
+  opacity: 0;
+  animation: fadeIn 1s var(--ease-out) 0.5s forwards;
+}
+
+.animate-fade-in-delayed-2 {
+  opacity: 0;
+  animation: fadeIn 1s var(--ease-out) 0.7s forwards;
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 992px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+  
+  .image-column {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .main-image {
+    aspect-ratio: 16/9;
+  }
 }
 </style>

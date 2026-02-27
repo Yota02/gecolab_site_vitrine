@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import ServiceLayout from '@/components/ServiceLayout.vue'
 
 const { t } = useI18n()
 
@@ -29,373 +30,284 @@ const markers = [
 </script>
 
 <template>
-  <div class="service-detail">
-    <!-- Hero -->
-    <section class="service-hero">
-      <div class="service-hero__bg"></div>
-      <div class="service-hero__content container">
-        <router-link to="/services" class="back-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-          </svg>
-          Retour aux services
-        </router-link>
-        <span class="section-label section-label--light">Service 01</span>
-        <h1 class="service-hero__title">{{ t('services.service1.title') }}</h1>
-        <p class="service-hero__lead">{{ t('services.service1.description') }}</p>
-      </div>
-    </section>
+  <ServiceLayout
+    serviceNumber="01"
+    :title="t('services.service1.title')"
+    :lead="t('services.service1.description')"
+  >
+    <div class="container">
+      <!-- Aquatic Section -->
+      <section class="content-section animate-fade-in">
+        <div class="section-header">
+          <h2 class="h3">{{ t('services.service1.aquatic') }}</h2>
+          <div class="header-line"></div>
+        </div>
+        
+        <p class="section-text">{{ t('services.service1.aquaticText') }}</p>
 
-    <!-- Content -->
-    <section class="service-content">
-      <div class="container">
-        <!-- Photo strip (aquatic) -->
-        <div class="photo-strip">
-          <div v-for="img in images" :key="img.src" class="photo-strip__item">
+        <div class="photo-grid">
+          <div v-for="(img, i) in images" :key="img.src" 
+               class="photo-item" 
+               :class="'delay-' + (i + 1)">
             <img :src="img.src" :alt="img.alt" loading="lazy">
+            <div class="photo-caption">{{ img.alt }}</div>
           </div>
         </div>
+      </section>
 
-        <!-- Details -->
-        <div class="detail-cards">
-          <div class="detail-card">
-            <h3>{{ t('services.service1.aquatic') }}</h3>
-            <p>{{ t('services.service1.aquaticText') }}</p>
-          </div>
-          <div class="detail-card">
-            <h3>{{ t('services.service1.terrestrial') }}</h3>
-            <p>{{ t('services.service1.terrestrialText') }}</p>
-          </div>
+      <!-- Terrestrial Section -->
+      <section class="content-section animate-fade-in-delayed">
+        <div class="section-header">
+          <h2 class="h3">{{ t('services.service1.terrestrial') }}</h2>
+          <div class="header-line"></div>
         </div>
+        
+        <p class="section-text">{{ t('services.service1.terrestrialText') }}</p>
 
-        <!-- Terrestrial photo strip -->
-        <div class="photo-strip photo-strip--secondary">
-          <div v-for="img in images2" :key="img.src" class="photo-strip__item">
+        <div class="photo-grid">
+          <div v-for="(img, i) in images2" :key="img.src" 
+               class="photo-item"
+               :class="'delay-' + (i + 1)">
             <img :src="img.src" :alt="img.alt" loading="lazy">
+            <div class="photo-caption">{{ img.alt }}</div>
           </div>
         </div>
+      </section>
 
-        <!-- Genetic markers table -->
-        <div class="markers-section">
-          <h3 class="markers-title">{{ t('services.service1.markersTitle') }}</h3>
-          <div class="markers-grid">
-            <div v-for="m in markers" :key="m.group" class="marker-row">
-              <span class="marker-group">{{ m.group }}</span>
-              <span class="marker-value">{{ m.markers }}</span>
-              <span class="marker-reads">{{ m.reads }}</span>
+      <!-- Markers Section -->
+      <section class="content-section animate-fade-in-delayed-2">
+        <div class="markers-card glass-card">
+          <div class="markers-card__header">
+            <h3>{{ t('services.service1.markersTitle') }}</h3>
+            <p>Aperçu des protocoles standardisés</p>
+          </div>
+          
+          <div class="markers-table">
+            <div class="table-head">
+              <span>Groupe taxonomique</span>
+              <span>Marqueurs</span>
+              <span>Reads recommandés</span>
+            </div>
+            <div v-for="m in markers" :key="m.group" class="table-row">
+              <span class="m-group">{{ m.group }}</span>
+              <span class="m-value">{{ m.markers }}</span>
+              <span class="m-reads">{{ m.reads }}</span>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="service-cta">
-      <div class="container">
-        <div class="service-cta__inner">
-          <h2>{{ t('services.cta.title') }}</h2>
-          <router-link to="/contact" class="btn btn--primary btn--lg">
-            {{ t('services.cta.button') }}
-          </router-link>
-        </div>
-      </div>
-    </section>
-  </div>
+      </section>
+    </div>
+  </ServiceLayout>
 </template>
 
 <style scoped>
-/* ═══ SERVICE HERO ═══ */
-.service-hero {
-  position: relative;
-  padding: calc(var(--nav-height) + var(--space-2xl)) 0 var(--space-3xl);
-  overflow: hidden;
-}
-
-.service-hero__bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--obsidian) 0%, var(--forest) 100%);
-}
-
-.service-hero__bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(29, 172, 120, 0.08) 0%, transparent 60%);
-}
-
-.service-hero__content {
-  position: relative;
-  z-index: 1;
-}
-
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
-  text-decoration: none;
-  margin-bottom: var(--space-md);
-  transition: color 0.3s var(--ease-out);
-}
-
-.back-link svg {
-  width: 20px;
-  height: 20px;
-}
-
-.back-link:hover {
-  color: var(--white);
-}
-
-.service-hero__title {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  color: var(--white);
-  line-height: 1.2;
-  margin-top: var(--space-sm);
-  max-width: 800px;
-}
-
-.service-hero__lead {
-  max-width: 650px;
-  margin-top: var(--space-lg);
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 1.15rem;
-  line-height: 1.7;
-}
-
-/* ═══ CONTENT ═══ */
-.service-content {
-  padding: var(--space-3xl) 0;
-}
-
-.photo-strip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
+.content-section {
   margin-bottom: var(--space-2xl);
-}
-
-.photo-strip--secondary {
   margin-top: var(--space-2xl);
 }
 
-.photo-strip__item {
-  border-radius: 10px;
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.section-header h2 {
+  font-family: var(--font-display);
+  color: var(--forest);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.header-line {
+  height: 1px;
+  background: var(--canopy);
+  flex-grow: 1;
+  opacity: 0.3;
+}
+
+.section-text {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--ink-light);
+  max-width: 900px;
+  margin-bottom: var(--space-xl);
+}
+
+/* Photo Grid */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.photo-item {
+  position: relative;
+  border-radius: 16px;
   overflow: hidden;
-  height: 200px;
+  height: 280px;
   box-shadow: var(--shadow-md);
-  transition: all 0.3s var(--ease-out);
+  transition: all 0.5s var(--ease-out);
 }
 
-.photo-strip__item:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
-}
-
-.photo-strip__item img {
+.photo-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s var(--ease-out);
+  transition: transform 0.8s var(--ease-out);
 }
 
-.photo-strip__item:hover img {
-  transform: scale(1.08);
+.photo-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
 }
 
-/* Detail cards */
-.detail-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-xl);
-  margin-bottom: var(--space-2xl);
+.photo-item:hover img {
+  transform: scale(1.1);
 }
 
-.detail-card {
-  padding: var(--space-xl);
-  background: var(--mist);
-  border-radius: 10px;
-  border-left: 4px solid var(--canopy);
-}
-
-.detail-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  color: var(--forest);
-  margin-bottom: var(--space-md);
-}
-
-.detail-card p {
-  font-size: 1.05rem;
-  color: var(--ink-light);
-  line-height: 1.6;
-}
-
-/* Markers */
-.markers-section {
-  margin-top: var(--space-3xl);
-}
-
-.markers-title {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  color: var(--ink);
-  margin-bottom: var(--space-lg);
-}
-
-.markers-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.marker-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: var(--space-md) var(--space-lg);
-  font-size: 1rem;
-  background: var(--mist);
-  border-radius: 6px;
-}
-
-.marker-row:nth-child(even) {
-  background: var(--white);
-  border: 1px solid var(--bone);
-}
-
-.marker-group {
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.marker-value {
-  color: var(--forest);
-  font-weight: 500;
-}
-
-.marker-reads {
-  color: var(--slate);
-  text-align: right;
-}
-
-/* CTA */
-.service-cta {
-  padding: var(--space-3xl) 0;
-  background: var(--mist);
-}
-
-.service-cta__inner {
-  text-align: center;
-  padding: var(--space-3xl);
-  background: linear-gradient(135deg, var(--obsidian), var(--forest));
-  border-radius: 16px;
-  color: var(--white);
-  position: relative;
-  overflow: hidden;
-}
-
-.service-cta__inner::before {
-  content: '';
+.photo-caption {
   position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 70% 30%, rgba(29, 172, 120, 0.15) 0%, transparent 50%);
-}
-
-.service-cta__inner h2 {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  position: relative;
-  margin-bottom: var(--space-lg);
-}
-
-.service-cta__inner .btn {
-  position: relative;
-}
-
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: 0.85rem 1.75rem;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  border-radius: 6px;
-  cursor: pointer;
-  border: none;
-  text-decoration: none;
-  transition: all 0.3s var(--ease-out);
-}
-
-.btn--primary {
-  background: var(--canopy);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-md);
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
   color: var(--white);
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out);
 }
 
-.btn--primary:hover {
-  background: var(--canopy-light);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 30px rgba(29, 172, 120, 0.3);
+.photo-item:hover .photo-caption {
+  opacity: 1;
 }
 
-.btn--lg {
-  padding: 1rem 2.25rem;
+/* Markers Card */
+.glass-card {
+  background: var(--white);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.markers-card__header {
+  padding: var(--space-xl) var(--space-2xl);
+  background: var(--mist);
+  border-bottom: 1px solid var(--bone);
+}
+
+.markers-card__header h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--forest);
+  margin: 0;
+}
+
+.markers-card__header p {
+  font-size: 0.9rem;
+  color: var(--slate);
+  margin: var(--space-xs) 0 0;
+}
+
+.markers-table {
+  padding: var(--space-lg) var(--space-2xl);
+}
+
+.table-head {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  padding: var(--space-md) 0;
+  border-bottom: 2px solid var(--bone);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--slate);
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--mist);
+  font-size: 1.05rem;
+  transition: background 0.2s ease;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-row:hover {
+  background: rgba(34, 197, 94, 0.02);
+}
+
+.m-group {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.m-value {
+  color: var(--forest-mid);
+}
+
+.m-reads {
+  color: var(--slate);
   font-size: 0.95rem;
 }
 
-.section-label {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--canopy);
-  position: relative;
-  padding-left: 24px;
-  margin-bottom: var(--space-sm);
+/* Animations */
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 1s var(--ease-out) 0.3s forwards;
 }
 
-.section-label::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 1px;
-  background: var(--canopy);
+.animate-fade-in-delayed {
+  opacity: 0;
+  animation: fadeIn 1s var(--ease-out) 0.5s forwards;
 }
 
-.section-label--light {
-  color: var(--canopy-light);
+.animate-fade-in-delayed-2 {
+  opacity: 0;
+  animation: fadeIn 1s var(--ease-out) 0.7s forwards;
 }
 
-.section-label--light::before {
-  background: var(--canopy-light);
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
+
+.delay-1 { animation-delay: 0.4s; }
+.delay-2 { animation-delay: 0.5s; }
+.delay-3 { animation-delay: 0.6s; }
 
 /* ═══ RESPONSIVE ═══ */
+@media (max-width: 992px) {
+  .photo-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 768px) {
-  .photo-strip {
+  .photo-grid {
     grid-template-columns: 1fr;
   }
-
-  .detail-cards {
-    grid-template-columns: 1fr;
+  
+  .photo-item {
+    height: 240px;
   }
-
-  .marker-row {
-    grid-template-columns: 1fr;
-    gap: var(--space-xs);
+  
+  .table-head {
+    display: none;
   }
-
-  .marker-reads {
-    text-align: left;
+  
+  .table-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: var(--space-md) 0;
   }
 }
 </style>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import ServiceLayout from '@/components/ServiceLayout.vue'
 
 const { t } = useI18n()
 
@@ -7,255 +8,204 @@ const image = `${import.meta.env.BASE_URL}images/services/crotte-mammifere.png`
 </script>
 
 <template>
-  <div class="service-detail">
-    <!-- Hero -->
-    <section class="service-hero">
-      <div class="service-hero__bg"></div>
-      <div class="service-hero__content container">
-        <router-link to="/services" class="back-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-          </svg>
-          Retour aux services
-        </router-link>
-        <span class="section-label section-label--light">Service 03</span>
-        <h1 class="service-hero__title">{{ t('services.service3.title') }}</h1>
-        <p class="service-hero__lead">{{ t('services.service3.description') }}</p>
-      </div>
-    </section>
-
-    <!-- Content -->
-    <section class="service-content">
-      <div class="container">
-        <div class="content-wrapper">
-          <div class="image-section">
-            <img :src="image" alt="Crotte de mammifère" loading="lazy">
-          </div>
-          <div class="examples-section">
-            <p class="examples-label">{{ t('services.service3.examplesLabel') }}</p>
+  <ServiceLayout
+    serviceNumber="03"
+    :title="t('services.service3.title')"
+    :lead="t('services.service3.description')"
+  >
+    <div class="container">
+      <div class="content-grid">
+        <!-- Main Content -->
+        <div class="main-column animate-fade-in">
+          <div class="examples-card glass-card">
+            <div class="card-header">
+              <div class="header-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/>
+                  <line x1="16" y1="8" x2="2" y2="22"/>
+                  <line x1="17.5" y1="15" x2="9" y2="15"/>
+                </svg>
+              </div>
+              <h3 class="examples-label">{{ t('services.service3.examplesLabel') }}</h3>
+            </div>
             <p class="examples-text">{{ t('services.service3.examples') }}</p>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- CTA -->
-    <section class="service-cta">
-      <div class="container">
-        <div class="service-cta__inner">
-          <h2>{{ t('services.cta.title') }}</h2>
-          <router-link to="/contact" class="btn btn--primary btn--lg">
-            {{ t('services.cta.button') }}
-          </router-link>
+          <div class="feature-list animate-fade-in-delayed">
+            <div class="feature-item">
+              <div class="feature-dot"></div>
+              <p>Identification précise des proies au niveau de l'espèce.</p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-dot"></div>
+              <p>Analyse non invasive à partir de fèces ou de contenus stomacaux.</p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-dot"></div>
+              <p>Protocoles NGS optimisés pour les échantillons dégradés.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Section -->
+        <div class="image-column animate-scale-in">
+          <div class="image-wrapper">
+            <img :src="image" alt="Analyse de régime alimentaire" loading="lazy">
+            <div class="image-glow"></div>
+          </div>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </ServiceLayout>
 </template>
 
 <style scoped>
-/* ═══ SERVICE HERO ═══ */
-.service-hero {
-  position: relative;
-  padding: calc(var(--nav-height) + var(--space-2xl)) 0 var(--space-3xl);
-  overflow: hidden;
-}
-
-.service-hero__bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--obsidian) 0%, var(--forest) 100%);
-}
-
-.service-hero__bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(29, 172, 120, 0.08) 0%, transparent 60%);
-}
-
-.service-hero__content {
-  position: relative;
-  z-index: 1;
-}
-
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
-  text-decoration: none;
-  margin-bottom: var(--space-md);
-  transition: color 0.3s var(--ease-out);
-}
-
-.back-link svg {
-  width: 20px;
-  height: 20px;
-}
-
-.back-link:hover {
-  color: var(--white);
-}
-
-.service-hero__title {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  color: var(--white);
-  line-height: 1.2;
-  margin-top: var(--space-sm);
-  max-width: 800px;
-}
-
-.service-hero__lead {
-  max-width: 650px;
-  margin-top: var(--space-lg);
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 1.15rem;
-  line-height: 1.7;
-}
-
-/* ═══ CONTENT ═══ */
-.service-content {
-  padding: var(--space-4xl) 0;
-}
-
-.content-wrapper {
-  max-width: 900px;
-  margin: 0 auto;
+.content-grid {
   display: grid;
-  gap: var(--space-2xl);
+  margin-top: var(--space-2xl); ;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
 }
 
-.image-section img {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: var(--shadow-lg);
-  display: block;
-  margin: 0 auto;
+/* Examples Card */
+.glass-card {
+  background: var(--white);
+  padding: var(--space-2xl);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: var(--space-2xl);
 }
 
-.examples-section {
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.header-icon {
+  width: 44px;
+  height: 44px;
   background: var(--mist);
-  padding: var(--space-xl);
-  border-radius: 10px;
-  border-left: 4px solid var(--canopy);
+  color: var(--canopy);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-icon svg {
+  width: 24px;
+  height: 24px;
 }
 
 .examples-label {
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--forest);
-  margin-bottom: var(--space-sm);
+  letter-spacing: 0.1em;
+  color: var(--canopy);
+  margin: 0;
 }
 
 .examples-text {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   color: var(--ink-light);
+  line-height: 1.6;
   font-style: italic;
-  line-height: 1.7;
+  font-family: var(--font-display);
 }
 
-/* CTA */
-.service-cta {
-  padding: var(--space-3xl) 0;
-  background: var(--mist);
+/* Feature List */
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
 }
 
-.service-cta__inner {
-  text-align: center;
-  padding: var(--space-3xl);
-  background: linear-gradient(135deg, var(--obsidian), var(--forest));
-  border-radius: 16px;
-  color: var(--white);
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  color: var(--slate);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.feature-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--canopy);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Image Section */
+.image-wrapper {
   position: relative;
+  border-radius: 24px;
   overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: var(--white);
 }
 
-.service-cta__inner::before {
-  content: '';
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.image-wrapper:hover img {
+  transform: scale(1.05);
+}
+
+.image-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 70% 30%, rgba(29, 172, 120, 0.15) 0%, transparent 50%);
+  background: radial-gradient(circle at center, rgba(34, 197, 94, 0.1) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.service-cta__inner h2 {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  position: relative;
-  margin-bottom: var(--space-lg);
+/* Animations */
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 1s var(--ease-out) 0.3s forwards;
 }
 
-.service-cta__inner .btn {
-  position: relative;
+.animate-fade-in-delayed {
+  opacity: 0;
+  animation: fadeIn 1s var(--ease-out) 0.5s forwards;
 }
 
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: 0.85rem 1.75rem;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  border-radius: 6px;
-  cursor: pointer;
-  border: none;
-  text-decoration: none;
-  transition: all 0.3s var(--ease-out);
+.animate-scale-in {
+  opacity: 0;
+  animation: scaleIn 1.2s var(--ease-out) 0.4s forwards;
 }
 
-.btn--primary {
-  background: var(--canopy);
-  color: var(--white);
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.btn--primary:hover {
-  background: var(--canopy-light);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 30px rgba(29, 172, 120, 0.3);
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-.btn--lg {
-  padding: 1rem 2.25rem;
-  font-size: 0.95rem;
-}
-
-.section-label {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--canopy);
-  position: relative;
-  padding-left: 24px;
-  margin-bottom: var(--space-sm);
-}
-
-.section-label::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 1px;
-  background: var(--canopy);
-}
-
-.section-label--light {
-  color: var(--canopy-light);
-}
-
-.section-label--light::before {
-  background: var(--canopy-light);
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 992px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+  
+  .image-column {
+    max-width: 400px;
+    margin: 0 auto;
+    order: -1;
+  }
 }
 </style>

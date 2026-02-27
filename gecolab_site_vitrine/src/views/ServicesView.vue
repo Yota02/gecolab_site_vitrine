@@ -49,11 +49,19 @@ const navigateToService = (route: string) => {
     <section class="page-hero">
       <div class="page-hero__bg"></div>
       <div class="page-hero__content container">
-        <span class="section-label section-label--light">{{ t('services.hero.sectionLabel') }}</span>
-        <h1 class="page-hero__title">{{ t('services.hero.title') }}</h1>
-        <p class="page-hero__lead">
+        <div class="label-wrapper">
+          <span class="section-label section-label--light">{{ t('services.hero.sectionLabel') }}</span>
+        </div>
+        <h1 class="page-hero__title animate-fade-in-up">{{ t('services.hero.title') }}</h1>
+        <p class="page-hero__lead animate-fade-in-up-delayed">
           {{ t('services.hero.lead') }}
         </p>
+      </div>
+      
+      <!-- Decorative Element -->
+      <div class="hero-decoration">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
       </div>
     </section>
 
