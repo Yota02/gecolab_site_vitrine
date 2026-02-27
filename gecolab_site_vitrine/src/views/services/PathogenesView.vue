@@ -172,7 +172,8 @@ const descriptionParagraphs = computed(() => {
   margin: 0 0 var(--space-md) 0;
   color: var(--ink);
   line-height: 1.75;
-  font-size: 1.02rem;
+  font-size: 1.15rem;
+  font-weight: 400;
 }
 
 .description-paragraph:last-child {

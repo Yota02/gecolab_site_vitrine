@@ -1,30 +1,16 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { partnersData, getAllPartners, getPartnersByCategory, getPartnersCount } from '@/data/partners'
+import { getAllPartners, getPartnersCount } from '@/data/partners'
 import type { Partner } from '@/types/partners'
 
 const { t } = useI18n()
-const activeFilter = ref<string>('all')
 const displayedPartners = ref<Partner[]>(getAllPartners())
 const hoveredPartner = ref<string | null>(null)
 const tooltipPosition = ref({ x: 0, y: 0 })
 const isAnimated = ref(false)
 const counts = getPartnersCount()
 const failedLogos = ref<Set<string>>(new Set())
-
-// Computed filters to ensure they use the latest translation
-const filters = computed(() => [
-  { id: 'all', label: t('partners.filters.all'), count: counts.total },
-  { id: 'institutions', label: t('partners.filters.institutions'), count: counts.institutions },
-  { id: 'bureaux', label: t('partners.filters.bureaux'), count: counts.bureaux },
-  { id: 'private', label: t('partners.filters.private'), count: counts.private }
-])
-
-const setFilter = (filterId: string) => {
-  activeFilter.value = filterId
-  displayedPartners.value = getPartnersByCategory(filterId)
-}
 
 const handleMouseMove = (event: MouseEvent, partner: Partner) => {
   hoveredPartner.value = partner.id
@@ -90,24 +76,6 @@ onUnmounted(() => {
           <p class="hero__subtitle">
             {{ t('partners.hero.subtitle') }}
           </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Filters Section -->
-    <section class="filters-section">
-      <div class="container">
-        <div class="filters">
-          <button
-            v-for="filter in filters"
-            :key="filter.id"
-            class="filter-btn"
-            :class="{ active: activeFilter === filter.id }"
-            @click="setFilter(filter.id)"
-          >
-            {{ filter.label }}
-            <span class="filter-count">{{ filter.count }}</span>
-          </button>
         </div>
       </div>
     </section>

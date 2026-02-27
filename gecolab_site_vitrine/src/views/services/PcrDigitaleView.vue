@@ -127,7 +127,7 @@ const species = [
   max-width: 650px;
   margin-top: var(--space-lg);
   color: rgba(255, 255, 255, 0.65);
-  font-size: 1.15rem;
+  font-size: 1.35rem;
   line-height: 1.7;
 }
 
@@ -171,7 +171,7 @@ const species = [
   background: var(--white);
   border: 1px solid var(--mist);
   border-radius: 8px;
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   color: var(--obsidian);
   transition: all 0.3s var(--ease-out);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -204,7 +204,7 @@ const species = [
 }
 
 .species-intro {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: var(--obsidian);
   font-weight: 600;
   line-height: 1.5;
@@ -235,7 +235,7 @@ const species = [
 }
 
 .species-note {
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: var(--slate);
   line-height: 1.7;
 }

@@ -156,7 +156,7 @@ const navigateToService = (route: string) => {
   max-width: 600px;
   margin-top: var(--space-xl);
   color: rgba(255, 255, 255, 0.65);
-  font-size: 1.25rem;
+  font-size: 1.6rem;
   line-height: 1.6;
   animation: fadeSlideUp 0.8s var(--ease-out) both;
   animation-delay: 0.2s;
@@ -255,7 +255,7 @@ const navigateToService = (route: string) => {
 
 .service-card__title {
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: var(--ink);
   line-height: 1.2;
   margin-bottom: var(--space-md);

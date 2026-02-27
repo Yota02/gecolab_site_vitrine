@@ -177,7 +177,7 @@ const team = [
 
 .page-hero__title {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 5rem);
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
   color: var(--white);
   line-height: 1.1;
   margin-top: var(--space-md);
@@ -198,7 +198,7 @@ const team = [
 .section-label {
   display: inline-flex;
   align-items: center;
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;

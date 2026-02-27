@@ -7,6 +7,11 @@ const galleryImages = [
   { src: `${import.meta.env.BASE_URL}images/services/lion.jpg`, alt: 'Lion d\'Afrique' },
   { src: `${import.meta.env.BASE_URL}images/services/loutre.jpg`, alt: 'Loutre européenne' },
   { src: `${import.meta.env.BASE_URL}images/services/hibou-grand-duc.jpg`, alt: 'Hibou Grand Duc' },
+  { src: `${import.meta.env.BASE_URL}images/services/chat-forestier_2_zoom.jpg`, alt: 'Chat forestier' },
+  { src: `${import.meta.env.BASE_URL}images/services/desman-pyrenees.jpg`, alt: 'Desman des Pyrénées' },
+  { src: `${import.meta.env.BASE_URL}images/services/ours-polaire.jpg`, alt: 'Ours polaire' },
+  { src: `${import.meta.env.BASE_URL}images/services/lynx.jpg`, alt: 'Lynx' },
+  { src: `${import.meta.env.BASE_URL}images/services/loup.jpg`, alt: 'Loup' },
 ]
 </script>
 
@@ -31,18 +36,18 @@ const galleryImages = [
     <!-- Content -->
     <section class="service-content">
       <div class="container">
+
+        <div class="examples-section">
+          <p class="examples-label">{{ t('services.service5.examplesLabel') }}</p>
+          <p class="examples-text">{{ t('services.service5.examples') }}</p>
+        </div>
+
         <!-- Gallery -->
         <div class="gallery">
           <div v-for="img in galleryImages" :key="img.src" class="gallery-item">
             <img :src="img.src" :alt="img.alt" loading="lazy">
             <span class="gallery-caption">{{ img.alt }}</span>
           </div>
-        </div>
-
-        <!-- Examples -->
-        <div class="examples-section">
-          <p class="examples-label">{{ t('services.service5.examplesLabel') }}</p>
-          <p class="examples-text">{{ t('services.service5.examples') }}</p>
         </div>
       </div>
     </section>
@@ -109,18 +114,20 @@ const galleryImages = [
 
 .service-hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 6vw, 4rem);
   color: var(--white);
-  line-height: 1.2;
+  line-height: 1.1;
   margin-top: var(--space-sm);
-  max-width: 800px;
+  max-width: 900px;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 .service-hero__lead {
   max-width: 650px;
   margin-top: var(--space-lg);
   color: rgba(255, 255, 255, 0.65);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   line-height: 1.7;
 }
 
@@ -131,9 +138,8 @@ const galleryImages = [
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-xl);
-  margin-bottom: var(--space-3xl);
 }
 
 .gallery-item {
@@ -176,6 +182,7 @@ const galleryImages = [
 .examples-section {
   max-width: 900px;
   margin: 0 auto;
+  margin-bottom: var(--space-3xl);
   background: var(--mist);
   padding: var(--space-xl);
   border-radius: 10px;

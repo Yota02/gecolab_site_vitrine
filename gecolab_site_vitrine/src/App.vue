@@ -87,7 +87,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.7;
   color: var(--ink);
   background: var(--parchment);

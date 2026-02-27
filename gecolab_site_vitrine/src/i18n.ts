@@ -48,9 +48,9 @@ const messages = {
         aquaticTitle: 'Milieux aquatiques',
         aquaticText: 'Prélèvements d\'eau via capsules filtrantes et pompes péristaltiques',
         terrestrialTitle: 'Milieux terrestres',
-        terrestrialText: 'Collecte de sol, poils, frottis, fèces, urine et salive',
+        terrestrialText: 'Analyse de sol, frottis sur feuilles, analyse à partir d\'invertébrés (mouches nécrophages…), poils, fèces, urine, salive…',
         degradedTitle: 'ADN dégradé',
-        degradedText: 'Laboratoires dédiés à l\'étude de l\'ADN rare et dégradé'
+        degradedText: 'Laboratoires dédiés à l\'étude de l\'ADN rare et dégradé (échantillons de poils, fèces, matériel de Musée, matériel biologique de petite taille);',
       },
       stats: {
         publications: 'Publications scientifiques',
@@ -99,7 +99,7 @@ const messages = {
         aquatic: 'Milieux aquatiques',
         aquaticText: 'Recherche de poissons, amphibiens, mammifères aquatiques et macro invertébrés à partir de prélèvements d\'eau via capsules filtrantes et pompes péristaltiques.',
         terrestrial: 'Milieux terrestres',
-        terrestrialText: 'Collecte d\'échantillons de sol, poils, frottis, fèces, urine et salive grâce à des dispositifs non invasifs développés en collaboration avec le GREGE.',
+        terrestrialText: 'Analyse de sol, frottis sur feuilles, analyse à partir d\'invertébrés (mouches nécrophages…), poils, fèces, urine, salive…',
         markersTitle: 'Marqueurs génétiques par groupe',
         fish: 'Poissons',
         mammals: 'Mammifères',
@@ -117,7 +117,7 @@ const messages = {
       service2: {
         title: 'Détection ultra sensible via PCR Digitale',
         description: 'Depuis 2024, nous développons des méthodes de détection ultra sensibles de certaines espèces via l\'utilisation de la PCR digitale.',
-        intro: 'à l\'heure actuelle voici les espèces pour lesquelles ces analyses sont disponibles :',
+        intro: 'A l\'heure actuelle voici les espèces pour lesquelles ces analyses sont disponibles',
         note: 'Nous travaillons activement au développement de ces méthodes, si bien que d\'autres espèces viendront s\'ajouter à cette liste dans les prochains mois. Une espèce vous intéresse mais n\'est pas listée ici ? n\'hésitez pas à nous contacter, peut-être l\'avons-nous déjà ajoutée à la liste entre temps.'
       },
       service3: {
@@ -137,7 +137,7 @@ const messages = {
         title: 'Détermination d\'effectifs et génétique des populations',
         description: 'Évaluation de la taille des effectifs de populations, analyse de connectivité entre populations isolées, estimation du risque de consanguinité et de la diversité génétique.',
         examplesLabel: 'Espèces étudiées :',
-        examples: 'Loutre européenne, loup européen, desman des Pyrénées, vison d\'Europe, cuivré de la bistorte, hibou Grand Duc, lion d\'Afrique, ours polaire…'
+        examples: 'Loutre européenne, loup européen, desman des Pyrénées, vison d\'Europe, cuivré de la bistorte, hibou Grand-Duc, lion d\'Afrique, ours polaire, chat forestier, Lynx boréal…'
       },
       service6: {
         title: 'Identification de pathogènes et étude de microbiomes bactériens',
@@ -176,7 +176,7 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
       team: {
         sectionLabel: 'Les personnes',
         title: 'L\'équipe',
-        intro: '3 docteurs en biologie, 2 biologistes de niveau master, 1 technicienne de laboratoire et 1 chercheuse postdoctorale'
+        intro: '3 docteurs en biologie, 2 biologistes de niveau master 2, 1 technicienne de laboratoire et 1 chercheuse postdoctorale'
       }
     },
     partners: {

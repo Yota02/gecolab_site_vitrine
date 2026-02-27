@@ -71,12 +71,11 @@ async function handleSubmit() {
 
 <template>
   <div class="contact-page">
-    
     <!-- Contact content -->
     <section class="contact-content">
       <div class="container">
         <div class="contact-grid">
-<!-- Info column -->
+          <!-- Info column -->
           <div class="contact-info">
             <div class="info-card">
               <div class="info-card__icon">

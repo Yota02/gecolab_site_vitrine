@@ -1,4 +1,4 @@
-# gecolab_site_vitrine
+# Étude des problèmes d'hybridation
 
 This template should help get you started developing with Vue 3 in Vite.
 

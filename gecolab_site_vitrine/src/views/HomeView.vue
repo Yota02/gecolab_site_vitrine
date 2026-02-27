@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useRandomLogo } from '@/composables/useRandomLogo'
 import { getAllPartners } from '@/data/partners'
+import { getReferenceLaboratories } from '@/data/referenceLaboratories'
 
 const { t } = useI18n()
 const router = useRouter()
@@ -14,6 +15,7 @@ const heroBgRef = ref<HTMLElement>()
 
 const { currentLogo, changeLogo } = useRandomLogo()
 const partners = getAllPartners()
+const referenceLaboratories = getReferenceLaboratories()
 
 // Helper pour obtenir les chemins d'images avec la base URL
 const getImagePath = (path: string) => `${import.meta.env.BASE_URL}${path}`
@@ -50,8 +52,10 @@ const stats = computed(() => [
   { value: '10+', label: t('home.stats.species') },
 ])
 
-const referenceItems = computed((): { text: string }[] => {
-  return (t('home.reference.items', { returnObjects: true }) as unknown) as { text: string }[]
+const referenceItems = computed(() => {
+  return referenceLaboratories.map(item => ({
+    text: `Pour ${item.organization} concernant ${item.project} (depuis ${item.since}).`
+  }))
 })
 
 const heroBgStyle = computed(() => ({

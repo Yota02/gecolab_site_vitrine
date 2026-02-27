@@ -115,11 +115,12 @@ const cases = [
 
 .service-hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   color: var(--white);
   line-height: 1.2;
   margin-top: var(--space-sm);
   max-width: 800px;
+  white-space: nowrap;
 }
 
 .service-hero__lead {
