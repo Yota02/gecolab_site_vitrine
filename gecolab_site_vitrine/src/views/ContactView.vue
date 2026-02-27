@@ -122,6 +122,8 @@ async function handleSubmit() {
           </div>
 
           <!-- Form column -->
+
+          <!-- 
           <div class="form-card">
             <h3>{{ t('contact.form.title') }}</h3>
             <p class="form-card__subtitle">{{ t('contact.form.subtitle') }}</p>
@@ -202,6 +204,8 @@ async function handleSubmit() {
               </button>
             </form>
           </div>
+           -->
+
         </div>
       </div>
     </section>

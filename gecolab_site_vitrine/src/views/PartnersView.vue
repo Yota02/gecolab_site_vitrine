@@ -272,16 +272,6 @@ onUnmounted(() => {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: var(--space-xl);
-  animation: breathe 8s ease-in-out infinite;
-}
-
-@keyframes breathe {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.005);
-  }
 }
 
 .partner-card {
@@ -296,30 +286,26 @@ onUnmounted(() => {
 }
 
 .partners-grid.animated .partner-card {
-  animation: fadeInUp 0.6s ease forwards;
+  animation: appearWithWave 1s ease-out forwards;
 }
 
-@keyframes fadeInUp {
-  from {
+@keyframes appearWithWave {
+  0% {
     opacity: 0;
     transform: translateY(30px);
   }
-  to {
+  60% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+  80% {
+    transform: translateY(3px);
+  }
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
-.partners-grid.animated .partner-card:nth-child(1) { animation-delay: 0.05s; }
-.partners-grid.animated .partner-card:nth-child(2) { animation-delay: 0.1s; }
-.partners-grid.animated .partner-card:nth-child(3) { animation-delay: 0.15s; }
-.partners-grid.animated .partner-card:nth-child(4) { animation-delay: 0.2s; }
-.partners-grid.animated .partner-card:nth-child(5) { animation-delay: 0.25s; }
-.partners-grid.animated .partner-card:nth-child(6) { animation-delay: 0.3s; }
-.partners-grid.animated .partner-card:nth-child(7) { animation-delay: 0.35s; }
-.partners-grid.animated .partner-card:nth-child(8) { animation-delay: 0.4s; }
-.partners-grid.animated .partner-card:nth-child(9) { animation-delay: 0.45s; }
-.partners-grid.animated .partner-card:nth-child(10) { animation-delay: 0.5s; }
 
 .partner-link {
   display: block;

@@ -352,6 +352,36 @@ Notre laboratoire identifie également les champignons pathogènes pour les amph
         copied: 'Copié !',
         citation: 'Citation'
       }
+    },
+    vulgarisation: {
+      hero: {
+        sectionLabel: 'Médiation Scientifique',
+        title: 'Comprendre le vivant',
+        lead: 'Plongez au cœur de la génétique de la conservation et de l\'écologie moléculaire à travers nos capsules vidéos et articles.'
+      },
+      featured: {
+        badge: 'Article RTBF',
+        author: 'Par Johan Michaux',
+        title: 'Le raton laveur : une espèce encombrante pour la biodiversité européenne',
+        excerpt: 'Johan Michaux évoque au travers du cas du raton laveur, les problématiques liées à l\'introduction d\'espèces exotiques dans la préservation de la biodiversité locale.',
+        button: 'Lire l\'article complet'
+      },
+      videos: {
+        title: 'Vidéothèque',
+        subtitle: 'Découvrez nos dernières observations et capsules éducatives.',
+        clickToLoad: 'Cliquez pour charger la vidéo',
+        viewOnFacebook: 'Voir sur Facebook',
+        moreContent: {
+          title: 'Plus de contenus ?',
+          text: 'Retrouvez l\'intégralité de nos capsules vidéos et suivez notre actualité en direct sur notre page Facebook.',
+          button: 'Rejoignez-nous'
+        }
+      },
+      cta: {
+        title: 'Une question scientifique ?',
+        text: 'Notre équipe est disponible pour échanger sur nos travaux de recherche.',
+        button: 'Contactez-nous'
+      }
     }
   },
   en: {
@@ -697,6 +727,36 @@ Notre laboratoire identifie également les champignons pathogènes pour les amph
         copyCitation: 'Copy citation',
         copied: 'Copied!',
         citation: 'Citation'
+      }
+    },
+    vulgarisation: {
+      hero: {
+        sectionLabel: 'Scientific Outreach',
+        title: 'Understanding the living world',
+        lead: 'Dive into the heart of conservation genetics and molecular ecology through our video capsules and articles.'
+      },
+      featured: {
+        badge: 'RTBF Article',
+        author: 'By Johan Michaux',
+        title: 'The raccoon: a troublesome species for European biodiversity',
+        excerpt: 'Johan Michaux discusses the issues related to the introduction of exotic species in the preservation of local biodiversity through the case of the raccoon.',
+        button: 'Read the full article'
+      },
+      videos: {
+        title: 'Video Library',
+        subtitle: 'Discover our latest observations and educational capsules.',
+        clickToLoad: 'Click to load video',
+        viewOnFacebook: 'View on Facebook',
+        moreContent: {
+          title: 'More content?',
+          text: 'Find all our video capsules and follow our latest news live on our Facebook page.',
+          button: 'Join us'
+        }
+      },
+      cta: {
+        title: 'A scientific question?',
+        text: 'Our team is available to discuss our research work.',
+        button: 'Contact us'
       }
     }
   },
@@ -1044,6 +1104,36 @@ Notre laboratoire identifie également les champignons pathogènes pour les amph
         copied: 'Kopiert!',
         citation: 'Zitat'
       }
+    },
+    vulgarisation: {
+      hero: {
+        sectionLabel: 'Wissenschaftliche Vermittlung',
+        title: 'Das Lebendige verstehen',
+        lead: 'Tauchen Sie ein in das Herz der Erhaltungsgenetik und molekularen Ökologie durch unsere Video-Kapseln und Artikel.'
+      },
+      featured: {
+        badge: 'RTBF-Artikel',
+        author: 'Von Johan Michaux',
+        title: 'Der Waschbär: eine lästige Art für die europäische Biodiversität',
+        excerpt: 'Johan Michaux spricht am Beispiel des Waschbären über die Problematik der Einführung exotischer Arten für den Erhalt der lokalen Biodiversität.',
+        button: 'Vollständigen Artikel lesen'
+      },
+      videos: {
+        title: 'Videothek',
+        subtitle: 'Entdecken Sie unsere neuesten Beobachtungen und Bildungskapseln.',
+        clickToLoad: 'Klicken, um das Video zu laden',
+        viewOnFacebook: 'Auf Facebook ansehen',
+        moreContent: {
+          title: 'Mehr Inhalte?',
+          text: 'Finden Sie alle unsere Videokapseln und verfolgen Sie unsere aktuellen Nachrichten live auf unserer Facebook-Seite.',
+          button: 'Begleiten Sie uns'
+        }
+      },
+      cta: {
+        title: 'Eine wissenschaftliche Frage?',
+        text: 'Unser Team steht Ihnen für den Austausch über unsere Forschungsarbeiten zur Verfügung.',
+        button: 'Kontaktieren Sie uns'
+      }
     }
   },
   es: {
@@ -1390,6 +1480,36 @@ Notre laboratoire identifie également les champignons pathogènes pour les amph
         copied: '¡Copiado!',
         citation: 'Cita'
       }
+    },
+    vulgarisation: {
+      hero: {
+        sectionLabel: 'Divulgación Científica',
+        title: 'Comprender lo vivo',
+        lead: 'Sumérjase en el corazón de la genética de la conservación y la ecología molecular a través de nuestras cápsulas de video y artículos.'
+      },
+      featured: {
+        badge: 'Artículo RTBF',
+        author: 'Por Johan Michaux',
+        title: 'El mapache: una especie molesta para la biodiversidad europea',
+        excerpt: 'Johan Michaux analiza los problemas relacionados con la introducción de especies exóticas en la preservación de la biodiversidad local a través del caso del mapache.',
+        button: 'Leer el artículo completo'
+      },
+      videos: {
+        title: 'Videoteca',
+        subtitle: 'Descubra nuestras últimas observaciones y cápsulas educativas.',
+        clickToLoad: 'Haga clic para cargar el video',
+        viewOnFacebook: 'Ver en Facebook',
+        moreContent: {
+          title: '¿Más contenido?',
+          text: 'Encuentre todas nuestras cápsulas de video y siga nuestras noticias en directo en nuestra página de Facebook.',
+          button: 'Únase a nosotros'
+        }
+      },
+      cta: {
+        title: '¿Una pregunta científica?',
+        text: 'Nuestro equipo es disponible para hablar sobre nuestros trabajos de investigación.',
+        button: 'Contáctenos'
+      }
     }
   },
   nl: {
@@ -1722,6 +1842,36 @@ Notre laboratoire identifie également les champignons pathogènes pour les amph
         copyCitation: 'Citaat kopiëren',
         copied: 'Gekopieerd!',
         citation: 'Citaat'
+      }
+    },
+    vulgarisation: {
+      hero: {
+        sectionLabel: 'Wetenschappelijke voorlichting',
+        title: 'Begrijp de levende wereld',
+        lead: 'Duik in het hart van de conservatiegenetica en moleculaire ecologie via onze videocapsules en artikelen.'
+      },
+      featured: {
+        badge: 'RTBF-artikel',
+        author: 'Door Johan Michaux',
+        title: 'De wasbeer: een hinderlijke soort voor de Europese biodiversiteit',
+        excerpt: 'Johan Michaux bespreekt de problematiek van de introductie van exotische soorten in het behoud van lokale biodiversiteit aan de hand van het geval van de wasbeer.',
+        button: 'Lees het volledige artikel'
+      },
+      videos: {
+        title: 'Videotheek',
+        subtitle: 'Ontdek onze laatste waarnemingen en educatieve capsules.',
+        clickToLoad: 'Klik om de video te laden',
+        viewOnFacebook: 'Bekijk op Facebook',
+        moreContent: {
+          title: 'Meer inhoud?',
+          text: 'Vind al onze videocapsules en volg ons laatste nieuws live op onze Facebookpagina.',
+          button: 'Doe mee'
+        }
+      },
+      cta: {
+        title: 'Een wetenschappelijke vraag?',
+        text: 'Ons team is beschikbaar om te discussiëren over onze onderzoekswerken.',
+        button: 'Neem contact op'
       }
     }
   }
