@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ServiceLayout from '@/components/ServiceLayout.vue'
 
-const { t } = useI18n()
+const { t, tm } = useI18n()
 
 const image = `${import.meta.env.BASE_URL}images/services/tique.jpg`
 const pasteurLogo = `${import.meta.env.BASE_URL}images/partners/private/pasteur.jpg`
@@ -14,23 +14,8 @@ const descriptionParagraphs = computed(() => {
   return raw.split('\n\n').map(p => p.trim()).filter(Boolean)
 })
 
-const methodology = [
-  {
-    step: '01',
-    title: 'Collecte & Extraction',
-    text: 'Prélèvement sur le terrain ou réception d\'échantillons (tiques, fèces, tissus) et extraction de l\'ADN de haute pureté.'
-  },
-  {
-    step: '02',
-    title: 'Analyse & Séquençage',
-    text: 'Utilisation du séquençage NGS pour le microbiome ou de la PCR digitale pour une détection ultra-sensible de cibles spécifiques.'
-  },
-  {
-    step: '03',
-    title: 'Expertise & Rapport',
-    text: 'Interprétation des données par nos experts biologistes et remise d\'un rapport détaillé incluant le screening complet.'
-  }
-]
+const methodology = computed(() => tm('services.service6.methodology') as { step: string; title: string; text: string }[])
+const whyChoose = computed(() => tm('services.service6.whyChoose') as { title: string; text: string }[])
 </script>
 
 <template>
@@ -53,8 +38,8 @@ const methodology = [
         <div class="main-column">
           <!-- Introduction & Expertise -->
           <div class="intro-section animate-fade-in">
-            <div class="scientific-label">Séquençage NGS & PCR Digitale</div>
-            <h2 class="section-heading">Expertise Microbiome & Pathogènes</h2>
+            <div class="scientific-label">{{ t('services.service6.scientificLabel') }}</div>
+            <h2 class="section-heading">{{ t('services.service6.sectionHeading') }}</h2>
             <p class="description-text--large">{{ descriptionParagraphs[0] }}</p>
             <p class="description-text">{{ descriptionParagraphs[1] }}</p>
           </div>
@@ -70,7 +55,7 @@ const methodology = [
 
           <!-- Detection Scope -->
           <div class="scope-section glass-card animate-fade-in-delayed">
-            <h3 class="card-title">Spectre de détection</h3>
+            <h3 class="card-title">{{ t('services.service6.methodologyTitle') }}</h3>
             <div class="scope-grid">
               <div class="scope-item">
                 <div class="scope-icon bacteria">
@@ -79,8 +64,8 @@ const methodology = [
                   </svg>
                 </div>
                 <div>
-                  <h4>Bactéries</h4>
-                  <p>Borrelia, Bartonella, Yersinia, Bacillus, Leptospira...</p>
+                  <h4>{{ t('services.service6.scopeBacteria') }}</h4>
+                  <p>{{ t('services.service6.scopeBacteriaText') }}</p>
                 </div>
               </div>
               <div class="scope-item">
@@ -90,8 +75,8 @@ const methodology = [
                   </svg>
                 </div>
                 <div>
-                  <h4>Champignons</h4>
-                  <p>Batrachochytrium dendrobatidis (Bd) & B. salamandrivorans (Bsal)</p>
+                  <h4>{{ t('services.service6.scopeFungi') }}</h4>
+                  <p>{{ t('services.service6.scopeFungiText') }}</p>
                 </div>
               </div>
               <div class="scope-item">
@@ -101,8 +86,8 @@ const methodology = [
                   </svg>
                 </div>
                 <div>
-                  <h4>Parasites</h4>
-                  <p>Macro et micro parasites sanguins et intestinaux</p>
+                  <h4>{{ t('services.service6.scopeParasites') }}</h4>
+                  <p>{{ t('services.service6.scopeParasitesText') }}</p>
                 </div>
               </div>
             </div>
@@ -112,7 +97,7 @@ const methodology = [
           <div class="partnership-card glass-card animate-fade-in-delayed-2">
             <div class="partnership-header">
               <div class="partnership-info">
-                <h4>Une collaboration d'excellence</h4>
+                <h4>{{ t('services.service6.partnershipTitle') }}</h4>
                 <p>{{ descriptionParagraphs[2] }}</p>
               </div>
               <div class="partnership-logos">
@@ -128,7 +113,7 @@ const methodology = [
 
           <!-- Secondary Insight -->
           <div class="insight-section animate-fade-in-delayed-2">
-            <div class="insight-badge">Impact Sanitaire</div>
+            <div class="insight-badge">{{ t('services.service6.insightBadge') }}</div>
             <p class="description-text">{{ descriptionParagraphs[3] }}</p>
           </div>
         </div>
@@ -142,39 +127,17 @@ const methodology = [
             </div>
             
             <div class="trust-panel glass-card animate-fade-in-delayed">
-              <h3>Pourquoi choisir GeCoLAB ?</h3>
+              <h3>{{ t('services.service6.whyChooseTitle') }}</h3>
               <ul class="trust-list">
-                <li>
+                <li v-for="(item, index) in whyChoose" :key="index">
                   <div class="check-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                       <polyline points="20 6 9 17 4 12"/>
                     </svg>
                   </div>
                   <div>
-                    <strong>Technologie de pointe</strong>
-                    <span>NGS & PCR digitale exclusive.</span>
-                  </div>
-                </li>
-                <li>
-                  <div class="check-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                      <polyline points="20 6 9 17 4 12"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <strong>Rigueur académique</strong>
-                    <span>Protocoles validés par l'ULiège.</span>
-                  </div>
-                </li>
-                <li>
-                  <div class="check-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                      <polyline points="20 6 9 17 4 12"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <strong>Screening complet</strong>
-                    <span>Du microbiome aux pathogènes ciblés.</span>
+                    <strong>{{ item.title }}</strong>
+                    <span>{{ item.text }}</span>
                   </div>
                 </li>
               </ul>
@@ -182,13 +145,13 @@ const methodology = [
 
             <div class="service-stats glass-card animate-fade-in-delayed">
               <div class="stat-item">
-                <span class="stat-label">Sensibilité</span>
-                <span class="stat-value">Ultra-haute</span>
+                <span class="stat-label">{{ t('services.service6.sensitivity') }}</span>
+                <span class="stat-value">{{ t('services.service6.sensitivityValue') }}</span>
               </div>
               <div class="stat-divider"></div>
               <div class="stat-item">
-                <span class="stat-label">Technologie</span>
-                <span class="stat-value">NGS / PCRd</span>
+                <span class="stat-label">{{ t('services.service6.technology') }}</span>
+                <span class="stat-value">{{ t('services.service6.technologyValue') }}</span>
               </div>
             </div>
           </div>

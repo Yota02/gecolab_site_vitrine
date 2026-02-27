@@ -124,20 +124,27 @@ const messages = {
         title: 'Régime alimentaire',
         description: 'Analyses de régime alimentaire précises à partir de fèces collectées de manière non invasive, via les techniques de séquençage nouvelle génération et de métabarcoding.',
         examplesLabel: 'Espèces étudiées :',
-        examples: 'Loutre européenne, loup européen, sanglier, vison d\'Europe, vison d\'Amérique, mangouste de Java, nombreuses espèces de chauves-souris (oreillards, murins, pipistrelles)…'
+        examples: 'Loutre européenne, loup européen, sanglier, vison d\'Europe, vison d\'Amérique, mangouste de Java, nombreuses espèces de chauves-souris (oreillards, murins, pipistrelles)…',
+        feature1: 'Identification précise des proies au niveau de l\'espèce.',
+        feature2: 'Analyse non invasive à partir de fèces ou de contenus stomacaux.',
+        feature3: 'Protocoles NGS optimisés pour les échantillons dégradés.'
       },
       service4: {
         title: 'Étude des problèmes d\'hybridation',
         description: 'Étude précise des phénomènes d\'hybridation existant entre espèces menacées et espèces domestiques ou invasives.',
         case1: 'Chat forestier européen × Chat domestique',
         case2: 'Sanglier européen × Cochon domestique',
-        case3: 'Vison d\'Europe × Putois européen'
+        case3: 'Vison d\'Europe × Putois européen',
+        imageBadge: 'Espèce parapluie',
+        studyCases: 'Cas d\'étude',
+        infoNote: 'Le Deep Ecology Lab utilise des marqueurs génétiques de haute résolution pour distinguer les individus purs des hybrides avec une précision inégalée.'
       },
       service5: {
         title: 'Détermination d\'effectifs et génétique des populations',
         description: 'Évaluation de la taille des effectifs de populations, analyse de connectivité entre populations isolées, estimation du risque de consanguinité et de la diversité génétique.',
         examplesLabel: 'Espèces étudiées :',
-        examples: 'Loutre européenne, loup européen, desman des Pyrénées, vison d\'Europe, cuivré de la bistorte, hibou Grand-Duc, lion d\'Afrique, ours polaire, chat forestier, Lynx boréal…'
+        examples: 'Loutre européenne, loup européen, desman des Pyrénées, vison d\'Europe, cuivré de la bistorte, hibou Grand-Duc, lion d\'Afrique, ours polaire, chat forestier, Lynx boréal…',
+        speciesStudied: 'Espèces étudiées'
       },
       service6: {
         title: 'Identification de pathogènes et étude de microbiomes bactériens',
@@ -151,7 +158,42 @@ Ces approches, développées notamment avec l'Institut Pasteur ou encore l'Hôpi
 Notre laboratoire identifie également les champignons pathogènes pour les amphibiens : Batrachochytrium dendrobatidis (Bd) et B. salamandrivorans (Bsal) ainsi que les macro et micro parasites sanguins et intestinaux, grâce à des marqueurs génétiques spécifiques et les technologies de séquençage de dernière génération ou de PCR digitales.`,
         pathogensLabel: 'Pathogènes détectés :',
         pathogens: 'Bactéries (Borrelia, Bartonella, Yersinia, Bacillus, Leptospira...), Champignons (Bd, Bsal), parasites sanguins et intestinaux.',
-        partners: 'Développé avec l\'Institut Pasteur et l\'Hôpital Universitaire de l\'Université de Liège.'
+        partners: 'Développé avec l\'Institut Pasteur et l\'Hôpital Universitaire de l\'Université de Liège.',
+        scientificLabel: 'Séquençage NGS & PCR Digitale',
+        sectionHeading: 'Expertise Microbiome & Pathogènes',
+        methodologyTitle: 'Spectre de détection',
+        methodology: [
+          {
+            title: 'Collecte & Extraction',
+            text: 'Prélèvement sur le terrain ou réception d\'échantillons (tiques, fèces, tissus) et extraction de l\'ADN de haute pureté.'
+          },
+          {
+            title: 'Analyse & Séquençage',
+            text: 'Utilisation du séquençage NGS pour le microbiome ou de la PCR digitale pour une détection ultra-sensible de cibles spécifiques.'
+          },
+          {
+            title: 'Expertise & Rapport',
+            text: 'Interprétation des données par nos experts biologistes et remise d\'un rapport détaillé incluant le screening complet.'
+          }
+        ],
+        scopeBacteria: 'Bactéries',
+        scopeBacteriaText: 'Borrelia, Bartonella, Yersinia, Bacillus, Leptospira...',
+        scopeFungi: 'Champignons',
+        scopeFungiText: 'Batrachochytrium dendrobatidis (Bd) & B. salamandrivorans (Bsal)',
+        scopeParasites: 'Parasites',
+        scopeParasitesText: 'Macro et micro parasites sanguins et intestinaux',
+        partnershipTitle: 'Une collaboration d\'excellence',
+        insightBadge: 'Impact Sanitaire',
+        whyChooseTitle: 'Pourquoi choisir GeCoLAB ?',
+        whyChoose: [
+          { title: 'Technologie de pointe', text: 'NGS & PCR digitale exclusive.' },
+          { title: 'Rigueur académique', text: 'Protocoles validés par l\'ULiège.' },
+          { title: 'Screening complet', text: 'Du microbiome aux pathogènes ciblés.' }
+        ],
+        sensitivity: 'Sensibilité',
+        sensitivityValue: 'Ultra-haute',
+        technology: 'Technologie',
+        technologyValue: 'NGS / PCRd'
       },
       cta: {
         title: 'Besoin d\'un devis personnalisé ?',
@@ -435,27 +477,69 @@ Notre laboratoire identifie également les champignons pathogènes pour les amph
         title: 'Diet analysis',
         description: 'Precise diet analysis from feces collected non-invasively, using next-generation sequencing and metabarcoding techniques.',
         examplesLabel: 'Species studied:',
-        examples: 'European otter, European wolf, wild boar, European mink, American mink, Java mongoose, numerous bat species (long-eared bats, Myotis, pipistrelles)…'
+        examples: 'European otter, European wolf, wild boar, European mink, American mink, Java mongoose, numerous bat species (long-eared bats, Myotis, pipistrelles)…',
+        feature1: 'Precise prey identification at species level.',
+        feature2: 'Non-invasive analysis from feces or stomach contents.',
+        feature3: 'Optimized NGS protocols for degraded samples.'
       },
       service4: {
         title: 'Study of hybridization issues',
         description: 'Precise study of hybridization phenomena existing between threatened species and domestic or invasive species.',
         case1: 'European wildcat × Domestic cat',
         case2: 'European wild boar × Domestic pig',
-        case3: 'European mink × European polecat'
+        case3: 'European mink × European polecat',
+        imageBadge: 'Umbrella species',
+        studyCases: 'Case studies',
+        infoNote: 'The Deep Ecology Lab uses high-resolution genetic markers to distinguish pure individuals from hybrids with unparalleled precision.'
       },
       service5: {
         title: 'Population size determination and population genetics',
         description: 'Assessment of population size, connectivity analysis between isolated populations, estimation of inbreeding risk and genetic diversity.',
         examplesLabel: 'Species studied:',
-        examples: 'European otter, European wolf, Pyrenean desman, European mink, scarce copper butterfly, Eurasian eagle-owl, African lion, polar bear…'
+        examples: 'European otter, European wolf, Pyrenean desman, European mink, scarce copper butterfly, Eurasian eagle-owl, African lion, polar bear, wildcat, Eurasian lynx…',
+        speciesStudied: 'Species studied'
       },
       service6: {
         title: 'Identification of pathogens and bacterial microbiomes',
         description: 'Precise estimation of bacterial microbiomes and detection of potential presence of pathogenic agents with greater accuracy than conventional technologies.',
         pathogensLabel: 'Detected pathogens:',
         pathogens: 'Borrelia (Lyme disease), Bartonella, Yersinia, Bacillus, Leptospira…',
-        partners: 'Developed with the Pasteur Institute and the University Hospital of the University of Liège.'
+        partners: 'Developed with the Pasteur Institute and the University Hospital of the University of Liège.',
+        scientificLabel: 'NGS Sequencing & Digital PCR',
+        sectionHeading: 'Microbiome & Pathogens Expertise',
+        methodologyTitle: 'Detection Scope',
+        methodology: [
+          {
+            title: 'Collection & Extraction',
+            text: 'Field collection or reception of samples (ticks, feces, tissues) and high-purity DNA extraction.'
+          },
+          {
+            title: 'Analysis & Sequencing',
+            text: 'Use of NGS sequencing for microbiome or digital PCR for ultra-sensitive detection of specific targets.'
+          },
+          {
+            title: 'Expertise & Report',
+            text: 'Data interpretation by our expert biologists and delivery of a detailed report including complete screening.'
+          }
+        ],
+        scopeBacteria: 'Bacteria',
+        scopeBacteriaText: 'Borrelia, Bartonella, Yersinia, Bacillus, Leptospira...',
+        scopeFungi: 'Fungi',
+        scopeFungiText: 'Batrachochytrium dendrobatidis (Bd) & B. salamandrivorans (Bsal)',
+        scopeParasites: 'Parasites',
+        scopeParasitesText: 'Macro and micro blood and intestinal parasites',
+        partnershipTitle: 'A Collaboration of Excellence',
+        insightBadge: 'Health Impact',
+        whyChooseTitle: 'Why choose GeCoLAB?',
+        whyChoose: [
+          { title: 'Cutting-edge technology', text: 'Exclusive NGS & Digital PCR.' },
+          { title: 'Academic rigor', text: 'Protocols validated by ULiège.' },
+          { title: 'Complete screening', text: 'From microbiome to targeted pathogens.' }
+        ],
+        sensitivity: 'Sensitivity',
+        sensitivityValue: 'Ultra-high',
+        technology: 'Technology',
+        technologyValue: 'NGS / dPCR'
       },
       cta: {
         title: 'Need a personalized quote?',
@@ -739,27 +823,69 @@ Notre laboratoire identifie également les champignons pathogènes pour les amph
         title: 'Ernährung',
         description: 'Präzise Ernährungsanalysen aus nicht-invasiv gesammelten Fäkalien, durch Next-Generation-Sequencing- und Metabarcoding-Techniken.',
         examplesLabel: 'Untersuchte Arten:',
-        examples: 'Europäischer Fischotter, Europäischer Wolf, Wildschwein, Europäischer Nerz, Amerikanischer Nerz, Javanische Manguste, zahlreiche Fledermausarten (Langoohren, Zwergfledermäuse, Zwergfledermäuse)…'
+        examples: 'Europäischer Fischotter, Europäischer Wolf, Wildschwein, Europäischer Nerz, Amerikanischer Nerz, Javanische Manguste, zahlreiche Fledermausarten (Langoohren, Zwergfledermäuse, Zwergfledermäuse)…',
+        feature1: 'Präzise Beuteidentifikation auf Artebene.',
+        feature2: 'Nicht-invasive Analyse aus Kot oder Mageninhalt.',
+        feature3: 'Optimierte NGS-Protokolle für degradierte Proben.'
       },
       service4: {
         title: 'Untersuchung von Hybridisierungsproblemen',
         description: 'Präzise Untersuchung von Hybridisierungsphänomenen zwischen bedrohten Arten und domestizierten oder invasiven Arten.',
         case1: 'Europäische Wildkatze × Hauskatze',
         case2: 'Europäisches Wildschwein × Hausschwein',
-        case3: 'Europäischer Nerz × Europäischer Iltis'
+        case3: 'Europäischer Nerz × Europäischer Iltis',
+        imageBadge: 'Schirmart',
+        studyCases: 'Fallstudien',
+        infoNote: 'Das Deep Ecology Lab verwendet hochauflösende genetische Marker, um reine Individuen von Hybriden mit beispielloser Präzision zu unterscheiden.'
       },
       service5: {
         title: 'Bestimmung von Populationsgrößen und Populationsgenetik',
         description: 'Bewertung der Populationsgröße, Konnektivitätsanalyse zwischen isolierten Populationen, Schätzung des Inzuchtrisikos und der genetischen Vielfalt.',
         examplesLabel: 'Untersuchte Arten:',
-        examples: 'Europäischer Fischotter, Europäischer Wolf, Pyrenäen-Desman, Europäischer Nerz, Schachbrettfalter, Uhu, Afrikanischer Löwe, Eisbär…'
+        examples: 'Europäischer Fischotter, Europäischer Wolf, Pyrenäen-Desman, Europäischer Nerz, Schachbrettfalter, Uhu, Afrikanischer Löwe, Eisbär, Wildkatze, Nordluchs…',
+        speciesStudied: 'Untersuchte Arten'
       },
       service6: {
         title: 'Identifizierung von Pathogenen und bakteriellen Mikrobiomen',
         description: 'Präzise Schätzung bakterieller Mikrobiome und Detektion potentieller Anwesenheit von Pathogenen mit höherer Genauigkeit als herkömmliche Technologien.',
         pathogensLabel: 'Detektierte Pathogene:',
         pathogens: 'Borrelia (Lyme-Krankheit), Bartonella, Yersinia, Bacillus, Leptospira…',
-        partners: 'Entwickelt mit dem Pasteur-Institut und dem Universitätsklinikum der Universität Lüttich.'
+        partners: 'Entwickelt mit dem Pasteur-Institut und dem Universitätsklinikum der Universität Lüttich.',
+        scientificLabel: 'NGS-Sequenzierung & Digitale PCR',
+        sectionHeading: 'Mikrobiom & Pathogene Expertise',
+        methodologyTitle: 'Nachweisspektrum',
+        methodology: [
+          {
+            title: 'Sammlung & Extraktion',
+            text: 'Feldprobenahme oder Empfang von Proben (Zecken, Kot, Gewebe) und Extraktion hochreiner DNA.'
+          },
+          {
+            title: 'Analyse & Sequenzierung',
+            text: 'Einsatz von NGS-Sequenzierung für das Mikrobiom oder digitale PCR für ultrasensitive Erkennung spezifischer Ziele.'
+          },
+          {
+            title: 'Expertise & Bericht',
+            text: 'Dateninterpretation durch unsere Expertenbiologen und Lieferung eines detaillierten Berichts einschließlich vollständiger Screening.'
+          }
+        ],
+        scopeBacteria: 'Bakterien',
+        scopeBacteriaText: 'Borrelia, Bartonella, Yersinia, Bacillus, Leptospira...',
+        scopeFungi: 'Pilze',
+        scopeFungiText: 'Batrachochytrium dendrobatidis (Bd) & B. salamandrivorans (Bsal)',
+        scopeParasites: 'Parasiten',
+        scopeParasitesText: 'Makro- und Mikro-Blut- und Darmparasiten',
+        partnershipTitle: 'Eine Exzellente Zusammenarbeit',
+        insightBadge: 'Gesundheitliche Auswirkungen',
+        whyChooseTitle: 'Warum GeCoLAB wählen?',
+        whyChoose: [
+          { title: 'Spitzentechnologie', text: 'Exklusives NGS & Digitale PCR.' },
+          { title: 'Akademische Strenge', text: 'Von ULiège validierte Protokolle.' },
+          { title: 'Vollständiges Screening', text: 'Vom Mikrobiom zu gezielten Pathogenen.' }
+        ],
+        sensitivity: 'Empfindlichkeit',
+        sensitivityValue: 'Ultra-hoch',
+        technology: 'Technologie',
+        technologyValue: 'NGS / dPCR'
       },
       cta: {
         title: 'Brauchen Sie ein personalisiertes Angebot?',
@@ -1043,27 +1169,69 @@ Notre laboratoire identifie également les champignons pathogènes pour les amph
         title: 'Dieta',
         description: 'Análisis de dieta precisos a partir de heces recolectadas de manera no invasiva, mediante técnicas de secuenciación de nueva generación y metabarcoding.',
         examplesLabel: 'Especies estudiadas:',
-        examples: 'Nutria europea, lobo europeo, jabalí, visón europeo, visón americano, mangosta de Java, numerosas especies de murciélagos (orejudos, murinos, pipistrellos)…'
+        examples: 'Nutria europea, lobo europeo, jabalí, visón europeo, visón americano, mangosta de Java, numerosas especies de murciélagos (orejudos, murinos, pipistrellos)…',
+        feature1: 'Identificación precisa de presas a nivel de especie.',
+        feature2: 'Análisis no invasivo a partir de heces o contenidos estomacales.',
+        feature3: 'Protocolos NGS optimizados para muestras degradadas.'
       },
       service4: {
         title: 'Estudio de problemas de hibridación',
         description: 'Estudio preciso de los fenómenos de hibridación existentes entre especies amenazadas y especies domésticas o invasoras.',
         case1: 'Gato montés europeo × Gato doméstico',
         case2: 'Jabalí europeo × Cerdo doméstico',
-        case3: 'Visón europeo × Turón europeo'
+        case3: 'Visón europeo × Turón europeo',
+        imageBadge: 'Especie paraguas',
+        studyCases: 'Casos de estudio',
+        infoNote: 'Deep Ecology Lab utiliza marcadores genéticos de alta resolución para distinguir individuos puros de híbridos con una precisión sin igual.'
       },
       service5: {
         title: 'Determinación de efectivos y genética de poblaciones',
         description: 'Evaluación del tamaño de efectivos de poblaciones, análisis de conectividad entre poblaciones aisladas, estimación del riesgo de consanguinidad y de la diversidad genética.',
         examplesLabel: 'Especies estudiadas:',
-        examples: 'Nutria europea, lobo europeo, desmán de los Pirineos, visón europeo, macaón, búho real, león africano, oso polar…'
+        examples: 'Nutria europea, lobo europeo, desmán de los Pirineos, visón europeo, macaón, búho real, león africano, oso polar, gato montés, lince boreal…',
+        speciesStudied: 'Especies estudiadas'
       },
       service6: {
         title: 'Identificación de patógenos y microbiomas bacterianos',
         description: 'Estimación precisa de microbiomas bacterianos y detección de la presencia potencial de agentes patógenos con una precisión superior a las tecnologías convencionales.',
         pathogensLabel: 'Patógenos detectados:',
         pathogens: 'Borrelia (enfermedad de Lyme), Bartonella, Yersinia, Bacillus, Leptospira…',
-        partners: 'Desarrollado con el Instituto Pasteur y el Hospital Universitario de la Universidad de Lieja.'
+        partners: 'Desarrollado con el Instituto Pasteur y el Hospital Universitario de la Universidad de Lieja.',
+        scientificLabel: 'Secuenciación NGS & PCR Digital',
+        sectionHeading: 'Experiencia en Microbioma y Patógenos',
+        methodologyTitle: 'Alcance de detección',
+        methodology: [
+          {
+            title: 'Recolección & Extracción',
+            text: 'Recolección en campo o recepción de muestras (garrapatas, heces, tejidos) y extracción de ADN de alta pureza.'
+          },
+          {
+            title: 'Análisis & Secuenciación',
+            text: 'Uso de secuenciación NGS para el microbioma o PCR digital para detección ultrasensible de objetivos específicos.'
+          },
+          {
+            title: 'Experiencia & Informe',
+            text: 'Interpretación de datos por nuestros expertos biólogos y entrega de un informe detallado incluyendo el cribado completo.'
+          }
+        ],
+        scopeBacteria: 'Bacterias',
+        scopeBacteriaText: 'Borrelia, Bartonella, Yersinia, Bacillus, Leptospira...',
+        scopeFungi: 'Hongos',
+        scopeFungiText: 'Batrachochytrium dendrobatidis (Bd) & B. salamandrivorans (Bsal)',
+        scopeParasites: 'Parásitos',
+        scopeParasitesText: 'Macro y microparásitos sanguíneos e intestinales',
+        partnershipTitle: 'Una Colaboración de Excelencia',
+        insightBadge: 'Impacto Sanitario',
+        whyChooseTitle: '¿Por qué elegir GeCoLAB?',
+        whyChoose: [
+          { title: 'Tecnología de vanguardia', text: 'NGS & PCR Digital exclusiva.' },
+          { title: 'Rigor académico', text: 'Protocolos validados por ULiège.' },
+          { title: 'Cribado completo', text: 'Del microbioma a patógenos específicos.' }
+        ],
+        sensitivity: 'Sensibilidad',
+        sensitivityValue: 'Ultra-alta',
+        technology: 'Tecnología',
+        technologyValue: 'NGS / dPCR'
       },
       cta: {
         title: '¿Necesita un presupuesto personalizado?',
@@ -1334,27 +1502,69 @@ Notre laboratoire identifie également les champignons pathogènes pour les amph
         title: 'Dieet',
         description: 'Nauwkeurige dieetanalyses uit niet-invasief verzamelde feces, via next-generation-sequencing- en metabarcodingtechnieken.',
         examplesLabel: 'Bestudeerde soorten:',
-        examples: 'Europese otter, Europese wolf, wild zwijn, Europese nerts, Amerikaanse nerts, Javanese mangoeste, talrijke vleermuissoorten (langoorvleermuizen, dwergvleermuizen, dwergvleermuizen)…'
+        examples: 'Europese otter, Europese wolf, wild zwijn, Europese nerts, Amerikaanse nerts, Javanese mangoeste, talrijke vleermuissoorten (langoorvleermuizen, dwergvleermuizen, dwergvleermuizen)…',
+        feature1: 'Nauwkeurige prooidentificatie op soortniveau.',
+        feature2: 'Niet-invasieve analyse uit feces of maaginhoud.',
+        feature3: 'Geoptimaliseerde NGS-protocollen voor gedegradeerde monsters.'
       },
       service4: {
         title: 'Studie van hybridisatieproblemen',
         description: 'Nauwkeurige studie van hybridisatieverschijnselen tussen bedreigde soorten en gedomesticeerde of invasieve soorten.',
         case1: 'Europese wilde kat × Huiskat',
         case2: 'Europees wild zwijn × Huiskat',
-        case3: 'Europese nerts × Europese bunzing'
+        case3: 'Europese nerts × Europese bunzing',
+        imageBadge: 'Schermsoort',
+        studyCases: 'Gevalstudies',
+        infoNote: 'Deep Ecology Lab gebruikt high-resolution genetische markers om pure individuen van hybriden te onderscheiden met ongekende precisie.'
       },
       service5: {
         title: 'Bepaling van populatiegrootte en populatiegenetica',
         description: 'Evaluatie van populatiegrootte, connectiviteitsanalyse tussen geïsoleerde populaties, schatting van inteelt risico en genetische diversiteit.',
         examplesLabel: 'Bestudeerde soorten:',
-        examples: 'Europese otter, Europese wolf, Pyreneese desman, Europese nerts, grote vuurvlinder, oehoe, Afrikaanse leeuw, ijsbeer…'
+        examples: 'Europese otter, Europese wolf, Pyreneese desman, Europese nerts, grote vuurvlinder, oehoe, Afrikaanse leeuw, ijsbeer, wilde kat, Euraziatische lynx…',
+        speciesStudied: 'Bestudeerde soorten'
       },
       service6: {
         title: 'Identificatie van pathogenen en bacteriële microbiomen',
         description: 'Nauwkeurige schatting van bacteriële microbiomen en detectie van potentiële aanwezigheid van pathogenen mit hogere nauwkeurigheid dan conventionele technologieën.',
         pathogensLabel: 'Gedetecteerde pathogenen:',
         pathogens: 'Borrelia (ziekte van Lyme), Bartonella, Yersinia, Bacillus, Leptospira…',
-        partners: 'Ontwikkeld met het Pasteur Instituut en het Universitair Ziekenhuis van de Universiteit van Luik.'
+        partners: 'Ontwikkeld met het Pasteur Instituut en het Universitair Ziekenhuis van de Universiteit van Luik.',
+        scientificLabel: 'NGS Sequencering & Digitale PCR',
+        sectionHeading: 'Microbioom & Pathogenen Expertise',
+        methodologyTitle: 'Detectiebereik',
+        methodology: [
+          {
+            title: 'Verzameling & Extractie',
+            text: 'Veldverzameling of ontvangst van monsters (teken, feces, weefsel) en extractie van hoogzuivere DNA.'
+          },
+          {
+            title: 'Analyse & Sequencering',
+            text: 'Gebruik van NGS-sequencing voor het microbioom of digitale PCR voor ultrasensitieve detectie van specifieke doelen.'
+          },
+          {
+            title: 'Expertise & Rapport',
+            text: 'Data-interpretatie door onze expert-biologen en levering van een gedetailleerd rapport inclusief volledige screening.'
+          }
+        ],
+        scopeBacteria: 'Bacteriën',
+        scopeBacteriaText: 'Borrelia, Bartonella, Yersinia, Bacillus, Leptospira...',
+        scopeFungi: 'Schimmels',
+        scopeFungiText: 'Batrachochytrium dendrobatidis (Bd) & B. salamandrivorans (Bsal)',
+        scopeParasites: 'Parasieten',
+        scopeParasitesText: 'Macro- en microbloed- en darmparasieten',
+        partnershipTitle: 'Een Uitstekende Samenwerking',
+        insightBadge: 'Gezondheidsimpact',
+        whyChooseTitle: 'Waarom kiezen voor GeCoLAB?',
+        whyChoose: [
+          { title: 'Spits technologie', text: 'Exclusief NGS & Digitale PCR.' },
+          { title: 'Academische strengheid', text: 'Door ULiège gevalideerde protocollen.' },
+          { title: 'Volledige screening', text: 'Van microbioom tot gerichte pathogenen.' }
+        ],
+        sensitivity: 'Gevoeligheid',
+        sensitivityValue: 'Ultra-hoog',
+        technology: 'Technologie',
+        technologyValue: 'NGS / dPCR'
       },
       cta: {
         title: 'Heeft u een gepersonaliseerde offerte nodig?',

@@ -43,7 +43,7 @@ const galleryImages = [
       <!-- Gallery Section -->
       <section class="content-section animate-fade-in-delayed">
         <div class="section-header">
-          <h2 class="h4">Espèces étudiées</h2>
+          <h2 class="h4">{{ t('services.service5.speciesStudied') }}</h2>
           <div class="header-line"></div>
         </div>
 

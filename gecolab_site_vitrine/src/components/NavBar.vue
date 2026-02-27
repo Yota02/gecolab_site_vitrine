@@ -216,12 +216,13 @@ const links = computed(() => [
 .navbar__logo {
   width: 48px;
   height: 48px;
-  color: var(--canopy);
+  object-fit: contain;
+  filter: brightness(0) invert(1);
   transition: transform 0.5s var(--ease-out);
 }
 
 .navbar__brand:hover .navbar__logo {
-  transform: rotate(15deg) scale(1.05);
+  transform: scale(1.1);
 }
 
 .navbar__name {

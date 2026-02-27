@@ -316,12 +316,12 @@ const heroBgStyle = computed(() => ({
 .hero__title-container {
   display: flex;
   align-items: center;
-  gap: var(--space-xl);
+  gap: var(--space-md);
   margin-bottom: var(--space-md);
 }
 
 .hero__animal-logo {
-  width: clamp(4rem, 10vw, 7rem);
+  width: clamp(5rem, 12vw, 9rem);
   height: auto;
   filter: brightness(0) invert(1);
   opacity: 0.95;

@@ -19,7 +19,7 @@ const services: { id: string; route: string; image: string }[] = [
   {
     id: 'regime',
     route: '/services/regime',
-    image: import.meta.env.BASE_URL + 'images/services/crotte-mammifere.png'
+    image: import.meta.env.BASE_URL + 'images/services/chauve_souris.jpg'
   },
   {
     id: 'hybridation',

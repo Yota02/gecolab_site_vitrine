@@ -25,7 +25,7 @@ const cases = [
         <div class="image-column animate-scale-in">
           <div class="main-image">
             <img :src="image" alt="Chat forestier" loading="lazy">
-            <div class="image-badge">Espèce parapluie</div>
+            <div class="image-badge">{{ t('services.service4.imageBadge') }}</div>
           </div>
         </div>
 
@@ -40,7 +40,7 @@ const cases = [
                   <line x1="12" y1="8" x2="12.01" y2="8"/>
                 </svg>
               </div>
-              <h2 class="h3">Cas d'étude</h2>
+              <h2 class="h3">{{ t('services.service4.studyCases') }}</h2>
             </div>
 
             <div class="case-list">
@@ -54,7 +54,7 @@ const cases = [
           </div>
 
           <div class="info-note animate-fade-in-delayed-2">
-            <p>Le Deep Ecology Lab utilise des marqueurs génétiques de haute résolution pour distinguer les individus purs des hybrides avec une précision inégalée.</p>
+            <p>{{ t('services.service4.infoNote') }}</p>
           </div>
         </div>
       </div>

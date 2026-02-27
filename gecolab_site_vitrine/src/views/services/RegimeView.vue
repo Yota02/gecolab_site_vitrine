@@ -34,15 +34,15 @@ const image = `${import.meta.env.BASE_URL}images/services/crotte-mammifere.png`
           <div class="feature-list animate-fade-in-delayed">
             <div class="feature-item">
               <div class="feature-dot"></div>
-              <p>Identification précise des proies au niveau de l'espèce.</p>
+              <p>{{ t('services.service3.feature1') }}</p>
             </div>
             <div class="feature-item">
               <div class="feature-dot"></div>
-              <p>Analyse non invasive à partir de fèces ou de contenus stomacaux.</p>
+              <p>{{ t('services.service3.feature2') }}</p>
             </div>
             <div class="feature-item">
               <div class="feature-dot"></div>
-              <p>Protocoles NGS optimisés pour les échantillons dégradés.</p>
+              <p>{{ t('services.service3.feature3') }}</p>
             </div>
           </div>
         </div>
